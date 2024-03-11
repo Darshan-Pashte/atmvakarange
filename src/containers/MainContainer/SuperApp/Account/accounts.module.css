@@ -1,0 +1,188 @@
+.mainBox {
+    /* margin: 1rem !important; */
+}
+
+.accountsMainHeadingFlex {
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.savingsAccount {
+    /* color: #183883 !important; */
+
+    color: var( --main-heading-color) !important;
+    font-size: 24px !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    /* line-height: 0px; */
+    /* 0% */
+}
+
+.savingsAccountSubHeading {
+    color: #000;
+    font-size: 16px !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+    /* padding-top: 2rem; */
+}
+
+.savingsAccountSubHeading1 {
+    color: var( --main-heading-color);
+    font-size: 20px !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: normal;
+    padding-top: 2rem
+}
+
+.savingsAccountBalance {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 16rem;
+    padding-top: 0rem;
+    color: #000;
+    font-size: 1.125rem;
+    font-style: normal !important;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.savingsAccountBalancecColor {
+    color: var( --main-heading-color) !important;
+    font-size: 1.125rem !important;
+    font-style: normal !important;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.mainBoxAccount {
+
+    border-radius: 8px !important;
+    background: #FFF !important;
+    box-shadow: 0px 4px 6px 0px rgba(66, 66, 66, 0.15) !important;
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px 5px 10px;
+}
+
+.accountDetails {
+    color: var(--Primary-Color, #183883);
+
+    /* H6 */
+    font-family: Montserrat;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.tableMainBox {
+    /* border-radius: 8px !important; */
+    background: #FFF !important;
+    box-shadow: 0px 4px 6px 0px rgba(66, 66, 66, 0.15) !important;
+}
+
+
+
+.accountsSecondGrid {
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 4px 6px 0px rgba(66, 66, 66, 0.15);
+}
+
+.accountBox {
+    border-radius: var(--1, 0.5rem);
+    background: var(--Card-Color, #F9F9F9);
+    box-shadow: 0px 4px 6px 0px rgba(66, 66, 66, 0.15);
+    min-height: 20vh;
+    /* min-width: 20vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    
+
+}
+
+.accountBox:hover {
+  
+    background-color: #f0f0f0;
+  }
+.iconsTypography , .iconsTypography1,
+.iconsTypography2 {
+    /* color: #000 !important;
+    font-size: 12px !important;
+    font-style: normal;
+    font-weight: 400 !important;
+    line-height: normal; */
+    text-align: center;
+    color: var(--Primary-Color, #183883);
+
+    /* H6 */
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+/* .iconImagesPaddingType1 img{
+    width: 15%;
+    height: 15%;
+} */
+
+.accountsMarginGrid {
+    margin: 2rem !important;
+    cursor: pointer;
+}
+
+.serviceRequestLinkPadding {
+    padding-top: 4.6rem !important;
+}
+
+/* .iconImagesPaddingType1 {
+    padding-left: 9px !important;
+} */
+
+/* .iconImagesPaddingType2 {
+    padding-left: 25px !important;
+} */
+
+.cardsBox {
+    width: 50%;
+    margin-top: 15px;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 4px 6px 0px rgba(66, 66, 66, 0.15);
+}
+
+.gridtitle {
+    color: #000;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 0px 10px 15px;
+}
+
+.nodata {
+    margin: 20px;
+    text-align: center;
+    color: var(--Primary-Color, #183883);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

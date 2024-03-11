@@ -1,0 +1,17 @@
+.TimerStyle {
+    font-size: 18px;
+    color: #183883
+}
+
+.resendOtpstyle{
+    color: #AA1313;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 5px;
+
+}
+
+.resendOtpstyle:hover{
+    font-weight: 500;
+    /* font-size: 19px; */
+}

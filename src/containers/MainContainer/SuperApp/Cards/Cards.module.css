@@ -1,0 +1,441 @@
+.cardsmainpage{
+    /* width: 84vw; */
+    /* margin: 3rem; */
+}
+.cardIcon{
+    max-width: 2rem;
+}
+.requiredStar {
+    color: #ff0000; /* Replace with your desired color */
+  }
+  .secondContainer{
+    /* display: flex !important; */
+    justify-content: space-between !important;
+padding: var(--none, 0px) !important;
+
+/* align-items: flex-start !important; */
+/* gap: 30px !important; */
+
+  }
+.secondContainerFirstBox{
+    border-radius: 20px !important;
+background: #FFF !important;
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) !important; 
+/* margin: 2rem !important; */
+}
+.secondContainerSecondBox{
+    border-radius: 20px !important;
+background: #FFF !important;
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) !important; 
+}
+.gridinfo{
+    /* display: flex; */
+/* padding: 0rem ; */
+padding-left: 2.5rem;
+padding-top: 1rem;  
+/* padding-bottom: 1rem; */
+/* margin: 2rem; */
+
+
+
+/* flex-direction: column; */
+/* align-items: flex-start; */
+/* gap: 9px; */
+
+/* left: 108px; */
+
+/* top: 62px; */
+/* border-radius: var(--3, 24px); */
+
+
+}
+.cardImagemMainDiv{
+    padding-left: 5.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;  
+}
+.secondContainerSecondBoxPin{
+    border-radius: 20px;
+background: var(--Card-Color, #F9F9F9);
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.cardStatusContainer {
+    --Card-Color: #ECECEC;
+  }
+.secondContainerInsideBox{
+    display: flex;
+margin: 1.4rem;
+padding-top: 2.5vw;
+
+align-items: flex-start;
+gap: var(--3, 24px);
+
+}
+.cardIcon{
+    display: flex;
+width: 300px;
+height: 200px;
+/* padding: var(--3, 24px) 50px; */
+padding-left: 5rem;
+padding-top: 2rem;
+
+flex-direction: column;
+align-items: center;
+gap: var(--2, 24px);
+}
+.cardIconTypography{
+    color: #183883 !important;
+
+
+font-family: Montserrat  ;
+font-size: 14px !important;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.cardStatusTypography{
+    color: #183883;
+
+  
+    font-family: Montserrat ;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+}
+.generatePinTypography{
+    color: var(--Primary-Color, #EE1C25) !important;
+    /* H6 */
+    font-family: Montserrat;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: normal;
+}
+.generatePinTypographyCard{
+    color: var(--Primary-Color, #183883) !important;
+    /* H6 */
+    font-family: Montserrat;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: normal;
+}
+.cardStatusMainBox{
+    border-radius: 20px;
+background: #FFF;
+box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.cardBlockStatusTypography{
+    color: var(--Primary-Color, #183883 ) !important;
+/* Table Leble & Buttont */
+font-family: Montserrat ;
+font-size: 16px !important;
+font-style: normal;
+font-weight: 500 !important;
+line-height: normal;
+}
+.cardBlockStatusFlex{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+/* padding: var(--none, 0px); */
+
+/* align-items: flex-start; */
+/* gap: 247px */
+}
+.cardBlockStatusMainBox{
+    margin: 2rem;
+}
+.cardStatusMainConatiner{
+    padding-top: 1rem;
+}
+
+.regeneratePinMainContainer{
+    padding-top: 1rem;
+}
+.regeneratePinMainBox{
+    margin: 1rem;
+    padding-right: 3rem;
+}
+.OtpTypography{
+    color: var(--Primary-Color, #EE1C25);
+/* H5 */
+font-family: Montserrat;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.secondContainerHeadings{
+    color: var(--Primary-Color, #EE1C25) !important;
+/* H6 */
+font-family: Montserrat;
+font-size: 16px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: normal;
+padding-top: 5px;
+
+}
+.cardMainHeading{
+    color: var(--Primary-Color, #EE1C25) !important;
+    /* H6 */
+    font-family: Montserrat;
+    font-size: 20px !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    line-height: normal;
+    padding-top: 2px;
+    padding-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cardsheader{
+    color: #183883;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 0px; /* 0% */
+margin-bottom: 20px;
+}
+.grid3button{
+    padding-top: 1rem !important;
+   
+}
+
+.grid1container{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+/* background: #183883; */
+padding: 10px 20px;
+gap: 10px;
+background-image: url('../../../../assets/CardsPics/debitbackground.png');
+    background-size: cover;
+}
+
+.grid1containerup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid1containerleft{
+    color: #FFF;
+font-family: Space Grotesk;
+font-size: 12.085px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 0.121px;
+}
+.grid1logo{
+    display: flex;
+    justify-content: flex-end;
+}
+.grid1number{
+/* margin-top: 20px;
+margin-bottom: -15px; */
+}
+
+
+.grid1name{
+color: #FFF;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.grid1number{
+    color: #FFF;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+
+.grid1lowerinfo{
+    display: flex;
+    /* gap: 20px; */
+    justify-content: space-between;
+      color: #FFF;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+
+.cardholdername,.expirydate,.cvv{
+    color: #FFF;
+    /* font-size: 20px; */
+font-family: Space Grotesk;
+/* font-size: 10.057px;
+font-style: normal;
+font-weight: 400; */
+line-height: 19.114px; /* 200% */
+letter-spacing: 0.322px;
+}
+
+.cardinfo{
+    color: #FFF;
+font-family: Space Grotesk;
+font-size: 16.114px;
+font-style: normal;
+font-weight: 700;
+line-height: 26.856px; /* 166.667% */
+letter-spacing: 0.645px;
+}
+.grid2container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+border-radius: 24px;
+border: 1px solid #EEE;
+background: #FFF6E7;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+padding: 10px 20px;
+gap: 30px;
+    
+}
+
+.grid2name{
+    color: #183883;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.grid2switch{
+    color: #183883;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+
+.grid3container{
+    display: flex;
+    flex-direction: column;
+border-radius: 24px;
+
+padding: 40px 20px 60px;
+gap: 20px;
+
+    border-radius: 24px;
+border: 1px solid #C2C2C2;
+background: #FFF;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+
+.gridtitle{
+    color: #000;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin: 20px 0px;
+}
+.grid3name{
+    color: #323232;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.grid3optioninfo{
+    color: #323232;
+leading-trim: both;
+text-edge: cap;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    border-radius: 6px;
+    border: 1px solid #323232;
+    display: inline-flex;
+padding: 10px 24px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+
+}
+
+.grid4container{
+    display: flex;
+    flex-direction: column;
+/* border-radius: 24px; */
+
+/* padding: 40px 20px; */
+/* gap: 20px; */
+
+    /* border-radius: 24px; */
+/* border: 1px solid #C2C2C2; */
+background: #FFF;
+/* box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12); */
+}

@@ -1,0 +1,51 @@
+*{
+  font-size: 12px;
+}
+
+body {
+  font-family: 'Montserrat' !important;
+  /* font-family: 'Poppins' !important; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+
+#root {
+  height: 100vh;
+}
+
+
+:root {
+  /* primary color */
+  --primary-color: #E9E0FF ; 
+  /* --primary-color: linear-gradient(91deg, #E9E0FF 46.1%, #BDBAFF 86.84%); */
+
+
+  /* secondary color */
+  --secondary-color: #0085a5;
+  
+    /* Body Background Color */
+  --body-background-color:#FFFBF2;
+
+    /* Main heading in the Page */
+  --main-heading-color:#0C0C0C;
+
+  /* Button Effect */
+  --button-color:#AE2121;   
+  --button-hover-color:#2A517C;
+
+  /*Field Background Color*/
+  --common-background-color:#66c3d0;
+
+  /* Heading Text Color for Field background */
+  --common-heading-color:#FFF;
+
+  /* Sidebar Effect */
+  --sidebar-color:#0085a5;
+--sidebar-tab-background-color:#095a7b;
+--sidebar-tab-text-color:#fff;
+
+}
