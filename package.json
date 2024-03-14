@@ -2,7 +2,7 @@
   "name": "swift-corepe-admin",
   "version": "0.2.0",
   "private": true,
-  "homepage": "/atmadminportal",
+  "homepage": "/vakrangeeatmadminportal",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -23,6 +23,7 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "dayjs": "^1.11.9",
     "dotenv": "^16.4.5",
+    "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
@@ -67,15 +68,24 @@
     "sass": "^1.58.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:uat": "env-cmd -f .env.uat react-scripts start",
+    "start:testing": "env-cmd -f .env.testing react-scripts start",
+    "start:vapt": "env-cmd -f .env.vapt react-scripts start",
+    "build:uat": "env-cmd -f .env.uat react-scripts build",
+    "build:testing": "env-cmd -f .env.testing react-scripts build",
+    "build:vapt": "env-cmd -f .env.vapt react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "copy": "mkdir build\\WEB-INF\\",
     "paste": "copy web.xml build\\WEB-INF\\",
     "cut": "copy web.xml build\\",
-    "predeploy": "yarn run build && yarn copy && yarn paste && yarn cut && yarn rename",
-    "rename": "rename build atmadminportal"
+    "copyversion": "copy description.txt build\\",
+    "predeploy:uat": "yarn update-readme && yarn run build:uat && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
+    "predeploy:testing": "npm version patch && yarn update-readme && yarn run build:testing && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
+    "predeploy:vapt": "npm version patch && yarn update-readme && yarn run build:vapt && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
+    "rename": "rename build vakrangeeatmadminportal",
+    "zip": "powershell Compress-Archive vakrangeeatmadminportal vakrangeeatmadminportal.zip",
+    "update-readme": "node update-readme.js"
   },
   "eslintConfig": {
     "extends": [

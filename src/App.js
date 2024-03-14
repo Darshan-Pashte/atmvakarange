@@ -44,7 +44,7 @@ function App() {
   // }, []);
   return (
     <div className='App'>
-      <Router basename='/atmadminportal'>
+      <Router basename='/vakrangeeatmadminportal'>
         <Routes>
         {/* <Route exact path='/register' element={<Register />} /> */}
 
