@@ -34,27 +34,20 @@ import CustomRoutes from "../../../../routes/Routes";
 import { useSelector } from "react-redux";
 import ATMMasterListView from "../../../../components/common/ATMMasterListView";
 import EditsIcons from "../../../../components/common/EditIcon";
-import OnlyView from "../../../../components/common/OnlyView";
-
+// import ATMServiceModal from "./AtmServiceModal";
+import EditIcon from '@mui/icons-material/Edit';
+import { width } from "@mui/system";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const defaultFormData = {
-  toacc:'',
-  fromacc:'',
-  cardreadmode:'',
-  binmode:'',
-  status:'',
-  transno:'',
-  transtype:'',
-  cardno:'',
-  cardbin:'',
-  atmid:'',
-  bankcode:'',
+  bankcode: "",
+  atmid: "",
+
   toDate:null,
   fromDate:null,
- 
 };
 
-const SwitchBrowse = () => {
+const ATMErrorBrowse = () => {
   const {
     control,
     handleSubmit,
@@ -92,7 +85,6 @@ const SwitchBrowse = () => {
 
   const [bankcode, setBankCode] = useState([]);
   const [atmID, setAtmID] = useState([]);
-  const [cardlist, setCardList] = useState([]);
 
   const [totalRecord, settotalRecord] = useState(0);
   const [goPageNumber, setGoPageNumber] = useState(10); 
@@ -120,160 +112,8 @@ const SwitchBrowse = () => {
   // }, []);
 
 
-  const TransactionType = [
-    {
-      code: "",
-      value: "All",
-    },
-    {
-      code: "IMPS",
-      value: "IMPS",
-    },
-    {
-      code: "RTGS",
-      value: "RTGS",
-    },
-    {
-      code: "NEFT",
-      value: "NEFT",
-    },
-    {
-      code: "INTERNAL",
-      value: "INTERNAL",
-    },
-  ];
-
-  const ResponseCode = [
-    {
-      code: "",
-      value: "All",
-    },
-    {
-      code: "S",
-      value: "Success",
-    },
-    {
-      code: "F",
-      value: "Failed",
-    },
-  ];
-
-  const Status = [
-    {
-      code: "",
-      value: "All",
-    },
-    {
-      code: "M",
-      value: "MAKER",
-    },
-    {
-      code: "C",
-      value: "CHECKER",
-    },
-    {
-      code: "A",
-      value: "AUTHORIZER",
-    },
-  ];
-
-  const statusList = [
-    {
-      code: "all",
-      value: "ALL",
-    },
-    {
-      code: "S",
-      value: "Suspect",
-    },
-    {
-      code: "C",
-      value: "Complete",
-    },
-    {
-      code: "F",
-      value: "FAIL",
-    },
-    {
-      code: "R",
-      value: "Reversal",
-    },
-  ];
-
-
-  const BinModeList = [
-    {
-      code: "all",
-      value: "ALL",
-    },
-    {
-      code: "local",
-      value: "Local",
-    },
-    {
-      code: "other",
-      value: "Other",
-    },
-    {
-      code: "nun",
-      value: "Nun",
-    },
-  ];
-
-
-  const CardReadModeList = [
-    {
-      code: "all",
-      value: "ALL",
-    },
-    {
-      code: "E",
-      value: "EMV",
-    },
-    {
-      code: "M",
-      value: "Magstripe",
-    },
-   
-  ];
-
 
  
-  const TransTypeList = [
-    {
-      code: "all",
-      value: "ALL",
-    },
-    {
-      code: "balanceEnquiry",
-      value: "Balance Inquiry",
-    },
-    {
-      code: "cashwithdrawal",
-      value: "Cash Withdrawal",
-    },
-    {
-      code: "fastcashwithdrawal",
-      value: "Fast Cash Withdrawal",
-    },
-    {
-      code: "fundTransfer",
-      value: "Fund Transfer ",
-    },
-    {
-      code: "Generate-Pin",
-      value: "Generate-Pin",
-    },
-    {
-      code: "miniStatement",
-      value: "Mini Statement",
-    },
-    {
-      code: "pinchange",
-      value: "Pinchange",
-    },
-  ];
-
  
 
   const handleLogout = () => {
@@ -293,24 +133,43 @@ const SwitchBrowse = () => {
 // },[])
 
 
-const openModal = (rowData) => {
+// const openModal = (rowData) => {
+//   // const headers = columns.map((column) => column.label);
+//   const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify").map((column) => column?.label);
+//   setTableHeaders(headers);
+//   setRowDataToDisplay({
+//       headers: headers,
+//       rowData: rowData,
+//   });
+//   setIsModalOpen(true);
+// };
+// const closeModal = () => {
+//   setIsModalOpen(true);
+// };
+// const closeSignModal = () => {
+//   setIsModalOpen(false);
+// };
+
+
+const openModal = (rowData,apipath,titletext) => {
   // const headers = columns.map((column) => column.label);
   const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify").map((column) => column?.label);
   setTableHeaders(headers);
   setRowDataToDisplay({
       headers: headers,
       rowData: rowData,
+      apipath:apipath,
+      titletext:titletext
   });
   setIsModalOpen(true);
 };
+
+
 const closeModal = () => {
-  setIsModalOpen(true);
-};
-const closeSignModal = () => {
-  setIsModalOpen(false);
-};
-
-
+     setIsModalOpen(false);
+   }
+   
+   
   // const handleNavigate = (rowData) => {
   //   navigate("/atmmaster/modify", { state: rowData });
   // };
@@ -322,29 +181,35 @@ const closeSignModal = () => {
 
   const columns = [
   
-    {
-      name: "View",
-      label: "View",
-      options: {
-        filter: false,
-        sort: false,
-        customBodyRender: (value, { rowData }, tableMeta) => {
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-              onClick={() => openModal(rowData)}
-            >
-              {" "}
-              <VisibilityIcon />
-            </Button>
-          );
-        },
-      },
-    },
+    // {
+    //   name: "View",
+    //   label: "View",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+  
+    //       customBodyRender: (value, { rowData }, tableMeta ) => {
+    //         const additionalProp = 'outofservice'; 
+    //         return (
+    //           <Button
+    //             sx={{
+    //               color: "black",
+    //               minWidth: "100%",
+    //               padding: "5px 5px !important",
+    //             }}
+              
+    //             onClick={() => openModal(rowData,additionalProp )}
+    //           >
+    //             {" "}
+    //             <VisibilityIcon />
+    //           </Button>
+    //         );
+    //       },
+    //   },
+    // },
+
+
+
   //   {
   //     name: "Modify",
   //     label: "Modify",
@@ -360,179 +225,125 @@ const closeSignModal = () => {
   //         },
   //     }
   // },
- 
-   {
-      name: "atmid",
-      label: "ATM Id",
+  {
+    name: "atmid",
+    label: "ATM ID",
+    options: {
+      filter: true,
+      sort: false,
+      display:true
+    },
+  },
+  {
+    name: "dt",
+    label: "Date",
+    options: {
+      filter: true,
+      sort: false,
+      customBodyRender: (value) => {
+        const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'numeric',
+          year: 'numeric',
+            // hour: '2-digit',
+            // minute: '2-digit',
+            // second: '2-digit',
+        });
+        return formattedDate;
+        
+      },
+    },
+  },
+    {
+      name: "status",
+      label: "Status",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "message",
+      label: "Message",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            const buttonStyles = {
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius: '20px',
+            //   height: '100px',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word'
+            };
+          
+            // Check if value is not null or undefined before replacing
+            const formattedValue = value ? value.replace(/(.{50})/g, "$1\n") : '';
+          
+            return (
+              <div style={buttonStyles}>
+                {formattedValue}
+              </div>
+            );
+          },
+          
+          
+        // customBodyRender: (value, tableMeta, updateValue) => {
+        //     // Conditionally set the text color and background color
+        //     const buttonStyles = {
+     
+        //       minWidth: "100%",
+        //       padding: "5px",
+        //       borderRadius:'20px',
+        //       height:'100px'
+        //     };
+      
+        //     return (
+        //       <div style={buttonStyles}>
+        //         {value}
+        //       </div>
+        //     );
+        //   },
+      
+      },
+    },
+    {
+      name: "notMessage",
+      label: "Not Message",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            const buttonStyles = {
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius: '20px',
+            //   height: '100px',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word'
+            };
+          
+            // Check if value is not null or undefined before replacing
+            const formattedValue = value ? value.replace(/(.{50})/g, "$1\n") : '';
+          
+            return (
+              <div style={buttonStyles}>
+                {formattedValue}
+              </div>
+            );
+          },
+      },
+    },
+    {
+      name: "errorType",
+      label: "Error Type",
       options: {
         filter: true,
         sort: false,
       },
     },
 
-    {
-      name: "transactionnumber",
-      label: "Transaction No.",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: "transactiondate",
-      label: "Trans Date",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value) => {
-          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'numeric',
-            year: 'numeric',
-              // hour: '2-digit',
-              // minute: '2-digit',
-              // second: '2-digit',
-          });
-          return formattedDate;
-          
-        },
-      },
-    },
-    {
-      name: "transactiontime",
-      label: "Trans Time",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: "amount",
-      label: "Amount",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: "acquiringinstidcode",
-      label: "Acquire Code",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "transactiondatetime",
-      label: "Trans DateTime",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "retrievalreferencenumber",
-      label: "RRN No.",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "localtransactiontime",
-      label: "Local Trans time",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "atmlocation",
-      label: "ATM Location",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "msgtype",
-      label: "Message Type",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-   
-    {
-      name: "processingcode",
-      label: "Processing Code",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "responsecode",
-      label: "Response Code",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "pan",
-      label: "Card No.",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "systemtracenumber",
-      label: "System Trace No.",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "reservedprivate",
-      label: "Reserved Private",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
-    {
-      name: "fromaccount",
-      label: "From Account",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
-    {
-      name: "toaccount",
-      label: "To Account",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
-    
   ];
 
   const options = {
@@ -577,12 +388,54 @@ const closeSignModal = () => {
     },
   };
 
+  const getMuiTheme = () =>
+  createTheme({
+    components: {
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            // boxShadow: "none",
+            // backgroundColor: "#f5f6fA",
+            // boxShadow:'0 0 3px #999'
+            border: "1px solid lightgrey",
+          },
+        },
+      },
+      MuiTableHead: {
+        root: {
+          "& .customTableHead": {
+            background: "red", // Replace with your desired background color
+          },
+        },
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: {
+            paddingTop: "8px", // Adjust the top padding value as needed
+            paddingBottom: "8px",
+            // lineHeight: "1.5",
+            border:'1px solid grey'
+          },
+        },
+      },
+      MuiTableRow: {
+        styleOverrides: {
+          root: {
+            // Adjust the space between rows by adding margin or padding
+            marginBottom: "10px", // Adjust the value as needed
+          },
+        },
+      },
+    //   MuiTypography: {
+    //     styleOverrides: {
+    //       root: {
+    //         lineHeight: "3.5", // Adjust the line height as needed
+    //       },
+    //     },
+    //   },
+    },
+  });
 
-  useEffect(() => {
-    setValue("fromDate", new Date())
-    setValue("toDate", new Date())
-  }, []);
-  
 
   const BankcodeList=bankcode && bankcode?.map(item => ({ "code": item.bankCd, "value": item.bankCd }));
   BankcodeList && BankcodeList?.unshift({ "code": "all", "value": "ALL" });
@@ -591,10 +444,6 @@ const closeSignModal = () => {
   const AtmIDList=atmID && atmID?.map((item)=>({"code":item.atmId,'value':item.atmId}));
 
   AtmIDList && AtmIDList?.unshift({ "code": "all", "value": "ALL" });
-
-
-  const CardBinList=cardlist && cardlist?.map((item)=>({"code":item.bin,'value':item.bin}));
-  CardBinList && CardBinList?.unshift({ "code": "all", "value": "ALL" });
 
 
  console.log('BankcodeList',BankcodeList)
@@ -634,7 +483,6 @@ const closeSignModal = () => {
 
   useEffect(()=>{
     getBankCode()
-    getCardBin()
     // getATMid()
   },[])
 
@@ -679,22 +527,6 @@ const closeSignModal = () => {
   };
 
 
-  const getCardBin = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
-        
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_CARDBIN, payload);
-      setCardList(response.biList);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   
   // useEffect(()=>{
   //   getTransactionListView()
@@ -710,23 +542,21 @@ const closeSignModal = () => {
       const payload = {
         username:user?.username,
         sessionId: user?.sessionId,
-        atmid: data.atmid,
+        atmId: data.atmid,
         bankcd: data.bankcd,
-
         toDate: data.toDate,
         fromDate: data.fromDate,
-       
        
       };
 
       const response = await postApiData(
-        apiList.SWITCH_BROWSE + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
+        apiList.ATM_ERROR_BROWSE + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
 
 
       if (response.status == true) {
-        setAtmMasterList(response.list);
+        setAtmMasterList(response.errorModels);
         settotalRecord(response.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
@@ -755,11 +585,9 @@ const closeSignModal = () => {
       sessionId: user?.sessionId,
       atmid: data?.atmid?.code,
       bankcd: data?.bankcode?.code,
-   
- 
-
-    fromDate: convertDate(data.fromDate,1),
-    toDate: convertDate(data.toDate,1),
+      fromDate: convertDate(data.fromDate,1) ? convertDate(data.fromDate,1) : convertDate(new Date(),1),
+    toDate: convertDate(data.toDate,1) ? convertDate(data.toDate,1) : convertDate(new Date(),1),
+      // transtype: data.transtype ? data.transtype.code :"all",
     };
     console.log("payload",payload);
     getTransactionList(1, payload)
@@ -840,7 +668,7 @@ const closeSignModal = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>Switch Report</div>
+            <div className={classes.bluerowtext}>ATM Error</div>
             {/* <div>
               <ColorButton1
                 onClick={() => navigate("/atmmaster/create")}
@@ -854,11 +682,11 @@ const closeSignModal = () => {
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
 
-             
-<Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Bank Code<sup className={classes.required}>*</sup>
+                      Bank Code
+                      <sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -867,10 +695,10 @@ const closeSignModal = () => {
                           name: "bankcode",
                         }}
                         TextFieldProps={{
-                          placeholder: "Select",
+                          placeholder: "Select Bank Code",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[a-zA-Z0-9 \s]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -884,6 +712,7 @@ const closeSignModal = () => {
                             "Bank Code " +
                             errorMessages.error_autocomplete_message,
                         }}
+                        // data={FinalBankCodeList}
                         data={BankcodeList}
                         required={true}
                       />
@@ -891,10 +720,11 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
 
-
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>ATM ID</div>
+                    <div className={classes.frowtextaff}>ATM ID
+                    <sup className={classes.required}>*</sup>
+                    </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
                         controlerProps={{
@@ -902,10 +732,10 @@ const closeSignModal = () => {
                           name: "atmid",
                         }}
                         TextFieldProps={{
-                          placeholder: "Select",
+                          placeholder: "Select ATM ID",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[a-zA-Z0-9 \s]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -919,6 +749,7 @@ const closeSignModal = () => {
                             "ATM ID " +
                             errorMessages.error_autocomplete_message,
                         }}
+                        // data={FinalAtmIDList}
                         data={AtmIDList}
                         required={true}
                       />
@@ -984,14 +815,13 @@ const closeSignModal = () => {
                     />
                   </div>
                 </Grid>
-              
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
-                  sm={0}
-                  md={5}
+                  sm={2}
+                  md={1}
                   style={{ paddingTop: "42px" }}
-                ></Grid> 
+                ></Grid>  */}
            
            <Grid item xs={12} sm={3} md={3} style={{ paddingTop: "37px" }}>
                   <ColorButton1 variant="contained" type="submit">
@@ -1005,25 +835,18 @@ const closeSignModal = () => {
             <div className={classes.Sbox2}>
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
+              <ThemeProvider theme={getMuiTheme()}>
                 <MUIDataTable
-                  title={" Switch Report List"}
+                  title={" ATM Error Browse List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}
                 />
+                  </ThemeProvider>
               </div>
             </div>
 
-            {isModalOpen ? (
-              <OnlyView
-                open={isModalOpen}
-                handleClose={closeModal}
-                closeSignModal={closeSignModal}
-                rowDataToDisplay={rowDataToDisplay}
-                show={"2"}
-                title={"Switch Report List"}
-              />
-            ) : null}
+        
           </div>
         </div>
       </Box>
@@ -1031,9 +854,7 @@ const closeSignModal = () => {
   );
 };
 
-export default SwitchBrowse;
-
-
+export default ATMErrorBrowse;
 
 
 

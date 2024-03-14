@@ -264,7 +264,7 @@ margin-top: 10px;
   /* box-shadow: 0px 6px 24px 0px rgba(20, 17, 56, 0.12); */
   /* margin: 10px 0px 20px 0; */
   margin-top: 1vh;
-
+/* cursor: pointer; */
 
 }
 .cardpagemiddle {
@@ -289,6 +289,17 @@ margin-top: 10px;
 
 }
 
+
+.uppericons{
+  width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.viewicon{
+  cursor: pointer;
+}
 .boxtitle {
   color: #FFF;
   leading-trim: both;
@@ -388,7 +399,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 125%; /* 20.2px */
 }
-@media (min-width: 501px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 1024px) {
   .container {
     flex-direction: column;
     gap: 1vw;
@@ -418,7 +429,7 @@ line-height: 125%; /* 20.2px */
   .DashboardContainer {
     flex-direction: column;
     gap: 1vw;
-    margin: 3vw;
+    /* margin: 3vw; */
   }
   
   .card {

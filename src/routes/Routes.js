@@ -97,6 +97,8 @@ import LocalBinMasterBrowse from "../containers/MainContainer/AtmPortal/LocalBin
 import LocalBinMasterCreate from "../containers/MainContainer/AtmPortal/LocalBinMaster/LocalBinMasterCreate";
 import LocalBinMasterModify from "../containers/MainContainer/AtmPortal/LocalBinMaster/LocalBinMasterModify";
 import ATMServiceBrowse from "../containers/MainContainer/AtmPortal/AtmService/ATMServiceBrowse";
+import ATMHealthBrowse from "../containers/MainContainer/AtmPortal/AtmHealth/ATMHealthBrowse";
+import ATMErrorBrowse from "../containers/MainContainer/AtmPortal/AtmError/ATMErrorBrowse";
 // import BeneficiaryDetails from "../containers/MainContainer/SuperApp/AccountLimit/IMPS/BeneficiayDetails";
 // import AccountLimit from "../containers/MainContainer/SuperApp/AccountLimit/IMPS/AccountLimit";
 // import AccountLimitNEFT from "../containers/MainContainer/SuperApp/AccountLimit/NEFT/AccountLimitNEFT";
@@ -197,6 +199,24 @@ const Routes = () => {
       roles: [],
       Icon: HomeIcon,
     },
+
+    {
+      name: "ATM Health",
+      id: "atmhealth",
+      url: array[0] == "1" ? "/atmhealth" : null,
+      component: <ATMHealthBrowse />,
+      arr: array[0],
+      roles: [],
+      Icon: UpiIcon,
+      grandChild:[
+            {arr:array[0]},
+            {arr:array[0]},
+            {arr:array[0]}
+         ]
+    },
+    
+
+
     {
       name: "Bank Master",
       id: "bankmaster",
@@ -226,6 +246,24 @@ const Routes = () => {
             {arr:array[0]}
          ]
     },
+
+    {
+      name: "ATM Error",
+      id: "atmerror",
+      url: array[0] == "1" ? "/atmerror" : null,
+      component: <ATMErrorBrowse />,
+      arr: array[0],
+      roles: [],
+      Icon: UpiIcon,
+      grandChild:[
+            {arr:array[0]},
+            {arr:array[0]},
+            {arr:array[0]}
+         ]
+    },
+    
+
+
     // {
     //   name: "Mobile Application User",
     //   id: "mobappuser",
@@ -545,7 +583,7 @@ const Routes = () => {
       Icon: TransactionIcon,
       childRoutes: [
         {
-          name: "Local",
+          name: "Local & Acquire",
           id: "localandaquirer",
           url: array[0] == "1" ?  "/localandaquirer" :null,
           roles: [],
@@ -555,35 +593,36 @@ const Routes = () => {
         },
 
         
-        // {
-        //   name: "Issuer",
-        //   id: "issuer",
-        //   url: array[0] == "1" ?  "/issuer" :null,
-        //   roles: [],
-        //   arr : array[0],
-        //   component: <IssuerBrowse />,
-        //   Icon: UpiIcon,
-        // },
+        {
+          name: "Issuer Report",
+          id: "issuer",
+          url: array[0] == "1" ?  "/issuer" :null,
+          roles: [],
+          arr : array[0],
+          component: <IssuerBrowse />,
+          Icon: UpiIcon,
+        },
+        {
+          name: "Switch Report",
+          id: "switch",
+          url: array[0] == "1" ?  "/switch" :null,
+          roles: [],
+          arr : array[0],
+          component: <SwitchBrowse />,
+          Icon: UpiIcon,
+        },
 
-        // {
-        //   name: "Issuer Switch",
-        //   id: "issuerswitch",
-        //   url: array[0] == "1" ?  "/issuerswitch" :null,
-        //   roles: [],
-        //   arr : array[0],
-        //   component: <IssuerSwitchBrowse />,
-        //   Icon: UpiIcon,
-        // },
+        {
+          name: "Issuer Switch Report",
+          id: "issuerswitch",
+          url: array[0] == "1" ?  "/issuerswitch" :null,
+          roles: [],
+          arr : array[0],
+          component: <IssuerSwitchBrowse />,
+          Icon: UpiIcon,
+        },
 
-        // {
-        //   name: "Switch",
-        //   id: "switch",
-        //   url: array[0] == "1" ?  "/switch" :null,
-        //   roles: [],
-        //   arr : array[0],
-        //   component: <SwitchBrowse />,
-        //   Icon: UpiIcon,
-        // },
+        
       ]
     },
 

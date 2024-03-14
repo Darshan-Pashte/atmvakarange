@@ -46,6 +46,7 @@ import ChartComponentBar from "../../../components/ApexCharts/ChartBar";
 import AcquireTransactionChart from "./AcquireTransactionChart";
 import AcquireTransactionChart1 from "./AcquireTransactionChart1";
 import YourChartComponent from "./AcquireTransactionChart1";
+import DashboarCards from "./DashboardCards";
 
 const data = {
   categories: ["M", "T", "W", "T", "F", "S", "S"],
@@ -652,9 +653,10 @@ const Dashboard = () => {
         <div className={classes.DashboardContainer}>
           <div style={{ flex: 1 }}>
             <div className={classes.boxs}>
-              {CardList.map((card, index) => {
+              {/* {CardList.map((card, index) => {
                 return <DashboarCard card={card} index={index} />;
-              })}
+              })} */}
+              <DashboarCards/>
             </div>
 
             <div className={classes.MiddleContent}>

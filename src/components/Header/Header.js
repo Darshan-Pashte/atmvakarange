@@ -103,8 +103,8 @@ const Header = ({ analytics }) => {
         <div className={classes.Title}>
           {/* <img src={LOGO} alt='LOGO_IMAGE' /> */}
           <div className={classes.lastLogin}>
-            <div style={{ fontSize: "1.3rem", textAlign: "center",}}>Last Login</div>
-            <div style={{ fontSize: "1.3rem", textAlign: "center",fontWeight:'500'}}>{user?.lastLoginDt}</div></div>
+            <div style={{ fontSize: "1.3rem", textAlign: "center",fontWeight:'500',}}>Last Login</div>
+            <div style={{ fontSize: "1.3rem", textAlign: "center",fontWeight:'500',color:'#E31E24'}}>{user?.lastLoginDt}</div></div>
            
         </div>
         

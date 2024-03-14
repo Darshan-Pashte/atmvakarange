@@ -1144,7 +1144,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={0} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdata1aff}>
                     <div className={classes.frowtextaff}>
                       From Date<sup className={classes.required}>*</sup>
@@ -1174,7 +1174,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={0} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdata1aff}>
                     <div className={classes.frowtextaff}>
                       To Date<sup className={classes.required}>*</sup>

@@ -447,12 +447,15 @@ text-align: center;
   justify-content: center;
   margin-top: 1.46484375vw;
   margin-bottom: 1.46484375vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 .paginationWrapper .paginationCopy {
   padding: 15px;
   box-shadow: 0 0 10px #999;
   border-radius: 10px;
   background-color: #fff;
+  line-height: 3;
 }
 .paginationWrapper .paginationCopy .MuiButtonBase-root {
   border-radius: 100px;

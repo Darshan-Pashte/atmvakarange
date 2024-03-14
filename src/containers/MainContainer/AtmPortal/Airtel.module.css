@@ -497,8 +497,8 @@ justify-content: space-evenly;
 
 }
 .lefttitlelogo{
-  width: 20%;
-  margin-bottom: 8px;
+  width: 30%;
+  /* margin-bottom: 4px; */
 }
 .textcontainer{
   display: flex;

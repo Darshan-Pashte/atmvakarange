@@ -125,6 +125,9 @@ ATM_SERVICE_DATA:baseUrlServer + '/atmportal/atmservice/',
 
 
 LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/atmportal/transmaster/localacqtranslst',
+ISSUER_BROWSE:baseUrlServer + '/atmportal/transmaster/issuertranslst',
+SWITCH_BROWSE:baseUrlServer + '/atmportal/transmaster/switchreports',
+ISSUER_SWITCH_BROWSE:baseUrlServer + '/atmportal/transmaster/issuerswitchreports',
 
 
 DASHBOARD_COUNT:baseUrlServer + '/atmportal/dashboard',
@@ -133,6 +136,11 @@ DASHBOARD_SUCCESS_GRAPH:baseUrlServer + '/atmportal/wakhdashboard',
 DASHBOARD_DAY_GRAPH:baseUrlServer + '/atmportal/acqdashgraph',
 
 DASHBOARD_TRANSACTION_REPORT:baseUrlServer + '/atmportal/transnewrecords',
+
+DASHBOARD_INSERVICE_BROWSE:baseUrlServer + '/atmportal/',
+
+ATM_HEALTH_BROWSE:baseUrlServer + '/atmportal/atmhealth',
+ATM_ERROR_BROWSE:baseUrlServer + '/atmportal/atmerror',
 
 
 
