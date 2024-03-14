@@ -14,7 +14,7 @@ export const baseUrlSonal = "http://10.103.10.84:4242";
 export const baseUrlDhananjay = "http://10.103.10.86:9404/services";
 
 
-// export const baseUrlServer = process.env.REACT_APP_API_URL;
+export const baseUrlServer = process.env.REACT_APP_API_URL;
 
 // Dev UAT URL
 // export const baseUrlServer = "http://199.34.22.236:9116";
@@ -23,7 +23,7 @@ export const baseUrlDhananjay = "http://10.103.10.86:9404/services";
 // export const baseUrlServer = "http://10.103.10.84:8002";
 
 // sonal UAT
-export const baseUrlServer = "http://199.34.22.236:9404";
+// export const baseUrlServer = "http://199.34.22.236:9404";
 
 // Production
 // export const baseUrlServer = "https://atmportal.siplchd.co.in/admin";
