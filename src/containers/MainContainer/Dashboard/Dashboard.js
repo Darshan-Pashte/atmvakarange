@@ -462,11 +462,11 @@ const Dashboard = () => {
         customBodyRender: (value) => {
           const formattedDate = new Date(value).toLocaleDateString("en-GB", {
             day: "2-digit",
-            month: "numeric",
+            month: "long",
             year: "numeric",
-            // hour: '2-digit',
-            // minute: '2-digit',
-            // second: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
           });
           return formattedDate;
         },
@@ -498,7 +498,7 @@ const Dashboard = () => {
     },
     {
       name: "responsecd",
-      label: "Response CD",
+      label: "Response Code",
       options: {
         filter: true,
         sort: false,

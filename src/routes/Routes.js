@@ -24,8 +24,8 @@ import { ReactComponent as TransactionIcon } from "../components/Sidebar/Sidebar
 
 
 // import { ReactComponent as HomeIcon } from "../components/Sidebar/SidebarIcons/home.svg";
-import { ReactComponent as CardsIcon } from "../components/Sidebar/SidebarIcons/cards.svg";
-import { ReactComponent as AccoutIcon } from "../components/Sidebar/SidebarIcons/account.svg";
+import { ReactComponent as HealthIcon } from "../components/Sidebar/SidebarIcons/health.svg";
+import { ReactComponent as ErrorIcon } from "../components/Sidebar/SidebarIcons/Error.svg";
 import { ReactComponent as CheckIcon } from "../components/Sidebar/SidebarIcons/check.svg";
 import { ReactComponent as FundTranfer } from "../components/Sidebar/SidebarIcons/fundtranfer.svg";
 import { ReactComponent as LoanIcon } from "../components/Sidebar/SidebarIcons/loans.svg";
@@ -207,7 +207,7 @@ const Routes = () => {
       component: <ATMHealthBrowse />,
       arr: array[0],
       roles: [],
-      Icon: UpiIcon,
+      Icon: HealthIcon,
       grandChild:[
             {arr:array[0]},
             {arr:array[0]},
@@ -254,7 +254,7 @@ const Routes = () => {
       component: <ATMErrorBrowse />,
       arr: array[0],
       roles: [],
-      Icon: UpiIcon,
+      Icon: ErrorIcon,
       grandChild:[
             {arr:array[0]},
             {arr:array[0]},
@@ -583,7 +583,7 @@ const Routes = () => {
       Icon: TransactionIcon,
       childRoutes: [
         {
-          name: "Local & Acquire",
+          name: "Acquire Report",
           id: "localandaquirer",
           url: array[0] == "1" ?  "/localandaquirer" :null,
           roles: [],

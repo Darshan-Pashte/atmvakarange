@@ -88,6 +88,7 @@ BANK_MASTER_MODIFY:baseUrlServer + '/vakrangee/bankmaster/modify',
 
 GET_BANKCODE:baseUrlServer + '/vakrangee/atmmaster/brwbnkcode',
 GET_ATMID:baseUrlServer + '/vakrangee/atmmaster/brwatmid',
+// GET_ATMID_SINGLE:baseUrlServer + '/vakrangee/atmmaster/brwatmid',
 GET_CARDBIN:baseUrlServer + '/vakrangee/transmaster/cardbinbrw',
 GET_USERID:baseUrlServer + '/vakrangee/useratmassignmst/useridbrw',
 GET_ATMNAME:baseUrlServer + '/vakrangee/bnkatmsmsmst/atmnamebrw',

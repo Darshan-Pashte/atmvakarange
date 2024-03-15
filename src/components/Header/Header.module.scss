@@ -1,4 +1,5 @@
 .HeaderContainer {
+  background-color: var(--body-background-color) !important;
   // background: #383b53;
   // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -285,6 +286,7 @@ line-height: normal;
 }
 
 .RightContainer {
+  background-color: white;
   display: flex;
   column-gap: 1vw;
   padding: 0 2%;

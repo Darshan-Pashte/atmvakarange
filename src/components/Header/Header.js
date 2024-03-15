@@ -97,7 +97,7 @@ const Header = ({ analytics }) => {
         </div> */}
       </div>
       <div className={classes.RightContainer}>
-          <div className={classes.welcometitle}>ATM Portal</div>
+          <div className={classes.welcometitle}>ATM(Vakrangee)</div>
        
         <div className={classes.ProfileSection}>
         <div className={classes.Title}>

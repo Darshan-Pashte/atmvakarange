@@ -894,7 +894,7 @@ const closeSignModal = () => {
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>ATM ID</div>
+                    <div className={classes.frowtextaff}>ATM ID<sup className={classes.required}>*</sup></div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
                         controlerProps={{

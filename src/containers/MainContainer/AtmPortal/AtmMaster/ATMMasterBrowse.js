@@ -234,8 +234,17 @@ const closeSignModal = () => {
       },
     },
     {
+      name: "ip",
+      label: "IP",
+      options: {
+        filter: true,
+        sort: false,
+       
+      },
+    },
+    {
       name: "typedenom1",
-      label: "Type Denom1",
+      label: "Type1 Denom",
       options: {
         filter: true,
         sort: false,
@@ -243,7 +252,7 @@ const closeSignModal = () => {
     },
     {
       name: "typedenom2",
-      label: "Type Denom2",
+      label: "Type2 Denom",
       options: {
         filter: true,
         sort: false,
@@ -251,7 +260,7 @@ const closeSignModal = () => {
     },
     {
       name: "typedenom3",
-      label: "Type Denom3",
+      label: "Type3 Denom",
       options: {
         filter: true,
         sort: false,
@@ -260,7 +269,7 @@ const closeSignModal = () => {
     },
     {
       name: "typedenom4",
-      label: "Type Denom4",
+      label: "Type4 Denom",
       options: {
         filter: true,
         sort: false,
@@ -269,7 +278,7 @@ const closeSignModal = () => {
     },
     {
       name: "type1count",
-      label: "Type Count1",
+      label: "Type1 Count",
       options: {
         filter: true,
         sort: false,
@@ -278,7 +287,7 @@ const closeSignModal = () => {
     },
     {
       name: "type2count",
-      label: "Type Count2",
+      label: "Type2 Count",
       options: {
         filter: true,
         sort: false,
@@ -287,7 +296,7 @@ const closeSignModal = () => {
     },
     {
       name: "type3count",
-      label: "Type Count3",
+      label: "Type3 Count",
       options: {
         filter: true,
         sort: false,
@@ -296,7 +305,16 @@ const closeSignModal = () => {
     },
     {
       name: "type4count",
-      label: "Type Count4",
+      label: "Type4 Count",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "atmmake",
+      label: "Atm Make",
       options: {
         filter: true,
         sort: false,
@@ -484,32 +502,32 @@ const closeSignModal = () => {
   // }, [ATMIDList]);
 
   useEffect(()=>{
-    getBankCode()
-    // getATMid()
+    // getBankCode()
+    getATMid()
   },[])
 
-  useEffect(()=>{
-    if (watch('bankcode')) {
-      getATMid()
-        }
+  // useEffect(()=>{
+  //   if (watch('bankcode')) {
+  //     getATMid()
+  //       }
     
-  },[watch('bankcode')])
+  // },[watch('bankcode')])
   
-  const getBankCode = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
+  // const getBankCode = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.bankCodes);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //     };
+  //     const response = await postApiData(apiList.GET_BANKCODE, payload);
+  //     setBankCode(response?.bankCodes);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   const getATMid = async () => {
      setIsloading(true);
     try {
@@ -517,7 +535,7 @@ const closeSignModal = () => {
         
         username: user?.username,
         sessionId: user?.sessionId,
-        bankcd:watch('bankcode')?.code
+        // bankcd:watch('bankcode')?.code
 
       };
       const response = await postApiData(apiList.GET_ATMID, payload);
@@ -679,7 +697,7 @@ const closeSignModal = () => {
           <div>
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
-
+{/* 
               <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -716,7 +734,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>

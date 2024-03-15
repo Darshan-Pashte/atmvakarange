@@ -31,13 +31,14 @@ import GoBackButton from "../../../../components/common/GoBackButton";
 import { compareTextAndReturnObject } from "../../../../components/common/commonArray";
 
 const defaultFormData = {
+  atmid:'',
   depbin: "",
   supplycounterreq: "",
   servicereq: "",
   downisrequest: "",
   atmmake: "",
   resources: "",
-  Acquiredid: "",
+  Acquiredid: "811450",
   downloadfilename: "",
   bankcode: "",
   terminaltype: "",
@@ -52,11 +53,11 @@ const defaultFormData = {
   dipcard: "",
   atmtype: "",
   transactioncount: "",
-  maxnotes: "",
-  type4count: "",
-  type3count: "",
-  type2count: "",
-  type1count:"",
+  maxnotes: "40",
+  type4count: '0',
+  type3count: "0",
+  type2count: "0",
+  type1count:"0",
   typedemo4: "",
   typedemo3: "",
   typedemo2: "",
@@ -366,34 +367,34 @@ const ATMMasterCreate = () => {
         typedenom2: data.typedemo2.code,
         typedenom3: data.typedemo3.code,
         typedenom4: data.typedemo4.code,
-        type1count: data.type1count,
-        type2count: data.type2count,
-        type3count: data.type3count,
-        type4count: data.type4count,
-        maxnotes: data.maxnotes,
+        type1count: data.type1count ? data.type1count : '0',
+        type2count: data.type2count ? data.type2count : '0',
+        type3count: data.type3count ? data.type3count :'0',
+        type4count: data.type4count ? data.type4count : '0',
+        maxnotes: data.maxnotes ? data.maxnotes : '40',
         atmstatus: "2",
-        transactioncount: data.transactioncount,
+        // transactioncount: data.transactioncount,
         atmtype: data.atmtype.code,
-        dipcard: data.dipcard.code,
+        // dipcard: data.dipcard.code,
         address: data.address,
         pincode: data.pincode,
         serverip: data.serverip,
         tmk: data.tmk,
-        tpklmk: data.tpklmk,
-        tpktmk: data.tpktmk,
+        // tpklmk: data.tpklmk,
+        // tpktmk: data.tpktmk,
         flag: data.flag.code,
-        nextdwnloaddt: convertDate(data.downloadDate,9),
+        nextdwnloaddt: convertDate(data.downloadDate,9) ? convertDate(data.downloadDate,9) :convertDate(new Date(),9),
         terminaltype: data.terminaltype.code,
-        bankcd: data.bankcode,
+        // bankcd: data.bankcode,
         downloadfilename: data.downloadfilename,
-        acqid: data.Acquiredid,
+        acqid: data.Acquiredid ? data.Acquiredid : '811450',
         resourcefn: data.resources,
         unsolstatus: "0",
         atmmake: data.atmmake.code,
-        downIsReq: data.downisrequest.code,
-        inserviceIsReq: data.servicereq.code,
-        supplyCounterIsReq: data.supplycounterreq.code,
-        depbin: data.depbin,
+        downIsReq: 'N',
+        inserviceIsReq: 'N',
+        supplyCounterIsReq:'N',
+        // depbin: data.depbin,
       };
       console.log('payload',payload)
       const response = await postApiData(apiList.ATM_MASTER_CREATE, payload);
@@ -496,7 +497,7 @@ const ATMMasterCreate = () => {
                           fullWidth: true,
                           inputProps : {maxLength: 10}
                         }}
-                        regExp={/^[A-Z0-9 ]+$/}
+                        regExp={/^[A-Z0-9]+$/}
                         rules={{
                           required:
                             "ATM ID " +
@@ -526,7 +527,7 @@ const ATMMasterCreate = () => {
                           placeholder: "Luno",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 4}
+                          inputProps : {maxLength: 3}
                         }}
                         regExp={/^[0-9]+$/}
                         rules={{
@@ -606,7 +607,7 @@ const ATMMasterCreate = () => {
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom1<sup className={classes.required}>*</sup>
+                      Type1 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -618,7 +619,7 @@ const ATMMasterCreate = () => {
                           placeholder: "Select",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[0-9]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -629,7 +630,7 @@ const ATMMasterCreate = () => {
                         }}
                         rules={{
                           required:
-                            "Type Demo1 " +
+                            "Typ1 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo1}
@@ -642,7 +643,7 @@ const ATMMasterCreate = () => {
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom2<sup className={classes.required}>*</sup>
+                      Type2 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -654,7 +655,7 @@ const ATMMasterCreate = () => {
                           placeholder: "Select",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[0-9]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -665,7 +666,7 @@ const ATMMasterCreate = () => {
                         }}
                         rules={{
                           required:
-                            "Type Demo2 " +
+                            "Type2 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo2}
@@ -678,7 +679,7 @@ const ATMMasterCreate = () => {
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom3<sup className={classes.required}>*</sup>
+                      Type3 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -690,7 +691,7 @@ const ATMMasterCreate = () => {
                           placeholder: "Select",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[0-9]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -701,7 +702,7 @@ const ATMMasterCreate = () => {
                         }}
                         rules={{
                           required:
-                            "Type Demo3 " +
+                            "Type3 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo3}
@@ -714,7 +715,7 @@ const ATMMasterCreate = () => {
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom4<sup className={classes.required}>*</sup>
+                      Type4 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -726,7 +727,7 @@ const ATMMasterCreate = () => {
                           placeholder: "Select",
                           onKeyDown: (event) => {
                             //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z \s]*$/;
+                            const regex = /^[0-9]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 
@@ -737,7 +738,7 @@ const ATMMasterCreate = () => {
                         }}
                         rules={{
                           required:
-                            "Type Demo4 " +
+                            "Type4 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo4}
@@ -765,7 +766,12 @@ const ATMMasterCreate = () => {
                           placeholder: "0",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 5}
+                          disabled:true,
+                          inputProps : {maxLength: 5, style: { textAlign: 'right' }, // Align text to the right
+                          },
+                          inputLabelProps: {
+                            style: { textAlign: 'right' }, // Align placeholder text to the right
+                          },
                           // inputProps: {
                           //   style: {
                           //     textAlign: 'right',
@@ -773,12 +779,12 @@ const ATMMasterCreate = () => {
                           // },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Type1 Count" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Type1 Count" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -802,15 +808,20 @@ const ATMMasterCreate = () => {
                           placeholder: "0",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 5}
+                          disabled:true,
+                          inputProps : {maxLength: 5, style: { textAlign: 'right' }, // Align text to the right
+                        },
+                        inputLabelProps: {
+                          style: { textAlign: 'right' }, // Align placeholder text to the right
+                        },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Type2 Count" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Type2 Count" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -834,15 +845,20 @@ const ATMMasterCreate = () => {
                           placeholder: "0",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 5}
+                          disabled:true,
+                          inputProps : {maxLength: 5, style: { textAlign: 'right' }, // Align text to the right
+                        },
+                        inputLabelProps: {
+                          style: { textAlign: 'right' }, // Align placeholder text to the right
+                        },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Type3 Count" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Type3 Count" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -866,15 +882,20 @@ const ATMMasterCreate = () => {
                           placeholder:"0",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 5}
+                          disabled:true,
+                          inputProps : {maxLength: 5, style: { textAlign: 'right' }, // Align text to the right
+                        },
+                        inputLabelProps: {
+                          style: { textAlign: 'right' }, // Align placeholder text to the right
+                        },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Type4 Count" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Type4 Count" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -898,20 +919,25 @@ const ATMMasterCreate = () => {
                           placeholder: "40",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 5}
+                          disabled:true,
+                          inputProps : {maxLength: 5, style: { textAlign: 'right' }, // Align text to the right
+                        },
+                        inputLabelProps: {
+                          style: { textAlign: 'right' }, // Align placeholder text to the right
+                        },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Max Notes" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Max Notes" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
                 </Grid>
-
+{/* 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -942,7 +968,7 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
@@ -980,7 +1006,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       DIP CARD<sup className={classes.required}>*</sup>
@@ -1014,7 +1040,7 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
@@ -1145,7 +1171,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       TPK TMK<sup className={classes.required}>*</sup>
@@ -1175,9 +1201,9 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       TPK LMK<sup className={classes.required}>*</sup>
@@ -1207,7 +1233,7 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
@@ -1307,7 +1333,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bank Code<sup className={classes.required}>*</sup>
@@ -1337,7 +1363,7 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
@@ -1387,18 +1413,23 @@ const ATMMasterCreate = () => {
                         }}
                         TextFieldProps={{
                           // label: "Name",
-                          placeholder: "Acquired ID",
+                          placeholder: "811450",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 6}
+                          disabled:true,
+                          inputProps : {maxLength: 6, style: { textAlign: 'right' }, // Align text to the right
+                        },
+                        inputLabelProps: {
+                          style: { textAlign: 'right' }, // Align placeholder text to the right
+                        },
                         }}
                         regExp={/^[0-9]+$/}
-                        rules={{
-                          required:
-                            "Acquired ID" +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
+                        // rules={{
+                        //   required:
+                        //     "Acquired ID" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
                       />
                     </div>
                   </div>
@@ -1473,7 +1504,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Down_is_Request<sup className={classes.required}>*</sup>
@@ -1507,9 +1538,9 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Service_is_Req<sup className={classes.required}>*</sup>
@@ -1543,9 +1574,9 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Supply_Counter_req
@@ -1580,9 +1611,9 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       DEPBIN<sup className={classes.required}>*</sup>
@@ -1612,7 +1643,7 @@ const ATMMasterCreate = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
                 </Grid>
 
              

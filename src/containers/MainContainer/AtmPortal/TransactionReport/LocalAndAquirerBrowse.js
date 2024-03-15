@@ -871,7 +871,7 @@ const closeSignModal = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>Local And Acquire Transaction</div>
+            <div className={classes.bluerowtext}>Acquire Transaction</div>
             {/* <div>
               <ColorButton1
                 onClick={() => navigate("/atmmaster/create")}
@@ -1354,7 +1354,7 @@ const closeSignModal = () => {
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
                 <MUIDataTable
-                  title={" Local And Acquire Transaction List"}
+                  title={"Acquire Transaction List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}
@@ -1369,7 +1369,7 @@ const closeSignModal = () => {
                 closeSignModal={closeSignModal}
                 rowDataToDisplay={rowDataToDisplay}
                 show={"2"}
-                title={"Local And Acquire Transaction List"}
+                title={"Acquire Transaction List"}
               />
             ) : null}
           </div>
