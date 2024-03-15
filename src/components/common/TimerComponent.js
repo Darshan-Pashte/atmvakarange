@@ -39,7 +39,7 @@ const MTimerComponent = ({ id, Time, Case, setotp,resendClick,tries,msg,setTries
     setTries('')
     resendClick()
     // setShowResendButton(false);
-    setTimerDuration(60 * 1000);
+    setTimerDuration(120 * 1000);
     setCountdownKey(`${id}_${Date.now()}`);
   };
 

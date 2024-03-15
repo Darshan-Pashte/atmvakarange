@@ -217,20 +217,20 @@ const Routes = () => {
     
 
 
-    {
-      name: "Bank Master",
-      id: "bankmaster",
-      url: array[0] == "1" ? "/bankmaster" : null,
-      component: <BankMasterBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: BankIcon,
-      grandChild:[
-        {arr:array[0]},
-        {arr:array[0]},
-        {arr:array[0]}
-     ]
-    },
+    // {
+    //   name: "Bank Master",
+    //   id: "bankmaster",
+    //   url: array[0] == "1" ? "/bankmaster" : null,
+    //   component: <BankMasterBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: BankIcon,
+    //   grandChild:[
+    //     {arr:array[0]},
+    //     {arr:array[0]},
+    //     {arr:array[0]}
+    //  ]
+    // },
 
     {
       name: "ATM Master",

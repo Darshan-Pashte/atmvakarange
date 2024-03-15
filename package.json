@@ -69,6 +69,7 @@
   },
   "scripts": {
     "start:uat": "env-cmd -f .env.uat react-scripts start",
+    "start:local": "env-cmd -f .env.local react-scripts start",
     "start:testing": "env-cmd -f .env.testing react-scripts start",
     "start:vapt": "env-cmd -f .env.vapt react-scripts start",
     "build:uat": "env-cmd -f .env.uat react-scripts build",
@@ -80,7 +81,7 @@
     "paste": "copy web.xml build\\WEB-INF\\",
     "cut": "copy web.xml build\\",
     "copyversion": "copy description.txt build\\",
-    "predeploy:uat": "yarn update-readme && yarn run build:uat && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
+    "predeploy:uat": "npm version patch && yarn update-readme && yarn run build:uat && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
     "predeploy:testing": "npm version patch && yarn update-readme && yarn run build:testing && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
     "predeploy:vapt": "npm version patch && yarn update-readme && yarn run build:vapt && yarn copy && yarn paste && yarn cut && yarn copyversion && yarn rename && yarn zip",
     "rename": "rename build vakrangeeatmadminportal",

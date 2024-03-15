@@ -660,14 +660,14 @@ const Dashboard = () => {
             </div>
 
             <div className={classes.MiddleContent}>
-              <Box
+              {/* <Box
                 className={classes.mainContainer}
                 component="form"
-                // onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
                 style={{ margin: "20px 0 10px 0" }}
               >
                 <div className={classes.Sbox}>
-                  {/* <div className={classes.bluerow}>Bank Name</div> */}
+                  <div className={classes.bluerow}>Bank Name</div>
                   <div>
                     <div className={classes.formbox}>
                       <Grid
@@ -684,8 +684,8 @@ const Dashboard = () => {
                         <Grid item xs={10} sm={6} md={3}>
                           <div className={classes.frowdataaff}>
                             <div className={classes.frowtextaff}>
-                              {/* Bank Name */}
-                              {/* <sup className={classes.required}>*</sup> */}
+                               Bank Name
+                              <sup className={classes.required}>*</sup> 
                             </div>
 
                             <div
@@ -700,7 +700,7 @@ const Dashboard = () => {
                                 TextFieldProps={{
                                   placeholder: "Select Bank Name",
                                   onKeyDown: (event) => {
-                                    //const regex = /^[a-zA-Z]*$/;
+                                  
                                     const regex = /^[a-zA-Z\s]*$/;
                                     const isBackspace = event.keyCode === 8;
                                     const isValidInput = regex.test(event.key);
@@ -722,19 +722,19 @@ const Dashboard = () => {
                           </div>
                         </Grid>
 
-                        {/* <Grid item xs={2} sm={6} md={4}>
+                        <Grid item xs={2} sm={6} md={4}>
                       <div className={classes.gridimage}>
                         {" "}
                         <img src={refresh} alt="headerLogo" />
                       </div>
-                    </Grid> */}
+                    </Grid>
                       </Grid>
                     </div>
                   </div>
                 </div>
-              </Box>
+              </Box> */}
 
-              {watch("bankcode") ? (
+              {/* {watch("bankcode") ? (
                 <div className={classes.boxs}>
                   {CardMiddleList.map((card, index) => {
                     return <DashboardMiddleCard card={card} index={index} />;
@@ -742,7 +742,7 @@ const Dashboard = () => {
                 </div>
               ) : (
                 ""
-              )}
+              )} */}
 
               <div className={classes.BottomContainer}>
                 <Grid
