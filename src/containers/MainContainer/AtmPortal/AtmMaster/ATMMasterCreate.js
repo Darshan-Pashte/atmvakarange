@@ -778,6 +778,7 @@ const ATMMasterCreate = () => {
                           //   },
                           // },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
@@ -815,6 +816,7 @@ const ATMMasterCreate = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
@@ -852,6 +854,7 @@ const ATMMasterCreate = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
@@ -889,6 +892,7 @@ const ATMMasterCreate = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
@@ -926,6 +930,7 @@ const ATMMasterCreate = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
@@ -1064,7 +1069,10 @@ const ATMMasterCreate = () => {
                           fullWidth: true,
                           inputProps : {maxLength: 40}
                         }}
-                        regExp={/^[a-zA-Z0-9. ]+$/}
+                        // regExp={/^[a-zA-Z0-9. ]+$/}
+                      // regExp={/.*/}
+                      regExp={/^[^<>]*$/}
+
                         rules={{
                           required:
                             "Address" +
@@ -1423,6 +1431,7 @@ const ATMMasterCreate = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },
                         }}
+                        backgroundColor={true}
                         regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:

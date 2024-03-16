@@ -538,7 +538,7 @@ const closeSignModal = () => {
         // bankcd:watch('bankcode')?.code
 
       };
-      const response = await postApiData(apiList.GET_ATMID, payload);
+      const response = await postApiData(apiList.GET_ATMID_SINGLE, payload);
       setAtmID(response?.atmMasterModels);
       setIsloading(false);
     } catch (err) {
