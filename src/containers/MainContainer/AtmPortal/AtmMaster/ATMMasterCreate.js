@@ -475,9 +475,9 @@ const ATMMasterCreate = () => {
                 container
                 columnSpacing={3}
                 rowSpacing={2}
-                style={{ paddingRight: "2vw" }}
+                style={{ paddingRight: "0.2vw" }}
               >
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM ID<sup className={classes.required}>*</sup>
@@ -509,7 +509,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Luno<sup className={classes.required}>*</sup>
@@ -540,7 +540,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Location<sup className={classes.required}>*</sup>
@@ -572,7 +572,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Machine IP<sup className={classes.required}>*</sup>
@@ -604,7 +604,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type1 Denom<sup className={classes.required}>*</sup>
@@ -640,7 +640,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type2 Denom<sup className={classes.required}>*</sup>
@@ -676,7 +676,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type3 Denom<sup className={classes.required}>*</sup>
@@ -712,7 +712,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type4 Denom<sup className={classes.required}>*</sup>
@@ -748,7 +748,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type1 Count<sup className={classes.required}>*</sup>
@@ -791,7 +791,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type2 Count<sup className={classes.required}>*</sup>
@@ -829,7 +829,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type3 Count<sup className={classes.required}>*</sup>
@@ -867,7 +867,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type4 Count<sup className={classes.required}>*</sup>
@@ -905,7 +905,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       MAX Notes<sup className={classes.required}>*</sup>
@@ -975,7 +975,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM TYPE<sup className={classes.required}>*</sup>
@@ -1047,7 +1047,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Address<sup className={classes.required}>*</sup>
@@ -1084,7 +1084,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Pin Code<sup className={classes.required}>*</sup>
@@ -1116,7 +1116,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Server IP<sup className={classes.required}>*</sup>
@@ -1148,7 +1148,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       TMK<sup className={classes.required}>*</sup>
@@ -1243,7 +1243,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Flag<sup className={classes.required}>*</sup>
@@ -1279,7 +1279,7 @@ const ATMMasterCreate = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Next Download Date<sup className={classes.required}>*</sup>
@@ -1306,7 +1306,7 @@ const ATMMasterCreate = () => {
 
                 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Terminal Type<sup className={classes.required}>*</sup>
@@ -1373,7 +1373,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       download File Name
@@ -1406,7 +1406,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Acquired ID<sup className={classes.required}>*</sup>
@@ -1444,7 +1444,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Resources<sup className={classes.required}>*</sup>
@@ -1477,7 +1477,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM MAKE<sup className={classes.required}>*</sup>
