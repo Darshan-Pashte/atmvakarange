@@ -1,4 +1,6 @@
 import classes from './Sidebar.module.scss';
+import MenuIcon from '@mui/icons-material/Menu';
+import CancelIcon from '@mui/icons-material/Cancel';
 import React, { useContext, useEffect, useState } from 'react';
 // import { PROTECTED_ROUTES, PROTECTED_ROUTES_SERVICES, PROTECTED_ROUTES_SETTINGS } from '../../routes/Routes';
 import routes from '../../routes/Routes';
@@ -164,19 +166,21 @@ const a="11111000000"
         </div>
         <div className={classes.rightlogo}>
           {!opens ? (
-            <img
-              src={HandleOpen}
-              alt="logo_image"
-              onClick={() => handleDrawerOpen()}
-              style={{ maxWidth: "100%", maxHeight: "100%",color:'black',cursor:'pointer'  }}
-            />
+            <MenuIcon  onClick={() => handleDrawerOpen()} style={{cursor:'pointer'}} />
+            // <img
+            //   src={HandleOpen}
+            //   alt="logo_image"
+            //   onClick={() => handleDrawerOpen()}
+            //   style={{ maxWidth: "100%", maxHeight: "100%",color:'black',cursor:'pointer'  }}
+            // />
           ) : (
-            <img
-              src={HandleClose}
-              alt="logo_image"
-              onClick={() => handleDrawerClose()}
-              style={{ maxWidth: "100%", maxHeight: "100%",color:'black',cursor:'pointer' }}
-            />
+            <CancelIcon onClick={() => handleDrawerClose()} style={{cursor:'pointer'}} />
+            // <img
+            //   src={HandleClose}
+            //   alt="logo_image"
+            //   onClick={() => handleDrawerClose()}
+            //   style={{ maxWidth: "100%", maxHeight: "100%",color:'black',cursor:'pointer' }}
+            // />
           )}
         </div>
       </header>
