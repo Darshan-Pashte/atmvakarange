@@ -122,11 +122,11 @@ console.log("state", state);
     setValue("supplycounterreq", state?.supplyCounterIsReq =='N' ? "NO"  :'YES');
     setValue("servicereq",state?.inserviceIsReq =='N' ? "NO"  :'YES');
     setValue("downisrequest",state?.downIsReq =='N' ? "NO"  :'YES');
-    setValue("atmmake", compareTextAndReturnObject(ATMtype,state?.atmtype));
+    setValue("atmtype", compareTextAndReturnObject(ATMtype,state?.atmtype));
     setValue("resources", state?.resourcefn);
 
 
-    setValue("atmtype", compareTextAndReturnObject(ATMmake,state?.atmmake));
+    setValue("atmmake", compareTextAndReturnObject(ATMmake,state?.atmmake));
     setValue("dipcard", state?.dipcard =='Y' ? "YES"  :'NO');
     setValue("address", state?.address);
     setValue("pincode", state?.pincode);
@@ -152,7 +152,8 @@ console.log("state", state);
     setValue("typedemo4", compareTextAndReturnObject(typeDemo4,state?.typedenom4));
 
     setValue("maxnotes", state?.maxnotes);
-    setValue("atmstatus", state?.atmstatus == '1' ? "ONLINE" :state?.atmstatus == '2' ? "INSERVICE" : "OUT OF SERVICE");
+    // setValue("atmstatus", state?.atmstatus == '1' ? "ONLINE" :state?.atmstatus == '2' ? "INSERVICE" : "OUT OF SERVICE");
+    setValue("atmstatus", state?.atmstatus);
     setValue("transactioncount", state?.transactioncount);
     
     setValue("type4count", state?.type4count);
@@ -1646,13 +1647,13 @@ console.log("state", state);
              
 
 <div className={classes.fbut}>
-  <ColorButton
+  {/* <ColorButton
     variant="contained"
     type="button"
     onClick={() => reset()}
   >
     RESET
-  </ColorButton>
+  </ColorButton> */}
   <ColorButton1 variant="contained" type="submit">
     Submit
   </ColorButton1>

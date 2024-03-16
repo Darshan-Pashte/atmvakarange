@@ -12,17 +12,24 @@ import { Provider } from 'react-redux';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { store } from './store/store';
+import { ConnProvider } from './context/ConnContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
   <LocalizationProvider dateAdapter={AdapterMoment} >
     <LoaderProvider>
+    
       <LoaderComponent />
+   
+
       {/* <AuthProvider> */}
+      <ConnProvider>
         <App />
+        </ConnProvider>
       {/* </AuthProvider> */}
     </LoaderProvider>
+
   </LocalizationProvider>
   </Provider>
 );

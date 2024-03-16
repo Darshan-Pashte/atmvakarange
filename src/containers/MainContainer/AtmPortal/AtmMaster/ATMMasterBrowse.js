@@ -1,5 +1,5 @@
 import classes from "../Airtel.module.css";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import TextFieldForm from "../../../../components/common/textFieldForm";
 import { Box, Grid } from "@mui/material";
@@ -34,6 +34,7 @@ import CustomRoutes from "../../../../routes/Routes";
 import { useSelector } from "react-redux";
 import ATMMasterListView from "../../../../components/common/ATMMasterListView";
 import EditsIcons from "../../../../components/common/EditIcon";
+import { ConnContext } from "../../../../context/ConnContext";
 
 
 const defaultFormData = {
@@ -93,6 +94,8 @@ const ATMMasterBrowse = () => {
 
   console.log("user", user);
 
+  // const {atmID,setAtmID}=useContext(ConnContext)
+  
 
   // useEffect(() => {
   //   if (AtmIdList) {
@@ -495,11 +498,11 @@ const closeSignModal = () => {
   // ];
 
 
-  // useEffect(() => {
-  //   if (ATMIDList) {
-  //     setValue("atmid", ATMIDList ? compareTextAndReturnObject(ATMIDList, ATMIDList[0]?.value) : '')
-  //   }
-  // }, [ATMIDList]);
+  useEffect(() => {
+    if (AtmIDList) {
+      setValue("atmid", AtmIDList ? compareTextAndReturnObject(AtmIDList, AtmIDList[0]?.value) : '')
+    }
+  }, [AtmIDList]);
 
   useEffect(()=>{
     // getBankCode()
