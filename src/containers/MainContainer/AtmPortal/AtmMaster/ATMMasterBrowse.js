@@ -199,8 +199,8 @@ const closeSignModal = () => {
       }
   },
   {
-    name: "bankcd",
-    label: "Bank Code",
+    name: "luno",
+    label: "Luno",
     options: {
       filter: true,
       sort: false,
@@ -351,15 +351,15 @@ const closeSignModal = () => {
         display:false
       },
     },
-    {
-      name: "bankcd",
-      label: "Bank Code",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
+    // {
+    //   name: "bankcd",
+    //   label: "Bank Code",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //     display:false
+    //   },
+    // },
     {
       name: "terminaltype",
       label: "Terminal Type",
