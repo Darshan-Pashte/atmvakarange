@@ -531,3 +531,8 @@ text-align: center;
 .tss-1dqj55d-MUIDataTableToolbarSelect-root{
   visibility: hidden !important;
 }
+
+/* Add this CSS to your stylesheet */
+.apexcharts-menu-icon {
+  display: none !important;
+}
