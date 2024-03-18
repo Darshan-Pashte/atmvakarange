@@ -41,6 +41,10 @@ const defaultFormData = {
   bankcode: "",
   atmid: "",
   companyId: "",
+  address:'',
+  machineip: "",
+  location: "",
+  luno: "",
 };
 
 const ATMMasterBrowse = () => {
@@ -198,15 +202,7 @@ const closeSignModal = () => {
           },
       }
   },
-  {
-    name: "luno",
-    label: "Luno",
-    options: {
-      filter: true,
-      sort: false,
-      display:true
-    },
-  },
+
     {
       name: "atmId",
       label: "ATM Id",
@@ -215,13 +211,30 @@ const closeSignModal = () => {
         sort: false,
       },
     },
-
+    {
+      name: "luno",
+      label: "Luno",
+      options: {
+        filter: true,
+        sort: false,
+        display:true
+      },
+    },
     {
       name: "address",
       label: "Address",
       options: {
         filter: true,
         sort: false,
+      },
+    },
+    {
+      name: "location",
+      label: "Location",
+      options: {
+        filter: true,
+        sort: false,
+        display:true
       },
     },
     {
@@ -405,15 +418,114 @@ const closeSignModal = () => {
         display:false
       },
     },
-    // {
-    //   name: "bankcd",
-    //   label: "Bank Code",
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //     display:false
-    //   },
-    // },
+    {
+      name: "dipcard",
+      label: "Dip Card",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "pincode",
+      label: "Pincode",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "serverip",
+      label: "Server Ip",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "flag",
+      label: "Flag",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "downloadfilename",
+      label: "File name",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "acqid",
+      label: "Acquired ID",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "resourcefn",
+      label: "Resource",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "unsolstatus",
+      label: "Unsol status",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "downIsReq",
+      label: "Down Is Req",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "inserviceIsReq",
+      label: "Inservice Req",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "supplyCounterIsReq",
+      label: "Supply Counter Req",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "depbin",
+      label: "Depbin",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
   ];
 
   const options = {
@@ -567,6 +679,10 @@ const closeSignModal = () => {
         sessionId: user?.sessionId,
         atmId: data.atmid,
         bankcd: data.bankcd,
+        ip:data.ip,
+        address:data.address,
+        location:data.location,
+        luno:data.luno
        
       };
 
@@ -607,6 +723,10 @@ const closeSignModal = () => {
       atmid: data?.atmid?.code,
       bankcd: data?.bankcode?.code,
       // transtype: data.transtype ? data.transtype.code :"all",
+      luno: data?.luno,
+      location: data?.location,
+      address: data?.address,
+      ip: data?.machineip
     };
     console.log("payload",payload);
     getTransactionList(1, payload)
@@ -739,10 +859,10 @@ const closeSignModal = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={5} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>ATM ID
-                    <sup className={classes.required}>*</sup>
+                    {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -775,16 +895,152 @@ const closeSignModal = () => {
                     </div>
                   </div>
                 </Grid>
+             
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Luno
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "luno",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Luno",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 3}
+                        }}
+                        regExp={/^[0-9]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Luno" + errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Location
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "location",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Location",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 10}
+                        }}
+                        regExp={/^[a-zA-Z0-9 ]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Location" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Address
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "address",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Address",
+                          // style: { width: "33vw" },
+                          // multiline:true,
+                          // rows:3,
+                          fullWidth: true,
+                          inputProps : {maxLength: 100}
+                        }}
+                        // regExp={/^[a-zA-Z0-9. ]+$/}
+                      // regExp={/.*/}
+                      regExp={/^[^<>]*$/}
+
+                        // rules={{
+                        //   required:
+                        //     "Address" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Machine IP
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "machineip",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Machin IP",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 15}
+                        }}
+                        regExp={/^[0-9.]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Machine IP" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
 
                 {/* <Grid
                   item
                   xs={12}
                   sm={2}
-                  md={1}
+                  md={6}
                   style={{ paddingTop: "42px" }}
                 ></Grid>  */}
            
-                <Grid item xs={12} sm={3} md={3} style={{ paddingTop: "37px" }}>
+                <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
                   <ColorButton1 variant="contained" type="submit">
                     Submit
                   </ColorButton1>

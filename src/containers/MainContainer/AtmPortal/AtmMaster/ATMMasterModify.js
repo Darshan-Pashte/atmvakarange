@@ -618,7 +618,7 @@ console.log("state", state);
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom1<sup className={classes.required}>*</sup>
+                      Type1 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -641,7 +641,7 @@ console.log("state", state);
                         }}
                         rules={{
                           required:
-                            "Type Denom1 " +
+                            "Type1 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo1}
@@ -654,7 +654,7 @@ console.log("state", state);
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom2<sup className={classes.required}>*</sup>
+                      Type2 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -677,7 +677,7 @@ console.log("state", state);
                         }}
                         rules={{
                           required:
-                            "Type Denom2 " +
+                            "Type2 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo2}
@@ -690,7 +690,7 @@ console.log("state", state);
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom3<sup className={classes.required}>*</sup>
+                      Type3 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -713,7 +713,7 @@ console.log("state", state);
                         }}
                         rules={{
                           required:
-                            "Type Denom3 " +
+                            "Type3 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo3}
@@ -726,7 +726,7 @@ console.log("state", state);
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Type Denom4<sup className={classes.required}>*</sup>
+                      Type4 Denom<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -749,7 +749,7 @@ console.log("state", state);
                         }}
                         rules={{
                           required:
-                            "Type Denom4 " +
+                            "Type4 Denom " +
                             errorMessages.error_autocomplete_message,
                         }}
                         data={typeDemo4}
@@ -1342,7 +1342,7 @@ console.log("state", state);
                     </div>
                   </div>
                 </Grid>
-
+{/* 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -1373,12 +1373,12 @@ console.log("state", state);
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      download File Name
+                      Download File Name
                       <sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
