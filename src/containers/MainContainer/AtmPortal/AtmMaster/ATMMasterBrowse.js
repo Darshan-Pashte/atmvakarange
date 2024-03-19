@@ -35,13 +35,15 @@ import { useSelector } from "react-redux";
 import ATMMasterListView from "../../../../components/common/ATMMasterListView";
 import EditsIcons from "../../../../components/common/EditIcon";
 import { ConnContext } from "../../../../context/ConnContext";
+import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const defaultFormData = {
   bankcode: "",
   atmid: "",
   companyId: "",
-  address:'',
+  address: "",
   machineip: "",
   location: "",
   luno: "",
@@ -70,7 +72,6 @@ const ATMMasterBrowse = () => {
   const url1 = "/atmmaster";
   const location = useLocation();
 
-
   const currentPath = location.pathname;
   const topLevelPath = "/" + currentPath.split("/")[1];
 
@@ -82,15 +83,24 @@ const ATMMasterBrowse = () => {
   const [rowDataToDisplay, setRowDataToDisplay] = useState({});
   const [tableHeaders, setTableHeaders] = useState([]);
 
-
   const [bankcode, setBankCode] = useState([]);
   const [atmID, setAtmID] = useState([]);
 
   const [totalRecord, settotalRecord] = useState(0);
-  const [goPageNumber, setGoPageNumber] = useState(10); 
+  const [goPageNumber, setGoPageNumber] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [openSearch, setOpenSearch] = useState(false);
+  const handleOpenSearch = () => setOpenSearch(true);
+  const handleCloseSearch = () => setOpenSearch(false);
 
+  const [resData, setResData] = useState({});
+  console.log("resData", resData);
+
+  useEffect(() => {
+    setValue("atmid", resData?.atmId);
+    setValue("location", resData?.location);
+  }, [resData]);
   const [payloadData, setPayloadData] = useState({});
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
@@ -99,7 +109,6 @@ const ATMMasterBrowse = () => {
   console.log("user", user);
 
   // const {atmID,setAtmID}=useContext(ConnContext)
-  
 
   // useEffect(() => {
   //   if (AtmIdList) {
@@ -113,11 +122,6 @@ const ATMMasterBrowse = () => {
   //   }
   // }, []);
 
-
-
- 
- 
-
   const handleLogout = () => {
     sessionStorage.clear();
     localStorage.clear();
@@ -128,42 +132,41 @@ const ATMMasterBrowse = () => {
     navigate("/company/accountadd");
   };
 
- 
-// useEffect(()=>{
-//   if(watch("atmid") !== undefined)
-// onSubmit()
-// },[])
+  // useEffect(()=>{
+  //   if(watch("atmid") !== undefined)
+  // onSubmit()
+  // },[])
 
-
-const openModal = (rowData) => {
-  // const headers = columns.map((column) => column.label);
-  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify").map((column) => column?.label);
-  setTableHeaders(headers);
-  setRowDataToDisplay({
+  const openModal = (rowData) => {
+    // const headers = columns.map((column) => column.label);
+    const headers = columns
+      ?.filter(
+        (column) => column?.label !== "View" && column?.label !== "Modify"
+      )
+      .map((column) => column?.label);
+    setTableHeaders(headers);
+    setRowDataToDisplay({
       headers: headers,
       rowData: rowData,
-  });
-  setIsModalOpen(true);
-};
-const closeModal = () => {
-  setIsModalOpen(true);
-};
-const closeSignModal = () => {
-  setIsModalOpen(false);
-};
-
+    });
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeSignModal = () => {
+    setIsModalOpen(false);
+  };
 
   // const handleNavigate = (rowData) => {
   //   navigate("/atmmaster/modify", { state: rowData });
   // };
 
   const handleNavigate = (route, rowData) => {
-    navigate(route, { state: rowData })
-}
-
+    navigate(route, { state: rowData });
+  };
 
   const columns = [
-  
     {
       name: "View",
       label: "View",
@@ -191,17 +194,24 @@ const closeSignModal = () => {
       name: "Modify",
       label: "Modify",
       options: {
-          filter: false,
-          sort: false,
-          customBodyRender: (value, { rowIndex }) => {
-              return (
-                  <>
-                      <EditsIcons rowIndex={rowIndex} data={atmMasterList}  handleNavigate={handleNavigate} url={url} topLevelPath={topLevelPath} url1={url1} />
-                  </>
-              );
-          },
-      }
-  },
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          return (
+            <>
+              <EditsIcons
+                rowIndex={rowIndex}
+                data={atmMasterList}
+                handleNavigate={handleNavigate}
+                url={url}
+                topLevelPath={topLevelPath}
+                url1={url1}
+              />
+            </>
+          );
+        },
+      },
+    },
 
     {
       name: "atmId",
@@ -217,7 +227,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:true
+        display: true,
       },
     },
     {
@@ -234,7 +244,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:true
+        display: true,
       },
     },
     {
@@ -255,7 +265,6 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-       
       },
     },
     {
@@ -280,7 +289,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -289,7 +298,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -298,7 +307,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -307,7 +316,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -316,7 +325,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -325,7 +334,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -334,7 +343,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -343,7 +352,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -352,7 +361,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -361,7 +370,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     // {
@@ -379,7 +388,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -388,7 +397,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -397,7 +406,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -406,7 +415,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -415,7 +424,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -424,7 +433,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -433,7 +442,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -442,7 +451,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -451,7 +460,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -460,7 +469,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -469,7 +478,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -478,7 +487,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -487,7 +496,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -496,7 +505,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -505,7 +514,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -514,7 +523,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
     {
@@ -523,7 +532,7 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
-        display:false
+        display: false,
       },
     },
   ];
@@ -561,28 +570,25 @@ const closeSignModal = () => {
           totalCount={totalRecord}
           pageSize={goPageNumber}
           control={control}
-        
-          onPageChange={(page ) => {
-            getTransactionListView(page)
+          onPageChange={(page) => {
+            getTransactionListView(page);
           }}
         />
       );
     },
   };
 
+  // const BankcodeList =
+  //   bankcode &&
+  //   bankcode?.map((item) => ({ code: item.bankCd, value: item.bankCd }));
+  // BankcodeList && BankcodeList?.unshift({ code: "all", value: "ALL" });
 
+  // const AtmIDList =
+  //   atmID && atmID?.map((item) => ({ code: item.atmId, value: item.atmId }));
 
-  const BankcodeList=bankcode && bankcode?.map(item => ({ "code": item.bankCd, "value": item.bankCd }));
-  BankcodeList && BankcodeList?.unshift({ "code": "all", "value": "ALL" });
-  
-  
-  const AtmIDList=atmID && atmID?.map((item)=>({"code":item.atmId,'value':item.atmId}));
+  // AtmIDList && AtmIDList?.unshift({ code: "all", value: "ALL" });
 
-  AtmIDList && AtmIDList?.unshift({ "code": "all", "value": "ALL" });
-
-
- console.log('BankcodeList',BankcodeList)
-
+  // console.log("BankcodeList", BankcodeList);
 
   // const BankCodeList = [
   //   {
@@ -598,41 +604,45 @@ const closeSignModal = () => {
   //   }
   // }, [BankCodeList]);
 
-  console.log('Type of AtmIDList',typeof (AtmIDList));  
+  console.log("Type of AtmIDList", typeof AtmIDList);
 
   // const ATMIDList = [
   //   {
   //     code: "all",
   //     value: "ALL",
   //   },
-    
+
   //   ...AtmIDList,
   // ];
 
+  // useEffect(() => {
+  //   if (AtmIDList) {
+  //     setValue(
+  //       "atmid",
+  //       AtmIDList
+  //         ? compareTextAndReturnObject(AtmIDList, AtmIDList[0]?.value)
+  //         : ""
+  //     );
+  //   }
+  // }, [AtmIDList]);
 
   useEffect(() => {
-    if (AtmIDList) {
-      setValue("atmid", AtmIDList ? compareTextAndReturnObject(AtmIDList, AtmIDList[0]?.value) : '')
-    }
-  }, [AtmIDList]);
-
-  useEffect(()=>{
     // getBankCode()
-    getATMid()
-  },[])
+    getATMid();
+  }, []);
 
   // useEffect(()=>{
   //   if (watch('bankcode')) {
   //     getATMid()
   //       }
-    
+
   // },[watch('bankcode')])
-  
+
   // const getBankCode = async () => {
   //   setIsloading(true);
   //   try {
   //     const payload = {
-        
+
   //       username: user?.username,
   //       sessionId: user?.sessionId,
   //     };
@@ -644,14 +654,12 @@ const closeSignModal = () => {
   //   }
   // };
   const getATMid = async () => {
-     setIsloading(true);
+    setIsloading(true);
     try {
       const payload = {
-        
         username: user?.username,
         sessionId: user?.sessionId,
         // bankcd:watch('bankcode')?.code
-
       };
       const response = await postApiData(apiList.GET_ATMID_SINGLE, payload);
       setAtmID(response?.atmMasterModels);
@@ -661,36 +669,33 @@ const closeSignModal = () => {
     }
   };
 
-
-  
   // useEffect(()=>{
   //   getTransactionListView()
   //   onSubmit()
   // },[])
 
-  const getTransactionListView = async (currentPage,data = payloadData) => {
-    console.log('currentPage',currentPage);
-    setCurrentPage(currentPage)
-    console.log('data',data)
+  const getTransactionListView = async (currentPage, data = payloadData) => {
+    console.log("currentPage", currentPage);
+    setCurrentPage(currentPage);
+    console.log("data", data);
     setIsloading(true);
     try {
       const payload = {
-        username:user?.username,
+        username: user?.username,
         sessionId: user?.sessionId,
         atmId: data.atmid,
         bankcd: data.bankcd,
-        ip:data.ip,
-        address:data.address,
-        location:data.location,
-        luno:data.luno
-       
+        ip: data.ip,
+        address: data.address,
+        location: data.location,
+        luno: data.luno,
       };
 
       const response = await postApiData(
-        apiList.ATM_MASTER_BROWSE + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
+        apiList.ATM_MASTER_BROWSE +
+          `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
-
 
       if (response.status == true) {
         setAtmMasterList(response.atmMasterNewsLst);
@@ -698,7 +703,6 @@ const closeSignModal = () => {
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
-        
         // SweetAlertPopup(response.message, "Error", "error");
       }
       setIsloading(false);
@@ -708,39 +712,36 @@ const closeSignModal = () => {
     }
   };
 
-
-
   const getTransactionList = (currentpages, payloadDatachild) => {
     getTransactionListView(currentpages, payloadDatachild);
     setPayloadData(payloadDatachild);
-  }
+  };
 
   const onSubmit = (data) => {
-    console.log("data",data);
+    console.log("data", data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
-      atmid: data?.atmid?.code,
+      atmid: data?.atmid,
       bankcd: data?.bankcode?.code,
       // transtype: data.transtype ? data.transtype.code :"all",
       luno: data?.luno,
       location: data?.location,
       address: data?.address,
-      ip: data?.machineip
+      ip: data?.machineip,
     };
-    console.log("payload",payload);
-    getTransactionList(1, payload)
+    console.log("payload", payload);
+    getTransactionList(1, payload);
     //  setpalyalodData(payload)
     //  reset(defaultFormData);
-
-  }
+  };
   // const onSubmit = async (data) => {
   //   try {
   //     setIsloading(true);
   //     const payload = {
   //       username: user?.username,
   //       sessionId: user?.sessionId,
-       
+
   //       atmid: data?.atmid?.code,
   //       bankcd: data?.bankcode?.code,
   //     };
@@ -776,9 +777,9 @@ const closeSignModal = () => {
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
     backgroundColor: "#AA1313",
-    fontFamily:'Poppins',
-    boxShadow:' 0px 4px 10px 0px rgba(0, 0, 0, 0.15)',
-    fontSize:'12px',
+    fontFamily: "Poppins",
+    boxShadow: " 0px 4px 10px 0px rgba(0, 0, 0, 0.15)",
+    fontSize: "12px",
     // backgroundColor: "#323232",
     // backgroundColor: "#E31E24",
     // border: "1px solid #CCC",
@@ -820,7 +821,7 @@ const closeSignModal = () => {
           <div>
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
-{/* 
+                {/* 
               <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -859,75 +860,58 @@ const closeSignModal = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={5} md={3}>
                   <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>ATM ID
-                    {/* <sup className={classes.required}>*</sup> */}
+                    <div
+                      className={classes.frowtextaff}
+                      // onClick={() => handleOpenSearch()}
+                    >
+                      ATM ID<sup className={classes.required}>*</sup>
                     </div>
-                    <div className={classes.frow1aff}>
-                      <AutocompleteForm
-                        controlerProps={{
-                          control: control,
-                          name: "atmid",
-                        }}
-                        TextFieldProps={{
-                          placeholder: "Select ATM ID",
-                          onKeyDown: (event) => {
-                            //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z0-9 \s]*$/;
-                            const isBackspace = event.keyCode === 8;
-                            const isValidInput = regex.test(event.key);
-
-                            if (!isValidInput && !isBackspace) {
-                              event.preventDefault();
-                            }
-                          },
-                        }}
-                        rules={{
-                          required:
-                            "ATM ID " +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        // data={FinalAtmIDList}
-                        data={AtmIDList}
-                        required={true}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-             
-
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Luno
-                      {/* <sup className={classes.required}>*</sup> */}
-                    </div>
-                    <div className={classes.frow1aff}>
+                    <div
+                      className={classes.frow1aff}
+                      // onClick={() => handleOpenSearch()}
+                    >
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "luno",
+                          name: "atmid",
                           rows: 5,
                           maxRows: 10,
                         }}
                         TextFieldProps={{
                           // label: "Name",
-                          placeholder: "Luno",
+                          placeholder: "ATM ID",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 3}
+                          inputProps: { minLength: 10, maxLength: 10 },
                         }}
-                        regExp={/^[0-9]+$/}
+                        // regExp={/^[A-Z0-9]+$/}
                         // rules={{
                         //   required:
-                        //     "Luno" + errorMessages.error_autocomplete_message,
+                        //     "ATMID " + errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
+                        
                       />
+                      
                     </div>
                   </div>
                 </Grid>
+                {/* <Grid item xs={12} sm={5} md={1} style={{display:'flex',alignItems:'center'}}>
+                  <div className={classes.frowdataaff} >
+                  <div
+          
+                    >
+                    </div>
+                    <div
+                      className={classes.frow1aff}
+                      onClick={() => handleOpenSearch()}
+                    >
+                    <SearchIcon/>
+                    </div>
+                  </div>
+                </Grid> */}
 
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
@@ -948,82 +932,12 @@ const closeSignModal = () => {
                           placeholder: "Location",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 10}
+                          inputProps: { maxLength: 10 },
                         }}
                         regExp={/^[a-zA-Z0-9 ]+$/}
                         // rules={{
                         //   required:
                         //     "Location" +
-                        //     errorMessages.error_autocomplete_message,
-                        // }}
-                        required={false}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Address
-                      {/* <sup className={classes.required}>*</sup> */}
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "address",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Name",
-                          placeholder: "Address",
-                          // style: { width: "33vw" },
-                          // multiline:true,
-                          // rows:3,
-                          fullWidth: true,
-                          inputProps : {maxLength: 100}
-                        }}
-                        // regExp={/^[a-zA-Z0-9. ]+$/}
-                      // regExp={/.*/}
-                      regExp={/^[^<>]*$/}
-
-                        // rules={{
-                        //   required:
-                        //     "Address" +
-                        //     errorMessages.error_autocomplete_message,
-                        // }}
-                        required={false}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Machine IP
-                      {/* <sup className={classes.required}>*</sup> */}
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "machineip",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Name",
-                          placeholder: "Machin IP",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                          inputProps : {maxLength: 15}
-                        }}
-                        regExp={/^[0-9.]+$/}
-                        // rules={{
-                        //   required:
-                        //     "Machine IP" +
                         //     errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
@@ -1039,7 +953,7 @@ const closeSignModal = () => {
                   md={6}
                   style={{ paddingTop: "42px" }}
                 ></Grid>  */}
-           
+
                 <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
                   <ColorButton1 variant="contained" type="submit">
                     Submit
@@ -1051,7 +965,7 @@ const closeSignModal = () => {
           <div className={classes.parentcomp}>
             <div className={classes.Sbox2}>
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
-              <div style={{ width: "100%" ,marginBottom:'10px'}}>
+              <div style={{ width: "100%", marginBottom: "10px" }}>
                 <MUIDataTable
                   title={" ATM Browse List"}
                   data={atmMasterList}
@@ -1069,6 +983,17 @@ const closeSignModal = () => {
                 rowDataToDisplay={rowDataToDisplay}
                 show={"2"}
                 title={"ATM Browse List"}
+              />
+            ) : null}
+
+            {openSearch ? (
+              <SearchAtmIDModal
+                open={openSearch}
+                handleClose={handleCloseSearch}
+                setResData={setResData}
+                rowDataToDisplay={rowDataToDisplay}
+                show={"2"}
+                title={"Bank ATM SMS Master Browse List"}
               />
             ) : null}
           </div>

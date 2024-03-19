@@ -36,6 +36,7 @@ import { useSelector } from "react-redux";
 import EditsIcons from "../../../../components/common/EditIcon";
 import ATMMasterListView from "../../../../components/common/ATMMasterListView";
 import SearchModal from "./SearchModal";
+import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
 
 const defaultFormData = {
   bankcode: "",
@@ -648,7 +649,7 @@ const BankAtmSMSMasterBrowse = () => {
             ) : null}
 
             {openSearch ? (
-              <SearchModal
+              <SearchAtmIDModal
                 open={openSearch}
                 handleClose={handleCloseSearch}
                 setResData={setResData}
