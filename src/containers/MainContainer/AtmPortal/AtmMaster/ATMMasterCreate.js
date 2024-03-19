@@ -65,6 +65,10 @@ const defaultFormData = {
   machineip: "",
   location: "",
   luno: "",
+  address1:'',
+  city:'',
+  state:'',
+  country:''
 };
 
 const ATMMasterCreate = () => {
@@ -376,7 +380,8 @@ const ATMMasterCreate = () => {
         // transactioncount: data.transactioncount,
         atmtype: data.atmtype.code,
         // dipcard: data.dipcard.code,
-        address: data.address,
+        // address: data.address,
+        address: data.address1+''+data.city+''+data.state+''+data.country,
         pincode: data.pincode,
         serverip: data.serverip,
         tmk: data.tmk,
@@ -1047,6 +1052,75 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
+
+<Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      TMK<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "tmk",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "TMK",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 50}
+                        }}
+                        regExp={/^[a-zA-Z0-9]+$/}
+                        rules={{
+                          required:
+                            "TMK" + errorMessages.error_autocomplete_message,
+                        }}
+                        required={true}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Terminal Type<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <AutocompleteForm
+                        controlerProps={{
+                          control: control,
+                          name: "terminaltype",
+                        }}
+                        TextFieldProps={{
+                          placeholder: "Select",
+                          onKeyDown: (event) => {
+                            //const regex = /^[a-zA-Z]*$/;
+                            const regex = /^[a-zA-Z\s]*$/;
+                            const isBackspace = event.keyCode === 8;
+                            const isValidInput = regex.test(event.key);
+
+                            if (!isValidInput && !isBackspace) {
+                              event.preventDefault();
+                            }
+                          },
+                        }}
+                        rules={{
+                          required:
+                            "Type " + errorMessages.error_autocomplete_message,
+                        }}
+                        data={TerminalType}
+                        required={true}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -1056,7 +1130,7 @@ const ATMMasterCreate = () => {
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "address",
+                          name: "address1",
                           rows: 5,
                           maxRows: 10,
                         }}
@@ -1067,7 +1141,7 @@ const ATMMasterCreate = () => {
                           multiline:true,
                           rows:3,
                           fullWidth: true,
-                          inputProps : {maxLength: 40}
+                          inputProps : {maxLength: 23}
                         }}
                         // regExp={/^[a-zA-Z0-9. ]+$/}
                       // regExp={/.*/}
@@ -1076,6 +1150,119 @@ const ATMMasterCreate = () => {
                         rules={{
                           required:
                             "Address" +
+                            errorMessages.error_autocomplete_message,
+                        }}
+                        required={true}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      City<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "city",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "City",
+                          // style: { width: "33vw" },
+                          // multiline:true,
+                          // rows:3,
+                          fullWidth: true,
+                          inputProps : {maxLength: 13}
+                        }}
+                        // regExp={/^[a-zA-Z0-9. ]+$/}
+                      // regExp={/.*/}
+                      regExp={/^[a-zA-Z ]+$/}
+
+                        rules={{
+                          required:
+                            "City" +
+                            errorMessages.error_autocomplete_message,
+                        }}
+                        required={true}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+
+                <Grid item xs={6} sm={3} md={1.5}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      State<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "state",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "State",
+                          // style: { width: "33vw" },
+                          // multiline:true,
+                          // rows:3,
+                          fullWidth: true,
+                          inputProps : {maxLength: 2}
+                        }}
+                        // regExp={/^[a-zA-Z0-9. ]+$/}
+                      // regExp={/.*/}
+                      regExp={/^[A-Z]+$/}
+
+                        rules={{
+                          required:
+                            "State" +
+                            errorMessages.error_autocomplete_message,
+                        }}
+                        required={true}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={6} sm={3} md={1.5}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Country<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "country",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Country",
+                          // style: { width: "33vw" },
+                          // multiline:true,
+                          // rows:3,
+                          fullWidth: true,
+                          inputProps : {maxLength: 2}
+                        }}
+                        // regExp={/^[a-zA-Z0-9. ]+$/}
+                      // regExp={/.*/}
+                      regExp={/^[A-Z]+$/}
+
+                        rules={{
+                          required:
+                            "Country" +
                             errorMessages.error_autocomplete_message,
                         }}
                         required={true}
@@ -1148,36 +1335,7 @@ const ATMMasterCreate = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      TMK<sup className={classes.required}>*</sup>
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "tmk",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Name",
-                          placeholder: "TMK",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                          inputProps : {maxLength: 50}
-                        }}
-                        regExp={/^[a-zA-Z0-9]+$/}
-                        rules={{
-                          required:
-                            "TMK" + errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
-                      />
-                    </div>
-                  </div>
-                </Grid>
+              
 
                 {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
@@ -1306,40 +1464,6 @@ const ATMMasterCreate = () => {
 
                 
 
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Terminal Type<sup className={classes.required}>*</sup>
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <AutocompleteForm
-                        controlerProps={{
-                          control: control,
-                          name: "terminaltype",
-                        }}
-                        TextFieldProps={{
-                          placeholder: "Select",
-                          onKeyDown: (event) => {
-                            //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z\s]*$/;
-                            const isBackspace = event.keyCode === 8;
-                            const isValidInput = regex.test(event.key);
-
-                            if (!isValidInput && !isBackspace) {
-                              event.preventDefault();
-                            }
-                          },
-                        }}
-                        rules={{
-                          required:
-                            "Type " + errorMessages.error_autocomplete_message,
-                        }}
-                        data={TerminalType}
-                        required={true}
-                      />
-                    </div>
-                  </div>
-                </Grid>
 
                 {/* <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
