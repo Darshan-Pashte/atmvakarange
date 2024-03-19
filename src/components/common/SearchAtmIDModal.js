@@ -27,18 +27,23 @@ import GridTablePagination from "../../components/common/gridTablePagination";
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Checkbox from '@mui/material/Checkbox';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: '50vw',
+//   width: '50vw',
   bgcolor: "background.paper",
-  border: "2px solid #000",
+//   border: "0.2px solid #000",
+borderRadius:'8px',
   boxShadow: 24,
-  p: 3,
-  
+  p:1,
+  boxShadow:' 0 0 0 0px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3)',
+
   display: "flex",
   flexDirection: "column",
   gap: "15px",
@@ -160,7 +165,7 @@ export default function SearchAtmIDModal({
   
     {
       name: "View",
-      label: "View",
+      label: "Select",
       options: {
         filter: false,
         sort: false,
@@ -178,7 +183,8 @@ export default function SearchAtmIDModal({
               }}
             >
               {" "}
-              <VisibilityIcon />
+              <Checkbox {...label} />
+              {/* <VisibilityIcon /> */}
             </Button>
           );
         },
@@ -296,7 +302,7 @@ export default function SearchAtmIDModal({
       const payload = {
         username:user?.username,
         sessionId: user?.sessionId,
-        atmId: data.atmid,
+        // atmId: data.atmid,
         bankcd: data.bankcd,
         ip:data.ip,
         address:data.address,
@@ -339,7 +345,7 @@ export default function SearchAtmIDModal({
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
-      atmid: 'all',
+    //   atmid: 'all',
       bankcd: data?.bankcode?.code,
       // transtype: data.transtype ? data.transtype.code :"all",
       luno: data?.luno,
@@ -371,7 +377,7 @@ export default function SearchAtmIDModal({
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>ATM Master</div>
+            <div className={classes.bluerowtext}></div>
             <Button className={classes.headerLogo} onClick={()=>handleClose()}><CancelRoundedIcon/></Button>
           </div>
           <div>
@@ -514,13 +520,13 @@ export default function SearchAtmIDModal({
                   </div>
                 </Grid>
 
-                {/* <Grid
+                <Grid
                   item
                   xs={12}
-                  sm={2}
-                  md={6}
+                  sm={0}
+                  md={8.5}
                   style={{ paddingTop: "42px" }}
-                ></Grid>  */}
+                ></Grid>  
            
                 <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
                   <ColorButton variant="contained" type="submit">
@@ -535,7 +541,7 @@ export default function SearchAtmIDModal({
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
                 <MUIDataTable
-                  title={" ATM Browse List"}
+                  title={" ATM List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}

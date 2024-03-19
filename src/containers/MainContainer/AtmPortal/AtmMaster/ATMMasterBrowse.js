@@ -2,8 +2,8 @@ import classes from "../Airtel.module.css";
 import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import TextFieldForm from "../../../../components/common/textFieldForm";
-import { Box, Grid } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Box, Grid, IconButton, InputAdornment } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
 import MUIDataTable from "mui-datatables";
 import DatePickerForm from "../../../../components/common/datePickerForm";
 import { postApiData } from "../../../../components/utilities/nodeApiServices";
@@ -37,6 +37,7 @@ import EditsIcons from "../../../../components/common/EditIcon";
 import { ConnContext } from "../../../../context/ConnContext";
 import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
 import SearchIcon from '@mui/icons-material/Search';
+import Textfield from "../../../../components/common/textField";
 
 
 const defaultFormData = {
@@ -101,6 +102,8 @@ const ATMMasterBrowse = () => {
     setValue("atmid", resData?.atmId);
     setValue("location", resData?.location);
   }, [resData]);
+
+
   const [payloadData, setPayloadData] = useState({});
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
@@ -860,44 +863,93 @@ const ATMMasterBrowse = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={5} md={3}>
+             
+
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
-                    <div
-                      className={classes.frowtextaff}
-                      // onClick={() => handleOpenSearch()}
-                    >
-                      ATM ID<sup className={classes.required}>*</sup>
+                    <div className={classes.frowtextaff}>
+                      ATM ID
+                      <sup className={classes.required}>*</sup>
                     </div>
-                    <div
-                      className={classes.frow1aff}
-                      // onClick={() => handleOpenSearch()}
-                    >
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "atmid",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Name",
-                          placeholder: "ATM ID",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                          inputProps: { minLength: 10, maxLength: 10 },
-                        }}
-                        // regExp={/^[A-Z0-9]+$/}
-                        // rules={{
-                        //   required:
-                        //     "ATMID " + errorMessages.error_autocomplete_message,
-                        // }}
-                        required={false}
-                        
-                      />
-                      
+                    <div className={classes.frow1aff}>
+                    <Controller
+                      name="atmid" // The name should match the key in 'data' object in onSubmit
+                      control={control}
+                      defaultValue="" // Set an initial value if needed
+                      rules={{
+                        required:
+                          "ATM ID " +
+                          errorMessages.error_autocomplete_message,
+                          // pattern: {
+            
+                          //   value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                          //   message: "2 special character,1 Uppercase,1 digit",
+                          // },
+                      }}
+                      render={({ field, fieldState }) => {
+                        const handleInputChange = (event) => {
+                          const regex = /^[A-Z0-9]+$/;
+                          const { name, value } = event.target;
+                          const isValidInput =
+                            regex.test(value) || value === "";
+
+                          if (!isValidInput) {
+                            event.preventDefault();
+                            return;
+                          }
+
+                          field.onChange(value);
+                        };
+
+                        return (
+                          <Textfield
+                            id="standard-adornment-password"
+                            fullWidth="true"
+                            placeholder="ATM ID"
+                            // type={showPassword ? "text" : "password"}
+                            {...field} // Spread the 'field' props to bind it to the form's state
+                            sx={{
+                              "& fieldset": { border: "none" },
+                              ".MuiInputBase-root": {
+                                borderRadius: "6px",
+                                
+                                height: "34px",
+                                //   backgroundColor: "rgb(238, 239, 247)",
+                                backgroundColor: "#FFF",
+                                fontSize: "13px",
+
+                                color: "#888",
+                                fontWeight: "500",
+                                border: "1px solid",
+                                marginTop:'4px'
+                                //   width:'130%'
+                              },
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <IconButton
+                                    aria-label="toggle password visibility"
+                                    // onClick={handleClickShowPassword}
+                                    // onMouseDown={handleMouseDownPassword}
+                                  >
+                                   <SearchIcon onClick={() => handleOpenSearch()}/>
+                                  </IconButton>
+                                </InputAdornment> 
+                              ),
+                            }}
+                            error={!!fieldState.error}
+                            helperText={fieldState.error?.message}
+               
+                          />
+                        );
+                      }}
+                    />
                     </div>
                   </div>
                 </Grid>
+
+
                 {/* <Grid item xs={12} sm={5} md={1} style={{display:'flex',alignItems:'center'}}>
                   <div className={classes.frowdataaff} >
                   <div
