@@ -102,10 +102,10 @@ export default function SearchAtmIDModal({
     mode: "onChange",
   });
 
-  React.useEffect(() => {
-    setValue("username", responseData);
-    // setLastLogin(sessionStorage.getItem("lastLogin"))
-  }, []);
+//   React.useEffect(() => {
+//     setValue("username", responseData);
+//     // setLastLogin(sessionStorage.getItem("lastLogin"))
+//   }, []);
 
   const [showPassword, setShowPassword] = React.useState(false);
   const [otp, setOtp] = useState("");
@@ -340,18 +340,18 @@ export default function SearchAtmIDModal({
     setPayloadData(payloadDatachild);
   }
 
-  const onSubmit = (data) => {
-    console.log("data",data);
+  const onSubmitModal = (data) => {
+    // console.log("data",data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
     //   atmid: 'all',
-      bankcd: data?.bankcode?.code,
+      bankcd: watch("bankcode"),
       // transtype: data.transtype ? data.transtype.code :"all",
-      luno: data?.luno,
-      location: data?.location,
-      address: data?.address,
-      ip: data?.machineip
+      luno: watch("luno"),
+      location:watch("location"),
+      address: watch("address"),
+      ip:watch("machineip")
     };
     console.log("payload",payload);
     getTransactionList(1, payload)
@@ -373,7 +373,7 @@ export default function SearchAtmIDModal({
           sx={style}
         className={classes.mainContainer}
         component="form"
-        onSubmit={handleSubmit(onSubmit)}
+        // onSubmit={handleSubmit(onSubmitModal)}
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
@@ -529,7 +529,7 @@ export default function SearchAtmIDModal({
                 ></Grid>  
            
                 <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
-                  <ColorButton variant="contained" type="submit">
+                  <ColorButton variant="contained" onClick={onSubmitModal}>
                     Submit
                   </ColorButton>
                 </Grid>

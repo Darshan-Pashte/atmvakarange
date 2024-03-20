@@ -136,6 +136,8 @@ DASHBOARD_GRAPH:baseUrlServer + '/vakrangee/dashboardgraph',
 DASHBOARD_SUCCESS_GRAPH:baseUrlServer + '/vakrangee/wakhdashboard',
 DASHBOARD_DAY_GRAPH:baseUrlServer + '/vakrangee/acqdashgraph',
 
+DASHBOARD_DOWNLOAD_EXCEL:baseUrlServer + '/vakrangee/acqdashgraphexcel',
+
 DASHBOARD_TRANSACTION_REPORT:baseUrlServer + '/vakrangee/transnewrecords',
 
 DASHBOARD_INSERVICE_BROWSE:baseUrlServer + '/vakrangee/',

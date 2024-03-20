@@ -575,52 +575,72 @@ const Routes = () => {
     },
     
     
+
     {
       name: "Transaction",
       id: "transaction",
       url: array[0] == "1" ? "/transaction" : null,
+      component: <LocalAndAquirerBrowse />,
+      arr: array[0],
       roles: [],
       Icon: TransactionIcon,
+      grandChild:[
+            {arr:array[0]},
+            {arr:array[0]},
+            {arr:array[0]}
+         ]
+    },
+    
+
+
+    {
+      // name: "Transaction",
+      // id: "transaction",
+      // url: array[0] == "1" ? "/transaction" : null,
+      // roles: [],
+      // Icon: TransactionIcon,
+
       childRoutes: [
-        {
-          name: "Acquire Report",
-          id: "localandaquirer",
-          url: array[0] == "1" ?  "/localandaquirer" :null,
-          roles: [],
-          arr : array[0],
-          component: <LocalAndAquirerBrowse />,
-          Icon: TransactionIcon,
-        },
+        // {
+        //   name: "Acquire Report",
+        //   id: "localandaquirer",
+        //   url: array[0] == "1" ?  "/localandaquirer" :null,
+        //   roles: [],
+        //   arr : array[0],
+        //   component: <LocalAndAquirerBrowse />,
+        //   Icon: TransactionIcon,
+        // },
 
         
-        {
-          name: "Issuer Report",
-          id: "issuer",
-          url: array[0] == "1" ?  "/issuer" :null,
-          roles: [],
-          arr : array[0],
-          component: <IssuerBrowse />,
-          Icon: UpiIcon,
-        },
-        {
-          name: "Switch Report",
-          id: "switch",
-          url: array[0] == "1" ?  "/switch" :null,
-          roles: [],
-          arr : array[0],
-          component: <SwitchBrowse />,
-          Icon: UpiIcon,
-        },
+        // {
+        //   name: "Issuer Report",
+        //   id: "issuer",
+        //   url: array[0] == "1" ?  "/issuer" :null,
+        //   roles: [],
+        //   arr : array[0],
+        //   component: <IssuerBrowse />,
+        //   Icon: UpiIcon,
+        // },
 
-        {
-          name: "Issuer Switch Report",
-          id: "issuerswitch",
-          url: array[0] == "1" ?  "/issuerswitch" :null,
-          roles: [],
-          arr : array[0],
-          component: <IssuerSwitchBrowse />,
-          Icon: UpiIcon,
-        },
+        // {
+        //   name: "Switch Report",
+        //   id: "switch",
+        //   url: array[0] == "1" ?  "/switch" :null,
+        //   roles: [],
+        //   arr : array[0],
+        //   component: <SwitchBrowse />,
+        //   Icon: UpiIcon,
+        // },
+
+        // {
+        //   name: "Issuer Switch Report",
+        //   id: "issuerswitch",
+        //   url: array[0] == "1" ?  "/issuerswitch" :null,
+        //   roles: [],
+        //   arr : array[0],
+        //   component: <IssuerSwitchBrowse />,
+        //   Icon: UpiIcon,
+        // },
 
         
       ]

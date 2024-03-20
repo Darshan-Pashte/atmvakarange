@@ -871,7 +871,7 @@ const closeSignModal = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>Acquire Transaction</div>
+            <div className={classes.bluerowtext}>Acquirer Transaction</div>
             {/* <div>
               <ColorButton1
                 onClick={() => navigate("/atmmaster/create")}
@@ -886,7 +886,7 @@ const closeSignModal = () => {
               <Grid container columnSpacing={2} rowSpacing={2}>
 
              
-<Grid item xs={12} sm={6} md={4}>
+<Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bank Code<sup className={classes.required}>*</sup>
@@ -923,7 +923,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>ATM ID</div>
                     <div className={classes.frow1aff}>
@@ -958,7 +958,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
                     <div className={classes.frow1aff}>
@@ -996,7 +996,7 @@ const closeSignModal = () => {
              
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Transaction Type</div>
                     <div className={classes.frow1aff}>
@@ -1034,7 +1034,7 @@ const closeSignModal = () => {
                
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Status<sup className={classes.required}>*</sup>
@@ -1071,7 +1071,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bin Mode<sup className={classes.required}>*</sup>
@@ -1108,7 +1108,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Card Read Mode<sup className={classes.required}>*</sup>
@@ -1144,7 +1144,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdata1aff}>
                     <div className={classes.frowtextaff}>
                       From Date<sup className={classes.required}>*</sup>
@@ -1174,7 +1174,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdata1aff}>
                     <div className={classes.frowtextaff}>
                       To Date<sup className={classes.required}>*</sup>
@@ -1202,7 +1202,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
               
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Card Number
@@ -1236,7 +1236,7 @@ const closeSignModal = () => {
 
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Transaction Number
@@ -1268,9 +1268,9 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
-                  <div className={classes.frowtextaff}>From Account
+                  <div className={classes.frowtextaff}>From Amount
                   {/* <sup className={classes.required}>*</sup> */}
                   </div>
                   <div className={classes.frow1aff}>
@@ -1302,9 +1302,9 @@ const closeSignModal = () => {
               </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
-                  <div className={classes.frowtextaff}>To Account
+                  <div className={classes.frowtextaff}>To Amount
                   {/* <sup className={classes.required}>*</sup> */}
                   </div>
                   <div className={classes.frow1aff}>

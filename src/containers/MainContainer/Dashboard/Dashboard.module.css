@@ -188,6 +188,13 @@ margin-top: 10px;
   font-weight: 500;
   margin-top: 15px;
   }
+
+
+  .BottomContainerDownload{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 @media (max-width: 500px) {
   .container {
     flex-direction: column;
