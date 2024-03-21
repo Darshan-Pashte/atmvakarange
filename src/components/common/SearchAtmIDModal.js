@@ -36,7 +36,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-//   width: '50vw',
+  minWidth: '50vw',
   bgcolor: "background.paper",
 //   border: "0.2px solid #000",
 borderRadius:'8px',
@@ -365,19 +365,19 @@ export default function SearchAtmIDModal({
 
       <Modal
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
           <Box
           sx={style}
-        className={classes.mainContainer}
+        className={classes.searchpopup}
         component="form"
         // onSubmit={handleSubmit(onSubmitModal)}
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}></div>
+            <div className={classes.bluerowtext}>ATM List</div>
             <Button className={classes.headerLogo} onClick={()=>handleClose()}><CancelRoundedIcon/></Button>
           </div>
           <div>
@@ -385,7 +385,7 @@ export default function SearchAtmIDModal({
               <Grid container columnSpacing={2} rowSpacing={2}>
 
 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Luno
@@ -417,7 +417,7 @@ export default function SearchAtmIDModal({
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Location
@@ -450,7 +450,7 @@ export default function SearchAtmIDModal({
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Address
@@ -487,7 +487,7 @@ export default function SearchAtmIDModal({
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Machine IP
@@ -520,15 +520,17 @@ export default function SearchAtmIDModal({
                   </div>
                 </Grid>
 
-                <Grid
+                {/* <Grid
                   item
                   xs={12}
                   sm={0}
                   md={8.5}
-                  style={{ paddingTop: "42px" }}
-                ></Grid>  
+                //   style={{ paddingTop: "42px" }}
+                ></Grid>   */}
            
-                <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
+                <Grid item xs={12} sm={3} md={2} 
+                style={{ paddingTop: "37px" }}
+                >
                   <ColorButton variant="contained" onClick={onSubmitModal}>
                     Submit
                   </ColorButton>

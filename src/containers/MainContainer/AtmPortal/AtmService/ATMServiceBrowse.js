@@ -36,7 +36,8 @@ import ATMMasterListView from "../../../../components/common/ATMMasterListView";
 import EditsIcons from "../../../../components/common/EditIcon";
 import ATMServiceModal from "./AtmServiceModal";
 import EditIcon from '@mui/icons-material/Edit';
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 const defaultFormData = {
   bankcode: "",
@@ -260,7 +261,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -286,7 +287,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -312,7 +313,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -338,7 +339,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -365,7 +366,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -392,7 +393,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -419,7 +420,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -446,7 +447,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -473,7 +474,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -500,7 +501,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },
@@ -527,7 +528,7 @@ const closeModal = () => {
               onClick={() => openModal(rowData,apipath,titletext )}
             >
               {" "}
-              <EditIcon />
+              <AddBoxOutlinedIcon />
             </Button>
           );
         },

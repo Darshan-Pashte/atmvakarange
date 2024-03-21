@@ -144,7 +144,7 @@ const UserATMAssignMasterModify = () => {
       if (response?.status == true) {
         SweetAlertPopup(response.message, "Success", "success");
         // reset()
-        navigate("/useratmmaster");
+        navigate("/mobapp/useratmmaster");
         setIsloading(false);
       } else {
         SweetAlertPopup(response.message, "Error", "error");
@@ -209,7 +209,7 @@ const UserATMAssignMasterModify = () => {
         onSubmit={handleSubmit(onSubmits)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}>User ATM Assign Master Modify</div>
+          <div className={classes.bluerow}>ATM Alloaction Modify</div>
           <div>
             <div className={classes.formbox}>
               <Grid
@@ -267,8 +267,8 @@ const UserATMAssignMasterModify = () => {
                         TextFieldProps={{
                           placeholder: "Select ",
                           onKeyDown: (event) => {
-                            //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z\s]*$/;
+                            const regex = /^[a-zA-Z0-9]*$/;
+                            // const regex = /^[a-zA-Z0-9\s]*$/;
                             const isBackspace = event.keyCode === 8;
                             const isValidInput = regex.test(event.key);
 

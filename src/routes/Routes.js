@@ -384,6 +384,21 @@ const Routes = () => {
             {arr:array[0]}
             ]
           },
+          {
+            name: "ATM Alloaction",
+            id: "useratmmaster",
+            url: array[0] == "1" ? "/useratmmaster" : null,
+            component: <UserATMAssignMasterBrowse />,
+            arr: array[0],
+            roles: [],
+            Icon: UserIcon,
+            grandChild:[
+              {arr:array[0]},
+              {arr:array[0]},
+              {arr:array[0]}
+           ]
+          },
+      
         {
           name: "Create",
           id: "create",
@@ -403,24 +418,24 @@ const Routes = () => {
         },
       ]
     },
-    {
-      name: "User ATM Assign Master",
-      id: "useratmmaster",
-      url: array[0] == "1" ? "/useratmmaster" : null,
-      component: <UserATMAssignMasterBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: UserIcon,
-      grandChild:[
-        {arr:array[0]},
-        {arr:array[0]},
-        {arr:array[0]}
-     ]
-    },
+    // {
+    //   name: "User ATM Assign Master",
+    //   id: "useratmmaster",
+    //   url: array[0] == "1" ? "/useratmmaster" : null,
+    //   component: <UserATMAssignMasterBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: UserIcon,
+    //   grandChild:[
+    //     {arr:array[0]},
+    //     {arr:array[0]},
+    //     {arr:array[0]}
+    //  ]
+    // },
 
 
     {
-      name: "User ATM Assign Master",
+      name: "ATM Allocation",
       id: "useratmmaster",
       url: array[0] == "1" ? "/useratmmaster" : null,
       roles: [],
@@ -509,55 +524,55 @@ const Routes = () => {
         },
       ]
     },
-    {
-      name: "Bank User Master",
-      id: "bankusermaster",
-      url: array[0] == "1" ? "/bankusermaster" : null,
-      roles: [],
-      Icon: BankUserIcon,
-      childRoutes: [
-          {
-            name: "Authorize",
-            id: "bankuserauth",
-            url: array[0] == "1" ?  "/bankuserauth" :null,
-            roles: [],
-            arr : array[0],
-            component: <BankUserMasterAuthorize />,
-            Icon: BankUserIcon,
-          },
-          {
-            name: "Browse",
-            id: "bankusermst",
-            url: array[0] == "1" ?  "/bankusermst" :null,
-            component: <BankUserMasterBrowse />,
-            arr: array[0],
-             roles: [],
-            Icon: BankUserIcon,
-            grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-            ]
-          },
-        {
-          name: "Create",
-          id: "create",
-          url: array[0] == "1" ?  "/create" :null,
-          roles: [],
-          component: < BankUserMasterCreate/>,
-          Icon: BankUserIcon,
+    // {
+    //   name: "Bank User Master",
+    //   id: "bankusermaster",
+    //   url: array[0] == "1" ? "/bankusermaster" : null,
+    //   roles: [],
+    //   Icon: BankUserIcon,
+    //   childRoutes: [
+    //       {
+    //         name: "Authorize",
+    //         id: "bankuserauth",
+    //         url: array[0] == "1" ?  "/bankuserauth" :null,
+    //         roles: [],
+    //         arr : array[0],
+    //         component: <BankUserMasterAuthorize />,
+    //         Icon: BankUserIcon,
+    //       },
+    //       {
+    //         name: "Browse",
+    //         id: "bankusermst",
+    //         url: array[0] == "1" ?  "/bankusermst" :null,
+    //         component: <BankUserMasterBrowse />,
+    //         arr: array[0],
+    //          roles: [],
+    //         Icon: BankUserIcon,
+    //         grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //         ]
+    //       },
+    //     {
+    //       name: "Create",
+    //       id: "create",
+    //       url: array[0] == "1" ?  "/create" :null,
+    //       roles: [],
+    //       component: < BankUserMasterCreate/>,
+    //       Icon: BankUserIcon,
          
-        },
-        {
-          name: "Modify",
-          id: "modify",
-          url: array[1] || array[2]!=0 ?  "/modify" :null,
-          roles: [],
-          component: <BankUserMasterModify />,
-          Icon: BankUserIcon,
-        },
-      ]
-    },
+    //     },
+    //     {
+    //       name: "Modify",
+    //       id: "modify",
+    //       url: array[1] || array[2]!=0 ?  "/modify" :null,
+    //       roles: [],
+    //       component: <BankUserMasterModify />,
+    //       Icon: BankUserIcon,
+    //     },
+    //   ]
+    // },
 
     {
       name: "ATM Service",

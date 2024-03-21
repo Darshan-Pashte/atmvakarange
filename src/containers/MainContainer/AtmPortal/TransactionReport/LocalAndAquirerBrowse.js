@@ -260,10 +260,10 @@ const LocalAndAquirerBrowse = () => {
       code: "fundTransfer",
       value: "Fund Transfer ",
     },
-    {
-      code: "Generate-Pin",
-      value: "Generate-Pin",
-    },
+    // {
+    //   code: "Generate-Pin",
+    //   value: "Generate-Pin",
+    // },
     {
       code: "miniStatement",
       value: "Mini Statement",
@@ -372,7 +372,7 @@ const closeSignModal = () => {
 
     {
       name: "transNo",
-      label: "Transfer No.",
+      label: "Transaction No.",
       options: {
         filter: true,
         sort: false,
@@ -416,7 +416,7 @@ const closeSignModal = () => {
     },
     {
       name: "opCode",
-      label: "Op Code",
+      label: "Operation Code",
       options: {
         filter: true,
         sort: false,
@@ -785,7 +785,7 @@ const closeSignModal = () => {
       bankCd: data?.bankcode?.code,
       txnType:data?.transtype?.code,
     currntSt: data?.status?.code,
-    pinblock: data?.binmode?.code,
+    pinblock: data?.cardbin,
     csppinblock1: data?.cardreadmode?.code,
  
 
@@ -871,7 +871,7 @@ const closeSignModal = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>Acquirer Transaction</div>
+            <div className={classes.bluerowtext}>Transaction</div>
             {/* <div>
               <ColorButton1
                 onClick={() => navigate("/atmmaster/create")}
@@ -962,6 +962,33 @@ const closeSignModal = () => {
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
                     <div className={classes.frow1aff}>
+                    <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "cardbin",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Card Bin",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                        }}
+                        regExp={/^.*$/}
+                        // rules={{
+                        //   required:
+                        //     "Card No." + errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+                {/* <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>Card Bin</div>
+                    <div className={classes.frow1aff}>
                       <AutocompleteForm
                         controlerProps={{
                           control: control,
@@ -990,7 +1017,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
 
              
@@ -1071,7 +1098,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={3}>
+                {/* <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bin Mode<sup className={classes.required}>*</sup>
@@ -1105,7 +1132,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
 
                 <Grid item xs={12} sm={6} md={3}>
@@ -1144,63 +1171,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdata1aff}>
-                    <div className={classes.frowtextaff}>
-                      From Date<sup className={classes.required}>*</sup>
-                    </div>
-
-                    <DatePickerForm
-                      controlerProps={{
-                        control: control,
-                        name: "fromDate",
-                      }}
-                      TextFieldProps={{
-                        fullWidth: true,
-                      }}
-                      DatePickerProps={{
-                        // label: "From Date",
-                        fullWidth: true,
-                        maxDate:new Date()
-                      }}
-                      // rules={{
-                      //     required:
-                      //       "From Date " + errorMessages.error_autocomplete_message,
-                      //   }}
-                      required={false}
-                    />
-            
-                  </div>
-                </Grid>
-
-
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdata1aff}>
-                    <div className={classes.frowtextaff}>
-                      To Date<sup className={classes.required}>*</sup>
-                    </div>
-                    <DatePickerForm
-                      controlerProps={{
-                        control: control,
-                        name: "toDate",
-                      }}
-                      TextFieldProps={{
-                        fullWidth: true,
-                      }}
-                      DatePickerProps={{
-                        // label: "To Date",
-                        fullWidth: true,
-                        minDate: watch("fromDate"),
-                        maxDate:new Date()
-                      }}
-                      // rules={{
-                      //     required:
-                      //       "To Date " + errorMessages.error_autocomplete_message,
-                      //   }}
-                      required={false}
-                    />
-                  </div>
-                </Grid>
+               
               
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
@@ -1264,6 +1235,65 @@ const closeSignModal = () => {
                         required={false}
                       />
                     </div>
+                  </div>
+                </Grid>
+
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdata1aff}>
+                    <div className={classes.frowtextaff}>
+                      From Date<sup className={classes.required}>*</sup>
+                    </div>
+
+                    <DatePickerForm
+                      controlerProps={{
+                        control: control,
+                        name: "fromDate",
+                      }}
+                      TextFieldProps={{
+                        fullWidth: true,
+                      }}
+                      DatePickerProps={{
+                        // label: "From Date",
+                        fullWidth: true,
+                        maxDate:new Date()
+                      }}
+                      // rules={{
+                      //     required:
+                      //       "From Date " + errorMessages.error_autocomplete_message,
+                      //   }}
+                      required={false}
+                    />
+            
+                  </div>
+                </Grid>
+
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdata1aff}>
+                    <div className={classes.frowtextaff}>
+                      To Date<sup className={classes.required}>*</sup>
+                    </div>
+                    <DatePickerForm
+                      controlerProps={{
+                        control: control,
+                        name: "toDate",
+                      }}
+                      TextFieldProps={{
+                        fullWidth: true,
+                      }}
+                      DatePickerProps={{
+                        // label: "To Date",
+                        fullWidth: true,
+                        minDate: watch("fromDate"),
+                        maxDate:new Date()
+                      }}
+                      // rules={{
+                      //     required:
+                      //       "To Date " + errorMessages.error_autocomplete_message,
+                      //   }}
+                      required={false}
+                    />
                   </div>
                 </Grid>
 
@@ -1336,12 +1366,12 @@ const closeSignModal = () => {
                 <Grid
                   item
                   xs={12}
-                  sm={2}
-                  md={5}
+                  sm={0}
+                  md={9}
                   style={{ paddingTop: "42px" }}
                 ></Grid> 
            
-           <Grid item xs={12} sm={3} md={3} style={{ paddingTop: "37px" }}>
+           <Grid item xs={12} sm={2} md={2} style={{ paddingTop: "37px" }}>
                   <ColorButton1 variant="contained" type="submit">
                     Submit
                   </ColorButton1>
@@ -1354,7 +1384,7 @@ const closeSignModal = () => {
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
                 <MUIDataTable
-                  title={"Acquire Transaction List"}
+                  title={"Transaction List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}
@@ -1369,7 +1399,7 @@ const closeSignModal = () => {
                 closeSignModal={closeSignModal}
                 rowDataToDisplay={rowDataToDisplay}
                 show={"2"}
-                title={"Acquire Transaction List"}
+                title={"Transaction List"}
               />
             ) : null}
           </div>

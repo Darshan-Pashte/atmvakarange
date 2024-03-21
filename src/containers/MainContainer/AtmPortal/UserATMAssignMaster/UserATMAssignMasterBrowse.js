@@ -418,7 +418,8 @@ const closeSignModal = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>User ATM Assign Master</div>
+            {/* <div className={classes.bluerowtext}>User ATM Assign Master</div> */}
+            <div className={classes.bluerowtext}>ATM Alloaction</div>
             <div>
               <ColorButton1
                 onClick={() => navigate("/useratmmaster/create")}
@@ -491,7 +492,7 @@ const closeSignModal = () => {
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
                 <MUIDataTable
-                  title={" User ATM Master Browse List"}
+                  title={" ATM Alloaction Browse List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}
@@ -506,7 +507,7 @@ const closeSignModal = () => {
                 closeSignModal={closeSignModal}
                 rowDataToDisplay={rowDataToDisplay}
                 show={"2"}
-                title={"User ATM Master Browse List"}
+                title={"ATM Alloaction Browse List"}
               />
             ) : null}
           </div>

@@ -229,7 +229,7 @@ reset()
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}> User ATM Assign Master Create</div>
+          <div className={classes.bluerow}> ATM Alloaction Create</div>
           <div>
             <div className={classes.formbox}>
               <Grid

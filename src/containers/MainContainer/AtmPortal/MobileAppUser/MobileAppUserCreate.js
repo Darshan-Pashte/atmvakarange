@@ -274,13 +274,21 @@ const MobileAppUserCreate = () => {
    code:'BANK',
    value:'BANK',
     },
+  //   {
+  //  code:'MERCHANT',
+  //  value:'MERCHANT',
+  //   },
+  //   {
+  //     code:'MAKER',
+  //     value:'MAKER',
+  //      },
     {
    code:'MERCHANT',
-   value:'MERCHANT',
+   value:'VENDOR',
     },
     {
       code:'MAKER',
-      value:'MAKER',
+      value:'OPERATION',
        },
   ]
 

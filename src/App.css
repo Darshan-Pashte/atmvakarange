@@ -536,3 +536,11 @@ text-align: center;
 .apexcharts-menu-icon {
   display: none !important;
 }
+
+
+@media (max-width: 899.95px){
+
+.tss-r6c9w6-MUIDataTable-responsiveStacked{
+overflow: auto !important;
+}
+}
