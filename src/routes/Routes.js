@@ -247,20 +247,20 @@ const Routes = () => {
          ]
     },
 
-    {
-      name: "ATM Error",
-      id: "atmerror",
-      url: array[0] == "1" ? "/atmerror" : null,
-      component: <ATMErrorBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: ErrorIcon,
-      grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-         ]
-    },
+    // {
+    //   name: "ATM Error",
+    //   id: "atmerror",
+    //   url: array[0] == "1" ? "/atmerror" : null,
+    //   component: <ATMErrorBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: ErrorIcon,
+    //   grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //      ]
+    // },
     
 
 
@@ -355,7 +355,7 @@ const Routes = () => {
 
     
     {
-      name: "Mobile App User",
+      name: "User Master",
       id: "mobapp",
       url: array[0] == "1" ? "/mobapp" : null,
       roles: [],
@@ -449,36 +449,36 @@ const Routes = () => {
     
 
 
-    {
-      name: "Bank ATM SMS Master",
-      id: "atmsmsmaster",
-      url: array[0] == "1" ? "/atmsmsmaster" : null,
-      component: <BankAtmSMSMasterBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: SMSIcon,
-      grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-         ]
-    },
+    // {
+    //   name: "Bank ATM SMS Master",
+    //   id: "atmsmsmaster",
+    //   url: array[0] == "1" ? "/atmsmsmaster" : null,
+    //   component: <BankAtmSMSMasterBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: SMSIcon,
+    //   grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //      ]
+    // },
 
 
-    {
-      name: "Bin Master",
-      id: "localbinmaster",
-      url: array[0] == "1" ? "/localbinmaster" : null,
-      component: <LocalBinMasterBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: LocalIcon,
-      grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-         ]
-    },
+    // {
+    //   name: "Bin Master",
+    //   id: "localbinmaster",
+    //   url: array[0] == "1" ? "/localbinmaster" : null,
+    //   component: <LocalBinMasterBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: LocalIcon,
+    //   grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //      ]
+    // },
 
     
     {
