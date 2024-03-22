@@ -149,7 +149,8 @@ const Login = () => {
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
     // backgroundColor: "#F84B67",
-    backgroundColor: "#AA1313",
+    // backgroundColor: "#AA1313",
+    backgroundColor: "#042879",
     fontFamily:'Poppins',
     boxShadow:' 0px 4px 10px 0px rgba(0, 0, 0, 0.15)',
     fontSize:'15px',
@@ -160,7 +161,7 @@ const Login = () => {
     paddingLeft: "15px",
     paddingRight: "15px",
     width: "100%",
-    height: "40px",
+    height: "38px",
     "&:hover": {
       background: "#808080",
       color: "white",
@@ -177,13 +178,14 @@ const Login = () => {
         </div>
         <div className={classes.rightpage}>
           <div className={classes.mainfile}>
-            <img className={classes.lefttitlelogo} src={headerLogo} alt="" />
+            {/* <img className={classes.lefttitlelogo} src={headerLogo} alt="" /> */}
             {/* <div style={{ width: "10vw", marginBottom: "2vh" }} ><img src={UPI} alt='UPI' className={classes.imgupi} /></div> */}
             <Box
               className={classes.box}
               component="form"
               onSubmit={handleSubmit(onSubmit)}
             >
+               <img className={classes.lefttitlelogo} src={headerLogo} alt="" />
               <div className={classes.textcontainer}>
                 <div className={classes.uppertext}>Login to your account</div>
                 <div className={classes.lowertext}>
@@ -206,7 +208,7 @@ const Login = () => {
                       }}
                       TextFieldProps={{
                         // label: "Branch",
-                        placeholder: "Please Enter Username",
+                        placeholder: "Username",
                         // style: { width: "33vw" },
                         fullWidth: true,
                       }}
@@ -283,7 +285,7 @@ const Login = () => {
                           <TextField
                             id="standard-adornment-password"
                             fullWidth="true"
-                            placeholder="Please Enter Password"
+                            placeholder="Password"
                             type={showPassword ? "text" : "password"}
                             {...field} // Spread the 'field' props to bind it to the form's state
                             sx={{

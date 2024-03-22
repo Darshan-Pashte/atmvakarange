@@ -129,7 +129,8 @@ const ForgotPassword = () => {
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
     // backgroundColor: "#F84B67",
-    backgroundColor: "#AA1313",
+    // backgroundColor: "#AA1313",
+    backgroundColor: "#042879",
     fontFamily:'Poppins',
     boxShadow:' 0px 4px 10px 0px rgba(0, 0, 0, 0.15)',
     fontSize:'15px',
@@ -140,12 +141,13 @@ const ForgotPassword = () => {
     paddingLeft: "15px",
     paddingRight: "15px",
     width: "100%",
-    height: "35px",
+    height: "38px",
     "&:hover": {
       background: "#808080",
       color: "white",
     },
   }));
+
 
 
 
@@ -160,7 +162,7 @@ const ForgotPassword = () => {
         </div>
         <div className={classes.rightpage}>
            <div className={classes.mainfile}>
-           <img className={classes.lefttitlelogo} src={headerLogo} alt="" />
+           {/* <img className={classes.lefttitlelogo} src={headerLogo} alt="" /> */}
         {/* <div style={{ width: "10vw", marginBottom: "2vh" }} ><img src={UPI} alt='UPI' className={classes.imgupi} /></div> */}
         <Box
           className={classes.box}
@@ -168,11 +170,11 @@ const ForgotPassword = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
       {/* <GoBackButton/>Back to Login */}
-      <span onClick={handleLogin} className={classes.loginbutton} >
+      {/* <span onClick={handleLogin} className={classes.loginbutton} >
         <KeyboardBackspaceIcon/>  Back to Login
-                </span>
+                </span> */}
 
-
+    <img className={classes.lefttitlelogo} src={headerLogo} alt="" />
           <div className={classes.textcontainer}>
             <div className={classes.uppertextforgot}>Forgot Password</div>
             <div className={classes.lowertextforgot} style={{textAlign:'center',fontSize:'15px'}}>Please enter Username, we will send OTP to your registered mobile number</div>

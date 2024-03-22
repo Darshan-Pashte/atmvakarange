@@ -24,6 +24,20 @@
 }
 
 
+
+.loader{
+  width: 100vw;
+    position: fixed;
+    /* display: flex; */
+    /* align-items: center; */
+    height: 100vh;
+    display: flex;
+    z-index: 200;
+    left: 0;
+    background: #fff;
+    top: 0;
+    justify-content: center;
+}
 @media only screen and (max-width: 568px){
   .Dashboard{
     width: auto;

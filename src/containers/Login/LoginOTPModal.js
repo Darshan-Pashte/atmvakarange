@@ -45,7 +45,8 @@ const style = {
 const ColorButton = styled(LoadingButton)(({ theme }) => ({
   color: "#FFFFFF",
   // backgroundColor: "#F84B67",
-  backgroundColor: "#AA1313",
+      // backgroundColor: "#AA1313",
+      backgroundColor: "#042879",
   // border: "1px solid #CCC",
   border: "1px solid #CCC",
   borderRadius: "8px",

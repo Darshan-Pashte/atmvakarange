@@ -356,7 +356,7 @@ getBankCode()
         onSubmit={handleSubmit(onSubmits)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}>Mobile Application User Modify</div>
+          <div className={classes.bluerow}>User Master Modify</div>
           <div>
             <div className={classes.formbox}>
               <Grid

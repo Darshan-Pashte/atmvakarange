@@ -52,7 +52,7 @@ borderRadius:'8px',
 const ColorButton = styled(LoadingButton)(({ theme }) => ({
   color: "#FFFFFF",
   // backgroundColor: "#F84B67",
-  backgroundColor: "#AA1313",
+  backgroundColor: "#042879",
   // border: "1px solid #CCC",
   border: "1px solid #CCC",
   borderRadius: "8px",
@@ -531,7 +531,7 @@ export default function SearchAtmIDModal({
                 <Grid item xs={12} sm={3} md={2} 
                 style={{ paddingTop: "37px" }}
                 >
-                  <ColorButton variant="contained" onClick={onSubmitModal}>
+                  <ColorButton   loading={isLoading} variant="contained" onClick={onSubmitModal}>
                     Submit
                   </ColorButton>
                 </Grid>

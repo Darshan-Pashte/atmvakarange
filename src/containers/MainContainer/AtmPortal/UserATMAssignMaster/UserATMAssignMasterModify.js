@@ -158,7 +158,7 @@ const UserATMAssignMasterModify = () => {
 
   const ColorButton = styled(Button)(({ theme }) => ({
     // color: "#FFFFFF",
-    color: " #AA1313",
+    color: "#042879",
     // backgroundColor: "#F84B67",
     // backgroundColor: "#323232",
     backgroundColor: "#fff",
@@ -180,7 +180,7 @@ const UserATMAssignMasterModify = () => {
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
-    backgroundColor: "#AA1313",
+    backgroundColor: "#042879",
     fontFamily:'Poppins',
     boxShadow:' 0px 4px 10px 0px rgba(0, 0, 0, 0.15)',
     fontSize:'12px',
