@@ -2,8 +2,8 @@ import classes from "../Airtel.module.css";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import TextFieldForm from "../../../../components/common/textFieldForm";
-import { Box, Grid } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Box, Grid, IconButton, InputAdornment } from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
 import MUIDataTable from "mui-datatables";
 import DatePickerForm from "../../../../components/common/datePickerForm";
 import { postApiData } from "../../../../components/utilities/nodeApiServices";
@@ -38,6 +38,11 @@ import ATMServiceModal from "./AtmServiceModal";
 import EditIcon from '@mui/icons-material/Edit';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
+
+import SearchIcon from '@mui/icons-material/Search';
+import Textfield from "../../../../components/common/textField";
+
 
 const defaultFormData = {
   bankcode: "",
@@ -89,6 +94,9 @@ const ATMServiceBrowse = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
 
+  const [openSearch, setOpenSearch] = useState(false);
+  const handleOpenSearch = () => setOpenSearch(true);
+  const handleCloseSearch = () => setOpenSearch(false);
   const [payloadData, setPayloadData] = useState({});
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
@@ -97,6 +105,13 @@ const ATMServiceBrowse = () => {
   console.log("user", user);
 
 
+  const [resData, setResData] = useState({});
+  console.log("resData", resData);
+
+  useEffect(() => {
+    setValue("atmid", resData?.atmId);
+
+  }, [resData]);
   // useEffect(() => {
   //   if (AtmIdList) {
   //     setValue("atmid", AtmIdList ? compareTextAndReturnObject(AtmIdList, AtmIdList[0]?.value) : '')
@@ -691,50 +706,50 @@ const closeModal = () => {
   //   }
   // }, [ATMIDList]);
 
-  useEffect(()=>{
-    getBankCode()
-    // getATMid()
-  },[])
+  // useEffect(()=>{
+  //   getBankCode()
+  //   // getATMid()
+  // },[])
 
-  useEffect(()=>{
-    if (watch('bankcode')) {
-      getATMid()
-        }
+  // useEffect(()=>{
+  //   if (watch('bankcode')) {
+  //     getATMid()
+  //       }
     
-  },[watch('bankcode')])
+  // },[watch('bankcode')])
   
-  const getBankCode = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
+  // const getBankCode = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.bankCodes);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const getATMid = async () => {
-     setIsloading(true);
-    try {
-      const payload = {
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //     };
+  //     const response = await postApiData(apiList.GET_BANKCODE, payload);
+  //     setBankCode(response?.bankCodes);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // const getATMid = async () => {
+  //    setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-        bankcd:watch('bankcode')?.code
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //       bankcd:watch('bankcode')?.code
 
-      };
-      const response = await postApiData(apiList.GET_ATMID, payload);
-      setAtmID(response?.atmMasterModels);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     };
+  //     const response = await postApiData(apiList.GET_ATMID, payload);
+  //     setAtmID(response?.atmMasterModels);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
 
   
@@ -753,7 +768,7 @@ const closeModal = () => {
         username:user?.username,
         sessionId: user?.sessionId,
         atmId: data.atmid,
-        bankcd: data.bankcd,
+        // bankcd: data.bankcd,
        
       };
 
@@ -791,8 +806,8 @@ const closeModal = () => {
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
-      atmid: data?.atmid?.code,
-      bankcd: data?.bankcode?.code,
+      atmid: data?.atmid,
+      // bankcd: data?.bankcode?.code,
       // transtype: data.transtype ? data.transtype.code :"all",
     };
     console.log("payload",payload);
@@ -891,7 +906,7 @@ const closeModal = () => {
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
 
-              <Grid item xs={12} sm={5} md={4}>
+              {/* <Grid item xs={12} sm={5} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bank Code
@@ -927,9 +942,94 @@ const closeModal = () => {
                       />
                     </div>
                   </div>
+                </Grid> */}
+
+
+                <Grid item xs={12} sm={5} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      ATM ID
+                      <sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                    <Controller
+                      name="atmid" // The name should match the key in 'data' object in onSubmit
+                      control={control}
+                      defaultValue="" // Set an initial value if needed
+                      // rules={{
+                      //   required:
+                      //     "ATM ID " +
+                      //     errorMessages.error_autocomplete_message,
+                      //     // pattern: {
+            
+                      //     //   value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                      //     //   message: "2 special character,1 Uppercase,1 digit",
+                      //     // },
+                      // }}
+                      render={({ field, fieldState }) => {
+                        const handleInputChange = (event) => {
+                          const regex = /^[A-Z0-9]+$/;
+                          const { name, value } = event.target;
+                          const isValidInput =
+                            regex.test(value) || value === "";
+
+                          if (!isValidInput) {
+                            event.preventDefault();
+                            return;
+                          }
+
+                          field.onChange(value);
+                        };
+
+                        return (
+                          <Textfield
+                            id="standard-adornment-password"
+                            fullWidth="true"
+                            placeholder="ATM ID"
+                            // type={showPassword ? "text" : "password"}
+                            {...field} // Spread the 'field' props to bind it to the form's state
+                            sx={{
+                              "& fieldset": { border: "none" },
+                              ".MuiInputBase-root": {
+                                borderRadius: "6px",
+                                
+                                height: "34px",
+                                //   backgroundColor: "rgb(238, 239, 247)",
+                                backgroundColor: "#FFF",
+                                fontSize: "13px",
+
+                                color: "#888",
+                                fontWeight: "500",
+                                border: "1px solid",
+                                marginTop:'4px'
+                                //   width:'130%'
+                              },
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <IconButton
+                                    aria-label="toggle password visibility"
+                                    // onClick={handleClickShowPassword}
+                                    // onMouseDown={handleMouseDownPassword}
+                                  >
+                                   <SearchIcon onClick={() => handleOpenSearch()}/>
+                                  </IconButton>
+                                </InputAdornment> 
+                              ),
+                            }}
+                            // error={!!fieldState.error}
+                            // helperText={fieldState.error?.message}
+               
+                          />
+                        );
+                      }}
+                    />
+                    </div>
+                  </div>
                 </Grid>
 
-                <Grid item xs={12} sm={5} md={4}>
+                {/* <Grid item xs={12} sm={5} md={4}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>ATM ID
                     <sup className={classes.required}>*</sup>
@@ -964,7 +1064,7 @@ const closeModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                 {/* <Grid
                   item
@@ -1019,6 +1119,17 @@ const closeModal = () => {
               />
             ) : null}
             
+
+            {openSearch ? (
+              <SearchAtmIDModal
+                open={openSearch}
+                handleClose={handleCloseSearch}
+                setResData={setResData}
+                rowDataToDisplay={rowDataToDisplay}
+                show={"2"}
+                title={"Bank ATM SMS Master Browse List"}
+              />
+            ) : null}
           </div>
         </div>
       </Box>
