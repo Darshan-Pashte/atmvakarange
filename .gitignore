@@ -4,3 +4,4 @@ yarn.lock
 build
 .env.testing
 .env.uat
+.env.local

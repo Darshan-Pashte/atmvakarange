@@ -676,7 +676,7 @@ const Dashboard = () => {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `Sample File.csv`;
+      link.download = `Sample File.csv`;  
       // link.download = `${value}.xlsx`;
       link.click();
       URL.revokeObjectURL(url);

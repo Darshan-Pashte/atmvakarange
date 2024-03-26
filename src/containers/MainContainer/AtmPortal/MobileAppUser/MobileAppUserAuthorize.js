@@ -294,10 +294,10 @@ const closeSignModal = () => {
 
 
   
-  useEffect(()=>{
-    getTransactionListView()
-    onSubmit()
-  },[])
+  // useEffect(()=>{
+  //   getTransactionListView()
+  //   onSubmit()
+  // },[])
   
 
   
