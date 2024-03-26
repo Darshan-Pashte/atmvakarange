@@ -126,6 +126,8 @@ ATM_SERVICE_DATA:baseUrlServer + '/vakrangee/atmservice/',
 
 
 LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/vakrangee/transmaster/acqtransreports',
+LOCAL_ACQUIRE_DOWNLOAD:baseUrlServer + '/vakrangee/transmaster/acqexceltranslst',
+
 ISSUER_BROWSE:baseUrlServer + '/vakrangee/transmaster/issuertranslst',
 SWITCH_BROWSE:baseUrlServer + '/vakrangee/transmaster/switchreports',
 ISSUER_SWITCH_BROWSE:baseUrlServer + '/vakrangee/transmaster/issuerswitchreports',
