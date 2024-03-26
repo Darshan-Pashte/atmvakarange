@@ -377,7 +377,7 @@ const closeSignModal = () => {
   // },
  
    {
-      name: "atmId",
+      name: "atmid",
       label: "ATM Id",
       options: {
         filter: true,
@@ -386,7 +386,7 @@ const closeSignModal = () => {
     },
 
     {
-      name: "transNo",
+      name: "transactionnumber",
       label: "Transaction No.",
       options: {
         filter: true,
@@ -394,7 +394,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "trDt",
+      name: "transactiondate",
       label: "Trans Date",
       options: {
         filter: true,
@@ -414,7 +414,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "trTime",
+      name: "transactiontime",
       label: "Trans Time",
       options: {
         filter: true,
@@ -422,7 +422,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "transType",
+      name: "transactiontype",
       label: "Trans Type",
       options: {
         filter: true,
@@ -430,7 +430,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "opCode",
+      name: "operationcode",
       label: "Operation Code",
       options: {
         filter: true,
@@ -438,17 +438,17 @@ const closeSignModal = () => {
         // display:false
       },
     },
+    // {
+    //   name: "transIf",
+    //   label: "Trans Info",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //     display:false
+    //   },
+    // },
     {
-      name: "transIf",
-      label: "Trans Info",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
-    {
-      name: "currntSt",
+      name: "currenttransactionstatus",
       label: "Current Trans Status",
       options: {
         filter: true,
@@ -484,7 +484,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "amt",
+      name: "amount",
       label: "Amount",
       options: {
         filter: true,
@@ -493,7 +493,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "cdNo",
+      name: "pan",
       label: "Card No.",
       options: {
         filter: true,
@@ -502,7 +502,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "lastSt",
+      name: "lasttransactionstatus",
       label: "Last Trans Status",
       options: {
         filter: true,
@@ -511,25 +511,46 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "lastDts",
+      name: "lasttransactiondetails",
       label: "Last Trans Details",
       options: {
         filter: true,
         sort: false,
         // display:false
+        customBodyRender: (value, tableMeta, updateValue) => {
+            const buttonStyles = {
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius: '20px',
+              width:'250px',
+            //   height: '100px',
+              whiteSpace: 'pre-wrap',
+              wordBreak: 'break-word'
+            };
+          
+            // Check if value is not null or undefined before replacing
+            const formattedValue = value ? value.replace(/(.{50})/g, "$1\n") : '';
+          
+            return (
+              <div style={buttonStyles}>
+                {formattedValue}
+              </div>
+            );
+          },
+          
       },
     },
+    // {
+    //   name: "trnstIf",
+    //   label: "Last Trans Info",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //     // display:false
+    //   },
+    // },
     {
-      name: "trnstIf",
-      label: "Last Trans Info",
-      options: {
-        filter: true,
-        sort: false,
-        // display:false
-      },
-    },
-    {
-      name: "typeDspOne",
+      name: "type1dispensed",
       label: "Type1",
       options: {
         filter: true,
@@ -538,7 +559,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "typeDspTwo",
+      name: "type2dispensed",
       label: "type2",
       options: {
         filter: true,
@@ -547,7 +568,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "typeDspThree",
+      name: "type3dispensed",
       label: "Type3",
       options: {
         filter: true,
@@ -556,7 +577,7 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "typeDspfour",
+      name: "type4dispensed",
       label: "Type4",
       options: {
         filter: true,
@@ -691,68 +712,68 @@ const closeSignModal = () => {
   //   }
   // }, [ATMIDList]);
 
-  useEffect(()=>{
-    getBankCode()
-    getCardBin()
-    // getATMid()
-  },[])
+  // useEffect(()=>{
+  //   getBankCode()
+  //   getCardBin()
+  //   // getATMid()
+  // },[])
 
-  useEffect(()=>{
-    if (watch('bankcode')) {
-      getATMid()
-        }
+  // useEffect(()=>{
+  //   if (watch('bankcode')) {
+  //     getATMid()
+  //       }
     
-  },[watch('bankcode')])
+  // },[watch('bankcode')])
   
-  const getBankCode = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
+  // const getBankCode = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.bankCodes);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const getATMid = async () => {
-     setIsloading(true);
-    try {
-      const payload = {
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //     };
+  //     const response = await postApiData(apiList.GET_BANKCODE, payload);
+  //     setBankCode(response?.bankCodes);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // const getATMid = async () => {
+  //    setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-        bankcd:watch('bankcode')?.code
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //       bankcd:watch('bankcode')?.code
 
-      };
-      const response = await postApiData(apiList.GET_ATMID, payload);
-      setAtmID(response?.atmMasterModels);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     };
+  //     const response = await postApiData(apiList.GET_ATMID, payload);
+  //     setAtmID(response?.atmMasterModels);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
 
-  const getCardBin = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
+  // const getCardBin = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const payload = {
         
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_CARDBIN, payload);
-      setCardList(response.biList);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //     };
+  //     const response = await postApiData(apiList.GET_CARDBIN, payload);
+  //     setCardList(response.biList);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   
   // useEffect(()=>{
@@ -769,16 +790,21 @@ const closeSignModal = () => {
       const payload = {
         username:user?.username,
         sessionId: user?.sessionId,
-        atmId: data.atmid,
-        bankCd: data.bankCd,
-
-        toDate: data.toDate,
-        fromDate: data.fromDate,
-        csppinblock1: data.csppinblock1,
-        pinblock: data.pinblock,
-        currntSt: data.currntSt,
-        txnType: data.txnType,
+        atmId: data?.atmId,
+        bin: data?.bin,
+        cdNos: data?.cdNos,
+        txnType: data?.txnType,
+        currntSt: data?.currntSt,
+        csppinblock1: data?.csppinblock1,
+        transno: data?.transno,
+        value1: data?.value1,
+        value2: data?.value2,
+        fromDate: data?.fromDate,
+        toDate: data?.toDate,
        
+
+   
+
       };
 
       const response = await postApiData(
@@ -788,7 +814,7 @@ const closeSignModal = () => {
 
 
       if (response.status == true) {
-        setAtmMasterList(response.arrayList);
+        setAtmMasterList(response.list);
         settotalRecord(response.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
@@ -815,16 +841,18 @@ const closeSignModal = () => {
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
-      atmid: data?.atmid?.code,
-      bankCd: data?.bankcode?.code,
-      txnType:data?.transtype?.code,
+    atmId: data?.atmid,
+    bin: data?.cardbin,
+    cdNos: data?.cardno,
+    txnType: data?.transtype?.code,
     currntSt: data?.status?.code,
-    pinblock: data?.cardbin,
     csppinblock1: data?.cardreadmode?.code,
- 
-
+    transno: data?.transno,
+    value1: data?.fromacc,
+    value2: data?.toacc,
     fromDate: convertDate(data.fromDate,1),
     toDate: convertDate(data.toDate,1),
+
     };
     console.log("payload",payload);
     getTransactionList(1, payload)
