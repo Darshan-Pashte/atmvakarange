@@ -367,7 +367,9 @@ input[type="number"] {
   font-size: 0.926vw;
 }
 
-
+th{
+  background-color: red !important;
+}
 
 /* table border line */
 /* tbody,

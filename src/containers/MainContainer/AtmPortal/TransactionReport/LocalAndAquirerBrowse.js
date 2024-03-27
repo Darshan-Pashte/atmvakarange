@@ -343,9 +343,13 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     borderTopRightRadius: "16px",
     boxShadow: "none",
   },
-  '.css-1ygcj2i-MuiTableCell-root' :{
-backgroundColor:'red !important'
-  }
+//   '.css-1ygcj2i-MuiTableCell-root' :{
+// backgroundColor:'red !important'
+//   }
+'& .MuiTableHead-root': {
+  backgroundColor: 'red !important', // Background color for the table header
+  color: '#1D3039', // Text color for the table header
+},
 }));
 
 
@@ -413,18 +417,18 @@ backgroundColor:'red !important'
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value) => {
-          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'numeric',
-            year: 'numeric',
-              // hour: '2-digit',
-              // minute: '2-digit',
-              // second: '2-digit',
-          });
-          return formattedDate;
+        // customBodyRender: (value) => {
+        //   const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+        //     day: '2-digit',
+        //     month: 'numeric',
+        //     year: 'numeric',
+        //       // hour: '2-digit',
+        //       // minute: '2-digit',
+        //       // second: '2-digit',
+        //   });
+        //   return formattedDate;
           
-        },
+        // },
       },
     },
     {
