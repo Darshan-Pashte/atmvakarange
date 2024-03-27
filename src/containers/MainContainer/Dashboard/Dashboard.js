@@ -702,8 +702,8 @@ const Dashboard = () => {
     borderRadius: "8px",
     paddingLeft: "15px",
     paddingRight: "15px",
-    width: "100%",
-    height: "38px",
+    width: "110px",
+    height: "35px",
     "&:hover": {
       background: "#808080",
       color: "white",

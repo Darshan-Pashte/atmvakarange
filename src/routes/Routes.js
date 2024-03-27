@@ -356,15 +356,15 @@ const Routes = () => {
     
     {
       name: "User Master",
-      id: "mobapp",
-      url: array[0] == "1" ? "/mobapp" : null,
+      id: "usermaster",
+      url: array[0] == "1" ? "/usermaster" : null,
       roles: [],
       Icon: MobIcon,
       childRoutes: [
           {
             name: "Authorize",
-            id: "mobauthorize",
-            url: array[0] == "1" ?  "/mobauthorize" :null,
+            id: "authorize",
+            url: array[0] == "1" ?  "/authorize" :null,
             roles: [],
             arr : array[0],
             component: <MobileAppUserAuthorize />,
@@ -372,8 +372,8 @@ const Routes = () => {
           },
           {
             name: "Browse",
-            id: "mobappuser",
-            url: array[0] == "1" ?  "/mobappuser" :null,
+            id: "user",
+            url: array[0] == "1" ?  "/user" :null,
             component: <MobileAppUserBrowse />,
             arr: array[0],
              roles: [],
@@ -386,8 +386,8 @@ const Routes = () => {
           },
           {
             name: "ATM Alloaction",
-            id: "useratmmaster",
-            url: array[0] == "1" ? "/useratmmaster" : null,
+            id: "allocation",
+            url: array[0] == "1" ? "/allocation" : null,
             component: <UserATMAssignMasterBrowse />,
             arr: array[0],
             roles: [],
@@ -436,8 +436,8 @@ const Routes = () => {
 
     {
       name: "ATM Allocation",
-      id: "useratmmaster",
-      url: array[0] == "1" ? "/useratmmaster" : null,
+      id: "allocation",
+      url: array[0] == "1" ? "/allocation" : null,
       roles: [],
       Icon: UserIcon,
       childRoutes: [

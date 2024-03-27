@@ -242,7 +242,7 @@ reset()
             
               
                 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       User ID<sup className={classes.required}>*</sup>
@@ -279,7 +279,7 @@ reset()
                   </div>
                 </Grid>
                 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM ID<sup className={classes.required}>*</sup>

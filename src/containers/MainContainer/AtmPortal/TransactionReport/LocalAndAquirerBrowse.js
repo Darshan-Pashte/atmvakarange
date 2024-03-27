@@ -1385,36 +1385,7 @@ const closeSignModal = () => {
 
 
 
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Transaction Number
-                      {/* <sup className={classes.required}>*</sup> */}
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "transno",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Name",
-                          placeholder: "Transaction No.",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                        }}
-                        regExp={/^.*$/}
-                        // rules={{
-                        //   required:
-                        //     "Transaction No." + errorMessages.error_autocomplete_message,
-                        // }}
-                        required={false}
-                      />
-                    </div>
-                  </div>
-                </Grid>
+                
 
 
                 <Grid item xs={12} sm={6} md={3}>
@@ -1476,6 +1447,38 @@ const closeSignModal = () => {
                 </Grid>
 
 
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Transaction Number
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "transno",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Transaction No.",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                        }}
+                        regExp={/^.*$/}
+                        // rules={{
+                        //   required:
+                        //     "Transaction No." + errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                
                 <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
                   <div className={classes.frowtextaff}>From Amount

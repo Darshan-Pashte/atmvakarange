@@ -484,7 +484,7 @@ onSubmit()
           <div>
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       User Id

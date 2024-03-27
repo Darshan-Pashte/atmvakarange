@@ -60,8 +60,8 @@ const MobileAppUserBrowse = () => {
 
   const [isLoading, setIsloading] = useState(false);
 
-  const url = "/mobapp/modify";
-  const url1 = "/mobappuser";
+  const url = "/usermaster/modify";
+  const url1 = "/user";
   const location = useLocation();
 
 
@@ -413,7 +413,7 @@ console.log('data',data)
             <div className={classes.bluerowtext}>User Master</div>
             <div>
               <ColorButton1
-                onClick={() => navigate("/mobapp/create")}
+                onClick={() => navigate("/usermaster/create")}
                 variant="contained"
               >
                 Create
@@ -423,7 +423,7 @@ console.log('data',data)
           <div>
             <div className={classes.formbox}>
               <Grid container columnSpacing={2} rowSpacing={2}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       User Id

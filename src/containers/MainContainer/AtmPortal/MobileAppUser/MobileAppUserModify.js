@@ -367,7 +367,7 @@ getBankCode()
               >
 
 
-<Grid item xs={12} sm={6} md={4}>
+<Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       User Id<sup className={classes.required}>*</sup>
@@ -400,7 +400,7 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       First Name<sup className={classes.required}>*</sup>
@@ -432,7 +432,7 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Last Name<sup className={classes.required}>*</sup>
@@ -464,7 +464,7 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                        Mobile Number<sup className={classes.required}>*</sup>
@@ -497,7 +497,7 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       E-mail ID <sup className={classes.required}>*</sup>
@@ -533,7 +533,7 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Department<sup className={classes.required}>*</sup>
@@ -567,7 +567,7 @@ getBankCode()
                 </Grid>
          
              
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       User Level Code<sup className={classes.required}>*</sup>
@@ -607,7 +607,7 @@ getBankCode()
 
                 {watch('usercode')?.value == 'BANK' ? 
                 (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Bank Code<sup className={classes.required}>*</sup>
