@@ -335,6 +335,20 @@ const closeSignModal = () => {
 }
 
 
+const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
+  '& .MuiToolbar-root': {
+    backgroundColor: '#D0E8FB',
+    color: '#1D3039',
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "16px",
+    boxShadow: "none",
+  },
+  '.css-1ygcj2i-MuiTableCell-root' :{
+backgroundColor:'red !important'
+  }
+}));
+
+
   const columns = [
   
     {
@@ -1579,7 +1593,7 @@ const closeSignModal = () => {
             <div className={classes.Sbox2}>
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
-                <MUIDataTable
+                <CustomMUIDataTable 
                   title={"Transaction List"}
                   data={atmMasterList}
                   columns={columns}

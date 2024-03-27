@@ -144,7 +144,7 @@ input[type="number"] {
 /* MUI DataTable Header Row CSS */
 
 .css-1ygcj2i-MuiTableCell-root{
-  background: #F2F2F2 !important;
+  /* background: #F2F2F2 !important; */
   padding: -20px !important;
 
 }
