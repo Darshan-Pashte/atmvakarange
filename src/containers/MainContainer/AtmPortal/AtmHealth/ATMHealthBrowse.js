@@ -1000,7 +1000,7 @@ const closeSignModal = () => {
                 handleClose={closeModal}
                 closeSignModal={closeSignModal}
                 rowDataToDisplay={rowDataToDisplay}
-                show={"2"}
+                show={"1"}
                 title={"ATM Health Browse List"}
               />
             ) : null}

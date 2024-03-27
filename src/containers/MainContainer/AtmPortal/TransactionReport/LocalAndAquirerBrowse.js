@@ -116,7 +116,7 @@ const LocalAndAquirerBrowse = () => {
   console.log("resData", resData);
 
   useEffect(() => {
-    setValue("atmid", resData?.atmId);
+    setValue("atmid", resData?.atmId ? resData?.atmId :'');
     setValue("location", resData?.location);
   }, [resData]);
 
@@ -887,7 +887,7 @@ const closeSignModal = () => {
     console.log('Download Excel clicked',data);
     setIsloading(true);
     try {
-      const response = await fetch(apiList.LOCAL_ACQUIRE_DOWNLOAD + `?atmid=${watch('atmid')}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`);
+      const response = await fetch(apiList.LOCAL_ACQUIRE_DOWNLOAD+`?atmid=${watch('atmid') ? watch('atmid') :''}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`);
 
       console.log('response',response);
 
@@ -1055,7 +1055,7 @@ const closeSignModal = () => {
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM ID
-                      <sup className={classes.required}>*</sup>
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <Controller
@@ -1203,7 +1203,8 @@ const closeSignModal = () => {
 
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>Transaction Type</div>
+                    <div className={classes.frowtextaff}>Transaction Type
+                    <sup className={classes.required}>*</sup></div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
                         controlerProps={{

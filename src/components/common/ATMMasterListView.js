@@ -65,7 +65,7 @@ export default function ATMMasterListView({ open, handleOpen, handleClose, close
                                     <tr key={i} style={{border:'1px solid lightgrey'}}>
                                         <td className={classes.tableHead} style={{border:'1px solid lightgrey',textAlign:'center'}}>{header}</td> 
                                         {
-                                            show==="1" ? <td style={{textAlign:'center'}}>{mappedRowData[i]}</td> : <td style={{textAlign:'center'}}>{mappedRowData[i+2]}</td>
+                                            show==="1" ? <td style={{textAlign:'center'}}>{mappedRowData[i+1]}</td> : <td style={{textAlign:'center'}}>{mappedRowData[i+2]}</td>
                                             // <td>{rowData[i+(Number(show)-1)]}</td>
                                         }
                                     </tr>
