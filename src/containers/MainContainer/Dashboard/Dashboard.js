@@ -285,9 +285,9 @@ const Dashboard = () => {
   ];
  
 
-  useEffect(() => {
-    getDashboardCount();
-  }, [watch("bankcode")]);
+  // useEffect(() => {
+  //   getDashboardCount();
+  // }, [watch("bankcode")]);
 
   const getDashboardCount = async (data) => {
     console.log("data", data);
@@ -314,7 +314,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getDashboardGraph();
+    // getDashboardGraph();
     getSuccessGraph();
     getDashboardDay()
   }, []);

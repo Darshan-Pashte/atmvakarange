@@ -368,23 +368,28 @@ input[type="number"] {
 }
 
 th{
-  background-color: red !important;
+  background-color: #F2F2F2 !important;
+  font-size: 30px !important;
+  font-weight: 500 !important;
+  /* border-color: lightgrey !important;
+  border-style: solid !important;
+  border-width: 0.5px !important; */
 }
 
 /* table border line */
-/* tbody,
+tbody,
 td,
 tfoot,
 th,
 thead,
 tr {
   text-align: center !important;
-  border-color: lightgrey !important;
+  border-color: black !important;
   border-style: solid !important;
-  border-width: 0.5px !important;
+  border-width: 1px !important;
   cursor: pointer;
-   padding: 3px 8px !important;
-} */
+   padding: 3px 28px !important;
+}
 
 .css-18rat2z-MuiTableCell-root.MuiTableCell-head {
 text-align: center;

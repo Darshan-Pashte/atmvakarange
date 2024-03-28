@@ -335,22 +335,22 @@ const closeSignModal = () => {
 }
 
 
-const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
-  '& .MuiToolbar-root': {
-    backgroundColor: '#D0E8FB',
-    color: '#1D3039',
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
-    boxShadow: "none",
-  },
-//   '.css-1ygcj2i-MuiTableCell-root' :{
-// backgroundColor:'red !important'
-//   }
-'& .MuiTableHead-root': {
-  backgroundColor: 'red !important', // Background color for the table header
-  color: '#1D3039', // Text color for the table header
-},
-}));
+// const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
+//   '& .MuiToolbar-root': {
+//     backgroundColor: '#D0E8FB',
+//     color: '#1D3039',
+//     borderTopLeftRadius: "16px",
+//     borderTopRightRadius: "16px",
+//     boxShadow: "none",
+//   },
+// //   '.css-1ygcj2i-MuiTableCell-root' :{
+// // backgroundColor:'red !important'
+// //   }
+// '& .MuiTableHead-root': {
+//   backgroundColor: 'red !important', // Background color for the table header
+//   color: '#1D3039', // Text color for the table header
+// },
+// }));
 
 
   const columns = [
@@ -405,7 +405,7 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
 
     {
       name: "transactionnumber",
-      label: "Transaction No.",
+      label: "Number",
       options: {
         filter: true,
         sort: false,
@@ -413,7 +413,7 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     },
     {
       name: "transactiondate",
-      label: "Trans Date",
+      label: "Date",
       options: {
         filter: true,
         sort: false,
@@ -433,7 +433,7 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     },
     {
       name: "transactiontime",
-      label: "Trans Time",
+      label: "Time",
       options: {
         filter: true,
         sort: false,
@@ -441,7 +441,7 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
     },
     {
       name: "transactiontype",
-      label: "Trans Type",
+      label: "Type",
       options: {
         filter: true,
         sort: false,
@@ -1597,7 +1597,7 @@ const CustomMUIDataTable = styled(MUIDataTable)(({ theme }) => ({
             <div className={classes.Sbox2}>
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
-                <CustomMUIDataTable 
+                <MUIDataTable 
                   title={"Transaction List"}
                   data={atmMasterList}
                   columns={columns}

@@ -30,13 +30,14 @@ export default function ATMMasterListView({ open, handleOpen, handleClose, close
 
     console.log("rowData",rowData)
     const mappedRowData = rowData.map((value) => {
-        if (value === "Y") {
-          return "YES";
-        } else if (value === "N") {
-          return "NO";
-        } else {
-          return value;
-        }
+        return value;
+        // if (value === "Y") {
+        //   return "YES";
+        // } else if (value === "N") {
+        //   return "NO";
+        // } else {
+        //   return value;
+        // }
       });
     // const filteredRowData = rowData.filter((_, index) => headers.includes(rowDataToDisplay.headers[index]));
     // const headerDataMap = {};
