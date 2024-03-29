@@ -119,7 +119,7 @@ const UserATMAssignMasterModify = () => {
             sessionId: user?.sessionId,
           };
           const response = await postApiData(apiList.GET_ATMID, payload);
-          setAtmID(response?.atmMasterModels);
+          setAtmID(response?.data?.atmMasterModels);
           setIsloading(false);
         } catch (err) {
           console.log(err);
@@ -141,13 +141,13 @@ const UserATMAssignMasterModify = () => {
       };
       console.log("payload", payload);
       const response = await postApiData(apiList.USER_ATM_ASSIGN_MODIFY, payload);
-      if (response?.status == true) {
-        SweetAlertPopup(response.message, "Success", "success");
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data?.message, "Success", "success");
         // reset()
         navigate("/mobapp/useratmmaster");
         setIsloading(false);
       } else {
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {

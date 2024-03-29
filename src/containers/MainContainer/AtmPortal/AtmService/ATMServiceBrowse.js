@@ -778,9 +778,9 @@ const closeModal = () => {
       );
 
 
-      if (response.status == true) {
-        setAtmMasterList(response.atmMasterNewsLst);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.atmMasterNewsLst);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {

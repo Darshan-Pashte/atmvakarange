@@ -156,18 +156,18 @@ export default function LoginOTPModal({
     console.log("payload", payload);
     const response = await postApiData(apiList.LOGIN_VALIDATE_OTP, payload);
     console.log("response", response);
-    if (response?.status == true) {
+    if (response?.data?.status == true) {
       setIsloading(false);
       //   navigate('/atmadminportal/bankmaster')
       // popupAlert(response.message, "Success", "success");
-      dispatch(loginSuccess(response));
+      dispatch(loginSuccess(response?.data));
 
       handleClose();
       reset();
       setIsloading(false);
-    } else if (response.status == false) {
-      if (response?.respCode == "OE") {
-        popupAlert(response.message, "Error", "error");
+    } else if (response?.data?.status == false) {
+      if (response?.data?.respCode == "OE") {
+        popupAlert(response?.data?.message, "Error", "error");
         setIsloading(false);
         handleClose();
         handleFocus();
@@ -181,8 +181,8 @@ export default function LoginOTPModal({
         //  popupAlert(response.message, "Error", "error")
         // seShowtMsg(true)
         // setTimes(response?.remainTime)
-        setMsg(response.message);
-        setTries(response?.otpAttempt + 1);
+        setMsg(response?.data?.message);
+        setTries(response?.data?.otpAttempt + 1);
       }
       reset();
     }
@@ -197,7 +197,7 @@ export default function LoginOTPModal({
         smsId:userId,
        };
       const response = await postApiData(apiList.RESEND_OTP, payload);
-      if (response?.status == true) {
+      if (response?.data?.status == true) {
         // SweetAlertPopup(response.message, "Success", "success");
 
         setIsloading(false);

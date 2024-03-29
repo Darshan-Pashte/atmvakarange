@@ -230,13 +230,13 @@ const MobileAppUserModify = () => {
       };
       console.log("payload", payload);
       const response = await postApiData(apiList.MOBILE_APP_USER_MODIFY, payload);
-      if (response?.status == true) {
-        SweetAlertPopup(response.message, "Success", "success");
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data?.message, "Success", "success");
         // reset()
         navigate("/mobapp/mobappuser");
         setIsloading(false);
       } else {
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {
@@ -296,7 +296,7 @@ getBankCode()
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.bankCodes);
+      setBankCode(response?.data?.bankCodes);
       setIsloading(false);
     } catch (err) {
       console.log(err);

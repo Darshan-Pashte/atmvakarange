@@ -153,7 +153,7 @@ export default function ForgotPasswordOTPModal({
     console.log("payload", payload);
     const response = await postApiData(apiList.FORGOT_PASSWORD_OTP_VALIDATE, payload);
     console.log('response',response)
-    if (response?.status == true) {
+    if (response?.data?.status == true) {
         popupAlert(response.message, "Success", "success");
         handleResetPass()
         
@@ -164,9 +164,9 @@ export default function ForgotPasswordOTPModal({
       reset();
       setIsloading(false);
     } 
-     else if (response.status == false) {
-      if (response?.respCode == "OE") {
-        popupAlert(response.message, "Error", "error");
+     else if (response?.data?.status == false) {
+      if (response?.data?.respCode == "OE") {
+        popupAlert(response?.data?.message, "Error", "error");
         setIsloading(false);
         handleClose();
         handleFocus();
@@ -182,8 +182,8 @@ export default function ForgotPasswordOTPModal({
         //  popupAlert(response.message, "Error", "error")
         // seShowtMsg(true)
         // setTimes(response?.remainTime)
-        setMsg(response.message);
-        setTries(response?.otpAttempt + 1);
+        setMsg(response?.data?.message);
+        setTries(response?.data?.otpAttempt + 1);
       }
     }
       
@@ -198,7 +198,7 @@ export default function ForgotPasswordOTPModal({
         smsId:userId,
        };
       const response = await postApiData(apiList.RESEND_FORGET_OTP, payload);
-      if (response?.status == true) {
+      if (response?.data?.status == true) {
         // SweetAlertPopup(response.message, "Success", "success");
 
         setIsloading(false);

@@ -124,19 +124,19 @@ const Login = () => {
       };
 
       const response = await postApiData(apiList.LOGIN, payload);
-      // console.log(response);
-      if (response?.status == true) {
+      console.log(response);
+      if (response?.data?.status == true) {
         // dispatch(loginSuccess(response.data));
-        setUserId(response.smsId);
+        setUserId(response?.data?.smsId);
         setUserName(data.email);
         // dispatch(otpSuccess(data.email));
-        dispatch(otpSuccess(response))
+        dispatch(otpSuccess(response?.data))
         handleOpen();
         reset();
         setIsLoading(false);
       } else {
         // dispatch(loginFailure(response.message));
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data.message, "Error", "error");
         reset()
         setIsLoading(false);
       }

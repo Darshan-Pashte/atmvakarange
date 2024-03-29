@@ -135,13 +135,13 @@ const ResetPassword = () => {
     };
     const response = await postApiData(apiList.RESET_PASSWORD, payload);
     console.log("response", response);
-    if (response.status == true) {
+    if (response?.data?.status == true) {
       setisLoading(false)
         handleLogin();
-        SweetAlertPopup(response.message, "Success", "success");
+        SweetAlertPopup(response?.data?.message, "Success", "success");
       } else {
         setisLoading(false)
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
       }
     };
   

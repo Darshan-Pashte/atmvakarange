@@ -124,7 +124,7 @@ const UserATMAssignMasterCreate = () => {
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_USERID, payload);
-      setUserId(response.userIdsLst);
+      setUserId(response?.data?.userIdsLst);
       setIsloading(false);
     } catch (err) {
       console.log(err);
@@ -139,7 +139,7 @@ const UserATMAssignMasterCreate = () => {
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_ATMID, payload);
-      setAtmID(response?.atmMasterModels);
+      setAtmID(response?.data?.atmMasterModels);
       setIsloading(false);
     } catch (err) {
       console.log(err);
@@ -159,12 +159,12 @@ const UserATMAssignMasterCreate = () => {
     
       };
       const response = await postApiData(apiList.USER_ATM_ASSIGN_CREATE, payload);
-      if (response?.status == true) {
-        SweetAlertPopup(response.message, "Success", "success");
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data?.message, "Success", "success");
 reset()
         setIsloading(false);
       } else {
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {

@@ -67,8 +67,8 @@ getData()
             atmId:rowData[0]
           };
           const response = await postApiData(apiList.ATM_SERVICE_DATA+`${apipath}`, payload);
-          if(response.status == true){
-            setBankCode(response?.message);
+          if(response?.data?.status == true){
+            setBankCode(response?.data?.message);
           setIsloading(false);
           }
           

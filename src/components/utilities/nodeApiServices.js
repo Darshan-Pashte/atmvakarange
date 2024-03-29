@@ -1,4 +1,6 @@
 import SweetAlertPopup from "../common/sweetAlertPopup";
+import { baseUrl } from "./nodeApiList";
+import axios from "axios";  
 
 const validateResponse = (apiData) => {
     if (typeof apiData == "undefined") {
@@ -27,24 +29,24 @@ const validateResponse = (apiData) => {
     return validateResponse(apiData);
   }
   
-  export async function postApiData(url,payload) {
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+  // export async function postApiData(url,payload) {
+  //   const response = await fetch(url, {
+  //     method: "POST",
+  //     body: JSON.stringify(payload),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //   });
   
-    const apiData = await response.json();
-    if(apiData?.respCode == "IS"){
-      sessionStorage.clear();
-      localStorage.clear();
-      window.location.reload();
-    }
-    return validateResponse(apiData);
-  }
+  //   const apiData = await response.json();
+  //   if(apiData?.respCode == "IS"){
+  //     sessionStorage.clear();
+  //     localStorage.clear();
+  //     window.location.reload();
+  //   }
+  //   return validateResponse(apiData);
+  // }
   
   export async function postApiDataNew(url,payload, handleLogout) {
     // const token=sessionStorage.getItem("token")
@@ -103,4 +105,49 @@ const validateResponse = (apiData) => {
     return validateResponse(apiData);
   }
   
+// AXIOS 
+  const API = axios.create({
+    baseURL: baseUrl,
+  });
+
+  // API.interceptors.request.use((config) => {
+  //   const token = sessionStorage.getItem("TOKEN");
+  //   const username = sessionStorage.getItem("username");
+  //   const branch = sessionStorage.getItem("branch");
+  //   if (token) config.headers.authorization = `Bearer ${JSON.parse(token)}`;
+  //   if (username) {
+  //     config.headers["X-Username"] = JSON.parse(username);
+  //   }
+  //   if (branch) {
+  //     config.headers["X-Branch"] = JSON.parse(branch);
+  //   }
+  //   return config;
+  // });
   
+  // export default API;
+
+  // AXIOS POST Request
+export async function postApiData(url, payload) {
+  const response = await API.post(url, payload, {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  });
+  if(response?.respCode == "IS"){
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.reload();
+  }
+  return validateResponse(response);
+}
+
+
+// Axios GET
+export async function axiosGetApiData(url) {
+  const response = await API.get(url);
+  if(response?.respCode == "IS"){
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.reload();
+  }
+  return validateResponse(response);
+}

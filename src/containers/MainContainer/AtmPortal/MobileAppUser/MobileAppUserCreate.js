@@ -247,15 +247,15 @@ const MobileAppUserCreate = () => {
       };
       console.log('payload',payload)
       const response = await postApiData(apiList.MOBILE_APP_USER_CREATE, payload);
-      if (response?.status == true) {
+      if (response?.data?.status == true) {
       
-        SweetAlertPopup(response.message, "Success", "success");
+        SweetAlertPopup(response?.data?.message, "Success", "success");
         reset()
        
         setIsloading(false);
       } else {
        
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {
@@ -315,7 +315,7 @@ getBankCode()
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.bankCodes);
+      setBankCode(response?.data?.bankCodes);
       setIsloading(false);
     } catch (err) {
       console.log(err);

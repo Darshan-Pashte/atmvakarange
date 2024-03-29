@@ -20,8 +20,8 @@ export const login = (payload) => async (dispatch) => {
 
         const response = await postApiData(apiList.LOGIN, payload);
 
-        if (response.status) {
-            dispatch(loginSuccess(response.data));
+        if (response?.data?.status) {
+            dispatch(loginSuccess(response?.data?.data));
             // sessionStorage.setItem("TOKEN", JSON.stringify(response.data.sessionId));
             sessionStorage.setItem("menu", "011111111001111111111111111111111111111111111111");
             //     sessionStorage.setItem("lastLogin", response?.data?.lastLoginDate);
@@ -34,9 +34,9 @@ export const login = (payload) => async (dispatch) => {
             //     text: 'Welcome!',
             //   });
         } else {
-            dispatch(loginFailure(response.message));
+            dispatch(loginFailure(response?.data?.message));
             // popupAlert(response.message, 'Error', 'error');
-            SweetAlertPopup(response.message,"Login Failed","error")
+            SweetAlertPopup(response?.data?.message,"Login Failed","error")
             // Swal.fire({
             //     icon: 'error',
             //     title: 'Login Failed',
@@ -59,8 +59,8 @@ export const loginCorporate = (payload) => async (dispatch) => {
 
         const response = await postApiData(apiList.LOGIN, payload);
 
-        if (response.status) {
-            dispatch(loginSuccessCorporate(response.data));
+        if (response?.data?.status) {
+            dispatch(loginSuccessCorporate(response?.data?.data));
             // sessionStorage.setItem("TOKEN", JSON.stringify(response.data.sessionId));
                 sessionStorage.setItem("menu", "10000000011000000000000000000000000");
             //     sessionStorage.setItem("lastLogin", response?.data?.lastLoginDate);
@@ -73,9 +73,9 @@ export const loginCorporate = (payload) => async (dispatch) => {
             //     text: 'Welcome!',
             //   });
         } else {
-            dispatch(loginFailure(response.message));
+            dispatch(loginFailure(response?.data?.message));
             // popupAlert(response.message, 'Error', 'error');
-            SweetAlertPopup(response.message,"Login Failed","error")
+            SweetAlertPopup(response?.data?.message,"Login Failed","error")
             // Swal.fire({
             //     icon: 'error',
             //     title: 'Login Failed',

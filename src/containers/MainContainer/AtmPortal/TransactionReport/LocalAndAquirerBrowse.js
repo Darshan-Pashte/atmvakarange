@@ -6,7 +6,7 @@ import { Box, Grid, IconButton, InputAdornment } from "@mui/material";
 import { Controller,useForm } from "react-hook-form";
 import MUIDataTable from "mui-datatables";
 import DatePickerForm from "../../../../components/common/datePickerForm";
-import { postApiData } from "../../../../components/utilities/nodeApiServices";
+import { axiosGetApiData, postApiData } from "../../../../components/utilities/nodeApiServices";
 import {
   ShankarSirUrl,
   ShankarSirUrlServer,
@@ -831,9 +831,9 @@ const closeSignModal = () => {
       );
 
 
-      if (response.status == true) {
-        setAtmMasterList(response.list);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.list);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
@@ -905,12 +905,13 @@ const closeSignModal = () => {
     console.log('Download Excel clicked',data);
     setIsloading(true);
     try {
-      const response = await fetch(apiList.LOCAL_ACQUIRE_DOWNLOAD+`?atmid=${watch('atmid') ? watch('atmid') :''}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`);
+      const response = await axiosGetApiData(apiList.LOCAL_ACQUIRE_DOWNLOAD+`?atmid=${watch('atmid') ? watch('atmid') :''}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`,
+      {responseType: 'arraybuffer'});
 
       console.log('response',response);
+      const arrayBuffer =response.data;
 
-
-      const arrayBuffer = await response.arrayBuffer();
+      // const arrayBuffer = await response.arrayBuffer();
       const blob = new Blob([arrayBuffer]);
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");

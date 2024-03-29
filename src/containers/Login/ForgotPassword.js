@@ -107,12 +107,12 @@ const ForgotPassword = () => {
       };
       
       const response = await postApiData(apiList.FORGOT_PASSWORD, payload);
-      // console.log(response);
-      if (response?.status == true) {
+      console.log('response',response);
+      if (response?.data?.status == true) {
        
-        setUserId(response.smsId);
+        setUserId(response?.data.smsId);
         setUserName(data.email);
-        setInfo(response)
+        setInfo(response?.data)
         reset()
         handleOpen()
         setIsLoading(false);

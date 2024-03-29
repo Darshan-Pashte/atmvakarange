@@ -403,14 +403,14 @@ const ATMMasterCreate = () => {
       };
       console.log('payload',payload)
       const response = await postApiData(apiList.ATM_MASTER_CREATE, payload);
-      if (response?.status == true) {
+      if (response?.data?.status == true) {
       
-        SweetAlertPopup(response.message, "Success", "success");
+        SweetAlertPopup(response?.data?.message, "Success", "success");
        reset()
         setIsloading(false);
       } else {
        
-        SweetAlertPopup(response.message, "Error", "error");
+        SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {

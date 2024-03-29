@@ -314,9 +314,9 @@ console.log('data',data)
       );
 
 
-      if (response.status == true) {
-        setAtmMasterList(response.arrayList);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.arrayList);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {

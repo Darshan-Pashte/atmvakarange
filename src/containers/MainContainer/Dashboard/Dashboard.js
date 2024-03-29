@@ -7,7 +7,7 @@ import CardWithMultipleChips from "../Dashboard/CardWithMultipleChips/CardWithMu
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { postApiData } from "../../../components/utilities/nodeApiServices";
+import { axiosGetApiData, postApiData } from "../../../components/utilities/nodeApiServices";
 import { apiList } from "../../../components/utilities/nodeApiList";
 import SweetAlertPopup from "../../../components/common/sweetAlertPopup";
 import { REMOVE_USER } from "../../../constants";
@@ -178,8 +178,8 @@ const Dashboard = () => {
       };
       const response = await postApiData(apiList.GET_BANKCODE, payload);
 
-      if (response.status == true) {
-        setBankCodes(response.bankCodes);
+      if (response?.data?.status == true) {
+        setBankCodes(response?.data?.bankCodes);
       }
     } catch (err) {
       console.log(err);
@@ -301,10 +301,10 @@ const Dashboard = () => {
       console.log("payload", payload);
       const response = await postApiData(apiList.DASHBOARD_COUNT, payload);
       console.log("response", response);
-      if (response?.status == true) {
-        setloList(response?.loList);
-        setAcqList(response?.acqcntSuccs);
-        setIssList(response?.iSuccs);
+      if (response?.data?.status == true) {
+        setloList(response?.data?.loList);
+        setAcqList(response?.data?.acqcntSuccs);
+        setIssList(response?.data?.iSuccs);
         setIsloading(false);
       }
     } catch (err) {
@@ -333,9 +333,9 @@ const Dashboard = () => {
         payload
       );
       console.log("Graph response", response);
-      if (response?.status == true) {
-        setGraphSuccess(response?.acAqrTransSuccCnts);
-        setGraphFail(response?.aqrTransFailCnts);
+      if (response?.data?.status == true) {
+        setGraphSuccess(response?.data?.acAqrTransSuccCnts);
+        setGraphFail(response?.data?.aqrTransFailCnts);
         setIsloading(false);
         // setloList(response?.loList)
         // setAcqList(response?.acqcntSuccs)
@@ -361,8 +361,8 @@ const Dashboard = () => {
         payload
       );
       console.log("Graph response", response);
-      if (response?.status == true) {
-      setDayList(response?.list)
+      if (response?.data?.status == true) {
+      setDayList(response?.data?.list)
         setIsloading(false);
         // setloList(response?.loList)
         // setAcqList(response?.acqcntSuccs)
@@ -384,9 +384,9 @@ const Dashboard = () => {
       console.log("payload", payload);
       const response = await postApiData(apiList.DASHBOARD_GRAPH, payload);
       console.log("Graph response", response);
-      if (response?.status == true) {
-        setGraphlocal(response?.localgraph);
-        setGraphIssuer(response?.issuergraph);
+      if (response?.data?.status == true) {
+        setGraphlocal(response?.data?.localgraph);
+        setGraphIssuer(response?.data?.issuergraph);
         setIsloading(false);
         // setloList(response?.loList)
         // setAcqList(response?.acqcntSuccs)
@@ -629,10 +629,10 @@ const Dashboard = () => {
           `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
-
-      if (response.status == true) {
-        setAtmMasterList(response.arrayList);
-        settotalRecord(response.totalRecords);
+console.log('response',response)
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.arrayList);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
@@ -667,26 +667,28 @@ const Dashboard = () => {
     //  reset(defaultFormData);
   };
 
-  const onDownloadExcel = async (data) => {
-    setIsloading(true);
-    try {
-      const response = await fetch(apiList.DASHBOARD_DOWNLOAD_EXCEL);
-      const arrayBuffer = await response.arrayBuffer();
-      const blob = new Blob([arrayBuffer]);
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `Acquirer Transaction${convertDate(new Date(),1)}.xlsx`;  
-      // link.download = `Sample File.csv`;  
-      // link.download = `${value}.xlsx`;
-      link.click();
-      URL.revokeObjectURL(url);
-      link.remove();
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    const onDownloadExcel = async (data) => {
+      setIsloading(true);
+      try {
+        const response = await axiosGetApiData(apiList.DASHBOARD_DOWNLOAD_EXCEL,{
+          responseType: 'arraybuffer'
+      });
+        const arrayBuffer =response.data;
+        const blob = new Blob([arrayBuffer]);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `Acquirer Transaction${convertDate(new Date(),1)}.xlsx`;  
+        // link.download = `Sample File.csv`;  
+        // link.download = `${value}.xlsx`;
+        link.click();
+        URL.revokeObjectURL(url);
+        link.remove();
+        setIsloading(false);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",

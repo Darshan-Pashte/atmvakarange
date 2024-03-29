@@ -321,9 +321,9 @@ console.log('data',data)
       );
 
 
-      if (response.status == true) {
-        setAtmMasterList(response.arrayList);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.arrayList);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
@@ -395,18 +395,18 @@ console.log('data',data)
         userId:rowData.userId,
       };
       const response = await postApiData(apiList.MOBILE_APP_USER_AUTHORIZE, payload);
-      console.log("response",response?.status);
+      console.log("response",response?.data?.status);
       console.log("rowdata",rowData);
-      if(response?.status === true){
+      if(response?.data?.status === true){
         
       
-        SweetAlertPopup(response?.message , "Success" , "success")
+        SweetAlertPopup(response?.data?.message , "Success" , "success")
 onSubmit()
         setIsloading(false)
         
       }
       else{
-        SweetAlertPopup(response?.message , "Error" , "error")
+        SweetAlertPopup(response?.data?.message , "Error" , "error")
         setIsloading(false)
       }
       // reset()

@@ -835,14 +835,14 @@ const closeModal = () => {
             <div className={classes.Sbox2}>
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
-              <ThemeProvider theme={getMuiTheme()}>
-                <MUIDataTable
-                  title={" ATM Error Browse List"}
-                  data={atmMasterList}
-                  columns={columns}
-                  options={options}
-                />
-                  </ThemeProvider>
+                <ThemeProvider theme={getMuiTheme()}>
+                  <MUIDataTable
+                    title={" ATM Error Browse List"}
+                    data={atmMasterList}
+                    columns={columns}
+                    options={options}
+                  />
+                    </ThemeProvider>
               </div>
             </div>
 

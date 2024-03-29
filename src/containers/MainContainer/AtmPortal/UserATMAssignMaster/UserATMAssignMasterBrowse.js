@@ -314,7 +314,7 @@ const closeSignModal = () => {
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_USERID, payload);
-      setUserId(response.userIdsLst);
+      setUserId(response?.data?.userIdsLst);
       setIsloading(false);
     } catch (err) {
       console.log(err);
@@ -346,9 +346,9 @@ const closeSignModal = () => {
       );
 
 
-      if (response.status == true) {
-        setAtmMasterList(response.arrayList);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.arrayList);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {

@@ -677,21 +677,21 @@ const ATMMasterBrowse = () => {
   // };
 
   
-  const getATMid = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
-        username: user?.username,
-        sessionId: user?.sessionId,
-        // bankcd:watch('bankcode')?.code
-      };
-      const response = await postApiData(apiList.GET_ATMID_SINGLE, payload);
-      setAtmID(response?.atmMasterModels);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getATMid = async () => {
+  //   setIsloading(true);
+  //   try {
+  //     const payload = {
+  //       username: user?.username,
+  //       sessionId: user?.sessionId,
+  //       // bankcd:watch('bankcode')?.code
+  //     };
+  //     const response = await postApiData(apiList.GET_ATMID_SINGLE, payload);
+  //     setAtmID(response?.atmMasterModels);
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   // useEffect(()=>{
   //   getTransactionListView()
@@ -721,9 +721,9 @@ const ATMMasterBrowse = () => {
         payload
       );
 
-      if (response.status == true) {
-        setAtmMasterList(response.atmMasterNewsLst);
-        settotalRecord(response.totalRecords);
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.atmMasterNewsLst);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {

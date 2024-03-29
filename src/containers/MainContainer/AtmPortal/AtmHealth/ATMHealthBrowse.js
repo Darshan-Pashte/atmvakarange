@@ -744,10 +744,11 @@ const closeSignModal = () => {
         payload
       );
 
-
-      if (response.status == true) {
-        setAtmMasterList(response.atmHealthModels);
-        settotalRecord(response.totalRecords);
+console.log('response',response)
+console.log('payload',payload)
+      if (response?.data?.status == true) {
+        setAtmMasterList(response?.data?.atmHealthModels);
+        settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
