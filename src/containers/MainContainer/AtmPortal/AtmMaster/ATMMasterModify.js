@@ -487,7 +487,7 @@ console.log("state", state);
                 rowSpacing={2}
                 style={{ paddingRight: "2vw" }}
               >
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM ID<sup className={classes.required}>*</sup>
@@ -520,7 +520,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Luno<sup className={classes.required}>*</sup>
@@ -551,7 +551,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Location<sup className={classes.required}>*</sup>
@@ -583,7 +583,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Machine IP<sup className={classes.required}>*</sup>
@@ -615,7 +615,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type1 Denom<sup className={classes.required}>*</sup>
@@ -651,7 +651,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type2 Denom<sup className={classes.required}>*</sup>
@@ -687,7 +687,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type3 Denom<sup className={classes.required}>*</sup>
@@ -723,7 +723,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type4 Denom<sup className={classes.required}>*</sup>
@@ -759,7 +759,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type1 Count<sup className={classes.required}>*</sup>
@@ -791,7 +791,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type2 Count<sup className={classes.required}>*</sup>
@@ -823,7 +823,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type3 Count<sup className={classes.required}>*</sup>
@@ -855,7 +855,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Type4 Count<sup className={classes.required}>*</sup>
@@ -888,7 +888,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       MAX Notes<sup className={classes.required}>*</sup>
@@ -920,10 +920,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      ATM Status<sup className={classes.required}>*</sup>
+                      ATM Status
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
@@ -954,10 +955,11 @@ console.log("state", state);
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Transaction Count<sup className={classes.required}>*</sup>
+                      Transaction Count
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
@@ -984,9 +986,9 @@ console.log("state", state);
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM TYPE<sup className={classes.required}>*</sup>
@@ -1022,10 +1024,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      DIP CARD<sup className={classes.required}>*</sup>
+                      DIP CARD
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1056,7 +1059,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Address<sup className={classes.required}>*</sup>
@@ -1090,7 +1093,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Pin Code<sup className={classes.required}>*</sup>
@@ -1122,10 +1125,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Server IP<sup className={classes.required}>*</sup>
+                      Server IP
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
@@ -1154,7 +1158,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       TMK<sup className={classes.required}>*</sup>
@@ -1185,10 +1189,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      TPK TMK<sup className={classes.required}>*</sup>
+                      TPK TMK
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
@@ -1217,10 +1222,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      TPK LMK<sup className={classes.required}>*</sup>
+                      TPK LMK
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
@@ -1249,10 +1255,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Flag<sup className={classes.required}>*</sup>
+                      Flag
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1282,10 +1289,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Next Download Date<sup className={classes.required}>*</sup>
+                      Next Download Date
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                      <DatePickerForm
@@ -1308,7 +1316,7 @@ console.log("state", state);
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Terminal Type<sup className={classes.required}>*</sup>
@@ -1375,7 +1383,7 @@ console.log("state", state);
                   </div>
                 </Grid> */}
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Download File Name
@@ -1408,7 +1416,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Acquired ID<sup className={classes.required}>*</sup>
@@ -1440,7 +1448,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Resources<sup className={classes.required}>*</sup>
@@ -1472,7 +1480,7 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       ATM MAKE<sup className={classes.required}>*</sup>
@@ -1508,10 +1516,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Down_is_Request<sup className={classes.required}>*</sup>
+                      Down_is_Request
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1541,10 +1550,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Service_is_Req<sup className={classes.required}>*</sup>
+                      Service_is_Req
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1574,11 +1584,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
                       Supply_Counter_req
-                      <sup className={classes.required}>*</sup>
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1608,10 +1618,11 @@ console.log("state", state);
                   </div>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      DEPBIN<sup className={classes.required}>*</sup>
+                      DEPBIN
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm

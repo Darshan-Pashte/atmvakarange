@@ -1093,8 +1093,10 @@ const closeSignModal = () => {
                       // }}
                       render={({ field, fieldState }) => {
                         const handleInputChange = (event) => {
-                          const regex = /^[A-Z0-9]+$/;
+                          // const regex = /^[A-Z0-9]+$/;
+                          const regex = /^[A-Z0-9\s]+$/;
                           const { name, value } = event.target;
+                          
                           const isValidInput =
                             regex.test(value) || value === "";
 
@@ -1142,7 +1144,10 @@ const closeSignModal = () => {
                                   </IconButton>
                                 </InputAdornment> 
                               ),
+                              inputProps : {maxLength: 10}
                             }}
+                            
+                            // maxLength={10} 
                             // error={!!fieldState.error}
                             // helperText={fieldState.error?.message}
                
@@ -1391,7 +1396,8 @@ const closeSignModal = () => {
                           // style: { width: "33vw" },
                           fullWidth: true,
                         }}
-                        regExp={/^.*$/}
+                        // regExp={/^.*$/}
+                        regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
                         //     "Card No." + errorMessages.error_autocomplete_message,
@@ -1487,7 +1493,7 @@ const closeSignModal = () => {
                           // style: { width: "33vw" },
                           fullWidth: true,
                         }}
-                        regExp={/^.*$/}
+                        regExp={/^[0-9]+$/}
                         // rules={{
                         //   required:
                         //     "Transaction No." + errorMessages.error_autocomplete_message,
@@ -1525,7 +1531,7 @@ const closeSignModal = () => {
                         }, 
                         
                       }}
-                      regExp={/^.*$/}
+                      regExp={/^[0-9]+$/}
                       required={false}
                     />
                   </div>
@@ -1558,7 +1564,7 @@ const closeSignModal = () => {
                           style: { textAlign: 'right' }, // Align placeholder text to the right
                         },                    
                       }}
-                      regExp={/^.*$/}
+                      regExp={/^[0-9]+$/}
                       required={false}
                     />
                   </div>

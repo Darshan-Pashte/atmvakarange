@@ -959,6 +959,7 @@ const ATMMasterBrowse = () => {
                                   </IconButton>
                                 </InputAdornment> 
                               ),
+                              inputProps : {maxLength: 10}
                             }}
                             // error={!!fieldState.error}
                             // helperText={fieldState.error?.message}

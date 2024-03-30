@@ -144,7 +144,7 @@ const UserATMAssignMasterModify = () => {
       if (response?.data?.status == true) {
         SweetAlertPopup(response?.data?.message, "Success", "success");
         // reset()
-        navigate("/mobapp/useratmmaster");
+        navigate("/usermaster/allocation");
         setIsloading(false);
       } else {
         SweetAlertPopup(response?.data?.message, "Error", "error");

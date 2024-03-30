@@ -82,40 +82,30 @@ const MobileAppUserCreate = () => {
     setToken(sessionStorage.getItem("TOKEN"));
   }, []);
 
-  useEffect(() => {
-    vpaCreate1();
-  }, [token, username]);
 
-  useEffect(() => {
-    vpaCreate();
-  }, [token, username]);
 
-  const handleOpen = () => {
-    setOpenPop(!openPop);
-  };
-
-  const vpaCreate1 = async () => {
-    setIsBankloading(true);
-    try {
-      const payload = {
-        requestCode: "getBankList",
-        userId: username,
-        sessionId: token,
-        bankCode: "ALL",
-      };
-      const response = await postApiData(apiList.ShankarSirsUrl, payload);
-      if (response.respCode == "IS") {
-        // authDispatch({ type: REMOVE_USER });
-        navigate("/auth/login");
-        SweetAlertPopup(response?.respMsg, "Error", "error");
-      }
-      setbankNamee(response?.bankList);
-      setIsBankloading(false);
-    } catch (err) {
-      console.log(err);
-      setIsBankloading(false);
-    }
-  };
+  // const vpaCreate1 = async () => {
+  //   setIsBankloading(true);
+  //   try {
+  //     const payload = {
+  //       requestCode: "getBankList",
+  //       userId: username,
+  //       sessionId: token,
+  //       bankCode: "ALL",
+  //     };
+  //     const response = await postApiData(apiList.ShankarSirsUrl, payload);
+  //     if (response.respCode == "IS") {
+  //       // authDispatch({ type: REMOVE_USER });
+  //       navigate("/auth/login");
+  //       SweetAlertPopup(response?.respMsg, "Error", "error");
+  //     }
+  //     setbankNamee(response?.bankList);
+  //     setIsBankloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //     setIsBankloading(false);
+  //   }
+  // };
 
   const filteredData =
     bankNamee &&
@@ -123,112 +113,112 @@ const MobileAppUserCreate = () => {
       ?.filter((item) => item.hasOwnProperty("bankcode"))
       ?.map((item) => ({ code: item.bankcode, value: item.bankname }));
 
-  const vpaCreate = async () => {
-    setIsMidloading(true);
-    try {
-      const payload = {
-        requestCode: "getMccList",
-        userId: username,
-        sessionId: token,
-      };
-      const response = await postApiData(apiList.ShankarSirsUrl, payload);
-      if (response.respCode == "IS") {
-        // authDispatch({ type: REMOVE_USER });
-        navigate("/auth/login");
-        SweetAlertPopup(response?.respMsg, "Error", "error");
-      }
-      setUpiList(response?.data);
-      setIsMidloading(false);
-    } catch (err) {
-      console.log(err);
-      setIsMidloading(false);
-    }
-  };
+  // const vpaCreate = async () => {
+  //   setIsMidloading(true);
+  //   try {
+  //     const payload = {
+  //       requestCode: "getMccList",
+  //       userId: username,
+  //       sessionId: token,
+  //     };
+  //     const response = await postApiData(apiList.ShankarSirsUrl, payload);
+  //     if (response.respCode == "IS") {
+  //       // authDispatch({ type: REMOVE_USER });
+  //       navigate("/auth/login");
+  //       SweetAlertPopup(response?.respMsg, "Error", "error");
+  //     }
+  //     setUpiList(response?.data);
+  //     setIsMidloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //     setIsMidloading(false);
+  //   }
+  // };
 
-  const handleVerifyPan = async () => {
-    try {
-      if (!/^([A-Za-z]{5})(\d{4})([A-Za-z]{1})$/.test(watch("panNo"))) {
-        return SweetAlertPopup(
-          "Please Enter Valid PAN Number",
-          "Error",
-          "error"
-        );
-      }
-      setIsloading(true);
-      let payload = {
-        requestCode: "panValidate",
-        userId: username,
-        sessionId: token,
-        createVPARequest: {
-          bankCode: watch("bankCode")?.code,
-          panNo: watch("panNo"),
-        },
-      };
-      const response = await postApiData(apiList.ShankarSirsUrl, payload);
+  // const handleVerifyPan = async () => {
+  //   try {
+  //     if (!/^([A-Za-z]{5})(\d{4})([A-Za-z]{1})$/.test(watch("panNo"))) {
+  //       return SweetAlertPopup(
+  //         "Please Enter Valid PAN Number",
+  //         "Error",
+  //         "error"
+  //       );
+  //     }
+  //     setIsloading(true);
+  //     let payload = {
+  //       requestCode: "panValidate",
+  //       userId: username,
+  //       sessionId: token,
+  //       createVPARequest: {
+  //         bankCode: watch("bankCode")?.code,
+  //         panNo: watch("panNo"),
+  //       },
+  //     };
+  //     const response = await postApiData(apiList.ShankarSirsUrl, payload);
 
-      console.log("response", response);
+  //     console.log("response", response);
 
-      if (response?.respCode === "01") {
-        SweetAlertPopup("Incorrect PAN Details !", "Error", "error");
-        // popupAlert(response?.data?.message, "Error", "error");
-        setIsloading(false);
-      } else {
-        SweetAlertPopup("Verified !", "success", "success");
-        // setName(watch("pancardNo"));
-        // setPanData(response?.data?.data?.data?.data?.full_name)
-        setValue("name", response?.data?.data?.data?.data?.full_name);
-        // setValue("firstName", response?.data?.data?.data?.data?.full_name_split[0]);
-        // setValue("fatherName", response?.data?.data?.data?.data?.full_name_split[1]);
-        // setValue("lastName", response?.data?.data?.data?.data?.full_name_split[2]);
-        setValue("mobileNo", response?.data?.data?.data?.data?.phone_number);
-        // setValue("address1", response?.data?.data?.data?.data?.address?.line_1);
-        // setValue("address2", response?.data?.data?.data?.data?.address?.line_2);
-        // setValue("address3", response?.data?.data?.data?.data?.address?.street_name);
-        setValue("emailId", response?.data?.data?.data?.data?.email);
-        // setValue("dob", convertDate(response?.data?.data?.data?.data?.dob, 4));
-        // setValue("pincode", response?.data?.data?.data?.data?.address?.zip);
-        // setValue("state", compareTextAndReturnObject(lookupData?.data?.lookup, response?.data?.data?.data?.data?.address?.state));
-        // setValue("city", compareTextAndReturnObject(cityData?.data?.lookup, response?.data?.data?.data?.data?.address?.city));
-        // setValue("sex", compareIdAndReturnObject(Sex, response?.data?.data?.data?.data?.gender));
-        // setName(response?.data?.full_name);
-        setIsloading(false);
-      }
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-      setIsloading(false);
-    }
-  };
+  //     if (response?.respCode === "01") {
+  //       SweetAlertPopup("Incorrect PAN Details !", "Error", "error");
+  //       // popupAlert(response?.data?.message, "Error", "error");
+  //       setIsloading(false);
+  //     } else {
+  //       SweetAlertPopup("Verified !", "success", "success");
+  //       // setName(watch("pancardNo"));
+  //       // setPanData(response?.data?.data?.data?.data?.full_name)
+  //       setValue("name", response?.data?.data?.data?.data?.full_name);
+  //       // setValue("firstName", response?.data?.data?.data?.data?.full_name_split[0]);
+  //       // setValue("fatherName", response?.data?.data?.data?.data?.full_name_split[1]);
+  //       // setValue("lastName", response?.data?.data?.data?.data?.full_name_split[2]);
+  //       setValue("mobileNo", response?.data?.data?.data?.data?.phone_number);
+  //       // setValue("address1", response?.data?.data?.data?.data?.address?.line_1);
+  //       // setValue("address2", response?.data?.data?.data?.data?.address?.line_2);
+  //       // setValue("address3", response?.data?.data?.data?.data?.address?.street_name);
+  //       setValue("emailId", response?.data?.data?.data?.data?.email);
+  //       // setValue("dob", convertDate(response?.data?.data?.data?.data?.dob, 4));
+  //       // setValue("pincode", response?.data?.data?.data?.data?.address?.zip);
+  //       // setValue("state", compareTextAndReturnObject(lookupData?.data?.lookup, response?.data?.data?.data?.data?.address?.state));
+  //       // setValue("city", compareTextAndReturnObject(cityData?.data?.lookup, response?.data?.data?.data?.data?.address?.city));
+  //       // setValue("sex", compareIdAndReturnObject(Sex, response?.data?.data?.data?.data?.gender));
+  //       // setName(response?.data?.full_name);
+  //       setIsloading(false);
+  //     }
+  //     setIsloading(false);
+  //   } catch (err) {
+  //     console.log(err);
+  //     setIsloading(false);
+  //   }
+  // };
 
-  const handleValidateAccount = async () => {
-    try {
-      setIsloading(true);
-      let payload = {
-        requestCode: "bankAcctValidate",
-        userId: username,
-        sessionId: token,
-        createVPARequest: {
-          bankCode: watch("bankCode")?.code,
-          acctNo: watch("settlementAcc"),
-          ifscCode: watch("settlementIfsc"),
-        },
-      };
-      // const response = await postApiData(apiList.VALIDATEAADHAAR, payload);
-      const response = await postApiData(apiList.ShankarSirsUrl, payload);
-      console.log("addhar", response);
-      if (response?.respCode == "00") {
-        SweetAlertPopup("Verified Account Number !", "Success", "success");
-        setValue("nameAsPerBank", response?.data?.data?.full_name);
-        setIsloading(false);
-      } else {
-        SweetAlertPopup("Enter Valid Account Details", "Error", "error");
-        setIsloading(false);
-      }
-    } catch (err) {
-      console.log(err);
-      setIsloading(false);
-    }
-  };
+  // const handleValidateAccount = async () => {
+  //   try {
+  //     setIsloading(true);
+  //     let payload = {
+  //       requestCode: "bankAcctValidate",
+  //       userId: username,
+  //       sessionId: token,
+  //       createVPARequest: {
+  //         bankCode: watch("bankCode")?.code,
+  //         acctNo: watch("settlementAcc"),
+  //         ifscCode: watch("settlementIfsc"),
+  //       },
+  //     };
+  //     // const response = await postApiData(apiList.VALIDATEAADHAAR, payload);
+  //     const response = await postApiData(apiList.ShankarSirsUrl, payload);
+  //     console.log("addhar", response);
+  //     if (response?.respCode == "00") {
+  //       SweetAlertPopup("Verified Account Number !", "Success", "success");
+  //       setValue("nameAsPerBank", response?.data?.data?.full_name);
+  //       setIsloading(false);
+  //     } else {
+  //       SweetAlertPopup("Enter Valid Account Details", "Error", "error");
+  //       setIsloading(false);
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     setIsloading(false);
+  //   }
+  // };
 
   const onSubmit = async (data) => {
     try {
@@ -240,7 +230,7 @@ const MobileAppUserCreate = () => {
           firstName: data.firstname,
           lastName: data.lastname,
           mobileNo: data.mobileno,
-          email: data.userid,
+          email: data.email,
           depart:data.department,
           userlvlcode: data?.usercode?.code,
           bankCd:data?.bankcode?.code ? data?.bankcode?.code : ''
@@ -251,7 +241,7 @@ const MobileAppUserCreate = () => {
       
         SweetAlertPopup(response?.data?.message, "Success", "success");
         reset()
-       
+        navigate("/usermaster/user")
         setIsloading(false);
       } else {
        
@@ -304,7 +294,7 @@ const MobileAppUserCreate = () => {
 
 
   useEffect(()=>{
-getBankCode()
+// getBankCode()
   },[])
   const getBankCode = async () => {
     setIsloading(true);
