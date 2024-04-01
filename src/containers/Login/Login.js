@@ -10,7 +10,7 @@ import { Box, Grid, TextField } from "@mui/material";
 import { postApiData } from "../../components/utilities/nodeApiServices";
 import { apiList } from "../../components/utilities/nodeApiList";
 // import { AuthContext } from '../../context/AuthContext';
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { SET_USER } from "../../constants";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
@@ -40,6 +40,10 @@ import LoginOTPModal from "./LoginOTPModal";
 // import headerLogo from "../../assets/images/commonforweb/silkpay.png";
 import headerLogo from "../../assets/images/commonforweb/SwiftCorePe.svg";
 import loginleftimage from "../../assets/images/commonforweb/loginleftimage.png";
+
+import ReCAPTCHA from "react-google-recaptcha";
+import { SITE_KEY } from "../../constantStore/contstants";
+
 
 const defaultFormData = {
   email: "",
@@ -84,6 +88,7 @@ const Login = () => {
     mode: "onChange",
   });
   const navigate = useNavigate();
+  const recaptchaRef = useRef(null);
   const popupAlert = (message, msgtype, msgicon) => {
     {
       Swal.fire({
@@ -116,6 +121,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
+    recaptchaRef && recaptchaRef?.current?.reset();
+    let tempToken = await recaptchaRef?.current?.executeAsync();
+    if (tempToken)
+    {
     try {
       // dispatch(loginStart());
       const payload = {
@@ -144,6 +153,10 @@ const Login = () => {
     } catch (error) {
       dispatch(loginFailure("An error occurred"));
     }
+  }
+  else {
+    // console.log("Captcha Error");
+  }
   };
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
@@ -356,6 +369,9 @@ const Login = () => {
             </Box>
           </div>
         </div>
+        
+       <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={SITE_KEY} />
+       
       </div>
     </>
   );
