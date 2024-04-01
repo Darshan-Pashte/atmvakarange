@@ -67,85 +67,85 @@ export const vpaDownloadList =
 export const apiList = {
   // // Base URL for UAT
   // LOGIN: baseUrlServerLogin+"/airtelupiportallogin/login",
-  LOGIN: baseUrlServer + "/vakrangee/login",
+  LOGIN: baseUrlServer + "/vakrangee/login/dologin",
 
-LOGIN_VALIDATE_OTP:baseUrlServer + '/vakrangee/validateotp',
-RESEND_OTP:baseUrlServer + '/vakrangee/resendotp',
-RESEND_FORGET_OTP:baseUrlServer + '/vakrangee/resendforgototp',
+LOGIN_VALIDATE_OTP:baseUrlServer + '/vakrangee/services/validateotp',
+RESEND_OTP:baseUrlServer + '/vakrangee/services/resendotp',
+RESEND_FORGET_OTP:baseUrlServer + '/vakrangee/login/resendforgototp',
 
-FORGOT_PASSWORD:baseUrlServer + '/vakrangee/sendotp',
-FORGOT_PASSWORD_OTP_VALIDATE:baseUrlServer + '/vakrangee/validforgototp',
-RESET_PASSWORD:baseUrlServer + '/vakrangee/updatepass',
-
-
-ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/atmmaster/create',
-ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/atmmaster/browse',
-ATM_MASTER_MODIFY:baseUrlServer + '/vakrangee/atmmaster/modify',
-
-BANK_MASTER_CREATE:baseUrlServer + '/vakrangee/bankmaster/create',
-BANK_MASTER_BROWSE:baseUrlServer + '/vakrangee/bankmaster/browse',
-BANK_MASTER_MODIFY:baseUrlServer + '/vakrangee/bankmaster/modify',
-
-GET_BANKCODE:baseUrlServer + '/vakrangee/atmmaster/brwbnkcode',
-GET_ATMID:baseUrlServer + '/vakrangee/atmmaster/brwatmid',
-GET_ATMID_SINGLE:baseUrlServer + '/vakrangee/atmmaster/brwatmidnew',
-GET_CARDBIN:baseUrlServer + '/vakrangee/transmaster/cardbinbrw',
-GET_USERID:baseUrlServer + '/vakrangee/useratmassignmst/useridbrw',
-GET_ATMNAME:baseUrlServer + '/vakrangee/bnkatmsmsmst/atmnamebrw',
+FORGOT_PASSWORD:baseUrlServer + '/vakrangee/login/sendotp',
+FORGOT_PASSWORD_OTP_VALIDATE:baseUrlServer + '/vakrangee/login/validforgototp',
+RESET_PASSWORD:baseUrlServer + '/vakrangee/login/updatepass',
 
 
-MOBILE_APP_USER_CREATE:baseUrlServer + '/vakrangee/mobileappuser/create',
-MOBILE_APP_USER_BROWSE:baseUrlServer + '/vakrangee/mobileappuser/browse',
-MOBILE_APP_USER_AUTHORIZE:baseUrlServer + '/vakrangee/mobileappuser/auth',
-MOBILE_APP_USER_MODIFY:baseUrlServer + '/vakrangee/mobileappuser/modify',
+ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/services/atmmaster/create',
+ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
+ATM_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/atmmaster/modify',
 
-USER_ATM_ASSIGN_CREATE:baseUrlServer + '/vakrangee/useratmassignmst/create',
-USER_ATM_ASSIGN_BROWSE:baseUrlServer + '/vakrangee/useratmassignmst/browse',
-USER_ATM_ASSIGN_MODIFY:baseUrlServer + '/vakrangee/useratmassignmst/modify',
+BANK_MASTER_CREATE:baseUrlServer + '/vakrangee/services/bankmaster/create',
+BANK_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/bankmaster/browse',
+BANK_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/bankmaster/modify',
 
-
-BANK_ATM_SMS_MASTER_CREATE:baseUrlServer + '/vakrangee/bnkatmsmsmst/create',
-BANK_ATM_SMS_MASTER_BROWSE:baseUrlServer + '/vakrangee/bnkatmsmsmst/browse',
-BANK_ATM_SMS_MASTER_MODIFY:baseUrlServer + '/vakrangee/bnkatmsmsmst/modify',
-
-
-LOCAL_BIN_MASTER_CREATE:baseUrlServer + '/vakrangee/localbinmst/create',
-LOCAL_BIN_MASTER_BROWSE:baseUrlServer + '/vakrangee/localbinmst/browse',
-LOCAL_BIN_MASTER_MODIFY:baseUrlServer + '/vakrangee/localbinmst/modify',
-
-BANK_USER_MASTER_CREATE:baseUrlServer + '/vakrangee/bnkusermst/create',
-BANK_USER_MASTER_BROWSE:baseUrlServer + '/vakrangee/bnkusermst/browse',
-BANK_USER_MASTER_BROWSE_AUTH:baseUrlServer + '/vakrangee/bnkusermst/authbrw',
-BANK_USER_MASTER_MODIFY:baseUrlServer + '/vakrangee/bnkusermst/modify',
-BANK_USER_MASTER_DELETE:baseUrlServer + '/vakrangee/bnkusermst/delete',
-BANK_USER_MASTER_AUTHORIZE:baseUrlServer + '/vakrangee/bnkusermst/auth',
+GET_BANKCODE:baseUrlServer + '/vakrangee/services/atmmaster/brwbnkcode',
+GET_ATMID:baseUrlServer + '/vakrangee/services/atmmaster/brwatmid',
+GET_ATMID_SINGLE:baseUrlServer + '/vakrangee/services/atmmaster/brwatmidnew',
+GET_CARDBIN:baseUrlServer + '/vakrangee/services/transmaster/cardbinbrw',
+GET_USERID:baseUrlServer + '/vakrangee/services/useratmassignmst/useridbrw',
+GET_ATMNAME:baseUrlServer + '/vakrangee/services/bnkatmsmsmst/atmnamebrw',
 
 
-ATM_SERVICE_BROWSE:baseUrlServer + '/vakrangee/atmservice/brwlst',
-ATM_SERVICE_DATA:baseUrlServer + '/vakrangee/atmservice/',
+MOBILE_APP_USER_CREATE:baseUrlServer + '/vakrangee/services/mobileappuser/create',
+MOBILE_APP_USER_BROWSE:baseUrlServer + '/vakrangee/services/mobileappuser/browse',
+MOBILE_APP_USER_AUTHORIZE:baseUrlServer + '/vakrangee/services/mobileappuser/auth',
+MOBILE_APP_USER_MODIFY:baseUrlServer + '/vakrangee/services/mobileappuser/modify',
+
+USER_ATM_ASSIGN_CREATE:baseUrlServer + '/vakrangee/services/useratmassignmst/create',
+USER_ATM_ASSIGN_BROWSE:baseUrlServer + '/vakrangee/services/useratmassignmst/browse',
+USER_ATM_ASSIGN_MODIFY:baseUrlServer + '/vakrangee/services/useratmassignmst/modify',
 
 
-LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/vakrangee/transmaster/acqtransreports',
+BANK_ATM_SMS_MASTER_CREATE:baseUrlServer + '/vakrangee/services/bnkatmsmsmst/create',
+BANK_ATM_SMS_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/bnkatmsmsmst/browse',
+BANK_ATM_SMS_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/bnkatmsmsmst/modify',
+
+
+LOCAL_BIN_MASTER_CREATE:baseUrlServer + '/vakrangee/services/localbinmst/create',
+LOCAL_BIN_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/localbinmst/browse',
+LOCAL_BIN_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/localbinmst/modify',
+
+BANK_USER_MASTER_CREATE:baseUrlServer + '/vakrangee/services/bnkusermst/create',
+BANK_USER_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/bnkusermst/browse',
+BANK_USER_MASTER_BROWSE_AUTH:baseUrlServer + '/vakrangee/services/bnkusermst/authbrw',
+BANK_USER_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/bnkusermst/modify',
+BANK_USER_MASTER_DELETE:baseUrlServer + '/vakrangee/services/bnkusermst/delete',
+BANK_USER_MASTER_AUTHORIZE:baseUrlServer + '/vakrangee/services/bnkusermst/auth',
+
+
+ATM_SERVICE_BROWSE:baseUrlServer + '/vakrangee/services/atmservice/brwlst',
+ATM_SERVICE_DATA:baseUrlServer + '/vakrangee/services/atmservice/',
+
+
+LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/acqtransreports',
 LOCAL_ACQUIRE_DOWNLOAD:baseUrlServer + '/vakrangee/transmaster/acqexceltranslst',
 
-ISSUER_BROWSE:baseUrlServer + '/vakrangee/transmaster/issuertranslst',
-SWITCH_BROWSE:baseUrlServer + '/vakrangee/transmaster/switchreports',
-ISSUER_SWITCH_BROWSE:baseUrlServer + '/vakrangee/transmaster/issuerswitchreports',
+ISSUER_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/issuertranslst',
+SWITCH_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/switchreports',
+ISSUER_SWITCH_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/issuerswitchreports',
 
 
-DASHBOARD_COUNT:baseUrlServer + '/vakrangee/dashboard',
-DASHBOARD_GRAPH:baseUrlServer + '/vakrangee/dashboardgraph',
-DASHBOARD_SUCCESS_GRAPH:baseUrlServer + '/vakrangee/wakhdashboard',
-DASHBOARD_DAY_GRAPH:baseUrlServer + '/vakrangee/acqdashgraph',
+DASHBOARD_COUNT:baseUrlServer + '/vakrangee/services/dashboard',
+DASHBOARD_GRAPH:baseUrlServer + '/vakrangee/services/dashboardgraph',
+DASHBOARD_SUCCESS_GRAPH:baseUrlServer + '/vakrangee/services/wakhdashboard',
+DASHBOARD_DAY_GRAPH:baseUrlServer + '/vakrangee/services/acqdashgraph',
 
-DASHBOARD_DOWNLOAD_EXCEL:baseUrlServer + '/vakrangee/acqdashgraphexcel',
+DASHBOARD_DOWNLOAD_EXCEL:baseUrlServer + '/vakrangee/services/acqdashgraphexcel',
 
-DASHBOARD_TRANSACTION_REPORT:baseUrlServer + '/vakrangee/transnewrecords',
+DASHBOARD_TRANSACTION_REPORT:baseUrlServer + '/vakrangee/services/transnewrecords',
 
-DASHBOARD_INSERVICE_BROWSE:baseUrlServer + '/vakrangee/',
+DASHBOARD_INSERVICE_BROWSE:baseUrlServer + '/vakrangee/services/',
 
-ATM_HEALTH_BROWSE:baseUrlServer + '/vakrangee/atmhealth',
-ATM_ERROR_BROWSE:baseUrlServer + '/vakrangee/atmerror',
+ATM_HEALTH_BROWSE:baseUrlServer + '/vakrangee/services/atmhealth',
+ATM_ERROR_BROWSE:baseUrlServer + '/vakrangee/services/atmerror',
 
 
 

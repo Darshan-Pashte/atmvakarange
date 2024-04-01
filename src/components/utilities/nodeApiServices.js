@@ -110,21 +110,23 @@ const validateResponse = (apiData) => {
     baseURL: baseUrl,
   });
 
-  // API.interceptors.request.use((config) => {
-  //   const token = sessionStorage.getItem("TOKEN");
-  //   const username = sessionStorage.getItem("username");
-  //   const branch = sessionStorage.getItem("branch");
-  //   if (token) config.headers.authorization = `Bearer ${JSON.parse(token)}`;
-  //   if (username) {
-  //     config.headers["X-Username"] = JSON.parse(username);
-  //   }
-  //   if (branch) {
-  //     config.headers["X-Branch"] = JSON.parse(branch);
-  //   }
-  //   return config;
-  // });
+  API.interceptors.request.use((config) => {
+    const token = sessionStorage.getItem("JWTToken");
+    // const username = sessionStorage.getItem("username");
+    // const branch = sessionStorage.getItem("branch");
+    // if (token) config.headers.authorization = `${token}`;
+    if (token) config.headers['Authorization'] = token;
+    console.log('token',token)
+    // if (username) {
+    //   config.headers["X-Username"] = JSON.parse(username);
+    // }
+    // if (branch) {
+    //   config.headers["X-Branch"] = JSON.parse(branch);
+    // }
+    return config;
+  });
   
-  // export default API;
+  export default API;
 
   // AXIOS POST Request
 export async function postApiData(url, payload) {
@@ -144,7 +146,7 @@ export async function postApiData(url, payload) {
 // Axios GET
 export async function axiosGetApiData(url) {
   const response = await API.get(url);
-  if(response?.respCode == "IS"){
+  if(response?.data?.respCode == "IS"){
     sessionStorage.clear();
     localStorage.clear();
     window.location.reload();

@@ -121,10 +121,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    recaptchaRef && recaptchaRef?.current?.reset();
-    let tempToken = await recaptchaRef?.current?.executeAsync();
-    if (tempToken)
-    {
+    // recaptchaRef && recaptchaRef?.current?.reset();
+    // let tempToken = await recaptchaRef?.current?.executeAsync();
+    // if (tempToken)
+    // {
     try {
       // dispatch(loginStart());
       const payload = {
@@ -136,6 +136,7 @@ const Login = () => {
       console.log(response);
       if (response?.data?.status == true) {
         // dispatch(loginSuccess(response.data));
+        sessionStorage.setItem('JWTToken',response?.data?.token)
         setUserId(response?.data?.smsId);
         setUserName(data.email);
         // dispatch(otpSuccess(data.email));
@@ -154,10 +155,10 @@ const Login = () => {
       dispatch(loginFailure("An error occurred"));
     }
   }
-  else {
-    // console.log("Captcha Error");
-  }
-  };
+  // else {
+  //   // console.log("Captcha Error");
+  // }
+  // };
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
@@ -370,7 +371,7 @@ const Login = () => {
           </div>
         </div>
         
-       <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={SITE_KEY} />
+       {/* <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={SITE_KEY} /> */}
        
       </div>
     </>
