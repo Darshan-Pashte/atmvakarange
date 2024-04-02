@@ -908,10 +908,7 @@ const closeSignModal = () => {
       const response = await axiosGetApiData(apiList.LOCAL_ACQUIRE_DOWNLOAD+`?atmid=${watch('atmid') ? watch('atmid') :''}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`,
       {responseType: 'arraybuffer'});
 
-      console.log('response',response);
       const arrayBuffer =response.data;
-
-      // const arrayBuffer = await response.arrayBuffer();
       const blob = new Blob([arrayBuffer]);
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");

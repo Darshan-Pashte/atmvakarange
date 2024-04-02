@@ -292,13 +292,13 @@ const UserATMAssignMasterModify = () => {
               </Grid>
 
               <div className={classes.fbut}>
-                <ColorButton
+                {/* <ColorButton
                   variant="contained"
                   type="button"
                   onClick={() => reset()}
                 >
                   RESET
-                </ColorButton>
+                </ColorButton> */}
                 <ColorButton1 variant="contained" type="submit">
                   Submit
                 </ColorButton1>

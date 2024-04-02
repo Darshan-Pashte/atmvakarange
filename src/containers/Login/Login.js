@@ -125,6 +125,7 @@ const Login = () => {
     // let tempToken = await recaptchaRef?.current?.executeAsync();
     // if (tempToken)
     // {
+      // debugger
     try {
       // dispatch(loginStart());
       const payload = {
@@ -153,6 +154,7 @@ const Login = () => {
       setIsLoading(false);
     } catch (error) {
       dispatch(loginFailure("An error occurred"));
+      setIsLoading(false);
     }
   }
   // else {

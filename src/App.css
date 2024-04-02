@@ -384,7 +384,7 @@ th,
 thead,
 tr {
   text-align: center !important;
-  border-color: black !important;
+  border-color: grey !important;
   border-style: solid !important;
   border-width: 1px !important;
   cursor: pointer;

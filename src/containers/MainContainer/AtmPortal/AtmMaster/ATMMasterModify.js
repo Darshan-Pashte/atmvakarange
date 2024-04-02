@@ -382,19 +382,19 @@ console.log("state", state);
         type4count: data.type4count,
         maxnotes: data.maxnotes,
         atmstatus: data?.atmstatus == 'ONLINE' ? "1" :data?.atmstatus == 'INSERVICE' ? "2" : "0",
-        transactioncount: data.transactioncount,
+        transactioncount: data.transactioncount ? data.transactioncount :'',
         atmtype: data.atmtype.code,
         dipcard: data?.dipcard.code =='YES' ? "Y"  :'N',
         address: data.address,
         pincode: data.pincode,
         serverip: data.serverip,
         tmk: data.tmk,
-        tpklmk: data.tpklmk,
-        tpktmk: data.tpktmk,
-        flag:  data?.flag.code =='YES' ? "Y"  :'N',
+        tpklmk: data.tpklmk ? data.tpklmk : '',
+        tpktmk: data.tpktmk ? data.tpktmk : '',
+        flag: data?.flag.code =='YES' ? "Y"  :'N',
         nextdwnloaddt: convertDate(data.downloadDate,9),
         terminaltype: data.terminaltype.code,
-        bankcd: data.bankcode,
+        // bankcd: data.bankcode,
         downloadfilename: data.downloadfilename,
         acqid: data.Acquiredid,
         resourcefn: data.resources,
@@ -403,7 +403,7 @@ console.log("state", state);
         downIsReq:  data?.downisrequest.code =='YES' ? "Y"  :'N',
         inserviceIsReq:  data?.servicereq.code =='YES' ? "Y"  :'N',
         supplyCounterIsReq:  data?.supplycounterreq.code =='YES' ? "Y"  :'N',
-        depbin: data.depbin,
+        depbin: data.depbin ? data.depbin : '',
       };
       console.log('payload',payload)
       const response = await postApiData(apiList.ATM_MASTER_MODIFY, payload);
@@ -1483,7 +1483,8 @@ console.log("state", state);
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      ATM MAKE<sup className={classes.required}>*</sup>
+                      ATM MAKE
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
                     <div className={classes.frow1aff}>
                       <AutocompleteForm
@@ -1504,13 +1505,13 @@ console.log("state", state);
                             }
                           },
                         }}
-                        rules={{
-                          required:
-                            "ATM MAKE " +
-                            errorMessages.error_autocomplete_message,
-                        }}
+                        // rules={{
+                        //   required:
+                        //     "ATM MAKE " +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
                         data={ATMmake}
-                        required={true}
+                        required={false}
                       />
                     </div>
                   </div>

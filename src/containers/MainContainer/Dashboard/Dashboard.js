@@ -905,7 +905,7 @@ jjk
                           // label: "To Date",
                           fullWidth: true,
 
-                          // maxDate:new Date()
+                          maxDate:new Date()
                         }}
                         // rules={{
                         //     required:

@@ -144,8 +144,8 @@ export async function postApiData(url, payload) {
 
 
 // Axios GET
-export async function axiosGetApiData(url) {
-  const response = await API.get(url);
+export async function axiosGetApiData(url,headers) {
+  const response = await API.get(url,headers);
   if(response?.data?.respCode == "IS"){
     sessionStorage.clear();
     localStorage.clear();
