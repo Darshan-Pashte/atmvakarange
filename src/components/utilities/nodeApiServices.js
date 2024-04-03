@@ -117,7 +117,7 @@ import axios from "axios";
     // const branch = sessionStorage.getItem("branch");
     // if (token) config.headers.authorization = `${token}`;
     if (token) config.headers['Authorization'] = token;
-    console.log('token',token)
+    // console.log('token',token)
     // if (username) {
     //   config.headers["X-Username"] = JSON.parse(username);
     // }
@@ -228,6 +228,6 @@ export async function axiosGetApiData(url,headers) {
 function validateResponse(response) {
   // Implement your response validation logic here
 
-  console.log('validateresponse',response)
+  // console.log('validateresponse',response)
   return response; // For now, just returning the response data
 }

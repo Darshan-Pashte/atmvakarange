@@ -130,7 +130,7 @@ const onSubmit = async (data) => {
       custNo : data?.customerno,
     };
     const response = await postApiData(apiList.FORGOTPASS, payload);
-    console.log("response", response);
+    // console.log("response", response);
     if(response?.status == false){
       setisLoading(false)
         SweetAlertPopup(response?.message , "Error", "error")

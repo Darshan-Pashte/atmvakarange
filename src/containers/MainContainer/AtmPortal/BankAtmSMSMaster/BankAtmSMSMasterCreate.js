@@ -76,7 +76,7 @@ const BankAtmSMSMasterCreate = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
     setToken(sessionStorage.getItem("TOKEN"));
@@ -206,7 +206,7 @@ const BankAtmSMSMasterCreate = () => {
         sessionId: user?.sessionId,
       };
       const response = await postApiData(apiList.GET_ATMNAME, payload);
-      console.log("respone", response);
+      // console.log("respone", response);
       setAtmName(response.atmMasterLst);
       setIsloading(false)
     } catch (err) {
@@ -227,7 +227,7 @@ const BankAtmSMSMasterCreate = () => {
         brmanager: data.brmobileno,
         custodian: data.csdnmobileno
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(apiList.BANK_ATM_SMS_MASTER_CREATE, payload);
       if (response?.status == true) {
         SweetAlertPopup(response.message, "Success", "success");

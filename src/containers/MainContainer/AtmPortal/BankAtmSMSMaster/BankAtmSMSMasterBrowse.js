@@ -89,7 +89,7 @@ const BankAtmSMSMasterBrowse = () => {
   const [atmID, setAtmID] = useState([]);
 
   const [resData, setResData] = useState({});
-  console.log("resData", resData);
+  // console.log("resData", resData);
 
   useEffect(() => {
     setValue("atmid", resData?.atmId);
@@ -98,7 +98,7 @@ const BankAtmSMSMasterBrowse = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
   const BankcodeList =
     bankcode &&
@@ -382,7 +382,7 @@ const BankAtmSMSMasterBrowse = () => {
   // },[])
 
   const getTransactionListView = async (currentPage, data = payloadData) => {
-    console.log("data", data);
+    // console.log("data", data);
 
     setCurrentPage(currentPage);
     setIsloading(true);
@@ -416,7 +416,7 @@ const BankAtmSMSMasterBrowse = () => {
   };
 
   const getTransactionList = (currentpages, payloadDatachild) => {
-    console.log("payloadDatachild", payloadDatachild);
+    // console.log("payloadDatachild", payloadDatachild);
     getTransactionListView(currentpages, payloadDatachild);
     setPayloadData(payloadDatachild);
   };

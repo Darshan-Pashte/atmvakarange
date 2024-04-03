@@ -25,12 +25,12 @@ const authSlice = createSlice({
       state.menu=""
     },
     otpSuccess : (state,action)=>{
-      console.log("action",action)
+      // console.log("action",action)
       state.user = action.payload;
       state.otpdata = action.payload;
     },
     loginSuccess: (state, action) => {
-      console.log("action",action)
+      // console.log("action",action)
       state.isAuthenticated = true;
       state.menu="111111111111111111111111111111111";
       state.dashboardlst=action.payload;
@@ -47,7 +47,7 @@ const authSlice = createSlice({
 
     },
     loginSuccessCorporate: (state, action) => {
-      console.log("actioncorporate",action)
+      // console.log("actioncorporate",action)
       state.isAuthenticated = true;
       // state.menu= action.payload.menu;
       state.menu= "1111111111111111111111111111111111111111111111111111111111111111111111111";

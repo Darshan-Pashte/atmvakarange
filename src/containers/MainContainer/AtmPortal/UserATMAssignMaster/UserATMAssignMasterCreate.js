@@ -71,7 +71,7 @@ const UserATMAssignMasterCreate = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));

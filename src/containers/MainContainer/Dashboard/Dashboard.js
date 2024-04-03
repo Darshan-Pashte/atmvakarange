@@ -127,8 +127,8 @@ const Dashboard = () => {
   //   setUserName(sessionStorage.getItem("username"))
   // }, []);
 
-  console.log("user", user);
-  console.log("dashboardlst", dashboardlst);
+  // console.log("user", user);
+  // console.log("dashboardlst", dashboardlst);
 
   // useEffect(() => {
   //   fetchBanksData();
@@ -193,8 +193,8 @@ const Dashboard = () => {
   const newSuccess = graphSucess && graphSucess[0]?.acqSuccCnt;
   const newFail = graphFail && graphFail[0]?.acqFailCnt;
 
-  console.log("newSuccess", newSuccess);
-  console.log("newFail", newFail);
+  // console.log("newSuccess", newSuccess);
+  // console.log("newFail", newFail);
   // const successrate = graphSucess?.acqSuccCnt;
 
   // const newSuccessPer=((newSuccess/(newSuccess + newFail))*1000).toFixed(2)
@@ -205,13 +205,13 @@ const Dashboard = () => {
   const succrate = parseInt(newSuccessPer);
   const failrate = Number(100 - succrate);
 
-  console.log("newSuccessPer", newSuccess * 100);
-  console.log("newSuccessPer", newSuccess + newFail);
-  console.log("newSuccessPer", (newSuccess * 100) / (newSuccess + newFail));
+  // console.log("newSuccessPer", newSuccess * 100);
+  // console.log("newSuccessPer", newSuccess + newFail);
+  // console.log("newSuccessPer", (newSuccess * 100) / (newSuccess + newFail));
 
-  console.log("newSuccessPer", newSuccessPer);
+  // console.log("newSuccessPer", newSuccessPer);
   const dashList = user?.dashboardlst;
-  console.log(dashList, "dashList  ");
+  // console.log(dashList, "dashList  ");
 
   const CardList = [
     {
@@ -290,7 +290,7 @@ const Dashboard = () => {
   // }, [watch("bankcode")]);
 
   const getDashboardCount = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     try {
       setIsloading(true);
       const payload = {
@@ -298,9 +298,9 @@ const Dashboard = () => {
         sessionId: user?.sessionId,
         bankcd: watch("bankcode")?.code,
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(apiList.DASHBOARD_COUNT, payload);
-      console.log("response", response);
+      // console.log("response", response);
       if (response?.data?.status == true) {
         setloList(response?.data?.loList);
         setAcqList(response?.data?.acqcntSuccs);
@@ -320,19 +320,19 @@ const Dashboard = () => {
   }, []);
 
   const getSuccessGraph = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     try {
       setIsloading(true);
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(
         apiList.DASHBOARD_SUCCESS_GRAPH,
         payload
       );
-      console.log("Graph response", response);
+      // console.log("Graph response", response);
       if (response?.data?.status == true) {
         setGraphSuccess(response?.data?.acAqrTransSuccCnts);
         setGraphFail(response?.data?.aqrTransFailCnts);
@@ -348,19 +348,19 @@ const Dashboard = () => {
   };
 
   const getDashboardDay = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     try {
       setIsloading(true);
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(
         apiList.DASHBOARD_DAY_GRAPH,
         payload
       );
-      console.log("Graph response", response);
+      // console.log("Graph response", response);
       if (response?.data?.status == true) {
       setDayList(response?.data?.list)
         setIsloading(false);
@@ -374,16 +374,16 @@ const Dashboard = () => {
     }
   };
   const getDashboardGraph = async (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     try {
       setIsloading(true);
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(apiList.DASHBOARD_GRAPH, payload);
-      console.log("Graph response", response);
+      // console.log("Graph response", response);
       if (response?.data?.status == true) {
         setGraphlocal(response?.data?.localgraph);
         setGraphIssuer(response?.data?.issuergraph);
@@ -613,9 +613,9 @@ const Dashboard = () => {
   }, [watch("fromDate")]);
 
   const getTransactionListView = async (currentPage, data = payloadData) => {
-    console.log("currentPage", currentPage);
+    // console.log("currentPage", currentPage);
     setCurrentPage(currentPage);
-    console.log("data", data);
+    // console.log("data", data);
     setIsloading(true);
     try {
       const payload = {
@@ -629,7 +629,7 @@ const Dashboard = () => {
           `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
-console.log('response',response)
+// console.log('response',response)
       if (response?.data?.status == true) {
         setAtmMasterList(response?.data?.arrayList);
         settotalRecord(response?.data?.totalRecords);
@@ -653,7 +653,7 @@ console.log('response',response)
   };
 
   const onSubmit = (data) => {
-    console.log("data", data);
+    // console.log("data", data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
@@ -661,7 +661,7 @@ console.log('response',response)
         ? convertDate(watch("fromDate"), 1)
         : convertDate(new Date()),
     };
-    console.log("payload", payload);
+    // console.log("payload", payload);
     getTransactionList(1, payload);
     //  setpalyalodData(payload)
     //  reset(defaultFormData);

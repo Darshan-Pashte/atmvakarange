@@ -104,7 +104,7 @@ export default function LoginOTPModal({
     (state) => state.auth
   );
 
-  console.log('user',user)
+  // console.log('user',user)
 
   const [isLoading, setIsloading] = useState(false);
 
@@ -124,7 +124,7 @@ export default function LoginOTPModal({
   };
 
   const { otpdata } = useSelector((state) => state.auth);
-  console.log("otpdata", otpdata);
+  // console.log("otpdata", otpdata);
 
   const popupAlert = (message, msgtype, msgicon) => {
     {
@@ -141,9 +141,9 @@ export default function LoginOTPModal({
   // React.useEffect(() => {
   //   setUserName(sessionStorage.getItem("username"))
   // }, []);
-  console.log("payloads", payloads);
-  console.log("responseData", responseData);
-  console.log("otp", otp);
+  // console.log("payloads", payloads);
+  // console.log("responseData", responseData);
+  // console.log("otp", otp);
 
   const onSubmits = async (data) => {
     setIsloading(true);
@@ -153,9 +153,9 @@ export default function LoginOTPModal({
       username: userName,
     };
 
-    console.log("payload", payload);
+    // console.log("payload", payload);
     const response = await postApiData(apiList.LOGIN_VALIDATE_OTP, payload);
-    console.log("response", response);
+    // console.log("response", response);
     if (response?.data?.status == true) {
       setIsloading(false);
       //   navigate('/atmadminportal/bankmaster')

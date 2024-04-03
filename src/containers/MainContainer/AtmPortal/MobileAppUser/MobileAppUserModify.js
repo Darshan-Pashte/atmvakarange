@@ -81,10 +81,10 @@ const MobileAppUserModify = () => {
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
-  console.log("user", user);
+  // console.log("user", user);
 
   const { state } = useLocation();
-  console.log("state", state);
+  // console.log("state", state);
 
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
@@ -228,7 +228,7 @@ const MobileAppUserModify = () => {
     bankCd: data?.bankcode?.code ? data?.bankcode?.code : ''
 
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(apiList.MOBILE_APP_USER_MODIFY, payload);
       if (response?.data?.status == true) {
         SweetAlertPopup(response?.data?.message, "Success", "success");

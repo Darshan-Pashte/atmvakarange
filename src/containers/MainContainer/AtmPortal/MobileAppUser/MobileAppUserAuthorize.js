@@ -90,7 +90,7 @@ const MobileAppUserAuthorize = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
 
  
@@ -302,7 +302,7 @@ const closeSignModal = () => {
 
   
   const getTransactionListView = async (currentPage,data = payloadData) => {
-console.log('data',data)
+// console.log('data',data)
   
     setCurrentPage(currentPage)
     setIsloading(true);
@@ -340,7 +340,7 @@ console.log('data',data)
 
 
   const getTransactionList = (currentpages, payloadDatachild) => {
-    console.log("payloadDatachild", payloadDatachild)
+    // console.log("payloadDatachild", payloadDatachild)
     getTransactionListView(currentpages, payloadDatachild)
     setPayloadData(payloadDatachild)
     
@@ -383,7 +383,7 @@ console.log('data',data)
         }
       });
 
-      console.log("SwalFirRD" , atmMasterList);
+      // console.log("SwalFirRD" , atmMasterList);
   };
 
   const handleCreateAccount = async (rowData , para) => {
@@ -395,8 +395,8 @@ console.log('data',data)
         userId:rowData.userId,
       };
       const response = await postApiData(apiList.MOBILE_APP_USER_AUTHORIZE, payload);
-      console.log("response",response?.data?.status);
-      console.log("rowdata",rowData);
+      // console.log("response",response?.data?.status);
+      // console.log("rowdata",rowData);
       if(response?.data?.status === true){
         
       

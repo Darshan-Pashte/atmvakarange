@@ -118,7 +118,7 @@ const ResetPassword = () => {
   // const [passwordInput, setPasswordInput] = useState('password');
 
   const {state}=useLocation()
-  console.log("state",state)
+  // console.log("state",state)
 
 
   function handleLogin() {
@@ -134,7 +134,7 @@ const ResetPassword = () => {
         confirmpass:data.confirmpassword,
     };
     const response = await postApiData(apiList.RESET_PASSWORD, payload);
-    console.log("response", response);
+    // console.log("response", response);
     if (response?.data?.status == true) {
       setisLoading(false)
         handleLogin();

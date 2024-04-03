@@ -106,14 +106,14 @@ const LocalAndAquirerBrowse = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
   const [openSearch, setOpenSearch] = useState(false);
   const handleOpenSearch = () => setOpenSearch(true);
   const handleCloseSearch = () => setOpenSearch(false);
 
   const [resData, setResData] = useState({});
-  console.log("resData", resData);
+  // console.log("resData", resData);
 
   useEffect(() => {
     setValue("atmid", resData?.atmId ? resData?.atmId :'');
@@ -695,7 +695,7 @@ const closeSignModal = () => {
   CardBinList && CardBinList?.unshift({ "code": "all", "value": "ALL" });
 
 
- console.log('BankcodeList',BankcodeList)
+//  console.log('BankcodeList',BankcodeList)
 
 
   // const BankCodeList = [
@@ -712,7 +712,7 @@ const closeSignModal = () => {
   //   }
   // }, [BankCodeList]);
 
-  console.log('Type of AtmIDList',typeof (AtmIDList));  
+  // console.log('Type of AtmIDList',typeof (AtmIDList));  
 
   // const ATMIDList = [
   //   {
@@ -800,9 +800,9 @@ const closeSignModal = () => {
   // },[])
 
   const getTransactionListView = async (currentPage,data = payloadData) => {
-    console.log('currentPage',currentPage);
+    // console.log('currentPage',currentPage);
     setCurrentPage(currentPage)
-    console.log('data',data)
+    // console.log('data',data)
     setIsloading(true);
     try {
       const payload = {
@@ -855,7 +855,7 @@ const closeSignModal = () => {
   }
 
   const onSubmit = (data) => {
-    console.log("data",data);
+    // console.log("data",data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
@@ -902,7 +902,7 @@ const closeSignModal = () => {
 
 
   const onDownloadExcel = async (data) => {
-    console.log('Download Excel clicked',data);
+    // console.log('Download Excel clicked',data);
     setIsloading(true);
     try {
       const response = await axiosGetApiData(apiList.LOCAL_ACQUIRE_DOWNLOAD+`?atmid=${watch('atmid') ? watch('atmid') :''}&txnType=${watch('transtype')?.code}&currntSt=${watch('status')?.code}&csppinblock1=${watch('cardreadmode')?.code}&fromDt=${convertDate(watch("fromDate"),1)}&toDt=${convertDate(watch("toDate"),1)}&transno=${watch('transno')}&bin=${watch('cardbin')}&cdNos=${watch('cardno')}&value1=${watch('fromacc')}&value2=${watch('toacc')}`,

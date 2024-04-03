@@ -71,10 +71,10 @@ const UserATMAssignMasterModify = () => {
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
-  console.log("user", user);
+  // console.log("user", user);
 
   const { state } = useLocation();
-  console.log("state", state);
+  // console.log("state", state);
 
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
@@ -139,7 +139,7 @@ const UserATMAssignMasterModify = () => {
     atmId: data.atmid.code
 
       };
-      console.log("payload", payload);
+      // console.log("payload", payload);
       const response = await postApiData(apiList.USER_ATM_ASSIGN_MODIFY, payload);
       if (response?.data?.status == true) {
         SweetAlertPopup(response?.data?.message, "Success", "success");

@@ -132,9 +132,9 @@ export default function ForgotPasswordOTPModal({
   // React.useEffect(() => {
   //   setUserName(sessionStorage.getItem("username"))
   // }, []);
-  console.log("payloads", payloads);
-  console.log("responseData", responseData);
-  console.log("otp", otp);
+  // console.log("payloads", payloads);
+  // console.log("responseData", responseData);
+  // console.log("otp", otp);
 
 
   function handleResetPass(){
@@ -150,9 +150,9 @@ export default function ForgotPasswordOTPModal({
       username: userName,
     };
 
-    console.log("payload", payload);
+    // console.log("payload", payload);
     const response = await postApiData(apiList.FORGOT_PASSWORD_OTP_VALIDATE, payload);
-    console.log('response',response)
+    // console.log('response',response)
     if (response?.data?.status == true) {
         popupAlert(response.message, "Success", "success");
         handleResetPass()

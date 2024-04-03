@@ -128,7 +128,7 @@ export default function ForgetPassOTP({ open, handleOpen, handleClose, userId, p
             newpassword: data.confirmpassword
         }
         const response = await postApiData(apiList.CORPORATE_SET_NEW_PASSWORD, payload)
-        console.log(response, "response")
+        // console.log(response, "response")
         if (response?.status == true) {
             handleClose();
             handleResetPass()

@@ -101,10 +101,10 @@ const ATMMasterModify = () => {
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
-console.log('user',user)
+// console.log('user',user)
 
 const { state } = useLocation();
-console.log("state", state);
+// console.log("state", state);
 
 
   useEffect(() => {
@@ -405,7 +405,7 @@ console.log("state", state);
         supplyCounterIsReq:  data?.supplycounterreq.code =='YES' ? "Y"  :'N',
         depbin: data.depbin ? data.depbin : '',
       };
-      console.log('payload',payload)
+      // console.log('payload',payload)
       const response = await postApiData(apiList.ATM_MASTER_MODIFY, payload);
       if (response?.data?.status == true) {
       

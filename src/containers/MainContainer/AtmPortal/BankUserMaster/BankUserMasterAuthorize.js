@@ -95,7 +95,7 @@ const BankUserMasterAuthorize = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
 
  

@@ -22,14 +22,14 @@ export default function DashboarCards({ card }) {
     const { loading, error, isAuthenticated, user, dashboardlst } = useSelector(
         (state) => state.auth
         );
-       console.log('user',user)
+      //  console.log('user',user)
 
        const [currentCardName, setCurrentCardName] = React.useState('');
        const [currentAnotherName, setCurrentAnotherName] = React.useState('');
        
        const [open, setOpen] = React.useState(false);
        const handleOpen = (apipath) =>{  
-        console.log('apipath', apipath);
+        // console.log('apipath', apipath);
     //   const apipath1={apipath};
        setOpen(true);
     }

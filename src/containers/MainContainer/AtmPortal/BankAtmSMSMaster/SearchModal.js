@@ -121,7 +121,7 @@ export default function SearchModal({
     (state) => state.auth
   );
 
-  console.log('user',user)
+  // console.log('user',user)
 
   const [isLoading, setIsloading] = useState(false);
 
@@ -143,7 +143,7 @@ export default function SearchModal({
   };
 
   const { otpdata } = useSelector((state) => state.auth);
-  console.log("otpdata", otpdata);
+  // console.log("otpdata", otpdata);
 
   const popupAlert = (message, msgtype, msgicon) => {
     {
@@ -288,9 +288,9 @@ export default function SearchModal({
 
 
   const getTransactionListView = async (currentPage,data = payloadData) => {
-    console.log('currentPage',currentPage);
+    // console.log('currentPage',currentPage);
     setCurrentPage(currentPage)
-    console.log('data',data)
+    // console.log('data',data)
     setIsloading(true);
     try {
       const payload = {
@@ -335,7 +335,7 @@ export default function SearchModal({
   }
 
   const onSubmit = (data) => {
-    console.log("data",data);
+    // console.log("data",data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
@@ -347,7 +347,7 @@ export default function SearchModal({
       address: data?.address,
       ip: data?.machineip
     };
-    console.log("payload",payload);
+    // console.log("payload",payload);
     getTransactionList(1, payload)
     //  setpalyalodData(payload)
     //  reset(defaultFormData);

@@ -73,10 +73,10 @@ const BankAtmSMSMasterModify = () => {
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
-console.log('user',user)
+// console.log('user',user)
 
 const { state } = useLocation();
-console.log("state", state);
+// console.log("state", state);
 
 
   useEffect(() => {
@@ -118,7 +118,7 @@ console.log("state", state);
         brmanager: data.brmobileno,
         custodian: data.csdnmobileno
       };
-      console.log('payload',payload)
+      // console.log('payload',payload)
       const response = await postApiData(apiList.BANK_ATM_SMS_MASTER_MODIFY, payload);
       if (response?.status == true) {
       

@@ -128,7 +128,7 @@ navigate('/auth/resetpassword',{state:{custNo:custNo,otp:otp}})
             
         }
         const response = await postApiData(apiList.FORGOTPASSOTPVALIDATE, payload)
-        console.log(response,"response")
+        // console.log(response,"response")
         if (response.status == true) {
         setisLoading(false)
             handleClose();

@@ -32,8 +32,8 @@ const style = {
 
 export default function DashboardModal({ open, handleOpen, handleClose, closeSignModal,rowDataToDisplay, data,show ,title,apipath,titlename}) {
     // const { headers, rowData,apipath,titletext } = rowDataToDisplay;
-console.log('apipath',apipath)
-console.log('titlename',titlename)
+// console.log('apipath',apipath)
+// console.log('titlename',titlename)
     // console.log("rowData",rowData)
     
     const [isLoading, setIsloading] = React.useState(false);
@@ -273,7 +273,7 @@ console.log('titlename',titlename)
     
     
       const getTransactionList = (currentpages, payloadDatachild) => {
-        console.log("payloadDatachild", payloadDatachild)
+        // console.log("payloadDatachild", payloadDatachild)
         getTransactionListView(currentpages, payloadDatachild)
         setPayloadData(payloadDatachild)
         

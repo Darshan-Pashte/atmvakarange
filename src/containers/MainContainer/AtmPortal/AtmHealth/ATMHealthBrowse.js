@@ -97,14 +97,14 @@ const ATMHealthBrowse = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
   const [openSearch, setOpenSearch] = useState(false);
   const handleOpenSearch = () => setOpenSearch(true);
   const handleCloseSearch = () => setOpenSearch(false);
 
   const [resData, setResData] = useState({});
-  console.log("resData", resData);
+  // console.log("resData", resData);
 
   useEffect(() => {
     setValue("atmid", resData?.atmId);
@@ -727,9 +727,9 @@ const closeSignModal = () => {
   },[])
 
   const getTransactionListView = async (currentPage,data = payloadData) => {
-    console.log('currentPage',currentPage);
+    // console.log('currentPage',currentPage);
     setCurrentPage(currentPage)
-    console.log('data',data)
+    // console.log('data',data)
     setIsloading(true);
     try {
       const payload = {
@@ -744,8 +744,8 @@ const closeSignModal = () => {
         payload
       );
 
-console.log('response',response)
-console.log('payload',payload)
+// console.log('response',response)
+// console.log('payload',payload)
       if (response?.data?.status == true) {
         setAtmMasterList(response?.data?.atmHealthModels);
         settotalRecord(response?.data?.totalRecords);
@@ -770,13 +770,13 @@ console.log('payload',payload)
   }
 
   const onSubmit = (data) => {
-    console.log("data",data);
+    // console.log("data",data);
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
       atmId:data?.atmid
     };
-    console.log("payload",payload);
+    // console.log("payload",payload);
     getTransactionList(1, payload)
     //  setpalyalodData(payload)
     //  reset(defaultFormData);

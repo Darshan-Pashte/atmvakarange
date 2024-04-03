@@ -17,11 +17,11 @@ export const login = (payload) => async (dispatch) => {
 
         const response  = await postApiData(apiList.LOGIN, payload);
 
-        console.log("data",response)
+        // console.log("data",response)
 
         dispatch({ type: LOGIN_SUCCESS, payload: response.data });
     } catch (error) {
-        console.log("error",error)
+        // console.log("error",error)
         dispatch({ type: LOGIN_FAIL, payload: error.response.message });
     }
 };

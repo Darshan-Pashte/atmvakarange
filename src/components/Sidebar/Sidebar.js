@@ -38,7 +38,7 @@ const { loading, error, isAuthenticated, user, menu,userType } = useSelector(
   (state) => state.auth
 );
 
-console.log("User",userType)
+// console.log("User",userType)
   const location = useLocation();
   const navigate = useNavigate();
   const [activeRoute, setActiveRoute] = useState('dashboard');

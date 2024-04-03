@@ -12,8 +12,8 @@ import ResetPassword from '../containers/Login/ResetPassword';
 
 const AuthLayout = () => {
   const { loading, error ,isAuthenticated,menu} = useSelector((state) => state.auth);
-  console.log("isAuthenticated",isAuthenticated)
-  console.log("isAuthenticated",menu)
+  // console.log("isAuthenticated",isAuthenticated)
+  // console.log("isAuthenticated",menu)
 
 // useEffect(() => {
 //   if (window.location.href.includes("/dashboard"))

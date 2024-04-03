@@ -107,7 +107,7 @@ const ForgotPassword = () => {
       };
       
       const response = await postApiData(apiList.FORGOT_PASSWORD, payload);
-      console.log('response',response);
+      // console.log('response',response);
       if (response?.data?.status == true) {
        
         setUserId(response?.data.smsId);

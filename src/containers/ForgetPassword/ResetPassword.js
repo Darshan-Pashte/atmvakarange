@@ -69,7 +69,7 @@ const ResetPassword = () => {
   };
 
   const {state}=useLocation()
-  console.log("state",state)
+  // console.log("state",state)
 
 //   function handleSignup() {
 //     navigate("/auth/resetpassword");
@@ -132,7 +132,7 @@ const ResetPassword = () => {
       newpassword:data?.confirmpassword,
     };
     const response = await postApiData(apiList.SETFORGOTPASS, payload);
-    console.log("response", response);
+    // console.log("response", response);
     if (response.status == true) {
       setisLoading(false)
         handleLogin();

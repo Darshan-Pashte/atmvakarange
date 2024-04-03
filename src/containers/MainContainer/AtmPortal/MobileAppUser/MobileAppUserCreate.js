@@ -75,7 +75,7 @@ const MobileAppUserCreate = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
@@ -235,7 +235,7 @@ const MobileAppUserCreate = () => {
           userlvlcode: data?.usercode?.code,
           bankCd:data?.bankcode?.code ? data?.bankcode?.code : ''
       };
-      console.log('payload',payload)
+      // console.log('payload',payload)
       const response = await postApiData(apiList.MOBILE_APP_USER_CREATE, payload);
       if (response?.data?.status == true) {
       

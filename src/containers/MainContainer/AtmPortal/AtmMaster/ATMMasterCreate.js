@@ -107,7 +107,7 @@ const ATMMasterCreate = () => {
   );
 
 
-  console.log('user',user)
+  // console.log('user',user)
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
     setToken(sessionStorage.getItem("TOKEN"));
@@ -357,7 +357,7 @@ const ATMMasterCreate = () => {
   }, [SupplyCounterRequest]);
 
   const onSubmits = async (data) => {
-    console.log('data',data)
+    // console.log('data',data)
     try {
       setIsloading(true);
       const payload = {
@@ -401,7 +401,7 @@ const ATMMasterCreate = () => {
         supplyCounterIsReq:'N',
         // depbin: data.depbin,
       };
-      console.log('payload',payload)
+      // console.log('payload',payload)
       const response = await postApiData(apiList.ATM_MASTER_CREATE, payload);
       if (response?.data?.status == true) {
       

@@ -127,7 +127,7 @@ const onSubmit = async (data) => {
       username : data?.customerno,
     };
     const response = await postApiData(apiList.FORGOTPASSCORPORATE, payload);
-    console.log("response", response);
+    // console.log("response", response);
     if(response?.status == false){
         SweetAlertPopup(response?.message , "Error", "error")
       }

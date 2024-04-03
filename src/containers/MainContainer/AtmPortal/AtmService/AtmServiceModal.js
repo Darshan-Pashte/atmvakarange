@@ -31,7 +31,7 @@ const style = {
 export default function ATMServiceModal({ open, handleOpen, handleClose, closeSignModal,rowDataToDisplay, data,show ,title}) {
     const { headers, rowData,apipath,titletext } = rowDataToDisplay;
 
-    console.log("rowData",rowData)
+    // console.log("rowData",rowData)
     const mappedRowData = rowData.map((value) => {
         if (value === "Y") {
           return "YES";

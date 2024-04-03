@@ -40,7 +40,7 @@ const ChartComponentBar = ({
               setDashboard(response?.data?.report)
             }
           } catch (err) {
-            console.log(err);
+            // console.log(err);
           }
         }
 

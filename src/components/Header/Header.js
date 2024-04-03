@@ -24,7 +24,7 @@ const Header = ({ analytics }) => {
   // const { state } = useContext(AuthContext);
   const [showProfile, setShowProfile] = useState(false);
   const { loading, error, isAuthenticated, user, userType } = useSelector((state) => state.auth);
-  console.log("user", user)
+  // console.log("user", user)
 
   // const { dispatch: authDispatch } = useContext(AuthContext);
   // const [userName, setUserName] = useState("");

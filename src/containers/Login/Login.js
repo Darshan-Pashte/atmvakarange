@@ -134,7 +134,7 @@ const Login = () => {
       };
 
       const response = await postApiData(apiList.LOGIN, payload);
-      console.log(response);
+      // console.log(response);
       if (response?.data?.status == true) {
         // dispatch(loginSuccess(response.data));
         sessionStorage.setItem('JWTToken',response?.data?.token)

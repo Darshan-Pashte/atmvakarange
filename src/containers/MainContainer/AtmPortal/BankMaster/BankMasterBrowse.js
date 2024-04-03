@@ -89,7 +89,7 @@ const BankMasterBrowse = () => {
     (state) => state.auth
   );
 
-  console.log("user", user);
+  // console.log("user", user);
 
 
  
@@ -387,7 +387,7 @@ const closeSignModal = () => {
 
 
   const getTransactionList = (currentpages, payloadDatachild) => {
-    console.log("payloadDatachild", payloadDatachild)
+    // console.log("payloadDatachild", payloadDatachild)
     getTransactionListView(currentpages, payloadDatachild)
     setPayloadData(payloadDatachild)
     
