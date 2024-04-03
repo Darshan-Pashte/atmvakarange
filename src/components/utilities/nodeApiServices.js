@@ -1,16 +1,17 @@
+import Swal from "sweetalert2";
 import SweetAlertPopup from "../common/sweetAlertPopup";
 import { baseUrl } from "./nodeApiList";
 import axios from "axios";  
 
-const validateResponse = (apiData) => {
-    if (typeof apiData == "undefined") {
-      return {
-        status: false,
-        error: "unauthorized",
-      };
-    }
-    return apiData;
-  };
+// const validateResponse = (apiData) => {
+//     if (typeof apiData == "undefined") {
+//       return {
+//         status: false,
+//         error: "unauthorized",
+//       };
+//     }
+//     return apiData;
+//   };
   
   export async function getApiData(url) {
     const response = await fetch(url, {
@@ -129,27 +130,104 @@ const validateResponse = (apiData) => {
   export default API;
 
   // AXIOS POST Request
-export async function postApiData(url, payload) {
-  const response = await API.post(url, payload, {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-  });
-  if(response?.respCode == "IS"){
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.reload();
+  export async function postApiData(url, payload) {
+  
+    try {
+      const response = await API.post(url, payload, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        }
+      });
+      if (response.data.respCode === "IS") {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.reload();
+      }
+      return validateResponse(response);
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        Swal.fire({
+          title: "Session has been expired!!!",
+          icon: "question",
+          showDenyButton: false,
+          showCancelButton: true,
+          confirmButtonText: "Login Again" ,
+          denyButtonText: `Deny`
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            sessionStorage.clear();
+            localStorage.clear();
+            window.location.reload();
+            window.location.href = "/vakrangeeatmadminportal/auth/login"
+          } else if (result.isDenied) {
+       
+          }
+        }).catch((err)=>{SweetAlertPopup('kk','kkj')});
+        // window.location.href = "/vakrangeeatmadminportal"
+      } else {
+        // Handle other errors
+        console.error("Error in postApiData:", error);
+        throw error; // Rethrow the error for higher level handling if necessary
+      }
+    }
   }
-  return validateResponse(response);
-}
 
 
 // Axios GET
+
+// Function to handle errors and responses for GET requests
 export async function axiosGetApiData(url,headers) {
-  const response = await API.get(url,headers);
-  if(response?.data?.respCode == "IS"){
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.reload();
+  try {
+    const response = await API.get(url,headers);
+    if (response.data.respCode === "IS") {
+      sessionStorage.clear();
+      localStorage.clear();
+      window.location.reload();
+    }
+    return validateResponse(response);
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // Redirect to login page
+
+      // const navigate = useNavigate();
+      //       navigate("/auth/login")
+      
+    
+      // window.location.href = "/vakrangeeatmadminportal"
+      Swal.fire({
+        title: "Session has been expired!!!",
+        icon: "question",
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Login Again" ,
+        denyButtonText: `Deny`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          sessionStorage.clear();
+          localStorage.clear();
+          window.location.reload();
+          window.location.href = "/vakrangeeatmadminportal/auth/login"
+        } else if (result.isDenied) {
+     
+        }
+      });
+      // window.location.href = "/vakrangeeatmadminportal"
+    
+    } else {
+      // Handle other errors
+      console.error("Error in axiosGetApiData:", error);
+      throw error; // Rethrow the error for higher level handling if necessary
+    }
   }
-  return validateResponse(response);
+}
+
+// Function to validate response (you need to implement this)
+function validateResponse(response) {
+  // Implement your response validation logic here
+
+  console.log('validateresponse',response)
+  return response; // For now, just returning the response data
 }
