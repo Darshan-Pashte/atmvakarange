@@ -16,5 +16,7 @@ export const PAGINATION_LIMIT = 10;
 export const DEFAULT_TIME_FORMAT = 'DD-MM-YYYY hh:mm:ss';
 
 // export const SITE_KEY = '6LcM0eolAAAAALp2WOXj0s2BjnRxXmmU0UUHoU53';
-export const SITE_KEY = '6Le_0B4pAAAAAMF3kDi6hF2_EmMI-a6_2fX8YHES';
+export const SITE_KEY = '6LcEm64pAAAAAIplbSXyEBx0LfMHko95BIVlzHVK';
+
+
 export const SITE_KEY_CORPORATE = '6Ldqrr8lAAAAANcwXh6D96smBrU-E7eUpbiCPfxS';
