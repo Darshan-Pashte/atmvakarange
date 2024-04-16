@@ -1208,8 +1208,10 @@ const { state } = useLocation();
                           placeholder: "TPK TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          disabled:true,
                           inputProps : {maxLength: 50}
                         }}
+                        backgroundColor={true}
                         regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
                         //   required:
@@ -1241,8 +1243,10 @@ const { state } = useLocation();
                           placeholder: "TPK LMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          disabled:true,
                           inputProps : {maxLength: 50}
                         }}
+                        backgroundColor={true}
                         regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
                         //   required:
