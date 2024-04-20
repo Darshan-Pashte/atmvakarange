@@ -868,8 +868,8 @@ const closeSignModal = () => {
     transno: data?.transno,
     value1: data?.fromacc,
     value2: data?.toacc,
-    fromDate: convertDate(data.fromDate,1),
-    toDate: convertDate(data.toDate,1),
+    fromDate: convertDate(data.fromDate,1) ? convertDate(data.fromDate,1) : convertDate(new Date(),1),
+    toDate: convertDate(data.toDate,1) ? convertDate(data.toDate,1) : convertDate(new Date(),1),
 
     };
     console.log("payload",payload);
