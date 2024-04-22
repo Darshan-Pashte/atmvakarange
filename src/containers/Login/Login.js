@@ -221,14 +221,16 @@ const Login = () => {
                         name: "email",
                         rows: 5,
                         maxRows: 10,
+                       
                       }}
                       TextFieldProps={{
                         // label: "Branch",
                         placeholder: "Username",
                         // style: { width: "33vw" },
                         fullWidth: true,
+                        inputProps : {maxLength: 30}
                       }}
-                      regExp={/^[a-zA-Z1-9]+$/}
+                      regExp={/^[a-zA-Z0-9]+$/}
                       rules={{
                         required:
                           "Username " +
@@ -246,28 +248,7 @@ const Login = () => {
                     Password<sup className={classes.required}>*</sup>
                   </div>
                   <div className={classes.frow1aff}>
-                    {/* <TextFieldForm
-                      controlerProps={{
-                        control: control,
-                        name: "password",
-                        rows: 5,
-                        maxRows: 10,
-                      }}
-                      TextFieldProps={{
-                        // label: "Name",
-                        type : "password",
-                        placeholder: "Please Enter Password",
-                        // style: { width: "33vw" },
-                        fullWidth: true,
-                      }}
-                      regExp={/^[a-zA-Z@#.&0-9]+$/}
-                      rules={{
-                        required:
-                          "Password " + errorMessages.error_autocomplete_message,
-                      }}
-                      required={true}
-                      icon={<RemoveRedEye />}
-                    /> */}
+                   
                     <Controller
                       name="password" // The name should match the key in 'data' object in onSubmit
                       control={control}
@@ -276,6 +257,7 @@ const Login = () => {
                         required:
                           "Password " +
                           errorMessages.error_autocomplete_message,
+                          
                           pattern: {
             
                             value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
@@ -284,7 +266,7 @@ const Login = () => {
                       }}
                       render={({ field, fieldState }) => {
                         const handleInputChange = (event) => {
-                          const regex = /^[a-zA-Z@#.&0-9]+$/;
+                          const regex = /^[a-zA-Z@#&0-9]+$/;
                           const { name, value } = event.target;
                           const isValidInput =
                             regex.test(value) || value === "";
@@ -339,6 +321,7 @@ const Login = () => {
                             error={!!fieldState.error}
                             helperText={fieldState.error?.message}
                             onChange={handleInputChange}
+                            inputProps={{maxLength: 20}}
                             // error={field.error} // Pass the error state here
                             // helperText={passwordError ? "Password does not meet requirements" : ""}
                           />
