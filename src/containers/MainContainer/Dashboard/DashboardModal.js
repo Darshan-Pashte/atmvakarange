@@ -56,7 +56,22 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
 
 
       const columns = [
-  
+        {
+          name: "Sr No",
+          label: "Sr.No",
+          options: {
+            filter: false,
+            sort: false,
+            customBodyRender: (value, { rowIndex }) => {
+              // const currentPage = page;
+              // const rowsPerPage = rowsPerPage;
+              const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -4;
+              return (
+                <div>{serialNumber}</div>
+              );
+            },
+          },
+        },
        
         {
           name: "atmId",

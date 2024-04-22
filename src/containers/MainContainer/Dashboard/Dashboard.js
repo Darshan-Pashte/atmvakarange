@@ -438,7 +438,22 @@ const Dashboard = () => {
     //         },
     //     }
     // },
-
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "atmid",
       label: "ATM Id",
