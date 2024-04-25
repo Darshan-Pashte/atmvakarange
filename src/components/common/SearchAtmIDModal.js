@@ -542,11 +542,7 @@ export default function SearchAtmIDModal({
                           fullWidth: true,
                           inputProps : {maxLength: 15}
                         }}
-                        regExp={/^[.0-9]+$/}
-                        rules={{ pattern: {
-            
-                          value: /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
-                        },}}
+                        regExp={/^[0-9.]+$/}
                         // rules={{
                         //   required:
                         //     "Machine IP" +
