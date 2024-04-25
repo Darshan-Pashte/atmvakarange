@@ -228,7 +228,7 @@ const Login = () => {
                         placeholder: "Username",
                         // style: { width: "33vw" },
                         fullWidth: true,
-                        inputProps : {maxLength: 30}
+                        inputProps : {maxLength: 20}
                       }}
                       regExp={/^[a-zA-Z0-9]+$/}
                       rules={{
@@ -321,7 +321,7 @@ const Login = () => {
                             error={!!fieldState.error}
                             helperText={fieldState.error?.message}
                             onChange={handleInputChange}
-                            inputProps={{maxLength: 20}}
+                            inputProps={{maxLength: 10}}
                             // error={field.error} // Pass the error state here
                             // helperText={passwordError ? "Password does not meet requirements" : ""}
                           />

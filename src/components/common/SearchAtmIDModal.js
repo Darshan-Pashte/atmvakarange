@@ -505,11 +505,11 @@ export default function SearchAtmIDModal({
                           // multiline:true,
                           // rows:3,
                           fullWidth: true,
-                          inputProps : {maxLength: 100}
+                          inputProps : {maxLength: 40}
                         }}
                         // regExp={/^[a-zA-Z0-9. ]+$/}
                       // regExp={/.*/}
-                      regExp={/^[^<>]*$/}
+                      regExp={/^[A-Za-z0-9]*$/}
 
                         // rules={{
                         //   required:
