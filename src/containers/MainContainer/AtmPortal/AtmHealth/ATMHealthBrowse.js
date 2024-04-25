@@ -819,7 +819,7 @@ const closeSignModal = () => {
     },
   }));
 
-
+  
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -893,14 +893,16 @@ const closeSignModal = () => {
                         const handleInputChange = (event) => {
                           const regex = /^[A-Z0-9]+$/;
                           const { name, value } = event.target;
+                          const uppercaseValue = value.toUpperCase();
+                          
                           const isValidInput =
-                            regex.test(value) || value === "";
+                          regex.test(uppercaseValue) || uppercaseValue === "";
 
                           if (!isValidInput) {
                             event.preventDefault();
                             return;
                           }
-                          field.onChange(value);
+                          field.onChange(uppercaseValue);
                         };
 
                         return (
@@ -942,8 +944,10 @@ const closeSignModal = () => {
                               inputProps : {maxLength: 8}
                               
                             }}
-                            // error={!!fieldState.error}
-                            // helperText={fieldState.error?.message}
+                            error={!!fieldState.error}
+                            helperText={fieldState.error?.message}
+                            onChange={handleInputChange}
+                            // inputProps={{maxLength: 8}}
                
                           />
                         );
@@ -968,7 +972,46 @@ const closeSignModal = () => {
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
               <ThemeProvider theme={getMuiTheme()}>
                 <MUIDataTable
-                  title={" ATM Health Browse List"}
+                  title={
+                    <div style={{display:'flex', alignItems:"center",gap:"30px",fontSize:"20px",fontWeight:"500"}}>
+                      ATM Health Browse List
+                      <div style={{display:'flex',alignItems:"center"}}>
+                        <div style={{
+                          backgroundColor: 'yellow',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                      N
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Normal</div>
+                      <div style={{
+                          backgroundColor: 'orange',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                      W
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Worning</div>
+
+                      <div style={{
+                          backgroundColor: 'red',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                          <div style={{fontSize:'13px',fontWeight:'500'}}>
+                      F
+                      </div>
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px'}}>- Fatal</div>
+                      </div>
+                    </div>
+                  }
                   data={atmMasterList}
                   columns={columns}
                   options={options}
