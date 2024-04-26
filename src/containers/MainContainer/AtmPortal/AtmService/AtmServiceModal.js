@@ -48,6 +48,7 @@ export default function ATMServiceModal({ open, handleOpen, handleClose, closeSi
     // });
     const [isLoading, setIsloading] = React.useState(false);
     const [bankcode, setBankCode] = React.useState([]);
+    const [bankdata, setBankData] = React.useState([]);
 
     const { loading, error, isAuthenticated, user } = useSelector(
         (state) => state.auth
@@ -69,13 +70,18 @@ getData()
           const response = await postApiData(apiList.ATM_SERVICE_DATA+`${apipath}`, payload);
           if(response?.data?.status == true){
             setBankCode(response?.data?.message);
+            setBankData(response?.data);
           setIsloading(false);
+          }else{
+            setBankCode(response?.data?.message);
           }
           
         } catch (err) {
           console.log(err);
-        }
+        } 
       };
+
+      console.log('bankdata',bankdata)
     return (
         <div>
             <Modal
@@ -91,12 +97,16 @@ getData()
                     <Button className={classes.headerLogo}  style={{transform:'scale(1.6)'}} onClick={handleClose}><CancelRoundedIcon/></Button>
                     </div>
                     <div className={classes.modalContent} style={{width:'100%'}}>
-                        <div style={{fontSize:'18px',padding:'8px'}}>
+                        <div style={{fontSize:'14px',padding:'8px',fontWeight:'600'}} >
 
-
-                       {titletext} : {bankcode}
-                      
+                        {bankcode}
+                        
                         </div>
+                        <div style={{fontSize:'18px',padding:'8px'}}  >
+
+                       {titletext} : {bankdata[2]}
+                        </div>
+                        
 
                     </div>
                 </Box>
