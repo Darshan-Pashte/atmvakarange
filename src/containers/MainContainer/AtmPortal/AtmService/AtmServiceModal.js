@@ -81,6 +81,7 @@ getData()
         } 
       };
 
+      const responseArray = Object.values(bankdata);
       console.log('bankdata',bankdata)
     return (
         <div>
@@ -104,7 +105,7 @@ getData()
                         </div>
                         <div style={{fontSize:'18px',padding:'8px'}}  >
 
-                       {titletext} : {bankdata[2]}
+                       {titletext} : {responseArray[2]}
                         </div>
                         
 
