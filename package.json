@@ -1,10 +1,6 @@
 {
   "name": "swift-corepe-admin",
-<<<<<<< HEAD
-  "version": "0.2.18",
-=======
   "version": "0.2.23",
->>>>>>> 669a847f9ebd9dc7571cb59458e5d0928b39be79
   "private": true,
   "homepage": "/vakrangeeatmadminportal",
   "dependencies": {
