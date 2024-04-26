@@ -726,7 +726,7 @@ input[type="file"]::file-selector-button:active {
     
     .popup{
       min-width: 430px;
-    /* width: 35vw; */
+    width: 35vw;
     left: 50%;
     overflow:auto;
     max-height: 96%;
