@@ -415,7 +415,23 @@ const closeSignModal = () => {
   //         },
   //     }
   // },
- 
+
+  {
+    name: "responsecd",
+    label: "Response Code",
+    options: {
+      filter: true,
+      sort: false,
+    },
+  },
+ {
+    name: "responsedesc",
+    label: "Response Desc",
+    options: {
+      filter: true,
+      sort: false,
+    },
+  },
    {
       name: "atmid",
       label: "ATM Id",
@@ -424,7 +440,16 @@ const closeSignModal = () => {
         sort: false,
       },
     },
-
+    {
+      name: "pinblock",
+      label: "RRN",
+      options: {
+        filter: true,
+        sort: false,
+        // display:false
+      },
+    },
+   
     {
       name: "transactionnumber",
       label: "Number",
@@ -488,14 +513,6 @@ const closeSignModal = () => {
         // },
       },
     },
-    // {
-    //   name: "transactiontime",
-    //   label: "Time",
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //   },
-    // },
     {
       name: "transactiontype",
       label: "Type",
@@ -513,6 +530,17 @@ const closeSignModal = () => {
         // display:false
       },
     },
+ 
+    // {
+    //   name: "transactiontime",
+    //   label: "Time",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //   },
+    // },
+   
+   
     // {
     //   name: "transIf",
     //   label: "Trans Info",
@@ -542,7 +570,7 @@ const closeSignModal = () => {
     },
     {
       name: "csppinblock1",
-      label: "Card Read Mode",
+      label: "Field Status",
       options: {
         filter: true,
         sort: false,
@@ -660,6 +688,16 @@ const closeSignModal = () => {
         display:false
       },
     },
+    
+  {
+    name: "authcd",
+    label: "Auth Cd",
+    options: {
+      filter: true,
+      sort: false,
+      // display:false
+    },
+  },
     // {
     //   name: "bankcd",
     //   label: "Bank Code",
@@ -1214,7 +1252,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={3}>
+                {/* <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
                     <div className={classes.frow1aff}>
@@ -1240,7 +1278,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
                 {/* <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
@@ -1391,7 +1429,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid> */}
 
-
+{/* 
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -1426,7 +1464,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                
               
@@ -1559,10 +1597,10 @@ const closeSignModal = () => {
                 </Grid>
 
                 
-                <Grid item xs={12} sm={6} md={3}>
+                {/* <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
                   <div className={classes.frowtextaff}>From Amount
-                  {/* <sup className={classes.required}>*</sup> */}
+                  <sup className={classes.required}>*</sup>
                   </div>
                   <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1590,13 +1628,13 @@ const closeSignModal = () => {
                     />
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
 
-
+{/* 
                 <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
                   <div className={classes.frowtextaff}>To Amount
-                  {/* <sup className={classes.required}>*</sup> */}
+                  <sup className={classes.required}>*</sup>
                   </div>
                   <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1623,7 +1661,7 @@ const closeSignModal = () => {
                     />
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
                 {/* <Grid
                   item
                   xs={12}
