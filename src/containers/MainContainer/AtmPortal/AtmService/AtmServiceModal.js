@@ -65,7 +65,7 @@ getData()
             
             username: user?.username,
             sessionId: user?.sessionId,
-            atmId:rowData[0]
+            atmId:rowData[1]
           };
           const response = await postApiData(apiList.ATM_SERVICE_DATA+`${apipath}`, payload);
           if(response?.data?.status == true){
@@ -93,7 +93,7 @@ getData()
             >
                <Box sx={style} className={classes.popup}>
                     <div className={classes.header}>
-                    <div className={classes.headerTitle} style={{fontSize:'18px',padding:'8px'}}>ATM ID - {rowData[0]}</div>
+                    <div className={classes.headerTitle} style={{fontSize:'18px',padding:'8px'}}>ATM ID - {rowData[1]}</div>
                     <Button className={classes.headerLogo}  style={{transform:'scale(1.6)'}} onClick={handleClose}><CancelRoundedIcon/></Button>
                     </div>
                     <div className={classes.modalContent} style={{width:'100%'}}>
