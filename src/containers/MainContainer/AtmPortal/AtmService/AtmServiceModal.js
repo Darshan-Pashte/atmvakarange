@@ -12,6 +12,7 @@ import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import { useSelector } from 'react-redux';
 import { apiList } from '../../../../components/utilities/nodeApiList';
 import { postApiData } from '../../../../components/utilities/nodeApiServices';
+import Loader from '../../../../components/common/loader';
 
 
 
@@ -74,6 +75,7 @@ getData()
           setIsloading(false);
           }else{
             setBankCode(response?.data?.message);
+            setIsloading(false);
           }
           
         } catch (err) {
@@ -85,6 +87,7 @@ getData()
       console.log('bankdata',bankdata)
     return (
         <div>
+              {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
             <Modal
                 open={open}
                 // onClose={handleClose}
