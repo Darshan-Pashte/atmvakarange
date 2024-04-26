@@ -10,7 +10,7 @@ import ChevronDown from './SidebarIcons/chevronDownWhite.svg';
 import ChevronUp from './SidebarIcons/up-chevron-svgrepo-com.svg';
 import HandleOpen from "../../assets/Sidebar/OpenIcon.svg"
 import HandleClose from "../../assets/Sidebar/CloseIcon.svg"
-import SidebarImageIcon from "../Sidebar/SidebarIcons/sidebarImage.svg"
+import SidebarImageIcon from "../../assets/Sidebar/SidebarImage.svg"
 import styled, { keyframes } from 'styled-components';
 import { fadeIn } from 'react-animations';
 import { set } from 'react-hook-form';
@@ -19,6 +19,7 @@ import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/authSlice';
 import headerLogo from "../../assets/images/commonforweb/silkpay.png";
+import LogOut from "../../assets/Sidebar/Logout.svg"
 const package_json = require("../../../package.json");
 
 
@@ -280,7 +281,7 @@ const a="11111000000"
             </div>
 
       <div className={classes.logoutbttn} onClick={handleLogout} >
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          {/* <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
           <path d="M16.5 17.4L21.5 12.4M21.5 12.4L16.5 7.39999M21.5 12.4H9.5M9.5 3.39999H8.3C6.61984 3.39999 5.77976 3.39999 5.13803 3.72697C4.57354 4.01459 4.1146 4.47354 3.82698 5.03802C3.5 5.67976 3.5 6.51984 3.5 8.19999V16.6C3.5 18.2802 3.5 19.1202 3.82698 19.762C4.1146 20.3265 4.57354 20.7854 5.13803 21.073C5.77976 21.4 6.61984 21.4 8.3 21.4H9.5" stroke="url(#paint0_linear_1_309)" stroke-linecap="round" stroke-linejoin="round"/>
           <defs>
             <linearGradient id="paint0_linear_1_309" x1="12.5" y1="5.11428" x2="12.5" y2="20.5428" gradientUnits="userSpaceOnUse">
@@ -288,7 +289,8 @@ const a="11111000000"
               <stop offset="1" stop-color="#FBA07A"/>
             </linearGradient>
           </defs>
-        </svg>
+        </svg> */}
+        <img src={LogOut} alt="LogOut Image" />
         <div style={{fontSize:'13px',fontWeight:500}}>
           Log Out
         </div>

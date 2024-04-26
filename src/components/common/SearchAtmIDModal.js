@@ -162,7 +162,22 @@ export default function SearchAtmIDModal({
 
 
   const columns = [
-  
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "View",
       label: "Select",
@@ -490,11 +505,11 @@ export default function SearchAtmIDModal({
                           // multiline:true,
                           // rows:3,
                           fullWidth: true,
-                          inputProps : {maxLength: 100}
+                          inputProps : {maxLength: 40}
                         }}
                         // regExp={/^[a-zA-Z0-9. ]+$/}
                       // regExp={/.*/}
-                      regExp={/^[^<>]*$/}
+                      regExp={/^[A-Za-z0-9]*$/}
 
                         // rules={{
                         //   required:

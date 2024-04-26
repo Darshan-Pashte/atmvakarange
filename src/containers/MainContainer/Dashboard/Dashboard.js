@@ -438,7 +438,22 @@ const Dashboard = () => {
     //         },
     //     }
     // },
-
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "atmid",
       label: "ATM Id",
@@ -713,6 +728,15 @@ const Dashboard = () => {
   }));
 
 
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.toLocaleString('default', { month: 'short' });
+  const year = today.getFullYear();
+  
+  const TodaysDate = `${day}-${month}-${year}`;
+  
+  console.log(TodaysDate); // Output: 16-Apr-2024
+
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -815,8 +839,9 @@ const Dashboard = () => {
 
               <div className={classes.BottomContainer}>
               <div className={classes.BottomContainerDownload}>
-                  <div style={{visibility:'hidden'}}>
-jjk
+                  <div >
+                  <div className={classes.heading} style={{marginLeft:'10px'}}>Transaction Summary
+          <span className={classes.heading}  >  ({TodaysDate})</span></div>
                   </div>
                   <div style={{marginRight:'5px'}}>
                   <ColorButton1 variant="contained" type="submit" onClick={()=>onDownloadExcel()}>

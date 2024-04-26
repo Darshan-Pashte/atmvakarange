@@ -122,17 +122,24 @@ const LocalAndAquirerBrowse = () => {
 
 
 
-  // useEffect(() => {
-  //   if (AtmIdList) {
-  //     setValue("atmid", AtmIdList ? compareTextAndReturnObject(AtmIdList, AtmIdList[0]?.value) : '')
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (TransTypeList) {
+      setValue("transtype", TransTypeList ? compareTextAndReturnObject(TransTypeList, TransTypeList[0]?.value) : '')
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   if (BankCodeList) {
-  //     setValue("bankcode", BankCodeList ? compareTextAndReturnObject(BankCodeList, BankCodeList[0]?.value) : '')
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (statusList) {
+      setValue("status", statusList ? compareTextAndReturnObject(statusList, statusList[0]?.value) : '')
+    }
+  }, []);
+
+
+  useEffect(() => {
+    if (CardReadModeList) {
+      setValue("cardreadmode", CardReadModeList ? compareTextAndReturnObject(CardReadModeList, CardReadModeList[0]?.value) : '')
+    }
+  }, []);
 
 
   const TransactionType = [
@@ -310,7 +317,7 @@ const LocalAndAquirerBrowse = () => {
 
 const openModal = (rowData) => {
   // const headers = columns.map((column) => column.label);
-  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify").map((column) => column?.label);
+  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify" && column?.label !== "Sr.No").map((column) => column?.label);
   setTableHeaders(headers);
   setRowDataToDisplay({
       headers: headers,
@@ -354,7 +361,22 @@ const closeSignModal = () => {
 
 
   const columns = [
-  
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "View",
       label: "View",
@@ -393,7 +415,23 @@ const closeSignModal = () => {
   //         },
   //     }
   // },
- 
+
+  {
+    name: "responsecd",
+    label: "Response Code",
+    options: {
+      filter: true,
+      sort: false,
+    },
+  },
+ {
+    name: "responsedesc",
+    label: "Response Desc",
+    options: {
+      filter: true,
+      sort: false,
+    },
+  },
    {
       name: "atmid",
       label: "ATM Id",
@@ -402,7 +440,16 @@ const closeSignModal = () => {
         sort: false,
       },
     },
-
+    {
+      name: "pinblock",
+      label: "RRN",
+      options: {
+        filter: true,
+        sort: false,
+        // display:false
+      },
+    },
+   
     {
       name: "transactionnumber",
       label: "Number",
@@ -417,6 +464,41 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
+        customBodyRender: (value) => {
+          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric'
+          });
+      
+          const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+          });
+      
+          const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
+      
+          const buttonStyles = {
+            minWidth: "100%",
+            padding: "5px",
+            borderRadius: '20px',
+            width:'150px',
+          //   height: '100px',
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word'
+          };
+        
+          // Check if value is not null or undefined before replacing
+          const formattedValue = formattedDateTime ? formattedDateTime.replace(/(.{50})/g, "$1\n") : '';
+        
+          return (
+            <div style={buttonStyles}>
+              {formattedValue}
+            </div>
+          );
+
+        },
         // customBodyRender: (value) => {
         //   const formattedDate = new Date(value).toLocaleDateString('en-GB', {
         //     day: '2-digit',
@@ -429,14 +511,6 @@ const closeSignModal = () => {
         //   return formattedDate;
           
         // },
-      },
-    },
-    {
-      name: "transactiontime",
-      label: "Time",
-      options: {
-        filter: true,
-        sort: false,
       },
     },
     {
@@ -456,6 +530,17 @@ const closeSignModal = () => {
         // display:false
       },
     },
+ 
+    // {
+    //   name: "transactiontime",
+    //   label: "Time",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //   },
+    // },
+   
+   
     // {
     //   name: "transIf",
     //   label: "Trans Info",
@@ -485,7 +570,7 @@ const closeSignModal = () => {
     },
     {
       name: "csppinblock1",
-      label: "Card Read Mode",
+      label: "Field Status",
       options: {
         filter: true,
         sort: false,
@@ -540,14 +625,14 @@ const closeSignModal = () => {
               minWidth: "100%",
               padding: "5px",
               borderRadius: '20px',
-              width:'250px',
+              width:'550px',
             //   height: '100px',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word'
             };
           
             // Check if value is not null or undefined before replacing
-            const formattedValue = value ? value.replace(/(.{50})/g, "$1\n") : '';
+            const formattedValue = value ? value.replace(/(.{80})/g, "$1\n") : '';
           
             return (
               <div style={buttonStyles}>
@@ -603,6 +688,16 @@ const closeSignModal = () => {
         display:false
       },
     },
+    
+  {
+    name: "authcd",
+    label: "Auth Cd",
+    options: {
+      filter: true,
+      sort: false,
+      // display:false
+    },
+  },
     // {
     //   name: "bankcd",
     //   label: "Bank Code",
@@ -1157,7 +1252,7 @@ const closeSignModal = () => {
                 </Grid>
 
 
-                <Grid item xs={12} sm={6} md={3}>
+                {/* <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
                     <div className={classes.frow1aff}>
@@ -1183,7 +1278,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
                 {/* <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>Card Bin</div>
@@ -1334,7 +1429,7 @@ const closeSignModal = () => {
                   </div>
                 </Grid> */}
 
-
+{/* 
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
@@ -1369,7 +1464,7 @@ const closeSignModal = () => {
                       />
                     </div>
                   </div>
-                </Grid>
+                </Grid> */}
 
                
               
@@ -1502,10 +1597,10 @@ const closeSignModal = () => {
                 </Grid>
 
                 
-                <Grid item xs={12} sm={6} md={3}>
+                {/* <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
                   <div className={classes.frowtextaff}>From Amount
-                  {/* <sup className={classes.required}>*</sup> */}
+                  <sup className={classes.required}>*</sup>
                   </div>
                   <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1533,13 +1628,13 @@ const closeSignModal = () => {
                     />
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
 
-
+{/* 
                 <Grid item xs={12} sm={6} md={3}>
                 <div className={classes.frowdataaff}>
                   <div className={classes.frowtextaff}>To Amount
-                  {/* <sup className={classes.required}>*</sup> */}
+                  <sup className={classes.required}>*</sup>
                   </div>
                   <div className={classes.frow1aff}>
                     <TextFieldForm
@@ -1566,7 +1661,7 @@ const closeSignModal = () => {
                     />
                   </div>
                 </div>
-              </Grid>
+              </Grid> */}
                 {/* <Grid
                   item
                   xs={12}

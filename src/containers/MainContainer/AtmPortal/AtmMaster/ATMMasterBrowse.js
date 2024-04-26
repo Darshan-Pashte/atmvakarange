@@ -144,7 +144,7 @@ const ATMMasterBrowse = () => {
     // const headers = columns.map((column) => column.label);
     const headers = columns
       ?.filter(
-        (column) => column?.label !== "View" && column?.label !== "Modify"
+        (column) => column?.label !== "View" && column?.label !== "Modify" && column?.label !== "Sr.No"
       )
       .map((column) => column?.label);
     setTableHeaders(headers);
@@ -170,6 +170,23 @@ const ATMMasterBrowse = () => {
   };
 
   const columns = [
+
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "View",
       label: "View",

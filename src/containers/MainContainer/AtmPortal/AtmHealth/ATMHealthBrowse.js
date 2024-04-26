@@ -167,7 +167,7 @@ const ATMHealthBrowse = () => {
 
 const openModal = (rowData,apipath,titletext) => {
   // const headers = columns.map((column) => column.label);
-  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify").map((column) => column?.label);
+  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify" && column?.label !== "Sr.No").map((column) => column?.label);
   setTableHeaders(headers);
   setRowDataToDisplay({
       headers: headers,
@@ -197,7 +197,22 @@ const closeSignModal = () => {
 
 
   const columns = [
-  
+    {
+      name: "Sr No",
+      label: "Sr.No",
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRender: (value, { rowIndex }) => {
+          // const currentPage = page;
+          // const rowsPerPage = rowsPerPage;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          return (
+            <div>{serialNumber}</div>
+          );
+        },
+      },
+      },
     {
       name: "View",
       label: "View",
@@ -804,7 +819,7 @@ const closeSignModal = () => {
     },
   }));
 
-
+  
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -874,29 +889,20 @@ const closeSignModal = () => {
                       name="atmid" // The name should match the key in 'data' object in onSubmit
                       control={control}
                       defaultValue="" // Set an initial value if needed
-                      // rules={{
-                      //   required:
-                      //     "ATM ID " +
-                      //     errorMessages.error_autocomplete_message,
-                      //     // pattern: {
-            
-                      //     //   value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-                      //     //   message: "2 special character,1 Uppercase,1 digit",
-                      //     // },
-                      // }}
                       render={({ field, fieldState }) => {
                         const handleInputChange = (event) => {
                           const regex = /^[A-Z0-9]+$/;
                           const { name, value } = event.target;
+                          const uppercaseValue = value.toUpperCase();
+                          
                           const isValidInput =
-                            regex.test(value) || value === "";
+                          regex.test(uppercaseValue) || uppercaseValue === "";
 
                           if (!isValidInput) {
                             event.preventDefault();
                             return;
                           }
-
-                          field.onChange(value);
+                          field.onChange(uppercaseValue);
                         };
 
                         return (
@@ -935,10 +941,13 @@ const closeSignModal = () => {
                                   </IconButton>
                                 </InputAdornment> 
                               ),
-                              inputProps : {maxLength: 10}
+                              inputProps : {maxLength: 8}
+                              
                             }}
-                            // error={!!fieldState.error}
-                            // helperText={fieldState.error?.message}
+                            error={!!fieldState.error}
+                            helperText={fieldState.error?.message}
+                            onChange={handleInputChange}
+                            // inputProps={{maxLength: 8}}
                
                           />
                         );
@@ -948,30 +957,6 @@ const closeSignModal = () => {
                   </div>
                 </Grid>
 
-
-                {/* <Grid item xs={12} sm={5} md={1} style={{display:'flex',alignItems:'center'}}>
-                  <div className={classes.frowdataaff} >
-                  <div
-          
-                    >
-                    </div>
-                    <div
-                      className={classes.frow1aff}
-                      onClick={() => handleOpenSearch()}
-                    >
-                    <SearchIcon/>
-                    </div>
-                  </div>
-                </Grid> */}
-
-           
-                {/* <Grid
-                  item
-                  xs={12}
-                  sm={2}
-                  md={6}
-                  style={{ paddingTop: "42px" }}
-                ></Grid>  */}
 
                 <Grid item xs={12} sm={3} md={2} style={{ paddingTop: "37px" }}>
                   <ColorButton1 variant="contained" type="submit">
@@ -987,7 +972,46 @@ const closeSignModal = () => {
               <div style={{ width: "100%" ,marginBottom:'10px'}}>
               <ThemeProvider theme={getMuiTheme()}>
                 <MUIDataTable
-                  title={" ATM Health Browse List"}
+                  title={
+                    <div style={{display:'flex', alignItems:"center",gap:"30px",fontSize:"15px",fontWeight:"500"}}>
+                      ATM Health Browse List
+                      <div style={{display:'flex',alignItems:"center"}}>
+                        <div style={{
+                          backgroundColor: 'yellow',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                      N
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Normal</div>
+                      <div style={{
+                          backgroundColor: 'orange',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                      W
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Warning</div>
+
+                      <div style={{
+                          backgroundColor: 'red',
+                          width:"50px",
+                          padding: "5px",
+                          borderRadius: '20px',
+                          textAlign: 'center'
+                        }}>
+                          <div style={{fontSize:'13px',fontWeight:'500'}}>
+                      F
+                      </div>
+                      </div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px'}}>- Fatal</div>
+                      </div>
+                    </div>
+                  }
                   data={atmMasterList}
                   columns={columns}
                   options={options}
