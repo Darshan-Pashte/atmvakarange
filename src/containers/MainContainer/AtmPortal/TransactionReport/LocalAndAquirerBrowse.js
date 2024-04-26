@@ -122,17 +122,24 @@ const LocalAndAquirerBrowse = () => {
 
 
 
-  // useEffect(() => {
-  //   if (AtmIdList) {
-  //     setValue("atmid", AtmIdList ? compareTextAndReturnObject(AtmIdList, AtmIdList[0]?.value) : '')
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (TransTypeList) {
+      setValue("transtype", TransTypeList ? compareTextAndReturnObject(TransTypeList, TransTypeList[0]?.value) : '')
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   if (BankCodeList) {
-  //     setValue("bankcode", BankCodeList ? compareTextAndReturnObject(BankCodeList, BankCodeList[0]?.value) : '')
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (statusList) {
+      setValue("status", statusList ? compareTextAndReturnObject(statusList, statusList[0]?.value) : '')
+    }
+  }, []);
+
+
+  useEffect(() => {
+    if (CardReadModeList) {
+      setValue("cardreadmode", CardReadModeList ? compareTextAndReturnObject(CardReadModeList, CardReadModeList[0]?.value) : '')
+    }
+  }, []);
 
 
   const TransactionType = [
