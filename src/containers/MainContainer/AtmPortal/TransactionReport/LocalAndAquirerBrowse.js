@@ -439,6 +439,41 @@ const closeSignModal = () => {
       options: {
         filter: true,
         sort: false,
+        customBodyRender: (value) => {
+          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric'
+          });
+      
+          const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+          });
+      
+          const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
+      
+          const buttonStyles = {
+            minWidth: "100%",
+            padding: "5px",
+            borderRadius: '20px',
+            width:'150px',
+          //   height: '100px',
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word'
+          };
+        
+          // Check if value is not null or undefined before replacing
+          const formattedValue = formattedDateTime ? formattedDateTime.replace(/(.{50})/g, "$1\n") : '';
+        
+          return (
+            <div style={buttonStyles}>
+              {formattedValue}
+            </div>
+          );
+
+        },
         // customBodyRender: (value) => {
         //   const formattedDate = new Date(value).toLocaleDateString('en-GB', {
         //     day: '2-digit',
@@ -453,14 +488,14 @@ const closeSignModal = () => {
         // },
       },
     },
-    {
-      name: "transactiontime",
-      label: "Time",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
+    // {
+    //   name: "transactiontime",
+    //   label: "Time",
+    //   options: {
+    //     filter: true,
+    //     sort: false,
+    //   },
+    // },
     {
       name: "transactiontype",
       label: "Type",
@@ -562,14 +597,14 @@ const closeSignModal = () => {
               minWidth: "100%",
               padding: "5px",
               borderRadius: '20px',
-              width:'250px',
+              width:'550px',
             //   height: '100px',
               whiteSpace: 'pre-wrap',
               wordBreak: 'break-word'
             };
           
             // Check if value is not null or undefined before replacing
-            const formattedValue = value ? value.replace(/(.{50})/g, "$1\n") : '';
+            const formattedValue = value ? value.replace(/(.{80})/g, "$1\n") : '';
           
             return (
               <div style={buttonStyles}>
