@@ -104,9 +104,9 @@ getData()
                         <div style={{fontSize:'14px',padding:'8px',fontWeight:'600'}} >
 
                         {bankcode}
-                        
+                        jhihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihi
                         </div>
-                        <div style={{fontSize:'18px',padding:'8px'}}  >
+                        <div style={{fontSize:'18px',padding:'8px',lineBreak:'anywhere'}}  >
 
                        {titletext} : {responseArray[2]}
                         </div>
