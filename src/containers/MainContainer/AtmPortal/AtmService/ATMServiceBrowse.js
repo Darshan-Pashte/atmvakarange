@@ -303,6 +303,67 @@ const closeModal = () => {
       },
     },
     {
+      name: "Config Data",
+      label: "Config Data",
+      options: {
+        filter: true,
+        sort: false,
+        display:true,
+        customBodyRender: (value, { rowData }, tableMeta ) => {
+          const apipath = 'configdataservice'; 
+          const titletext='Config Data'
+          return (
+            <Button
+              sx={{
+                color: "black",
+                minWidth: "100%",
+                padding: "5px 5px !important",
+              }}
+            
+              onClick={() => openModal(rowData,apipath,titletext )}
+            >
+              {" "}
+              {/* <AddBoxOutlinedIcon /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M14.25 3V8.25H19.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 21H18.75C18.9489 21 19.1397 20.921 19.2803 20.7803C19.421 20.6397 19.5 20.4489 19.5 20.25V8.25L14.25 3H5.25C5.05109 3 4.86032 3.07902 4.71967 3.21967C4.57902 3.36032 4.5 3.55109 4.5 3.75V12M9.50911 18.6198C9.50911 19.5403 8.76292 20.2865 7.84245 20.2865C6.92197 20.2865 6.17578 19.5403 6.17578 18.6198C6.17578 17.6993 6.92197 16.9531 7.84245 16.9531C8.76292 16.9531 9.50911 17.6993 9.50911 18.6198ZM7.92779 21.8737C7.87196 21.8737 7.81571 21.8737 7.76113 21.8737L6.42571 22.6191C5.90585 22.4443 5.42366 22.1729 5.00446 21.8191L4.99946 20.3191C4.96988 20.2725 4.94196 20.2254 4.91613 20.1771L3.58821 19.4208C3.48362 18.8918 3.48362 18.3474 3.58821 17.8183L4.91488 17.0641C4.94196 17.0162 4.96988 16.9687 4.99821 16.9221L5.00488 15.4221C5.4237 15.0673 5.90576 14.7949 6.42571 14.6191L7.75904 15.3646C7.81488 15.3646 7.87113 15.3646 7.92571 15.3646L9.25904 14.6191C9.77891 14.794 10.2611 15.0654 10.6803 15.4191L10.6853 16.9191C10.7149 16.9658 10.7428 17.0129 10.7686 17.0612L12.0957 17.8171C12.2003 18.3461 12.2003 18.8905 12.0957 19.4196L10.769 20.1737C10.742 20.2216 10.714 20.2691 10.6857 20.3158L10.679 21.8158C10.2605 22.1706 9.77873 22.4432 9.25904 22.6191L7.92779 21.8737Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </Button>
+          );
+        },
+      },
+    },
+    {
+      name: "Enhance Config",
+      label: "Enhance Config",
+      options: {
+        filter: true,
+        sort: false,
+        display:true,
+        customBodyRender: (value, { rowData }, tableMeta ) => {
+          const apipath = 'enhanceconfigdataservice'; 
+          const titletext='Enhance Config'
+          return (
+            <Button
+              sx={{
+                color: "black",
+                minWidth: "100%",
+                padding: "5px 5px !important",
+              }}
+            
+              onClick={() => openModal(rowData,apipath,titletext )}
+            >
+              {" "}
+              {/* <AddBoxOutlinedIcon /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M19.5833 14.75C19.5833 16.2688 17.3261 17.5 14.5417 17.5C11.7572 17.5 9.5 16.2688 9.5 14.75M19.5833 14.75C19.5833 13.2312 17.3261 12 14.5417 12C11.7572 12 9.5 13.2312 9.5 14.75M19.5833 14.75L19.5833 17.5M9.5 14.75V17.5M9.5 17.5C9.5 19.0188 11.7573 20.25 14.5417 20.25C17.326 20.25 19.5833 19.0188 19.5833 17.5M9.5 17.5V20.25C9.5 21.7688 11.7573 23 14.5417 23C17.326 23 19.5833 21.7688 19.5833 20.25V17.5M8.49568 11H6.99568C6.49941 10.9994 6.00894 10.8932 5.55681 10.6886C5.10469 10.484 4.70126 10.1855 4.37328 9.81308C4.0453 9.44063 3.80028 9.00269 3.65447 8.52831C3.50866 8.05394 3.4654 7.55398 3.52756 7.06162C3.58972 6.56925 3.75588 6.09573 4.01501 5.67248C4.27414 5.24923 4.62032 4.88592 5.03057 4.60667C5.44083 4.32742 5.90577 4.13861 6.39457 4.05276C6.88336 3.96692 7.38483 3.986 7.86568 4.10875M7.49561 6C7.49561 5.20774 7.68387 4.42682 8.04489 3.7216C8.40591 3.01637 8.92934 2.40703 9.57205 1.94379C10.2148 1.48055 10.9584 1.17667 11.7416 1.05719C12.5248 0.937706 13.3251 1.00605 14.0767 1.25658C14.8283 1.50712 15.5097 1.93267 16.0645 2.49817C16.6194 3.06368 17.0319 3.75294 17.2682 4.50916C17.5044 5.26539 17.5575 6.06692 17.4232 6.84771C17.2889 7.6285 16.971 8.36619 16.4956 9M9.99561 7L11.9956 5M11.9956 5L13.9956 7M11.9956 5V10" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </Button>
+          );
+        },
+      },
+    },
+    {
       name: "Fit Data",
       label: "Fit Data",
       options: {
@@ -327,6 +388,39 @@ const closeModal = () => {
   <path d="M12 12C16.5563 12 20.25 9.98528 20.25 7.5C20.25 5.01472 16.5563 3 12 3C7.44365 3 3.75 5.01472 3.75 7.5C3.75 9.98528 7.44365 12 12 12Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M3.75 7.5V12C3.75 14.4853 7.44375 16.5 12 16.5C16.5562 16.5 20.25 14.4853 20.25 12V7.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M3.75 12V16.5C3.75 18.9853 7.44375 21 12 21C16.5562 21 20.25 18.9853 20.25 16.5V12" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </Button>
+          );
+        },
+      },
+    },
+    {
+      name: "type2count",
+      label: "Offus fit Data",
+      options: {
+        filter: true,
+        sort: false,
+        display:true,
+        customBodyRender: (value, { rowData }, tableMeta ) => {
+          const apipath = 'offusdataservice'; 
+          const titletext='Offus Fit Data'
+          return (
+            <Button
+              sx={{
+                color: "black",
+                minWidth: "100%",
+                padding: "5px 5px !important",
+              }}
+            
+              onClick={() => openModal(rowData,apipath,titletext )}
+            >
+              {" "}
+              {/* <AddBoxOutlinedIcon /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M3.15012 13.6406C2.75961 11.5328 3.1343 9.35478 4.20675 7.49862C5.27919 5.64246 6.97897 4.23005 9.00012 3.51562V10.2656L3.15012 13.6406Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11.9999 12.0394V3C13.5767 3.00024 15.1258 3.41475 16.492 4.20202C17.8583 4.9893 18.9937 6.12171 19.7846 7.48585C20.5755 8.84999 20.9941 10.398 20.9985 11.9748M12.0503 20.9999C10.4735 21.0089 8.92196 20.6036 7.55111 19.8243C6.18026 19.0451 5.03818 17.9195 4.23926 16.56L19.7943 7.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17.3335 20.6669C19.1745 20.6669 20.6669 19.1745 20.6669 17.3335C20.6669 15.4924 19.1745 14 17.3335 14C15.4924 14 14 15.4924 14 17.3335C14 19.1745 15.4924 20.6669 17.3335 20.6669Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.6909 19.6904L22.0006 22.0001" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
             </Button>
           );
@@ -426,100 +520,9 @@ const closeModal = () => {
         },
       },
     },
-    {
-      name: "Config Data",
-      label: "Config Data",
-      options: {
-        filter: true,
-        sort: false,
-        display:true,
-        customBodyRender: (value, { rowData }, tableMeta ) => {
-          const apipath = 'configdataservice'; 
-          const titletext='Config Data'
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-            
-              onClick={() => openModal(rowData,apipath,titletext )}
-            >
-              {" "}
-              {/* <AddBoxOutlinedIcon /> */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M14.25 3V8.25H19.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M15 21H18.75C18.9489 21 19.1397 20.921 19.2803 20.7803C19.421 20.6397 19.5 20.4489 19.5 20.25V8.25L14.25 3H5.25C5.05109 3 4.86032 3.07902 4.71967 3.21967C4.57902 3.36032 4.5 3.55109 4.5 3.75V12M9.50911 18.6198C9.50911 19.5403 8.76292 20.2865 7.84245 20.2865C6.92197 20.2865 6.17578 19.5403 6.17578 18.6198C6.17578 17.6993 6.92197 16.9531 7.84245 16.9531C8.76292 16.9531 9.50911 17.6993 9.50911 18.6198ZM7.92779 21.8737C7.87196 21.8737 7.81571 21.8737 7.76113 21.8737L6.42571 22.6191C5.90585 22.4443 5.42366 22.1729 5.00446 21.8191L4.99946 20.3191C4.96988 20.2725 4.94196 20.2254 4.91613 20.1771L3.58821 19.4208C3.48362 18.8918 3.48362 18.3474 3.58821 17.8183L4.91488 17.0641C4.94196 17.0162 4.96988 16.9687 4.99821 16.9221L5.00488 15.4221C5.4237 15.0673 5.90576 14.7949 6.42571 14.6191L7.75904 15.3646C7.81488 15.3646 7.87113 15.3646 7.92571 15.3646L9.25904 14.6191C9.77891 14.794 10.2611 15.0654 10.6803 15.4191L10.6853 16.9191C10.7149 16.9658 10.7428 17.0129 10.7686 17.0612L12.0957 17.8171C12.2003 18.3461 12.2003 18.8905 12.0957 19.4196L10.769 20.1737C10.742 20.2216 10.714 20.2691 10.6857 20.3158L10.679 21.8158C10.2605 22.1706 9.77873 22.4432 9.25904 22.6191L7.92779 21.8737Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-            </Button>
-          );
-        },
-      },
-    },
-    {
-      name: "Enhance Config",
-      label: "Enhance Config",
-      options: {
-        filter: true,
-        sort: false,
-        display:true,
-        customBodyRender: (value, { rowData }, tableMeta ) => {
-          const apipath = 'enhanceconfigdataservice'; 
-          const titletext='Enhance Config'
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-            
-              onClick={() => openModal(rowData,apipath,titletext )}
-            >
-              {" "}
-              {/* <AddBoxOutlinedIcon /> */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M19.5833 14.75C19.5833 16.2688 17.3261 17.5 14.5417 17.5C11.7572 17.5 9.5 16.2688 9.5 14.75M19.5833 14.75C19.5833 13.2312 17.3261 12 14.5417 12C11.7572 12 9.5 13.2312 9.5 14.75M19.5833 14.75L19.5833 17.5M9.5 14.75V17.5M9.5 17.5C9.5 19.0188 11.7573 20.25 14.5417 20.25C17.326 20.25 19.5833 19.0188 19.5833 17.5M9.5 17.5V20.25C9.5 21.7688 11.7573 23 14.5417 23C17.326 23 19.5833 21.7688 19.5833 20.25V17.5M8.49568 11H6.99568C6.49941 10.9994 6.00894 10.8932 5.55681 10.6886C5.10469 10.484 4.70126 10.1855 4.37328 9.81308C4.0453 9.44063 3.80028 9.00269 3.65447 8.52831C3.50866 8.05394 3.4654 7.55398 3.52756 7.06162C3.58972 6.56925 3.75588 6.09573 4.01501 5.67248C4.27414 5.24923 4.62032 4.88592 5.03057 4.60667C5.44083 4.32742 5.90577 4.13861 6.39457 4.05276C6.88336 3.96692 7.38483 3.986 7.86568 4.10875M7.49561 6C7.49561 5.20774 7.68387 4.42682 8.04489 3.7216C8.40591 3.01637 8.92934 2.40703 9.57205 1.94379C10.2148 1.48055 10.9584 1.17667 11.7416 1.05719C12.5248 0.937706 13.3251 1.00605 14.0767 1.25658C14.8283 1.50712 15.5097 1.93267 16.0645 2.49817C16.6194 3.06368 17.0319 3.75294 17.2682 4.50916C17.5044 5.26539 17.5575 6.06692 17.4232 6.84771C17.2889 7.6285 16.971 8.36619 16.4956 9M9.99561 7L11.9956 5M11.9956 5L13.9956 7M11.9956 5V10" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-            </Button>
-          );
-        },
-      },
-    },
-    {
-      name: "type2count",
-      label: "Offus fit Data",
-      options: {
-        filter: true,
-        sort: false,
-        display:true,
-        customBodyRender: (value, { rowData }, tableMeta ) => {
-          const apipath = 'offusdataservice'; 
-          const titletext='Offus Fit Data'
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-            
-              onClick={() => openModal(rowData,apipath,titletext )}
-            >
-              {" "}
-              {/* <AddBoxOutlinedIcon /> */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M3.15012 13.6406C2.75961 11.5328 3.1343 9.35478 4.20675 7.49862C5.27919 5.64246 6.97897 4.23005 9.00012 3.51562V10.2656L3.15012 13.6406Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M11.9999 12.0394V3C13.5767 3.00024 15.1258 3.41475 16.492 4.20202C17.8583 4.9893 18.9937 6.12171 19.7846 7.48585C20.5755 8.84999 20.9941 10.398 20.9985 11.9748M12.0503 20.9999C10.4735 21.0089 8.92196 20.6036 7.55111 19.8243C6.18026 19.0451 5.03818 17.9195 4.23926 16.56L19.7943 7.5" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M17.3335 20.6669C19.1745 20.6669 20.6669 19.1745 20.6669 17.3335C20.6669 15.4924 19.1745 14 17.3335 14C15.4924 14 14 15.4924 14 17.3335C14 19.1745 15.4924 20.6669 17.3335 20.6669Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M19.6909 19.6904L22.0006 22.0001" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-            </Button>
-          );
-        },
-      },
-    },
+
+   
+   
     {
       name: "Key Download",
       label: "Key Download",
@@ -545,36 +548,6 @@ const closeModal = () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M8.73469 11.5152C8.15538 10.0719 8.09226 8.47278 8.55601 6.98827C9.01976 5.50375 9.98192 4.22492 11.2798 3.368C12.5777 2.51107 14.1317 2.12863 15.6791 2.28534C17.2264 2.44204 18.6722 3.12828 19.7719 4.22802C20.8717 5.32776 21.5579 6.77352 21.7146 8.32087C21.8713 9.86823 21.4889 11.4222 20.6319 12.7201C19.775 14.018 18.4962 14.9802 17.0117 15.4439C15.5272 15.9077 13.928 15.8446 12.4847 15.2652L11.25 16.4999H9V18.7499H6.75V20.9999H3V17.2499L8.73469 11.5152Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M16.875 8.25C17.4963 8.25 18 7.74632 18 7.125C18 6.50368 17.4963 6 16.875 6C16.2537 6 15.75 6.50368 15.75 7.125C15.75 7.74632 16.2537 8.25 16.875 8.25Z" fill="black"/>
-</svg>
-            </Button>
-          );
-        },
-      },
-    },
-    {
-      name: "Inservice",
-      label: "Inservice",
-      options: {
-        filter: true,
-        sort: false,
-        display:true,
-        customBodyRender: (value, { rowData }, tableMeta ) => {
-          const apipath = 'inservice'; 
-          const titletext='Inservice'
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-            
-              onClick={() => openModal(rowData,apipath,titletext )}
-            >
-              {" "}
-              {/* <AddBoxOutlinedIcon /> */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M12.2702 6.89562C12.1708 7.79483 12.3523 8.70275 12.7899 9.49459L9.22388 12.7565C8.42535 12.3313 7.51471 12.1638 6.61715 12.2772C5.7196 12.3906 4.87919 12.7792 4.21146 13.3896C3.54373 14 3.08146 14.8022 2.8882 15.686C2.69493 16.5698 2.78015 17.4918 3.13216 18.3252L6.05522 15.5427L7.86315 15.9019L8.27834 17.6978L5.588 20.7059C6.43193 21.0319 7.3561 21.0884 8.23347 20.8678C9.11084 20.6472 9.89834 20.1602 10.4877 19.4739C11.0771 18.7875 11.4394 17.9354 11.5248 17.0348C11.6103 16.1341 11.4147 15.2291 10.9649 14.4442L14.5044 11.2091C15.2963 11.6467 16.2042 11.8282 17.1034 11.7288C18.0026 11.6294 18.849 11.2539 19.5261 10.654C20.2032 10.054 20.6779 9.25903 20.8849 8.37834C21.0918 7.49765 21.0209 6.57447 20.6819 5.7357L17.716 8.47243L15.9138 8.08518L15.5266 6.28305L18.2633 3.31713C17.4246 2.97811 16.5014 2.90721 15.6207 3.11417C14.74 3.32114 13.945 3.79582 13.3451 4.47295C12.7451 5.15008 12.3696 5.99642 12.2702 6.89562Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
             </Button>
           );
@@ -611,6 +584,37 @@ const closeModal = () => {
         },
       },
     },
+    {
+      name: "Inservice",
+      label: "Inservice",
+      options: {
+        filter: true,
+        sort: false,
+        display:true,
+        customBodyRender: (value, { rowData }, tableMeta ) => {
+          const apipath = 'inservice'; 
+          const titletext='Inservice'
+          return (
+            <Button
+              sx={{
+                color: "black",
+                minWidth: "100%",
+                padding: "5px 5px !important",
+              }}
+            
+              onClick={() => openModal(rowData,apipath,titletext )}
+            >
+              {" "}
+              {/* <AddBoxOutlinedIcon /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M12.2702 6.89562C12.1708 7.79483 12.3523 8.70275 12.7899 9.49459L9.22388 12.7565C8.42535 12.3313 7.51471 12.1638 6.61715 12.2772C5.7196 12.3906 4.87919 12.7792 4.21146 13.3896C3.54373 14 3.08146 14.8022 2.8882 15.686C2.69493 16.5698 2.78015 17.4918 3.13216 18.3252L6.05522 15.5427L7.86315 15.9019L8.27834 17.6978L5.588 20.7059C6.43193 21.0319 7.3561 21.0884 8.23347 20.8678C9.11084 20.6472 9.89834 20.1602 10.4877 19.4739C11.0771 18.7875 11.4394 17.9354 11.5248 17.0348C11.6103 16.1341 11.4147 15.2291 10.9649 14.4442L14.5044 11.2091C15.2963 11.6467 16.2042 11.8282 17.1034 11.7288C18.0026 11.6294 18.849 11.2539 19.5261 10.654C20.2032 10.054 20.6779 9.25903 20.8849 8.37834C21.0918 7.49765 21.0209 6.57447 20.6819 5.7357L17.716 8.47243L15.9138 8.08518L15.5266 6.28305L18.2633 3.31713C17.4246 2.97811 16.5014 2.90721 15.6207 3.11417C14.74 3.32114 13.945 3.79582 13.3451 4.47295C12.7451 5.15008 12.3696 5.99642 12.2702 6.89562Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+            </Button>
+          );
+        },
+      },
+    },
+ 
    
   
  
