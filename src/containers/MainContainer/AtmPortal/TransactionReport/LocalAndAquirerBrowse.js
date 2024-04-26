@@ -452,7 +452,7 @@ const closeSignModal = () => {
    
     {
       name: "transactionnumber",
-      label: "Number",
+      label: "Trans Number",
       options: {
         filter: true,
         sort: false,
@@ -460,7 +460,7 @@ const closeSignModal = () => {
     },
     {
       name: "transactiondate",
-      label: "Date",
+      label: "Trans Date",
       options: {
         filter: true,
         sort: false,
@@ -515,7 +515,7 @@ const closeSignModal = () => {
     },
     {
       name: "transactiontype",
-      label: "Type",
+      label: "Trans Type",
       options: {
         filter: true,
         sort: false,
