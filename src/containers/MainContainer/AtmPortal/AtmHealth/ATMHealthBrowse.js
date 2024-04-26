@@ -973,7 +973,7 @@ const closeSignModal = () => {
               <ThemeProvider theme={getMuiTheme()}>
                 <MUIDataTable
                   title={
-                    <div style={{display:'flex', alignItems:"center",gap:"30px",fontSize:"20px",fontWeight:"500"}}>
+                    <div style={{display:'flex', alignItems:"center",gap:"30px",fontSize:"15px",fontWeight:"500"}}>
                       ATM Health Browse List
                       <div style={{display:'flex',alignItems:"center"}}>
                         <div style={{
@@ -995,7 +995,7 @@ const closeSignModal = () => {
                         }}>
                       W
                       </div>
-                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Worning</div>
+                      <div style={{fontSize:'13px',fontWeight:'500',marginLeft:'5px',marginRight:'15px'}}>- Warning</div>
 
                       <div style={{
                           backgroundColor: 'red',
