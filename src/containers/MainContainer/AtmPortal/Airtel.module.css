@@ -728,6 +728,7 @@ input[type="file"]::file-selector-button:active {
       min-width: 430px;
     width: 35vw;
     left: 50%;
+    height: auto;
     overflow:auto;
     max-height: 96%;
     display: flex;
