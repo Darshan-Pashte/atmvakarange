@@ -31,7 +31,7 @@
    
     height: 100vh;
     display: flex;
-    z-index: 200;
+    z-index: 10000;
     left: 0;
     background: #fff;
     top: 0;
