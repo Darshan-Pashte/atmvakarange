@@ -929,15 +929,16 @@ const ATMMasterBrowse = () => {
                         const handleInputChange = (event) => {
                           const regex = /^[A-Z0-9]+$/;
                           const { name, value } = event.target;
+                          const uppercaseValue = value.toUpperCase();
+                          
                           const isValidInput =
-                            regex.test(value) || value === "";
+                          regex.test(uppercaseValue) || uppercaseValue === "";
 
                           if (!isValidInput) {
                             event.preventDefault();
                             return;
                           }
-
-                          field.onChange(value);
+                          field.onChange(uppercaseValue);
                         };
 
                         return (
@@ -976,10 +977,11 @@ const ATMMasterBrowse = () => {
                                   </IconButton>
                                 </InputAdornment> 
                               ),
-                              inputProps : {maxLength: 10}
+                              inputProps : {maxLength: 8}
                             }}
-                            // error={!!fieldState.error}
-                            // helperText={fieldState.error?.message}
+                            error={!!fieldState.error}
+                            helperText={fieldState.error?.message}
+                            onChange={handleInputChange}
                
                           />
                         );
