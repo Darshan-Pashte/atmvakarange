@@ -65,17 +65,30 @@ export default function TextFieldForm(props) {
           const { name, value } = event.target;
         
           // Replace newline characters ("\n") with commas (",")
-          const processedValue = newLine ? value.replace(/\n/g, ",") : value;
+          console.log("name, value", name, value);
+
+          let uppercaseValue;
+
+          if (newLine) {
+            uppercaseValue = value.replace(/\n/g, ",");
+          } else if (name === "atmid" ) {
+            uppercaseValue = value
+              .split("")
+              .map((char) => char.toUpperCase())
+              .join("");
+          } else {
+            uppercaseValue = value;
+          }
         
-          const isValidInput = regex.test(processedValue) || processedValue === "";
+          const isValidInput = regex.test(uppercaseValue) || uppercaseValue === "";
         
           if (!isValidInput) {
             event.preventDefault();
             return;
           }
         
-          field.onChange(processedValue);
-        };
+          field.onChange(uppercaseValue);
+        };
 
         return (
           <Textfield

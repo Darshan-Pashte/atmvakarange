@@ -705,33 +705,28 @@ const KeyMasterCreate = () => {
                       Email Id<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "emailId",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Email ID",
-                          placeholder: "Enter Email Id",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                        }}
-                        regExp={/.*/}
-                        rules={{
-                          pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "Please Enter valid format  of Email",
-                            // value: /^[0-9]{0,16}(\.[0-9]{1,2})?$/,
-                            // message: "Please Enter only two Digits After numeric",
-                          },
-                          required:
-                            "Email Id " +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
-                      />
+                    <TextFieldForm
+    controlerProps={{
+        control: control,
+        name: "ipAddress",
+        rows: 5,
+        maxRows: 10,
+    }}
+    TextFieldProps={{
+        placeholder: "Enter IP Address",
+        fullWidth: true,
+    }}
+    regExp={/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/}
+    rules={{
+        pattern: {
+            value: /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+            message: "Please Enter a valid IP Address",
+        },
+        required: "IP Address is required",
+    }}
+    required={true}
+/>
+
                     </div>
                   </div>
                 </Grid>

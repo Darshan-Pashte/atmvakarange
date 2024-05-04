@@ -140,13 +140,14 @@ const ATMMasterCreate = () => {
       value: "100",
     },
     {
+      code: "200",
+      value: "200",
+    },
+    {
       code: "500",
       value: "500",
     },
-    {
-      code: "2000",
-      value: "2000",
-    },
+    
   ];
   const typeDemo2 = [
     {
@@ -158,12 +159,12 @@ const ATMMasterCreate = () => {
       value: "100",
     },
     {
-      code: "500",
-      value: "500",
+      code: "200",
+      value: "200",
     },
     {
-      code: "2000",
-      value: "2000",
+      code: "500",
+      value: "500",
     },
   ];
   const typeDemo3 = [
@@ -176,12 +177,12 @@ const ATMMasterCreate = () => {
       value: "100",
     },
     {
-      code: "500",
-      value: "500",
+      code: "200",
+      value: "200",
     },
     {
-      code: "2000",
-      value: "2000",
+      code: "500",
+      value: "500",
     },
   ];
   const typeDemo4 = [
@@ -194,12 +195,12 @@ const ATMMasterCreate = () => {
       value: "100",
     },
     {
-      code: "500",
-      value: "500",
+      code: "200",
+      value: "200",
     },
     {
-      code: "2000",
-      value: "2000",
+      code: "500",
+      value: "500",
     },
   ];
 
@@ -461,6 +462,8 @@ const ATMMasterCreate = () => {
     },
   }));
 
+ 
+
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -500,7 +503,8 @@ const ATMMasterCreate = () => {
                           placeholder: "ATM ID",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 10}
+                          inputProps : {maxLength: 8},
+                          
                         }}
                         regExp={/^[A-Z0-9]+$/}
                         rules={{
@@ -534,7 +538,7 @@ const ATMMasterCreate = () => {
                           fullWidth: true,
                           inputProps : {maxLength: 3}
                         }}
-                        regExp={/^[0-9]+$/}
+                        regExp={/^[0-9A-Za-z]+$/}
                         rules={{
                           required:
                             "Luno" + errorMessages.error_autocomplete_message,
@@ -597,10 +601,15 @@ const ATMMasterCreate = () => {
                           fullWidth: true,
                           inputProps : {maxLength: 15}
                         }}
-                        regExp={/^[0-9.]+$/}
+                        regExp={/^[.0-9 ]+$/}
                         rules={{
+                          pattern: {
+                            value: /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,
+                            message: "Please Enter valid format  of Machine IP",
+                          },
+                      
                           required:
-                            "Machine IP" +
+                            "Machine IP " +
                             errorMessages.error_autocomplete_message,
                         }}
                         required={true}
