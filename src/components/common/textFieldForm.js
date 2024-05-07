@@ -71,7 +71,8 @@ export default function TextFieldForm(props) {
 
           if (newLine) {
             uppercaseValue = value.replace(/\n/g, ",");
-          } else if (name === "atmid" ) {
+                      
+          } else if (name === "atmid" || name==="luno" ||name==="location" || name==="state" || name==="country") {
             uppercaseValue = value
               .split("")
               .map((char) => char.toUpperCase())

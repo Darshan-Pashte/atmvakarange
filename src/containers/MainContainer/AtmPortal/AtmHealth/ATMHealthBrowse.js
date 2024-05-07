@@ -233,7 +233,7 @@ const closeSignModal = () => {
                 onClick={() => openModal(rowData,additionalProp )}
               >
                 {" "}
-                <VisibilityIcon />
+                <VisibilityIcon/>
               </Button>
             );
           },

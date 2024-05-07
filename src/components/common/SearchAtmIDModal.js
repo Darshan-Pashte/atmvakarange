@@ -440,7 +440,7 @@ export default function SearchAtmIDModal({
                           fullWidth: true,
                           inputProps : {maxLength: 3}
                         }}
-                        regExp={/^[0-9]+$/}
+                        regExp={/^[A-Z0-9]+$/}
                         // rules={{
                         //   required:
                         //     "Luno" + errorMessages.error_autocomplete_message,
