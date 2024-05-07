@@ -18,7 +18,7 @@ import PL1 from "../../../assets/DashboardPics/offline.svg";
 import { useSelector } from "react-redux";
 import DashboardModal from "./DashboardModal";
 
-export default function DashboarCards({ card }) {
+export default function DashboarCards({ card,getcount }) {
     const { loading, error, isAuthenticated, user, dashboardlst } = useSelector(
         (state) => state.auth
         );
@@ -91,7 +91,8 @@ export default function DashboarCards({ card }) {
         </div>
         </div>
         <div className={classes.boxtitle}>ATM In-Service</div>
-        <div className={classes.boxdesc}>{user?.dashboardlst[0]?.inservice}</div>
+        <div className={classes.boxdesc}>{getcount && getcount[0]?.inservice}</div>
+
       </div>
 
 
@@ -136,7 +137,7 @@ export default function DashboarCards({ card }) {
         </div>
         </div>
         <div className={classes.boxtitle}>ATM Out Off Service</div>
-        <div className={classes.boxdesc}>{user?.dashboardlst[0]?.outservice}</div>
+        <div className={classes.boxdesc}>{getcount && getcount[0]?.outservice}</div>
       </div>
 
 
@@ -180,7 +181,7 @@ export default function DashboarCards({ card }) {
         </div>
         </div>
         <div className={classes.boxtitle}>ATM Offline</div>
-        <div className={classes.boxdesc}>{user?.dashboardlst[0]?.offline}</div>
+        <div className={classes.boxdesc}>{getcount && getcount[0]?.offline}</div>
       </div>
 
 

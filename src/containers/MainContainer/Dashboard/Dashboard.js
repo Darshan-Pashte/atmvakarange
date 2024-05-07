@@ -104,6 +104,7 @@ const Dashboard = () => {
   const [tableHeaders, setTableHeaders] = useState([]);
 
   const [atmMasterList, setAtmMasterList] = useState([]);
+  const [getcount, setGetcount] = useState([]);
   const [bankcode, setBankCode] = useState([]);
   const [atmID, setAtmID] = useState([]);
 
@@ -213,76 +214,76 @@ const Dashboard = () => {
   const dashList = user?.dashboardlst;
   // console.log(dashList, "dashList  ");
 
-  const CardList = [
-    {
-      icon: AMU,
-      title: "ATM In-Service",
-      value: dashList[0]?.inservice,
-      backgroundimage:
-        "linear-gradient(109deg, #5755FF 37.01%, rgba(165, 164, 255, 0.00) 102.12%)",
-      boxshadow:
-        "3px 9px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px  3px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
-    },
-    {
-      icon: NPA,
-      title: "ATM Out Off Service",
-      value: dashList[0]?.outservice,
+  // const CardList = [
+  //   {
+  //     icon: AMU,
+  //     title: "ATM In-Service",
+  //     value: dashList[0]?.inservice,
+  //     backgroundimage:
+  //       "linear-gradient(109deg, #5755FF 37.01%, rgba(165, 164, 255, 0.00) 102.12%)",
+  //     boxshadow:
+  //       "3px 9px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px  3px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
+  //   },
+  //   {
+  //     icon: NPA,
+  //     title: "ATM Out Off Service",
+  //     value: dashList[0]?.outservice,
 
-      backgroundimage:
-        "linear-gradient(112deg, #FB9266 37.61%, rgba(255, 188, 160, 0.00) 98.07%)",
-      boxshadow:
-        "1px 2px 9px 0px rgba(251, 146, 102, 0.10), 3px 16px 16px 0px rgba(251, 146, 102, 0.09), 7px 35px 22px 0px rgba(251, 146, 102, 0.05), 12px 63px 25px 0px rgba(251, 146, 102, 0.01), 18px 98px 28px 0px rgba(251, 146, 102, 0.00)",
-    },
-    {
-      icon: PL,
-      title: "ATM Offline",
-      value: dashList[0]?.offline,
-      backgroundimage:
-        "linear-gradient(113deg, #FDB73B 41.4%, rgba(253, 183, 59, 0.00) 97.77%)",
-      boxshadow:
-        "1px 4px 9px 0px rgba(253, 183, 59, 0.10), 5px 16px 17px 0px rgba(253, 183, 59, 0.09), 12px 36px 23px 0px rgba(253, 183, 59, 0.05), 21px 64px 27px 0px rgba(253, 183, 59, 0.01), 33px 100px 29px 0px rgba(253, 183, 59, 0.00) ",
-    },
-  ];
+  //     backgroundimage:
+  //       "linear-gradient(112deg, #FB9266 37.61%, rgba(255, 188, 160, 0.00) 98.07%)",
+  //     boxshadow:
+  //       "1px 2px 9px 0px rgba(251, 146, 102, 0.10), 3px 16px 16px 0px rgba(251, 146, 102, 0.09), 7px 35px 22px 0px rgba(251, 146, 102, 0.05), 12px 63px 25px 0px rgba(251, 146, 102, 0.01), 18px 98px 28px 0px rgba(251, 146, 102, 0.00)",
+  //   },
+  //   {
+  //     icon: PL,
+  //     title: "ATM Offline",
+  //     value: dashList[0]?.offline,
+  //     backgroundimage:
+  //       "linear-gradient(113deg, #FDB73B 41.4%, rgba(253, 183, 59, 0.00) 97.77%)",
+  //     boxshadow:
+  //       "1px 4px 9px 0px rgba(253, 183, 59, 0.10), 5px 16px 17px 0px rgba(253, 183, 59, 0.09), 12px 36px 23px 0px rgba(253, 183, 59, 0.05), 21px 64px 27px 0px rgba(253, 183, 59, 0.01), 33px 100px 29px 0px rgba(253, 183, 59, 0.00) ",
+  //   },
+  // ];
 
-  const CardMiddleList = [
-    {
-      icon: Local,
-      top: "Local Transaction",
-      // title: "LAST TRANSACTION DATE:",
-      value: loList[0]?.lclSuccCnt,
-      status: "SUCCESS",
-      background: "#f4f4f4",
-      backgroundimage:
-        "linear-gradient(112deg, #5BA18E 53.3%, rgba(83, 150, 126, 0.40) 91.79%, rgba(153, 242, 200, 0.20) 98.4%)",
-      boxshadow:
-        "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
-      // "linear-gradient(131deg, #5755ff 37%, rgba(165, 164, 255, 0) 102%), linear-gradient(248deg, #fff 100%, rgba(255, 255, 255, 0.3) 0%)",
-    },
-    {
-      icon: Acquire,
-      top: "ACQUIRER TRANSACTION",
-      // title: "LAST TRANSACTION DATE:",
-      value: AcqList[0]?.acqSuccCnt,
-      status: "SUCCESS",
-      backgroundimage:
-        " linear-gradient(114deg, #887CAA 52.61%, rgba(101, 78, 163, 0.40) 88.96%, rgba(234, 175, 200, 0.20) 97.92%)",
-      boxshadow:
-        "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
-      // "linear-gradient(136deg, #fb9266 38%, rgba(255, 188, 160, 0) 98%), linear-gradient(242deg, #fff 95%, rgba(242, 242, 242, 0) 1%)",
-    },
-    {
-      icon: Issuer,
-      top: "ISSUER TRANSACTION",
-      // title: "LAST TRANSACTION DATE:",
-      value: IssList[0]?.issSuccCnt,
-      status: "SUCCESS",
-      backgroundimage:
-        "linear-gradient(115deg, #DD727D 51.94%, rgba(218, 68, 83, 0.40) 88.88%, rgba(137, 33, 107, 0.20) 100.46%)",
-      boxshadow:
-        "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
-      // "linear-gradient(137deg, #fdb73b 41%, rgba(253, 183, 59, 0) 98%), linear-gradient(243deg, #fbfbfb 92%, rgba(246, 246, 246, 0) 0%)",
-    },
-  ];
+  // const CardMiddleList = [
+  //   {
+  //     icon: Local,
+  //     top: "Local Transaction",
+  //     // title: "LAST TRANSACTION DATE:",
+  //     value: loList[0]?.lclSuccCnt,
+  //     status: "SUCCESS",
+  //     background: "#f4f4f4",
+  //     backgroundimage:
+  //       "linear-gradient(112deg, #5BA18E 53.3%, rgba(83, 150, 126, 0.40) 91.79%, rgba(153, 242, 200, 0.20) 98.4%)",
+  //     boxshadow:
+  //       "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
+  //     // "linear-gradient(131deg, #5755ff 37%, rgba(165, 164, 255, 0) 102%), linear-gradient(248deg, #fff 100%, rgba(255, 255, 255, 0.3) 0%)",
+  //   },
+  //   {
+  //     icon: Acquire,
+  //     top: "ACQUIRER TRANSACTION",
+  //     // title: "LAST TRANSACTION DATE:",
+  //     value: AcqList[0]?.acqSuccCnt,
+  //     status: "SUCCESS",
+  //     backgroundimage:
+  //       " linear-gradient(114deg, #887CAA 52.61%, rgba(101, 78, 163, 0.40) 88.96%, rgba(234, 175, 200, 0.20) 97.92%)",
+  //     boxshadow:
+  //       "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
+  //     // "linear-gradient(136deg, #fb9266 38%, rgba(255, 188, 160, 0) 98%), linear-gradient(242deg, #fff 95%, rgba(242, 242, 242, 0) 1%)",
+  //   },
+  //   {
+  //     icon: Issuer,
+  //     top: "ISSUER TRANSACTION",
+  //     // title: "LAST TRANSACTION DATE:",
+  //     value: IssList[0]?.issSuccCnt,
+  //     status: "SUCCESS",
+  //     backgroundimage:
+  //       "linear-gradient(115deg, #DD727D 51.94%, rgba(218, 68, 83, 0.40) 88.88%, rgba(137, 33, 107, 0.20) 100.46%)",
+  //     boxshadow:
+  //       "3px 16px 16px 0px rgba(87, 85, 255, 0.09), 7px 35px 22px 0px rgba(87, 85, 255, 0.05), 12px 63px 26px 0px rgba(87, 85, 255, 0.01), 18px 98px 28px 0px rgba(87, 85, 255, 0.00)",
+  //     // "linear-gradient(137deg, #fdb73b 41%, rgba(253, 183, 59, 0) 98%), linear-gradient(243deg, #fbfbfb 92%, rgba(246, 246, 246, 0) 0%)",
+  //   },
+  // ];
  
 
   // useEffect(() => {
@@ -316,7 +317,8 @@ const Dashboard = () => {
   useEffect(() => {
     // getDashboardGraph();
     getSuccessGraph();
-    getDashboardDay()
+    getDashboardDay();
+    getDashboard();
   }, []);
 
   const getSuccessGraph = async (data) => {
@@ -363,6 +365,36 @@ const Dashboard = () => {
       // console.log("Graph response", response);
       if (response?.data?.status == true) {
       setDayList(response?.data?.list)
+        setIsloading(false);
+        // setloList(response?.loList)
+        // setAcqList(response?.acqcntSuccs)
+        // setIssList(response?.iSuccs)
+      }
+    } catch (err) {
+      console.log(err);
+      setIsloading(false);
+    }
+  };
+
+
+  const getDashboard = async (data) => {
+    // console.log("data", data);
+    try {
+      setIsloading(true);
+      const payload = {
+        username: user?.username,
+        sessionId: user?.sessionId,
+      };
+
+      // console.log("payload", payload);
+      const response = await postApiData(
+        apiList.DASHBOARD_DAY_COUNT,
+        payload
+      );
+
+      // console.log("Graph response", response);
+      if (response?.data?.status == true) {
+        setGetcount(response?.data?.dashboardlst)
         setIsloading(false);
         // setloList(response?.loList)
         // setAcqList(response?.acqcntSuccs)
@@ -748,7 +780,7 @@ const Dashboard = () => {
               {/* {CardList.map((card, index) => {
                 return <DashboarCard card={card} index={index} />;
               })} */}
-              <DashboarCards/>
+              <DashboarCards getcount={getcount}/>
             </div>
 
             <div className={classes.MiddleContent}>
