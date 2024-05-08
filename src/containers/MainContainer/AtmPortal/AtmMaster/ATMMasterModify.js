@@ -176,81 +176,82 @@ const { state } = useLocation();
       ?.filter((item) => item.hasOwnProperty("bankcode"))
       ?.map((item) => ({ code: item.bankcode, value: item.bankname }));
 
- 
-
-  const typeDemo1 = [
-    {
-      code: "50",
-      value: "50",
-    },
-    {
-      code: "100",
-      value: "100",
-    },
-    {
-      code: "500",
-      value: "500",
-    },
-    {
-      code: "2000",
-      value: "2000",
-    },
-  ];
-  const typeDemo2 = [
-    {
-      code: "50",
-      value: "50",
-    },
-    {
-      code: "100",
-      value: "100",
-    },
-    {
-      code: "500",
-      value: "500",
-    },
-    {
-      code: "2000",
-      value: "2000",
-    },
-  ];
-  const typeDemo3 = [
-    {
-      code: "50",
-      value: "50",
-    },
-    {
-      code: "100",
-      value: "100",
-    },
-    {
-      code: "500",
-      value: "500",
-    },
-    {
-      code: "2000",
-      value: "2000",
-    },
-  ];
-  const typeDemo4 = [
-    {
-      code: "50",
-      value: "50",
-    },
-    {
-      code: "100",
-      value: "100",
-    },
-    {
-      code: "500",
-      value: "500",
-    },
-    {
-      code: "2000",
-      value: "2000",
-    },
-  ];
-
+      const typeDemo1 = [
+        {
+          code: "0",
+          value: "0",
+        },
+        {
+          code: "100",
+          value: "100",
+        },
+        {
+          code: "200",
+          value: "200",
+        },
+        {
+          code: "500",
+          value: "500",
+        },
+        
+      ];
+      const typeDemo2 = [
+        {
+          code: "500",
+          value: "500",
+        },
+        {
+          code: "0",
+          value: "0",
+        },
+        {
+          code: "100",
+          value: "100",
+        },
+        {
+          code: "200",
+          value: "200",
+        },
+        
+      ];
+      const typeDemo3 = [
+        {
+          code: "100",
+          value: "100",
+        },
+        {
+          code: "0",
+          value: "0",
+        },
+      
+        {
+          code: "200",
+          value: "200",
+        },
+        {
+          code: "500",
+          value: "500",
+        },
+      ];
+      const typeDemo4 = [
+        {
+          code: "200",
+          value: "200",
+        },
+        {
+          code: "0",
+          value: "0",
+        },
+        {
+          code: "100",
+          value: "100",
+        },
+        
+        {
+          code: "500",
+          value: "500",
+        },
+      ];
   const ATMtype = [
     {
       code: "NDC",

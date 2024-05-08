@@ -132,8 +132,8 @@ const ATMMasterCreate = () => {
 
   const typeDemo1 = [
     {
-      code: "50",
-      value: "50",
+      code: "0",
+      value: "0",
     },
     {
       code: "100",
@@ -151,8 +151,12 @@ const ATMMasterCreate = () => {
   ];
   const typeDemo2 = [
     {
-      code: "50",
-      value: "50",
+      code: "500",
+      value: "500",
+    },
+    {
+      code: "0",
+      value: "0",
     },
     {
       code: "100",
@@ -162,20 +166,18 @@ const ATMMasterCreate = () => {
       code: "200",
       value: "200",
     },
-    {
-      code: "500",
-      value: "500",
-    },
+    
   ];
   const typeDemo3 = [
-    {
-      code: "50",
-      value: "50",
-    },
     {
       code: "100",
       value: "100",
     },
+    {
+      code: "0",
+      value: "0",
+    },
+  
     {
       code: "200",
       value: "200",
@@ -187,17 +189,18 @@ const ATMMasterCreate = () => {
   ];
   const typeDemo4 = [
     {
-      code: "50",
-      value: "50",
+      code: "200",
+      value: "200",
+    },
+    {
+      code: "0",
+      value: "0",
     },
     {
       code: "100",
       value: "100",
     },
-    {
-      code: "200",
-      value: "200",
-    },
+    
     {
       code: "500",
       value: "500",
@@ -289,6 +292,10 @@ const ATMMasterCreate = () => {
       code:'DIEBOLD',
       value:'DIEBOLD'
     },
+    {
+      code: "VORTEX",
+      value: "VORTEX",
+    },
   ];
 
   const DownIsRequest = [
@@ -322,6 +329,51 @@ const ATMMasterCreate = () => {
       value: "NO",
     },
   ];
+
+  useEffect(() => {
+    if (typeDemo4) {
+      setValue(
+        "typedemo4",
+        typeDemo4
+          ? compareTextAndReturnObject(typeDemo4, typeDemo4[0]?.value)
+          : ""
+      );
+    }
+  }, [typeDemo4]);
+  
+  
+  
+    useEffect(() => {
+      if (typeDemo3) {
+        setValue(
+          "typedemo3",
+          typeDemo3
+            ? compareTextAndReturnObject(typeDemo3, typeDemo3[0]?.value)
+            : ""
+        );
+      }
+    }, [typeDemo3]);
+    useEffect(() => {
+      if (typeDemo2) {
+        setValue(
+          "typedemo2",
+          typeDemo2
+            ? compareTextAndReturnObject(typeDemo2, typeDemo2[0]?.value)
+            : ""
+        );
+      }
+    }, [typeDemo2]);
+    useEffect(() => {
+      if (typeDemo1) {
+        setValue(
+          "typedemo1",
+          typeDemo1
+            ? compareTextAndReturnObject(typeDemo1, typeDemo1[0]?.value)
+            : ""
+        );
+      }
+    }, [typeDemo1]);
+
 
 
   useEffect(() => {
