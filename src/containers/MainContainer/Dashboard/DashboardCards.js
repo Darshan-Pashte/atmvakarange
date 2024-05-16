@@ -26,6 +26,7 @@ export default function DashboarCards({ card,getcount }) {
 
        const [currentCardName, setCurrentCardName] = React.useState('');
        const [currentAnotherName, setCurrentAnotherName] = React.useState('');
+       const [excelName, setExcelName] = React.useState('');
        
        const [open, setOpen] = React.useState(false);
        const handleOpen = (apipath) =>{  
@@ -67,7 +68,7 @@ export default function DashboarCards({ card,getcount }) {
           <img src={AMU1} />
         </div>
         <div className={classes.viewicon} 
-        onClick={() => { setCurrentCardName('inservbrw');setCurrentAnotherName('ATM In-Service'); handleOpen('inservbrw',' In-Serviceice'); }}>
+        onClick={() => { setCurrentCardName('inservbrw');setCurrentAnotherName('ATM In-Service');setExcelName('inservbrwexcel'); handleOpen('inservbrw',' In-Serviceice'); }}>
         <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_116_25)">
 <circle cx="18" cy="16.1334" r="14" transform="rotate(-90 18 16.1334)" fill="white"/>
@@ -113,7 +114,7 @@ export default function DashboarCards({ card,getcount }) {
           <img src={NPA1} />
         </div>
         <div className={classes.viewicon} 
-          onClick={() => { setCurrentCardName('outoffservbrw');setCurrentAnotherName('ATM Out Off Service'); handleOpen('outoffservbrw','ATM Out Off Service'); }}>
+          onClick={() => { setCurrentCardName('outoffservbrw');setCurrentAnotherName('ATM Out Off Service');setExcelName('outoffservbrwexcel'); handleOpen('outoffservbrw','ATM Out Off Service'); }}>
         <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_116_25)">
 <circle cx="18" cy="16.1334" r="14" transform="rotate(-90 18 16.1334)" fill="white"/>
@@ -157,7 +158,7 @@ export default function DashboarCards({ card,getcount }) {
           <img src={PL1} />
         </div>
         <div className={classes.viewicon} 
-        onClick={() => { setCurrentCardName('offlineservbrw');setCurrentAnotherName('ATM Offline'); handleOpen('offlineservbrw','ATM Offline'); }}>
+        onClick={() => { setCurrentCardName('offlineservbrw');setCurrentAnotherName('ATM Offline');setExcelName('offlineservbrwexcel'); handleOpen('offlineservbrw','ATM Offline'); }}>
         <svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_116_25)">
 <circle cx="18" cy="16.1334" r="14" transform="rotate(-90 18 16.1334)" fill="white"/>
@@ -191,6 +192,7 @@ export default function DashboarCards({ card,getcount }) {
                   handleClose={handleClose}
                   apipath={currentCardName}
                   titlename={currentAnotherName}
+                  excelname={excelName}
                 //   apipath1={apipath}
                 //   userId={userId}
                 //   userName={userName}

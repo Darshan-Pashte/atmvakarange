@@ -11,11 +11,14 @@ import { styled } from "@mui/material";
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import { useSelector } from 'react-redux';
 import { apiList } from '../../../components/utilities/nodeApiList';
-import { postApiData } from '../../../components/utilities/nodeApiServices';
+import { axiosGetApiData, postApiData } from '../../../components/utilities/nodeApiServices';
 import GridTablePagination from '../../../components/common/gridTablePagination';
 import MUIDataTable from "mui-datatables";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import DownloadIcon from '@mui/icons-material/Download';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 
 const style = {
   position: 'absolute',
@@ -30,7 +33,7 @@ const style = {
 };
 
 
-export default function DashboardModal({ open, handleOpen, handleClose, closeSignModal, rowDataToDisplay, data, show, title, apipath, titlename }) {
+export default function DashboardModal({ open, handleOpen, handleClose, closeSignModal, rowDataToDisplay, data, show, title, apipath, titlename,excelname }) {
   // const { headers, rowData,apipath,titletext } = rowDataToDisplay;
   // console.log('apipath',apipath)
   // console.log('titlename',titlename)
@@ -46,7 +49,7 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
 
 
   const [totalRecord, settotalRecord] = React.useState(0);
-  const [goPageNumber, setGoPageNumber] = React.useState(5);
+  const [goPageNumber, setGoPageNumber] = React.useState(100);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [payloadData, setPayloadData] = React.useState({})
 
@@ -65,7 +68,7 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
         customBodyRender: (value, { rowIndex }) => {
           // const currentPage = page;
           // const rowsPerPage = rowsPerPage;
-          const serialNumber = currentPage == 1 ? 1 + rowIndex : currentPage * goPageNumber + rowIndex - 4;
+          const serialNumber = currentPage == 1 ? 1 + rowIndex : currentPage * goPageNumber + rowIndex - 99;
           return (
             <div>{serialNumber}</div>
           );
@@ -122,6 +125,49 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
         sort: false,
       },
     },
+    {
+      name: "latestAtmActivityDate",
+      label: "ATM Activity Date",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value) => {
+          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric'
+          });
+      
+          const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+          });
+      
+          const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
+      
+          const buttonStyles = {
+            minWidth: "100%",
+            padding: "5px",
+            borderRadius: '20px',
+            width:'150px',
+          //   height: '100px',
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word'
+          };
+        
+          // Check if value is not null or undefined before replacing
+          const formattedValue = formattedDateTime ? formattedDateTime.replace(/(.{50})/g, "$1\n") : '';
+        
+          return (
+            <div style={buttonStyles}>
+              {formattedValue}
+            </div>
+          );
+
+        },
+      },
+    },
     // {
     //   name: "serverip",
     //   label: "Service Ip",
@@ -174,12 +220,26 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
 
     filterType: "dropdown",
     responsive: "stacked",
+    fixedHeader:true,
     filter: true,
     download: false,
     print: false,
     // checkbox:true,
     selectableRows: false,
     pagination: false,
+    customToolbar: ({ displayData }) => {
+      return (
+        <span>
+       
+<Tooltip title="Download Excel">
+      <IconButton>
+      < CloudDownloadIcon onClick={()=>onDownloadExcel()}/>
+      </IconButton>
+    </Tooltip>
+             
+        </span>
+      );
+    },
     customFooter: () => {
       return (
         <GridTablePagination
@@ -307,6 +367,34 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
 
   }
 
+
+  
+  const onDownloadExcel = async (data) => {
+    // console.log('Download Excel clicked',data);
+    setIsloading(true);
+    try {
+      const response = await axiosGetApiData(apiList.DASHBOARD_INSERVICE_EXCEL+`${excelname}`,
+      {responseType: 'arraybuffer'});
+
+      const arrayBuffer =response.data;
+      const blob = new Blob([arrayBuffer]);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${titlename}.xlsx`  
+      // link.download = `Sonal.xlsx`  
+
+      // link.download = `Sample File.csv`;  
+      // link.download = `${value}.xlsx`;
+      link.click();
+      URL.revokeObjectURL(url);
+      link.remove();
+      setIsloading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div>
       <Modal
@@ -327,7 +415,27 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
               <div style={{ width: "100%", marginBottom: '10px' }}>
                 <ThemeProvider theme={getMuiTheme()}>
                   <MUIDataTable
-                    title={titlename}
+                    // title={titlename}
+
+                    title={
+                      <div style={{display:'flex', justifyContent:'flex-start',alignItems:"center",gap:"30px",fontSize:"15px",fontWeight:"500"}}>
+                     {  titlename}
+                        <div style={{display:'flex',justifyContent:'flex-end',alignItems:"center"}}>
+                          <div style={{
+                            // backgroundColor: 'yellow',
+                            // width:"50px",
+                            // padding: "5px",
+                            // borderRadius: '20px',
+                            // textAlign: 'center'
+                          }}>
+
+                        </div>
+                    
+                        </div>
+                      </div>
+                    }
+
+
                     data={atmMasterList}
                     columns={columns}
                     options={options}
