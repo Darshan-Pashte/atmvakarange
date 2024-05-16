@@ -200,7 +200,7 @@ export async function axiosGetApiData(url,headers) {
         title: "Session has been expired!!!",
         icon: "question",
         showDenyButton: false,
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonText: "Login Again" ,
         denyButtonText: `Deny`
       }).then((result) => {
