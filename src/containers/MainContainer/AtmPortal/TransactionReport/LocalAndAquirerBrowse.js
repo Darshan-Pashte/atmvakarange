@@ -97,7 +97,7 @@ const LocalAndAquirerBrowse = () => {
   const [cardlist, setCardList] = useState([]);
 
   const [totalRecord, settotalRecord] = useState(0);
-  const [goPageNumber, setGoPageNumber] = useState(10); 
+  const [goPageNumber, setGoPageNumber] = useState(100); 
   const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -370,7 +370,7 @@ const closeSignModal = () => {
         customBodyRender: (value, { rowIndex }) => {
           // const currentPage = page;
           // const rowsPerPage = rowsPerPage;
-          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -9;
+          const serialNumber = currentPage==1 ? 1+rowIndex :currentPage*goPageNumber  + rowIndex -99;
           return (
             <div>{serialNumber}</div>
           );

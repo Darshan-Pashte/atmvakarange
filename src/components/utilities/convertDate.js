@@ -49,3 +49,29 @@ export const DatePayloadDate = (date) => {
 	// console.log("date", moment(date).format("YYYY-MM-DD"))
 	return moment(date).format("YYYY-MM-DD");
 };
+
+export const convertDateFunctionFoDate=(value)=>{
+	const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+	  day: '2-digit',
+	  month: 'short',
+	  year: 'numeric',
+	  // hour: '2-digit',
+	  // minute: '2-digit',
+	  // second: '2-digit'
+	});
+	const hyphenatedDate = formattedDate.replace(/\s/g, ' ');
+	return hyphenatedDate;
+  }
+
+export const convertDateFunction=(value)=>{
+	const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+	  day: '2-digit',
+	  month: 'short',
+	  year: 'numeric',
+	  hour: '2-digit',
+	  minute: '2-digit',
+	  second: '2-digit'
+	});
+	const hyphenatedDate = formattedDate.replace(/\s/g, '-');
+	return hyphenatedDate;
+  }
