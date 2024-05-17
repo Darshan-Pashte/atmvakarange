@@ -121,10 +121,10 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    recaptchaRef && recaptchaRef?.current?.reset();
-    let tempToken = await recaptchaRef?.current?.executeAsync();
-    if (tempToken)
-    {
+    // recaptchaRef && recaptchaRef?.current?.reset();
+    // let tempToken = await recaptchaRef?.current?.executeAsync();
+    // if (tempToken)
+    // {
       // debugger
     try {
       dispatch(loginStart());
@@ -156,10 +156,10 @@ const Login = () => {
       dispatch(loginFailure("An error occurred"));
       setIsLoading(false);
     }
-  }
-  else {
-    // console.log("Captcha Error");
-  }
+  // }
+  // else {
+  //   // console.log("Captcha Error");
+  // }
   };
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
@@ -356,7 +356,7 @@ const Login = () => {
           </div>
         </div>
         
-       <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={SITE_KEY} />
+       {/* <ReCAPTCHA ref={recaptchaRef} size="invisible" sitekey={SITE_KEY} /> */}
        
       </div>
     </>

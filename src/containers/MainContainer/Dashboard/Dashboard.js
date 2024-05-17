@@ -494,6 +494,14 @@ const Dashboard = () => {
         sort: false,
       },
     },
+    {
+      name: "pinblock",
+      label: "RRN",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
 
     {
       name: "transactionnumber",

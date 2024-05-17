@@ -85,6 +85,38 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
         sort: false,
       },
     },
+    {
+      name: "latestAtmActivityDate",
+      label: "ATM Activity Date",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value) => {
+          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+          });
+
+          // const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
+          //     hour: '2-digit',
+          //     minute: '2-digit',
+          //     second: '2-digit'
+          // });
+
+          // const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
+
+          // return (
+          //   <div>
+          //     {formattedDateTime}
+          //   </div>
+          // );
+
+          return value ? convertDateFunction(value) : null
+
+        },
+      },
+    },
 
     {
       name: "location",
@@ -126,38 +158,7 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
         sort: false,
       },
     },
-    {
-      name: "latestAtmActivityDate",
-      label: "ATM Activity Date",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value) => {
-          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric'
-          });
-
-          // const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
-          //     hour: '2-digit',
-          //     minute: '2-digit',
-          //     second: '2-digit'
-          // });
-
-          // const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
-
-          // return (
-          //   <div>
-          //     {formattedDateTime}
-          //   </div>
-          // );
-
-          return value ? convertDateFunction(value) : null
-
-        },
-      },
-    },
+   
     // {
     //   name: "serverip",
     //   label: "Service Ip",
@@ -258,10 +259,20 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
             },
           },
         },
+        // MuiTableHead: {
+        //   root: {
+        //     "& .customTableHead": {
+        //       background: "red", // Replace with your desired background color
+        //     },
+        //   },
+        // },
         MuiTableHead: {
-          root: {
-            "& .customTableHead": {
+          styleOverrides: {
+            root: {
               background: "red", // Replace with your desired background color
+              position: 'sticky',
+              top: 0,
+              zIndex: 1000, // Ensure the header is above other elements
             },
           },
         },
