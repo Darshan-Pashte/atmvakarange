@@ -151,7 +151,7 @@ import axios from "axios";
           title: "Session has been expired!!!",
           icon: "question",
           showDenyButton: false,
-          showCancelButton: true,
+          showCancelButton: false,
           confirmButtonText: "Login Again" ,
           denyButtonText: `Deny`
         }).then((result) => {
@@ -210,7 +210,8 @@ export async function axiosGetApiData(url,headers) {
           localStorage.clear();
           window.location.reload();
           window.location.href = "/vakrangeeatmadminportal/auth/login"
-        } else if (result.isDenied) {
+        } 
+        else if (result.isDenied) {
      
         }
       });
