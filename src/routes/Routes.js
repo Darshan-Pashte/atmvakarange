@@ -361,15 +361,7 @@ const Routes = () => {
       roles: [],
       Icon: MobIcon,
       childRoutes: [
-          {
-            name: "Authorize",
-            id: "authorize",
-            url: array[0] == "1" ?  "/authorize" :null,
-            roles: [],
-            arr : array[0],
-            component: <MobileAppUserAuthorize />,
-            Icon: MobIcon,
-          },
+          
           {
             name: "Browse",
             id: "user",
@@ -397,6 +389,15 @@ const Routes = () => {
               {arr:array[0]},
               {arr:array[0]}
            ]
+          },
+          {
+            name: "Authorize",
+            id: "authorize",
+            url: array[0] == "1" ?  "/authorize" :null,
+            roles: [],
+            arr : array[0],
+            component: <MobileAppUserAuthorize />,
+            Icon: MobIcon,
           },
       
         {

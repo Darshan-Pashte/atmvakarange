@@ -1132,7 +1132,7 @@ const ATMMasterCreate = () => {
                           placeholder: "TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 50}
+                          inputProps : {maxLength:35}
                         }}
                         regExp={/^[a-zA-Z0-9]+$/}
                         rules={{
@@ -1561,7 +1561,7 @@ const ATMMasterCreate = () => {
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      download File Name
+                      Download File Name
                       <sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
@@ -1574,12 +1574,12 @@ const ATMMasterCreate = () => {
                         }}
                         TextFieldProps={{
                           // label: "Name",
-                          placeholder: "Download File Name",
+                          placeholder: "(Eg. customization_atm_ncr.ini)",
                           // style: { width: "33vw" },
                           fullWidth: true,
                           inputProps : {maxLength:50}
                         }}
-                        regExp={/^.*$/}
+                        regExp={/^[a-zA-Z_.]+$/}
                         rules={{
                           required:
                             "File Name" +

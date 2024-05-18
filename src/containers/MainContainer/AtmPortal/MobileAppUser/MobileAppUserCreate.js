@@ -430,8 +430,9 @@ const MobileAppUserCreate = () => {
                           placeholder: "First Name",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength:30}
                         }}
-                        regExp={/^[a-zA-Z ]+$/}
+                        regExp={/^[A-Z ]+$/}
                         rules={{
                           required:
                             "First Name " +
@@ -462,8 +463,9 @@ const MobileAppUserCreate = () => {
                           placeholder: " Last Name",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength:30}
                         }}
-                        regExp={/^[a-zA-Z ]+$/}
+                        regExp={/^[A-Z ]+$/}
                         rules={{
                           required:
                             "Last Name " +
