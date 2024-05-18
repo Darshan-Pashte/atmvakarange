@@ -266,7 +266,261 @@ const closeSignModal = () => {
      
     },
   },
-    {
+  {
+      name: "type1count",
+      label: "Box1 Count",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+  {
+      name: "typedenom1",
+      label: "Box1 Denom",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+        
+      },
+    },
+	{
+      name: "type2count",
+      label: "Box2 Count",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+	{
+      name: "typedenom2",
+      label: "Box2 Denom",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+	{
+      name: "type3count",
+      label: "Box3 Count",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+	{
+      name: "typedenom3",
+      label: "Box3 Denom",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+	 {
+      name: "type4count",
+      label: "Box4 Count",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+	{
+      name: "typedenom4",
+      label: "Box4 Denom",
+      options: {
+        filter: true,
+        sort: false,
+        
+        display:false
+      },
+    },
+	{
+      name: "cardReader",
+      label: "Card Reader Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	 {
+      name: "jnlKnife",
+      label: "Journal Knife Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	{
+      name: "jnlPaper",
+      label: "Journal Paper Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	 {
+      name: "jnlPrintHead",
+      label: "Journal PrintHead Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	 {
+      name: "jnlRibbon",
+      label: "Journal Ribbon Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	{
+      name: "journal",
+      label: "Journal Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	{
+      name: "knifeStatus",
+      label: "Receipt Knife Status",
+      options: {
+        filter: true,
+        sort: false,
+        customBodyRender: (value, tableMeta, updateValue) => {
+            // Conditionally set the text color and background color
+            const buttonStyles = {
+            //   color: value === 'N' ? 'yellow' : 'black',
+              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
+              minWidth: "100%",
+              padding: "5px",
+              borderRadius:'20px',
+              textAlign:'center'
+            };
+      
+            return (
+              <div style={buttonStyles}>
+                {value}
+              </div>
+            );
+          },
+      },
+    },
+	{
       name: "paperStatus",
       label: " Receipt Paper Status",
       options: {
@@ -292,32 +546,7 @@ const closeSignModal = () => {
           },
     },
 },
-    {
-      name: "ribbonStatus",
-      label: "Receipt Ribbon Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
+ {
       name: "printHeadStatus",
       label: "Receipt Print Head Status",
       options: {
@@ -342,9 +571,9 @@ const closeSignModal = () => {
           },
       },
     },
-    {
-      name: "knifeStatus",
-      label: "Receipt Knife Status",
+	{
+      name: "ribbonStatus",
+      label: "Receipt Ribbon Status",
       options: {
         filter: true,
         sort: false,
@@ -367,7 +596,7 @@ const closeSignModal = () => {
           },
       },
     },
-    {
+	{
       name: "receipt",
       label: "Receipt Status",
       options: {
@@ -392,236 +621,8 @@ const closeSignModal = () => {
           },
       },
     },
-    {
-      name: "journal",
-      label: "Journal Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "jnlPaper",
-      label: "Journal Paper Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "jnlRibbon",
-      label: "Journal Ribbon Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "jnlPrintHead",
-      label: "Journal PrintHead Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "jnlKnife",
-      label: "Journal Knife Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "cardReader",
-      label: "Card Reader Status",
-      options: {
-        filter: true,
-        sort: false,
-        customBodyRender: (value, tableMeta, updateValue) => {
-            // Conditionally set the text color and background color
-            const buttonStyles = {
-            //   color: value === 'N' ? 'yellow' : 'black',
-              backgroundColor: value === 'N' ? 'yellow' : value === 'W' ? 'orange' : value === 'F' ? 'Red' : 'white',
-              minWidth: "100%",
-              padding: "5px",
-              borderRadius:'20px',
-              textAlign:'center'
-            };
-      
-            return (
-              <div style={buttonStyles}>
-                {value}
-              </div>
-            );
-          },
-      },
-    },
-    {
-      name: "typedenom1",
-      label: "Box1 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-        
-      },
-    },
-    {
-      name: "typedenom2",
-      label: "Box2 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "typedenom3",
-      label: "Box3 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "typedenom4",
-      label: "Box4 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "type1count",
-      label: "Box1 Count",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "type2count",
-      label: "Box2 Count",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "type3count",
-      label: "Box3 Count",
-      options: {
-        filter: true,
-        sort: false,
-        
-        display:false
-      },
-    },
-    {
-      name: "type4count",
-      label: "Box4 Count",
-      options: {
-        filter: true,
-        sort: false,
-        display:false
-      },
-    },
-  
+	
+	
   
 
   ];
