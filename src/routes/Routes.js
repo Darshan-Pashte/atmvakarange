@@ -99,6 +99,8 @@ import LocalBinMasterModify from "../containers/MainContainer/AtmPortal/LocalBin
 import ATMServiceBrowse from "../containers/MainContainer/AtmPortal/AtmService/ATMServiceBrowse";
 import ATMHealthBrowse from "../containers/MainContainer/AtmPortal/AtmHealth/ATMHealthBrowse";
 import ATMErrorBrowse from "../containers/MainContainer/AtmPortal/AtmError/ATMErrorBrowse";
+import TMKChecksumBrowse from "../containers/MainContainer/AtmPortal/TMKChecksum/TMKChecksumBrowse";
+import TMKChecksumModify from "../containers/MainContainer/AtmPortal/TMKChecksum/TMKChecksumModify";
 // import BeneficiaryDetails from "../containers/MainContainer/SuperApp/AccountLimit/IMPS/BeneficiayDetails";
 // import AccountLimit from "../containers/MainContainer/SuperApp/AccountLimit/IMPS/AccountLimit";
 // import AccountLimitNEFT from "../containers/MainContainer/SuperApp/AccountLimit/NEFT/AccountLimitNEFT";
@@ -247,6 +249,22 @@ const Routes = () => {
          ]
     },
 
+    
+    {
+      name: "TMK Checksum",
+      id: "tmkchecksum",
+      url: array[0] == "1" ? "/tmkchecksum" : null,
+      component: <TMKChecksumBrowse />,
+      arr: array[0],
+      roles: [],
+      Icon: SMSIcon,
+      grandChild:[
+            {arr:array[0]},
+            {arr:array[0]},
+            {arr:array[0]}
+         ]
+    },
+
     // {
     //   name: "ATM Error",
     //   id: "atmerror",
@@ -348,6 +366,36 @@ const Routes = () => {
           url: array[1] || array[2]!=0 ?  "/modify" :null,
           roles: [],
           component: <ATMMasterModify />,
+          Icon: UpiIcon,
+        },
+      ]
+    },
+
+    
+    {
+      name: "TMK Checksum",
+      id: "tmkchecksum",
+      url: array[0] == "1" ? "/tmkchecksum" : null,
+      roles: [],
+      Icon: UpiIcon,
+      
+      
+      childRoutes: [
+        // {
+        //   name: "Create",
+        //   id: "create",
+        //   url: array[0] == "1" ?  "/create" :null,
+        //   roles: [],
+        //   component: <ATMMasterCreate />,
+        //   Icon: UpiIcon,
+         
+        // },
+        {
+          name: "Modify",
+          id: "modify",
+          url: array[1] || array[2]!=0 ?  "/modify" :null,
+          roles: [],
+          component: <TMKChecksumModify />,
           Icon: UpiIcon,
         },
       ]

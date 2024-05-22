@@ -362,14 +362,14 @@ const MobileAppUserCreate = () => {
       ) : (
         <Loader loading={false} />
       )}
-      <GoBackButton/>
+      {/* <GoBackButton/> */}
       <Box
         className={classes.mainContainer}
         component="form"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}> User Registration</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/> User Registration</div>
           <div>
             <div className={classes.formbox}>
               <Grid

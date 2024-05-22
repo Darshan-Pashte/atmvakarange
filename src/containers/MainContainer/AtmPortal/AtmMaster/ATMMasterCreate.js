@@ -520,7 +520,7 @@ const ATMMasterCreate = () => {
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
      
-      <GoBackButton/>
+      {/* <GoBackButton/> */}
        <Box
         className={classes.mainContainer}
         component={"form"}
@@ -528,7 +528,7 @@ const ATMMasterCreate = () => {
       >
         
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}>ATM Registration</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/>ATM Registration</div>
           <div>
             <div className={classes.formbox}>
               <Grid

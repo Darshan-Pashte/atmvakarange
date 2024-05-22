@@ -50,7 +50,7 @@ const defaultFormData = {
   luno: "",
 };
 
-const ATMMasterBrowse = () => {
+const TMKChecksumBrowse = () => {
   const {
     control,
     handleSubmit,
@@ -69,8 +69,8 @@ const ATMMasterBrowse = () => {
 
   const [isLoading, setIsloading] = useState(false);
 
-  const url = "/atmmaster/modify";
-  const url1 = "/atmmaster";
+  const url = "/tmkchecksum/modify";
+  const url1 = "/tmkchecksum";
   const location = useLocation();
 
   const currentPath = location.pathname;
@@ -250,14 +250,7 @@ const ATMMasterBrowse = () => {
         display: true,
       },
     },
-    {
-      name: "address",
-      label: "Address",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
+  
     {
       name: "location",
       label: "Location",
@@ -267,18 +260,7 @@ const ATMMasterBrowse = () => {
         display: true,
       },
     },
-    {
-      name: "atmstatus",
-      label: "Status",
-      options: {
-        filter: true,
-        sort: false,
-        // customBodyRender: (value) => (
-        //   value === "0" ? "InActive" : value === "1" ? "Active" : value === '2' ? 'InActive' :
-        //   value === '3' ? ' Block' : value === '7' ? 'New User' : value
-        // )
-      },
-    },
+   
     {
       name: "ip",
       label: "IP",
@@ -287,146 +269,18 @@ const ATMMasterBrowse = () => {
         sort: false,
       },
     },
-    {
-      name: "typedenom1",
-      label: "Type1 Denom",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: "typedenom2",
-      label: "Type2 Denom",
-      options: {
-        filter: true,
-        sort: false,
-      },
-    },
-    {
-      name: "typedenom3",
-      label: "Type3 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "typedenom4",
-      label: "Type4 Denom",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "type1count",
-      label: "Type1 Count",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "type2count",
-      label: "Type2 Count",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "type3count",
-      label: "Type3 Count",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "type4count",
-      label: "Type4 Count",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "atmmake",
-      label: "Atm Make",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "maxnotes",
-      label: "Max Notes",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "transactioncount",
-      label: "Transaction Count",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "atmtype",
-      label: "ATM Type",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    // {
-    //   name: "bankcd",
-    //   label: "Bank Code",
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //     display:false
-    //   },
-    // },
-    {
-      name: "terminaltype",
-      label: "Terminal Type",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "nextdwnloaddt",
-      label: "Download Date",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
+ 
+  
+    
+
+   
     {
       name: "tmk",
       label: "TMK",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        // display: false,
       },
     },
     {
@@ -435,7 +289,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        // display: false,
       },
     },
     {
@@ -444,7 +298,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        // display: false,
       },
     },
     {
@@ -453,117 +307,11 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        // display: false,
       },
     },
-    {
-      name: "dipcard",
-      label: "Dip Card",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "pincode",
-      label: "Pincode",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "serverip",
-      label: "Server Ip",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "flag",
-      label: "Flag",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "downloadfilename",
-      label: "File name",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "acqid",
-      label: "Acquired ID",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "resourcefn",
-      label: "Resource",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "unsolstatus",
-      label: "Unsol status",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "downIsReq",
-      label: "Down Is Req",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "inserviceIsReq",
-      label: "Inservice Req",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "supplyCounterIsReq",
-      label: "Supply Counter Req",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "depbin",
-      label: "Depbin",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
+  
+  
   ];
 
   const options = {
@@ -859,15 +607,15 @@ const ATMMasterBrowse = () => {
       >
         <div className={classes.Sbox}>
           <div className={classes.bluerow}>
-            <div className={classes.bluerowtext}>ATM Master</div>
-            <div>
+            <div className={classes.bluerowtext}>TMK Checksum</div>
+            {/* <div>
               <ColorButton1
                 onClick={() => navigate("/atmmaster/create")}
                 variant="contained"
               >
                 Create
               </ColorButton1>
-            </div>
+            </div> */}
           </div>
           <div>
             <div className={classes.formbox}>
@@ -1070,7 +818,7 @@ const ATMMasterBrowse = () => {
               {/* <div className={classes.bluerow}>UPI Transaction List</div> */}
               <div style={{ width: "100%", marginBottom: "10px" }}>
                 <MUIDataTable
-                  title={" ATM Browse List"}
+                  title={" TMK Checksum Browse List"}
                   data={atmMasterList}
                   columns={columns}
                   options={options}
@@ -1085,7 +833,7 @@ const ATMMasterBrowse = () => {
                 closeSignModal={closeSignModal}
                 rowDataToDisplay={rowDataToDisplay}
                 show={"2"}
-                title={"ATM Browse List"}
+                title={"TMK Checksum Browse List"}
               />
             ) : null}
 
@@ -1106,4 +854,4 @@ const ATMMasterBrowse = () => {
   );
 };
 
-export default ATMMasterBrowse;
+export default TMKChecksumBrowse;

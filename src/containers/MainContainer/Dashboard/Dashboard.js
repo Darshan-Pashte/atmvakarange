@@ -930,7 +930,9 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </Grid>
-
+{/* 
+                  <Grid item xs={12} sm={6} md={6}>
+                    </Grid> */}
                   <Grid item xs={12} sm={6} md={6}>
                     <div className={classes.graphs}>
                       <div className={classes.graphdata}>

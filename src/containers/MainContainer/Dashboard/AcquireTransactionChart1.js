@@ -16,28 +16,28 @@ const YourChartComponent  = ({dayList}) => {
             group: 'budget',
             // data: [44000, 55000, 41000, 67000, 22000, 43000]
            
-            data:SuccessAmount
+            data:SucessCount
           },
         {
             name: 'Success Amount',
             group: 'actual',
             // data: [48000, 50000, 40000, 65000, 25000, 40000]
        
-            data:FailAmount
+            data:SuccessAmount
           },
           {
        
             name: 'Fail Count',
             group: 'budget',
             // data: [13000, 36000, 20000, 8000, 13000, 27000]
-            data:SucessCount
+            data:FailCount
             
           },
           {
             name: 'Fail Amount',
             group: 'actual',
             // data: [20000, 40000, 25000, 10000, 12000, 28000]
-            data:FailCount
+            data:FailAmount
           },
         
 

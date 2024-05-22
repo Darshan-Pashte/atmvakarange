@@ -28,23 +28,47 @@ import DatePickerForm from "../../../../components/common/datePickerForm";
 import { convertDate } from "../../../../components/utilities/convertDate";
 import { useSelector } from "react-redux";
 import GoBackButton from "../../../../components/common/GoBackButton";
-import {
-  compareIdAndReturnObject,
-  compareTextAndReturnObject,
-} from "../../../../components/common/commonArray";
+import { compareIdAndReturnObject, compareTextAndReturnObject } from "../../../../components/common/commonArray";
 
 const defaultFormData = {
-  bankcode:'',
-  usercode:'',
-  department:'',
-  email:'',
-  mobileno:'',
-  firstname:'',
-  lastname:'',
-  userid:''
+  depbin: "",
+  supplycounterreq: "",
+  servicereq: "",
+  downisrequest: "",
+  atmmake: "",
+  resources: "",
+  Acquiredid: "",
+  downloadfilename: "",
+  bankcode: "",
+  terminaltype: "",
+  downloadDate: null,
+  flag: "",
+  tpktmk: "",
+  tpklmk: "",
+  tmk: "",
+  serverip: "",
+  pincode: "",
+  address: "",
+  dipcard: "",
+  atmtype: "",
+  transactioncount: "",
+  maxnotes: "",
+  type4count: "",
+  type3count: "",
+  type2count: "",
+  type1count: "",
+  typedemo4: "",
+  typedemo3: "",
+  typedemo2: "",
+  typedemo1: "",
+  machineip: "",
+  location: "",
+  luno: "",
+  atmstatus:"",
+  tmkCheckSum:''
 };
 
-const MobileAppUserModify = () => {
+const TMKChecksumModify = () => {
   const {
     control,
     handleSubmit,
@@ -74,17 +98,15 @@ const MobileAppUserModify = () => {
   const [openPop, setOpenPop] = useState(false);
 
 
-  
-  const [bankcode, setBankCode] = useState([]);
-
 
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
-  // console.log("user", user);
+// console.log('user',user)
 
-  const { state } = useLocation();
-  // console.log("state", state);
+const { state } = useLocation();
+console.log("state", state);
+
 
   useEffect(() => {
     setUserName(sessionStorage.getItem("username"));
@@ -92,214 +114,73 @@ const MobileAppUserModify = () => {
   }, []);
 
   useEffect(() => {
-    // setValue("smsid", compareTextAndReturnObject(SMSIDList, state?.smsId));
+    setValue("atmid",state?.atmId);
+    setValue("tmkCheckSum", state?.tmkCheckSum);
+  
 
-    setValue("userid", state?.userId);
-    setValue("lastname", state?.lastName);
-    setValue("firstname", state?.firstName);
-    setValue("mobileno", state?.mobileNo);
-    setValue("email", state?.emailId);
-    setValue("department", state?.dept);
-    setValue("usercode",compareTextAndReturnObject(UserCodeList,state?.usrLvlCode));
-    setValue("bankcode", state?.add1);
+
+    setValue("serverip", state?.serverip);
+    setValue("tmk", state?.tmk);
+    setValue("tpklmk", state?.tpklmk);
+    setValue("tpktmk", state?.tpktmk);
+  
+
+
+
+    setValue("luno", state?.luno);
+    setValue("location", state?.location);
+    setValue("machineip", state?.ip);
+
+
+
     
-  }, [state]);
+
+
+}, [state]);
+
+
 
   const handleOpen = () => {
     setOpenPop(!openPop);
   };
 
-  const filteredData =
-    bankNamee &&
-    bankNamee
-      ?.filter((item) => item.hasOwnProperty("bankcode"))
-      ?.map((item) => ({ code: item.bankcode, value: item.bankname }));
 
-  const SMSIDList = [
-    {
-      code: "BCUB",
-      value: "BCUB",
-    },
-    {
-      code: "CNSB",
-      value: "CNSB",
-    },
-    {
-      code: "DMKJ",
-      value: "DMKJ",
-    },
-    {
-      code: "DSPL",
-      value: "DSPL",
-    },
-    {
-      code: "JCCB",
-      value: "JCCB",
-    },
-    {
-      code: "KDCC",
-      value: "KDCC",
-    },
-    {
-      code: "KMCB",
-      value: "KMCB",
-    },
-    {
-      code: "KNSB",
-      value: "KNSB",
-    },
-    {
-      code: "LUCB",
-      value: "LUCB",
-    },
-    {
-      code: "MAHAD",
-      value: "MAHAD",
-    },
-    {
-      code: "MAHESH",
-      value: "MAHESH",
-    },
-    {
-      code: "NCBL",
-      value: "NCBL",
-    },
-    {
-      code: "NCBLB",
-      value: "NCBLB",
-    },
-    {
-      code: "NMCB",
-      value: "NMCB",
-    },
-    {
-      code: "RDCC",
-      value: "RDCC",
-    },
-    {
-      code: "RSSB",
-      value: "RSSB",
-    },
-    {
-      code: "SATARA",
-      value: "SATARA",
-    },
-    {
-      code: "sil",
-      value: "sil",
-    },
-    {
-      code: "SSBM",
-      value: "SSBM",
-    },
-    {
-      code: "SSUCB",
-      value: "SSUCB",
-    },
-    {
-      code: "UCOB",
-      value: "UCOB",
-    },
-    {
-      code: "UDUPI",
-      value: "UDUPI",
-    },
-    {
-      code: "VAISHY",
-      value: "VAISHY",
-    },
-  ];
+  
+   
+
 
   const onSubmits = async (data) => {
     try {
       setIsloading(true);
       const payload = {
-      
-
-    username: user?.username,
-    sessionId: user?.sessionId,
-    userId: data.userid,
-    firstName:data.firstname,
-    lastName: data.lastname,
-    mobileNo: data.mobileno,
-    email: data.email,
-    depart: data.department,
-    userlvlcode: data.usercode.code,
-    bankCd: data?.bankcode?.code ? data?.bankcode?.code : ''
+        username: user?.username,
+        sessionId: user?.sessionId,
+        atmId: data.atmid,
+        luno: data.luno,
+        location: data.location,
+        ip: data.machineip,
+        tmk: data.tmk,
+        tpklmk: data.tpklmk ? data.tpklmk : '',
+        tpktmk: data.tpktmk ? data.tpktmk : '',
+        tmkCheckSum: data.tmkCheckSum ? data.tmkCheckSum : '',
 
       };
-      // console.log("payload", payload);
-      const response = await postApiData(apiList.MOBILE_APP_USER_MODIFY, payload);
+      // console.log('payload',payload)
+      const response = await postApiData(apiList.TMK_CHECKSUM_MODIFY, payload);
       if (response?.data?.status == true) {
+      
         SweetAlertPopup(response?.data?.message, "Success", "success");
         // reset()
-        navigate("/usermaster/user")
+       navigate('/tmkchecksum')
         setIsloading(false);
       } else {
+       
         SweetAlertPopup(response?.data?.message, "Error", "error");
         setIsloading(false);
       }
     } catch (err) {
       console.log(err);
       setIsloading(false);
-    }
-  };
-
-
-  
-  const UserCodeList=[
-    {
-   code:'MAKER',
-   value:'MAKER',
-    },
-    {
-   code:'ADMIN',
-   value:'ADMIN',
-    },
-    {
-   code:'BANK',
-   value:'BANK',
-    },
-    {
-   code:'MERCHANT',
-   value:'MERCHANT',
-    },
-  ]
-
-   // useEffect(() => {
-  //   if (BankCodeList) {
-  //     setValue("bankcode", BankCodeList ? compareTextAndReturnObject(BankCodeList, BankCodeList[0]?.value) : '')
-  //   }
-  // }, [BankCodeList]);
-
-
-  
-    const BankCodeList=bankcode && bankcode?.map(item => ({ "code": item.bankCd, "value": item.bankCd }));
-
-    // useEffect(() => {
-    //   if (BankCodeList) {
-    //     setValue("bankcode", BankCodeList ? compareTextAndReturnObject(BankCodeList, BankCodeList[0]?.value) : '')
-    //   }
-    // }, [BankCodeList]);
-
-
-  useEffect(()=>{
-getBankCode()
-  },[])
-
-  const getBankCode = async () => {
-    setIsloading(true);
-    try {
-      const payload = {
-        
-        username: user?.username,
-        sessionId: user?.sessionId,
-      };
-      const response = await postApiData(apiList.GET_BANKCODE, payload);
-      setBankCode(response?.data?.bankCodes);
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -344,19 +225,20 @@ getBankCode()
       color: "white",
     },
   }));
-
+  
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
-
-      {/* <GoBackButton /> */}
-      <Box
+     
+      {/* <GoBackButton/> */}
+       <Box
         className={classes.mainContainer}
         component={"form"}
         onSubmit={handleSubmit(onSubmits)}
       >
+        
         <div className={classes.Sbox}>
-        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/>User Master Modify</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/>TMK Checksum Modify</div>
           <div>
             <div className={classes.formbox}>
               <Grid
@@ -365,34 +247,172 @@ getBankCode()
                 rowSpacing={2}
                 style={{ paddingRight: "2vw" }}
               >
-
-
-<Grid item xs={12} sm={6} md={3}>
+                <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      User Id<sup className={classes.required}>*</sup>
+                      ATM ID<sup className={classes.required}>*</sup>
                     </div>
                     <div className={classes.frow1aff}>
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "userid",
+                          name: "atmid",
                           rows: 5,
                           maxRows: 10,
                         }}
                         TextFieldProps={{
-                          // label: "Email ID",
-                          placeholder: "User Id",
+                          // label: "Name",
+                          placeholder: "ATM ID",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          disabled:true
+                        }}
+                        backgroundColor={true}
+                        regExp={/^.*$/}
+                        // rules={{
+                        //   required:
+                        //     "ATM ID " +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Luno<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "luno",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "Luno",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 4},
+                          disabled:true
+                        }}
+                        backgroundColor={true}
+                        regExp={/^[0-9]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Luno" + errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Location<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "location",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: " Location",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 10},
+                          disabled:true
+                        }}
+                        backgroundColor={true}
+                        regExp={/^[a-zA-Z0-9 ]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Location" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      Machine IP<sup className={classes.required}>*</sup>
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "machineip",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: " Machin IP",
+                          // style: { width: "33vw" },
+                          fullWidth: true,
+                          inputProps : {maxLength: 15},
+                          disabled:true
+                        }}
+                        backgroundColor={true}
+                        regExp={/^[0-9.]+$/}
+                        // rules={{
+                        //   required:
+                        //     "Machine IP" +
+                        //     errorMessages.error_autocomplete_message,
+                        // }}
+                        required={false}
+                      />
+                    </div>
+                  </div>
+                </Grid>
+
+         
+
+
+
+      
+                <Grid item xs={12} sm={6} md={3}>
+                  <div className={classes.frowdataaff}>
+                    <div className={classes.frowtextaff}>
+                      TPK TMK
+                      {/* <sup className={classes.required}>*</sup> */}
+                    </div>
+                    <div className={classes.frow1aff}>
+                      <TextFieldForm
+                        controlerProps={{
+                          control: control,
+                          name: "tpktmk",
+                          rows: 5,
+                          maxRows: 10,
+                        }}
+                        TextFieldProps={{
+                          // label: "Name",
+                          placeholder: "TPK TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
                           disabled:true,
-                          inputProps : {maxLength: 10}
+                          inputProps : {maxLength: 50}
                         }}
                         backgroundColor={true}
                         regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
                         //   required:
-                        //     "User Id " +
+                        //     "TPK LMK" +
                         //     errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
@@ -400,31 +420,34 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
+
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      First Name<sup className={classes.required}>*</sup>
+                      TPK LMK
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
-
                     <div className={classes.frow1aff}>
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "firstname",
-                          placeholder: "First Name",
+                          name: "tpklmk",
                           rows: 5,
                           maxRows: 10,
                         }}
                         TextFieldProps={{
-                          // label: "Mobile Number",
-                          placeholder: "First Name",
+                          // label: "Name",
+                          placeholder: "TPK LMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          disabled:true,
+                          inputProps : {maxLength: 50}
                         }}
-                        regExp={/^[a-zA-Z ]+$/}
+                        backgroundColor={true}
+                        regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
                         //   required:
-                        //     "First Name " +
+                        //     "TPK TKK" +
                         //     errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
@@ -432,64 +455,72 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
+
+
+
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                      Last Name<sup className={classes.required}>*</sup>
+                      TMK
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
-
                     <div className={classes.frow1aff}>
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "lastname",
-                        //   placeholder: "Spoc1 Name",
+                          name: "tmk",
                           rows: 5,
                           maxRows: 10,
                         }}
                         TextFieldProps={{
-                          // label: "Mobile Number",
-                          placeholder: " Last Name",
+                          // label: "Name",
+                          placeholder: "TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength: 50},
+                        //   disabled:true
                         }}
-                        regExp={/^[a-zA-Z ]+$/}
+                        // backgroundColor={true}
+                        regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
                         //   required:
-                        //     "Last Name " +
-                        //     errorMessages.error_autocomplete_message,
+                        //     "TMK" + errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
                       />
                     </div>
                   </div>
                 </Grid>
+
+            
+
+
+
                 <Grid item xs={12} sm={6} md={3}>
                   <div className={classes.frowdataaff}>
                     <div className={classes.frowtextaff}>
-                       Mobile Number<sup className={classes.required}>*</sup>
+                      TMK Checksum
+                      {/* <sup className={classes.required}>*</sup> */}
                     </div>
-
                     <div className={classes.frow1aff}>
                       <TextFieldForm
                         controlerProps={{
                           control: control,
-                          name: "mobileno",
-                        //   placeholder: " Spoc1 MobileNo",
+                          name: "tmkCheckSum",
                           rows: 5,
                           maxRows: 10,
                         }}
                         TextFieldProps={{
-                          // label: "Mobile Number",
-                          placeholder: " Mobile Number",
+                          // label: "Name",
+                          placeholder: "TMK Checksum",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {minLength:10,maxLength: 10}
+                          inputProps : {maxLength: 6}
                         }}
-                        regExp={/^[0-9]+$/}
+                        regExp={/^[A-Z0-9]+$/}
                         // rules={{
                         //   required:
-                        //     "Mobile Number " +
+                        //     "TMK Checksum" +
                         //     errorMessages.error_autocomplete_message,
                         // }}
                         required={false}
@@ -497,172 +528,31 @@ getBankCode()
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      E-mail ID <sup className={classes.required}>*</sup>
-                    </div>
 
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "email",
-                        //   placeholder: " Spoc2",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Mobile Number",
-                          placeholder: " Email Id",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                        }}
-                        regExp={/^[a-zA-Z0-9.@!#$%&’*+/=?^_`{|}~-]+$/}
-                        rules={{
-                          pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                            message: "Please Enter valid format  of Email",
-                          },
-                          required:
-                            "Email Id " +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        required={true}
-                      />
-                    </div>
-                  </div>
                 </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Department<sup className={classes.required}>*</sup>
-                    </div>
 
-                    <div className={classes.frow1aff}>
-                      <TextFieldForm
-                        controlerProps={{
-                          control: control,
-                          name: "department",
-                        //   placeholder: " Spoc2 MobileNo",
-                          rows: 5,
-                          maxRows: 10,
-                        }}
-                        TextFieldProps={{
-                          // label: "Mobile Number",
-                          placeholder: " Department",
-                          // style: { width: "33vw" },
-                          fullWidth: true,
-                        }}
-                        regExp={/^[a-zA-Z0-9 ]+$/}
-                        // rules={{
-                        //   required:
-                        //     "Department " +
-                        //     errorMessages.error_autocomplete_message,
-                        // }}
-                        required={false}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-         
              
-                <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      User Level Code<sup className={classes.required}>*</sup>
-                    </div>
+                        
 
-                    <div className={classes.frow1aff}>
-                      <AutocompleteForm
-                        controlerProps={{
-                          control: control,
-                          name: "usercode",
-                        }}
-                        TextFieldProps={{
-                          placeholder: "Select ",
-                          onKeyDown: (event) => {
-                            //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z\s]*$/;
-                            const isBackspace = event.keyCode === 8;
-                            const isValidInput = regex.test(event.key);
+             
 
-                            if (!isValidInput && !isBackspace) {
-                              event.preventDefault();
-                            }
-                          },
-                        }}
-                        rules={{
-                          required:
-                            "SMS ID " +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        data={UserCodeList}
-                        required={true}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-
-
-                {watch('usercode')?.value == 'BANK' ? 
-                (
-                  <Grid item xs={12} sm={6} md={3}>
-                  <div className={classes.frowdataaff}>
-                    <div className={classes.frowtextaff}>
-                      Bank Code<sup className={classes.required}>*</sup>
-                    </div>
-                    <div className={classes.frow1aff}>
-                      <AutocompleteForm
-                        controlerProps={{
-                          control: control,
-                          name: "bankcode",
-                        }}
-                        TextFieldProps={{
-                          placeholder: "Select",
-                          onKeyDown: (event) => {
-                            //const regex = /^[a-zA-Z]*$/;
-                            const regex = /^[a-zA-Z0-9 \s]*$/;
-                            const isBackspace = event.keyCode === 8;
-                            const isValidInput = regex.test(event.key);
-
-                            if (!isValidInput && !isBackspace) {
-                              event.preventDefault();
-                            }
-                          },
-                        }}
-                        rules={{
-                          required:
-                            "Bank Code " +
-                            errorMessages.error_autocomplete_message,
-                        }}
-                        // data={FinalBankCodeList}
-                        data={BankCodeList}
-                        required={true}
-                      />
-                    </div>
-                  </div>
-                </Grid>
-                ):''}
-              </Grid>
-
-
+<div className={classes.fbut}>
+  {/* <ColorButton
+    variant="contained"
+    type="button"
+    onClick={() => reset()}
+  >
+    RESET
+  </ColorButton> */}
+  <ColorButton1 variant="contained" type="submit">
+    Submit
+  </ColorButton1>
+</div>
 
 
               
 
-              <div className={classes.fbut}>
-                {/* <ColorButton
-                  variant="contained"
-                  type="button"
-                  onClick={() => reset()}
-                >
-                  RESET
-                </ColorButton> */}
-                <ColorButton1 variant="contained" type="submit">
-                  Submit
-                </ColorButton1>
-              </div>
+             
             </div>
           </div>
         </div>
@@ -671,4 +561,4 @@ getBankCode()
   );
 };
 
-export default MobileAppUserModify;
+export default TMKChecksumModify;

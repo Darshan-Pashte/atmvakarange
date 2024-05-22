@@ -471,7 +471,7 @@ const { state } = useLocation();
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
      
-      <GoBackButton/>
+      {/* <GoBackButton/> */}
        <Box
         className={classes.mainContainer}
         component={"form"}
@@ -479,7 +479,7 @@ const { state } = useLocation();
       >
         
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}>ATM Modify</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/>ATM Modify</div>
           <div>
             <div className={classes.formbox}>
               <Grid

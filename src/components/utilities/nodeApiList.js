@@ -82,6 +82,9 @@ ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/services/atmmaster/create',
 ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
 ATM_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/atmmaster/modify',
 
+
+TMK_CHECKSUM_MODIFY:baseUrlServer + '/vakrangee/services/atmmaster/modifytmkchecksum',
+
 BANK_MASTER_CREATE:baseUrlServer + '/vakrangee/services/bankmaster/create',
 BANK_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/bankmaster/browse',
 BANK_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/bankmaster/modify',

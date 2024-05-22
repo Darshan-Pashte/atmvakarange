@@ -202,14 +202,14 @@ const UserATMAssignMasterModify = () => {
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
 
-      <GoBackButton />
+      {/* <GoBackButton /> */}
       <Box
         className={classes.mainContainer}
         component={"form"}
         onSubmit={handleSubmit(onSubmits)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}>ATM Alloaction Modify</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/>ATM Alloaction Modify</div>
           <div>
             <div className={classes.formbox}>
               <Grid

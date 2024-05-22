@@ -223,14 +223,14 @@ navigate("/usermaster/allocation")
       ) : (
         <Loader loading={false} />
       )}
-      <GoBackButton/>
+      {/* <GoBackButton/> */}
       <Box
         className={classes.mainContainer}
         component="form"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className={classes.Sbox}>
-          <div className={classes.bluerow}> ATM Alloaction Create</div>
+        <div className={classes.bluerow} style={{display:'inline-block'}}>   <GoBackButton/> ATM Alloaction Create</div>
           <div>
             <div className={classes.formbox}>
               <Grid
