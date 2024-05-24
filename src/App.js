@@ -6,6 +6,7 @@ import './App.css';
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import Register from './containers/Register/Register';
+import AppLogout from './layouts/AppLogout';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
   // }, []);
   return (
     <div className='App'>
+       <AppLogout>
       <Router basename='/vakrangeeatmadminportal'>
         <Routes>
         {/* <Route exact path='/register' element={<Register />} /> */}
@@ -61,6 +63,7 @@ function App() {
           />
         </Routes>
       </Router>
+      </AppLogout>
     </div>
   );
 }

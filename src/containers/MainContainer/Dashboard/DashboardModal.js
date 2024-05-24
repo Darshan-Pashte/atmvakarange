@@ -87,7 +87,7 @@ export default function DashboardModal({ open, handleOpen, handleClose, closeSig
     },
     {
       name: "latestAtmActivityDate",
-      label: "ATM Activity Date",
+      label: "ATM Activity Date And Time",
       options: {
         filter: true,
         sort: false,
