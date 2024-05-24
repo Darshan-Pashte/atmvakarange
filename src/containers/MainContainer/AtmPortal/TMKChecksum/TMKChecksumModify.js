@@ -515,7 +515,8 @@ console.log("state", state);
                           placeholder: "TMK Checksum",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 6}
+                          inputProps : {maxLength: 6,minLength:6}
+                          
                         }}
                         regExp={/^[A-Z0-9]+$/}
                         // rules={{
