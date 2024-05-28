@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import SweetAlertPopup from "../components/common/sweetAlertPopup";
+
 
 const events = [
     "load",
@@ -11,6 +13,7 @@ const events = [
   ];
   
   const AppLogout = ({ children }) => {
+
     let timer;
   
   // this function sets the timer that logs out the user after 10 secs
@@ -23,29 +26,33 @@ const events = [
         window.removeEventListener(item, resetTimer);
       });
       // logs out user
-    //   logoutAction();
-    Swal.fire({
-        title: "Session has been expired!!!",
-        icon: "question",
-        showDenyButton: false,
-        showCancelButton: false,
-        confirmButtonText: "Opp's Logged Out !" ,
-        denyButtonText: `Deny`
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            localStorage.clear();
-        // window.location.pathname = "/vakrangeeatmadminportal/auth/login";
-        sessionStorage.clear();
-        // localStorage.clear();
-        window.location.reload();
-        window.location.href = "/vakrangeeatmadminportal/auth/login"
-        } else if (result.isDenied) {
+      logoutAction();
+    // Swal.fire({
+    //     title: "Session has been expired!!!",
+    //     icon: "question",
+    //     showDenyButton: false,
+    //     showCancelButton: false,
+    //     confirmButtonText: "Opp's Logged Out !" ,
+    //     denyButtonText: `Deny`,
+    //     allowOutsideClick: false,  // Disable outside click to close the modal
+    //     allowEscapeKey: false,    // Disable escape key to close the modal
+    //     allowEnterKey: false,     // Disable enter key to close the modal
+    //   }).then((result) => {
+    //     /* Read more about isConfirmed, isDenied below */
+    //     if (result.isConfirmed) {
+    //         localStorage.clear();
+    //     // window.location.pathname = "/vakrangeeatmadminportal/auth/login";
+    //     sessionStorage.clear();
+    //     // localStorage.clear();
+    //     window.location.reload();
+    //     window.location.href = "/vakrangeeatmadminportal/auth/login"
+    //     } else if (result.isDenied) {
      
-        }
-      })
+    //     }
+    //   })
     
-    }, 30000); // 10000ms = 10secs. You can change the time.
+    }, 3600000
+  ); // 10000ms = 10secs. You can change the time.
   };
   
   // this resets the timer if it exists.
@@ -72,6 +79,7 @@ const events = [
     sessionStorage.clear();
     // localStorage.clear();
     window.location.reload();
+    // SweetAlertPopup( 'User Logout due to Inactivity',"Oops Logout!!!", "error");
     window.location.href = "/vakrangeeatmadminportal/auth/login"
   };
 

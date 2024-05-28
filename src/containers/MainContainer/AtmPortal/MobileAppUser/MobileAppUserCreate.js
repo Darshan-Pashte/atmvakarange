@@ -529,8 +529,9 @@ const MobileAppUserCreate = () => {
                           placeholder: " Email Id",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength: 30}
                         }}
-                        regExp={/^[a-zA-Z0-9.@!#$%&’*+/=?^_`{|}~-]+$/}
+                        regExp={/^[a-zA-Z0-9.@$#]+$/}
                         rules={{
                           pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -566,8 +567,9 @@ const MobileAppUserCreate = () => {
                           placeholder: " Department",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength: 30}
                         }}
-                        regExp={/^[a-zA-Z0-9 ]+$/}
+                        regExp={/^[a-zA-Z ]+$/}
                         rules={{
                           required:
                             "Department " +

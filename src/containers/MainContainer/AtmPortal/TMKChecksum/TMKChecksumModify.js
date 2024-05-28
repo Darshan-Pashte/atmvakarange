@@ -477,7 +477,7 @@ console.log("state", state);
                           placeholder: "TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 50},
+                          inputProps : {maxLength: 35},
                         //   disabled:true
                         }}
                         // backgroundColor={true}

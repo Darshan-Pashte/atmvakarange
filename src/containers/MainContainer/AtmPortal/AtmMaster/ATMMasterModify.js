@@ -539,9 +539,9 @@ const { state } = useLocation();
                           placeholder: "Luno",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 4}
+                          inputProps : {maxLength: 3}
                         }}
-                        regExp={/^[0-9]+$/}
+                        regExp={/^[A-Z0-9]+$/}
                         // rules={{
                         //   required:
                         //     "Luno" + errorMessages.error_autocomplete_message,
@@ -1177,7 +1177,7 @@ const { state } = useLocation();
                           placeholder: "TMK",
                           // style: { width: "33vw" },
                           fullWidth: true,
-                          inputProps : {maxLength: 50}
+                          inputProps : {maxLength: 35}
                         }}
                         regExp={/^[a-zA-Z0-9]+$/}
                         // rules={{
