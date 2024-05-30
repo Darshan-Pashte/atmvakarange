@@ -420,6 +420,7 @@ getBankCode()
                           placeholder: "First Name",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength: 30}
                         }}
                         regExp={/^[a-zA-Z ]+$/}
                         // rules={{
@@ -517,8 +518,9 @@ getBankCode()
                           placeholder: " Email Id",
                           // style: { width: "33vw" },
                           fullWidth: true,
+                          inputProps : {maxLength: 30}
                         }}
-                        regExp={/^[a-zA-Z0-9.@!#$%&’*+/=?^_`{|}~-]+$/}
+                        regExp={/^[a-zA-Z0-9.@$#]+$/}
                         rules={{
                           pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,

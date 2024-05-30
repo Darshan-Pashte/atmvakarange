@@ -66,11 +66,14 @@ const Header = ({ analytics }) => {
     navigate("/settings")
   };
 
+  const handleRefresh=()=>{
+    window.location.reload()
+  }
   return (
     <div className={classes.HeaderContainer}>
       <div className={classes.LeftContainer}>
-        <div className={classes.lefttitle}>
-          <img className={classes.lefttitlelogo} src={headerLogo} alt='' />
+        <div className={classes.lefttitle} style={{cursor:'pointer'}}>
+          <img onClick={handleRefresh} className={classes.lefttitlelogo} src={headerLogo} alt='' />
           {/* <div className={classes.headerTitle}>ATM Portal</div> */}
         </div>
         {/* <div className={classes.analytics}>

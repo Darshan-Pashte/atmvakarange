@@ -48,7 +48,10 @@ import AcquireTransactionChart1 from "./AcquireTransactionChart1";
 import YourChartComponent from "./AcquireTransactionChart1";
 import DashboarCards from "./DashboardCards";
 import { styled, Button } from "@mui/material";
+import CachedIcon from '@mui/icons-material/Cached';
 
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 
 const data = {
@@ -777,11 +780,22 @@ const Dashboard = () => {
   
   console.log(TodaysDate); // Output: 16-Apr-2024
 
+  const handleRefresh=()=>{
+    window.location.reload()
+  }
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
       <div className={classes.Sbox}>
-        <div className={classes.heading}>Overview</div>
+        <div className={classes.heading} >Overview
+        <span className={classes.refreshIcon} >
+        <Tooltip title="Refresh">
+  
+      <CachedIcon style={{marginLeft:"3px",marginBottom:"3px"}} onClick={handleRefresh}/>
+
+    </Tooltip>
+
+   </span></div>
         <div className={classes.DashboardContainer}>
           <div style={{ flex: 1 }}>
             <div className={classes.boxs}>
