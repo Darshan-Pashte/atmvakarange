@@ -125,7 +125,6 @@ const Login = () => {
     let tempToken = await recaptchaRef?.current?.executeAsync();
     if (tempToken)
     {
-      debugger
     try {
       dispatch(loginStart());
       const payload = {

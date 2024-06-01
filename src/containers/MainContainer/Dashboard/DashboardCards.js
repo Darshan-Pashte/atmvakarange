@@ -186,6 +186,49 @@ export default function DashboarCards({ card,getcount }) {
       </div>
 
 
+      <div
+
+className={classes.cardpage}
+style={{
+    backgroundImage:
+    "linear-gradient(113deg, rgb(21 85 104) 41.4%, rgba(253, 183, 59, 0.00) 97.77%)",
+  boxShadow:
+  "1px 4px 9px 0px rgba(253, 183, 59, 0.10), 5px 16px 17px 0px rgba(253, 183, 59, 0.09), 12px 36px 23px 0px rgba(253, 183, 59, 0.05), 21px 64px 27px 0px rgba(253, 183, 59, 0.01), 33px 100px 29px 0px rgba(253, 183, 59, 0.00) ",
+}}
+>
+<div className={classes.uppericons}>
+<div className={classes.iconboxicon}>
+  <img src={PL1} />
+</div>
+<div className={classes.viewicon} 
+onClick={() => { setCurrentCardName('supervisoryinservbrw');setCurrentAnotherName('ATM Supervisory In');setExcelName('supervisoryinservbrwexcel'); handleOpen('supervisoryinservbrw','ATM Supervisory In'); }}>
+<svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_116_25)">
+<circle cx="18" cy="16.1334" r="14" transform="rotate(-90 18 16.1334)" fill="white"/>
+<circle cx="18" cy="16.1334" r="13.5" transform="rotate(-90 18 16.1334)" stroke="white"/>
+</g>
+<path d="M15.6667 20.8001L19.6262 16.8405C20.0168 16.45 20.0168 15.8168 19.6262 15.4263L15.6667 11.4667" stroke="#0E0D35" stroke-width="1.5" stroke-linecap="round"/>
+<defs>
+<filter id="filter0_d_116_25" x="1.52588e-05" y="0.133423" width="36" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.133333 0 0 0 0 0.130556 0 0 0 0 0.130556 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_116_25"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_116_25" result="shape"/>
+</filter>
+</defs>
+</svg>
+
+</div>
+</div>
+<div className={classes.boxtitle}>ATM Supervisory In</div>
+<div className={classes.boxdesc}>{getcount && getcount[0]?.supervisoryin}</div>
+</div>
+
+
       {open ? (
                 <DashboardModal
                   open={open}
