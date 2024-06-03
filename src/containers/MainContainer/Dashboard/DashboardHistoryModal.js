@@ -20,9 +20,6 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import { convertDateFunction } from '../../../components/utilities/convertDate';
-import DashboardHistoryModal from './DashboardHistoryModal';
-import VisibilityIcon from "@mui/icons-material/Visibility";
-
 const style = {
   position: 'absolute',
   top: '50%',
@@ -37,7 +34,7 @@ const style = {
 };
 
 
-export default function DashboardModal({ open, handleOpen, handleClose, data, show, title, apipath, titlename, excelname }) {
+export default function DashboardHistoryModal({ open, handleOpen, handleClose, closeSignModal, rowDataToDisplay, data, show, title, apipath, titlename, excelname }) {
   // const { headers, rowData,apipath,titletext } = rowDataToDisplay;
   // console.log('apipath',apipath)
   // console.log('titlename',titlename)
@@ -56,97 +53,42 @@ export default function DashboardModal({ open, handleOpen, handleClose, data, sh
   const [goPageNumber, setGoPageNumber] = React.useState(100);
   const [currentPage, setCurrentPage] = React.useState(1);
   const [payloadData, setPayloadData] = React.useState({})
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [rowDataToDisplay, setRowDataToDisplay] = React.useState({});
+
   const { loading, error, isAuthenticated, user } = useSelector(
     (state) => state.auth
   );
 
 
-         
-  const [openHistory, setOpenHistory] = React.useState(false);
-  const handleOpenHistory = (apipath) =>{  
-   // console.log('apipath', apipath);
-//   const apipath1={apipath};
-setOpenHistory(true);
-}
-
-
-
-  const handleCloseHistory = () => setOpenHistory(false);
-
-
-  
-const openModal = (rowData) => {
-  // const headers = columns.map((column) => column.label);
-  const headers = columns?.filter((column) => column?.label !== "View" && column?.label !== "Modify" && column?.label !== "Sr.No").map((column) => column?.label);
-  setTableHeaders(headers);
-  setRowDataToDisplay({
-      headers: headers,
-      rowData: rowData,
-  });
-  setIsModalOpen(true);
-};
-const closeModal = () => {
-  setIsModalOpen(false);
-};
-const closeSignModal = () => {
-  setIsModalOpen(false);
-}
+  console.log('rowData',rowDataToDisplay)
 
   const columns = [
-    {
-      name: "Sr No",
-      label: "Sr.No",
-      options: {
-        filter: false,
-        sort: false,
-        customBodyRender: (value, { rowIndex }) => {
-          // const currentPage = page;
-          // const rowsPerPage = rowsPerPage;
-          const serialNumber = currentPage == 1 ? 1 + rowIndex : currentPage * goPageNumber + rowIndex - 99;
-          return (
-            <div>{serialNumber}</div>
-          );
-        },
-      },
-    },
-
-        {
-      name: "View",
-      label: "View History",
-      options: {
-        filter: false,
-        sort: false,
-        customBodyRender: (value, { rowData }, tableMeta) => {
-          return (
-            <Button
-              sx={{
-                color: "black",
-                minWidth: "100%",
-                padding: "5px 5px !important",
-              }}
-              onClick={() => openModal(rowData)}
-            >
-              {" "}
-              <VisibilityIcon />
-            </Button>
-          );
-        },
-      },
-    },
-
     // {
-    //   name: "history",
-    //   label: "History",
+    //   name: "Sr No",
+    //   label: "Sr.No",
     //   options: {
-    //     filter: true,
+    //     filter: false,
     //     sort: false,
+    //     customBodyRender: (value, { rowIndex }) => {
+    //       // const currentPage = page;
+    //       // const rowsPerPage = rowsPerPage;
+    //       const serialNumber = currentPage == 1 ? 1 + rowIndex : currentPage * goPageNumber + rowIndex - 99;
+    //       return (
+    //         <div>{serialNumber}</div>
+    //       );
+    //     },
     //   },
     // },
+    {
+      name: "srid",
+      label: "Sr. ID",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
 
     {
-      name: "atmId",
+      name: "atmid",
       label: "ATM ID",
       options: {
         filter: true,
@@ -155,38 +97,47 @@ const closeSignModal = () => {
     },
   
     {
-      name: "latestAtmActivityDate",
-      label: "ATM Activity Date And Time",
+      name: "atmstatus",
+      label: "ATM Status",
       options: {
         filter: true,
         sort: false,
-        customBodyRender: (value) => {
-          const formattedDate = new Date(value).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric'
-          });
-
-          // const formattedTime = new Date(value).toLocaleTimeString('en-GB', {
-          //     hour: '2-digit',
-          //     minute: '2-digit',
-          //     second: '2-digit'
-          // });
-
-          // const formattedDateTime = `${formattedDate.replace(/\s/g, '-')}, ${formattedTime}`;
-
-          // return (
-          //   <div>
-          //     {formattedDateTime}
-          //   </div>
-          // );
-
-          return value ? convertDateFunction(value) : null
-
-        },
+        
       },
     },
 
+    {
+      name: "atmstatusdesc",
+      label: "ATM Status Desc.",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "openDate",
+      label: "Open Date",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "closeDate",
+      label: "Close Date",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "timeElapsed",
+      label: "Time Ellapse",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
     {
       name: "location",
       label: "Location",
@@ -195,9 +146,10 @@ const closeSignModal = () => {
         sort: false,
       },
     },
+   
     {
-      name: "ip",
-      label: "IP",
+      name: "atmip",
+      label: "ATM IP",
       options: {
         filter: true,
         sort: false,
@@ -212,30 +164,21 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "address",
-      label: "Address",
+      name: "atmmake",
+      label: "ATM Make",
       options: {
         filter: true,
         sort: false,
       },
     },
     {
-      name: "atmstatus",
-      label: "ATM Status",
+      name: "atmAddress",
+      label: "Address",
       options: {
         filter: true,
         sort: false,
       },
     },
-   
-    // {
-    //   name: "serverip",
-    //   label: "Service Ip",
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //   },
-    // },
   ];
 
   const options = {
@@ -287,32 +230,32 @@ const closeSignModal = () => {
     // checkbox:true,
     selectableRows: false,
     pagination: false,
-    customToolbar: ({ displayData }) => {
-      return (
-        <span>
-          <Tooltip title="Download Excel">
-            <IconButton onClick={() => onDownloadExcel()} >
-              < CloudDownloadIcon />
-            </IconButton>
-          </Tooltip>
+    // customToolbar: ({ displayData }) => {
+    //   return (
+    //     <span>
+    //       <Tooltip title="Download Excel">
+    //         <IconButton onClick={() => onDownloadExcel()} >
+    //           < CloudDownloadIcon />
+    //         </IconButton>
+    //       </Tooltip>
 
-        </span>
-      );
-    },
-    customFooter: () => {
-      return (
-        <GridTablePagination
-          currentPage={currentPage}
-          totalCount={totalRecord}
-          pageSize={goPageNumber}
-          //   control={control}
+    //     </span>
+    //   );
+    // },
+    // customFooter: () => {
+    //   return (
+    //     <GridTablePagination
+    //       currentPage={currentPage}
+    //       totalCount={totalRecord}
+    //       pageSize={goPageNumber}
+    //       //   control={control}
 
-          onPageChange={(page) => {
-            getTransactionListView(page)
-          }}
-        />
-      );
-    },
+    //       onPageChange={(page) => {
+    //         getTransactionListView(page)
+    //       }}
+    //     />
+    //   );
+    // },
   };
 
   const getMuiTheme = () =>
@@ -375,35 +318,35 @@ const closeSignModal = () => {
 
   React.useEffect(() => {
     // getTransactionListView()
-    onSubmit()
+    modalHistory()
   }, [])
 
 
-  const getTransactionListView = async (currentPage, data = payloadData) => {
 
 
-    setCurrentPage(currentPage)
+
+
+  const modalHistory = async () => {
+
     setIsloading(true);
     try {
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
-
-
+        atmid: rowDataToDisplay.rowData[2],  
       };
 
       const response = await postApiData(
-        apiList.DASHBOARD_INSERVICE_BROWSE + `${apipath}` + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
-        payload
+        apiList.DASHBOARD_MODAL_HISTORY,payload
       );
-
-
+// console.log('response',response)
       if (response?.data?.status == true) {
-        setAtmMasterList(response?.data?.atmMasterNewsLst);
-        settotalRecord(response?.data?.totalRecords);
+        setAtmMasterList(response?.data?.atmHistoryModels);
+      
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
+        setAtmMasterList([]);
 
         // SweetAlertPopup(response.message, "Error", "error");
       }
@@ -416,61 +359,10 @@ const closeSignModal = () => {
 
 
 
-  const getTransactionList = (currentpages, payloadDatachild) => {
-    // console.log("payloadDatachild", payloadDatachild)
-    getTransactionListView(currentpages, payloadDatachild)
-    setPayloadData(payloadDatachild)
-  }
-
-  const onSubmit = (data) => {
-    let payload = {
-      username: user?.username,
-      sessionId: user?.sessionId,
-
-
-      // transtype: data.transtype ? data.transtype.code :"all",
-    };
-    getTransactionList(1, payload)
-    //  setpalyalodData(payload)
-    //  reset(defaultFormData);
-
-  }
-
-
-
-  const onDownloadExcel = async (data) => {
-    // console.log('Download Excel clicked',data);
-    setIsloading(true);
-    try {
-      const response = await axiosGetApiData(apiList.DASHBOARD_INSERVICE_EXCEL + `${excelname}`,
-        { responseType: 'arraybuffer' });
-
-      const arrayBuffer = response.data;
-      const blob = new Blob([arrayBuffer]);
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${titlename}.xlsx`
-      // link.download = `Sonal.xlsx`  
-
-      // link.download = `Sample File.csv`;  
-      // link.download = `${value}.xlsx`;
-      link.click();
-      URL.revokeObjectURL(url);
-      link.remove();
-      setIsloading(false);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-
-  
-
   return (
     <div>
       <Modal
-            style={{zIndex:'100'}}
+            style={{zIndex:'200'}}
         open={open}
         // onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -479,7 +371,7 @@ const closeSignModal = () => {
       >
         <Box sx={style} className={classes.popup}>
           <div className={classes.header} style={{ zIndex: '1111' }}>
-            <div className={classes.headerTitle}>{titlename}</div>
+            <div className={classes.headerTitle}>ATM Status History</div>
             <Button className={classes.headerLogo} onClick={handleClose}><CancelRoundedIcon /></Button>
           </div>
           <div className={classes.modalContent} style={{ width: '100%', padding: '10px' }}>
@@ -492,7 +384,7 @@ const closeSignModal = () => {
 
                     title={
                       <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: "center", gap: "30px", fontSize: "15px", fontWeight: "500" }}>
-                        {titlename}
+                        ATM Status History (ATM ID : {rowDataToDisplay.rowData[2]})
                         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: "center" }}>
                           <div style={{
                             // backgroundColor: 'yellow',
@@ -517,28 +409,11 @@ const closeSignModal = () => {
               </div>
             </div>
 
+
+
           </div>
         </Box>
       </Modal>
-
-      {isModalOpen ? (
-                <DashboardHistoryModal
-                open={isModalOpen}
-                handleClose={closeModal}
-                closeSignModal={closeSignModal}
-                rowDataToDisplay={rowDataToDisplay}
-                show={"2"}
-                title={"Transaction List"}
-                  // apipath={currentCardName}
-                  // titlename={currentAnotherName}
-                  // excelname={excelName}
-                //   apipath1={apipath}
-                //   userId={userId}
-                //   userName={userName}
-                />
-              ) : null}
-
-
     </div>
   );
 }

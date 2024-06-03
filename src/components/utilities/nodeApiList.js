@@ -150,6 +150,8 @@ DASHBOARD_INSERVICE_BROWSE:baseUrlServer + '/vakrangee/services/',
 
 DASHBOARD_INSERVICE_EXCEL:baseUrlServer + '/vakrangee/services/',
 
+DASHBOARD_MODAL_HISTORY:baseUrlServer + '/vakrangee/services/atmhistory',
+
 ATM_HEALTH_BROWSE:baseUrlServer + '/vakrangee/services/atmhealth',
 ATM_ERROR_BROWSE:baseUrlServer + '/vakrangee/services/atmerror',
 
