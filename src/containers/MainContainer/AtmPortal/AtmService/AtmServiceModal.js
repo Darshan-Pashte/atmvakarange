@@ -28,6 +28,25 @@ const style = {
     borderRadius:'15px'
 };
 
+const ColorButton1 = styled(Button)(({ theme }) => ({
+  color: "#FFF",
+  backgroundColor: "#042879",
+  fontFamily:'Poppins',
+  boxShadow:' 0px 4px 10px 0px rgba(0, 0, 0, 0.15)',
+  fontSize:'12px',
+  // backgroundColor: "#323232",
+  // backgroundColor: "#E31E24",
+  // border: "1px solid #CCC",
+  borderRadius: "8px",
+  paddingLeft: "15px",
+  paddingRight: "15px",
+  width: "130px",
+  height: "35px",
+  "&:hover": {
+    background: "#808080",
+    color: "white",
+  },
+}));
 
 export default function ATMServiceModal({ open, handleOpen, handleClose, closeSignModal,rowDataToDisplay, data,show ,title}) {
     const { headers, rowData,apipath,titletext } = rowDataToDisplay;
@@ -112,9 +131,14 @@ getData()
 
                        {titletext} : {convertedData}
                         </div>
-                        
+                        <div style={{display:"flex",justifyContent:"center",marginTop:"1vw"}}>
+                        <ColorButton1 onClick={handleClose} style={{display:"flex",justifyContent:"center"}}>
+                          OK
+                        </ColorButton1>
+                        </div>
 
                     </div>
+                    
                 </Box>
             </Modal>
         </div>
