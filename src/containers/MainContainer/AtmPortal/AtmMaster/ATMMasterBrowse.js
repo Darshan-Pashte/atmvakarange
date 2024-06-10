@@ -247,15 +247,6 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: true,
-      },
-    },
-    {
-      name: "address",
-      label: "Address",
-      options: {
-        filter: true,
-        sort: false,
       },
     },
     {
@@ -264,19 +255,6 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: true,
-      },
-    },
-    {
-      name: "atmstatus",
-      label: "Status",
-      options: {
-        filter: true,
-        sort: false,
-        // customBodyRender: (value) => (
-        //   value === "0" ? "InActive" : value === "1" ? "Active" : value === '2' ? 'InActive' :
-        //   value === '3' ? ' Block' : value === '7' ? 'New User' : value
-        // )
       },
     },
     {
@@ -289,36 +267,38 @@ const ATMMasterBrowse = () => {
     },
     {
       name: "typedenom1",
-      label: "Type1 Denom",
+      label: "Type Denom1",
       options: {
         filter: true,
         sort: false,
+        display:false
       },
     },
     {
       name: "typedenom2",
-      label: "Type2 Denom",
+      label: "Type Denom2",
       options: {
         filter: true,
         sort: false,
+        display:false
       },
     },
     {
       name: "typedenom3",
-      label: "Type3 Denom",
+      label: "Type Denom3",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
       name: "typedenom4",
-      label: "Type4 Denom",
+      label: "Type Denom4",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
@@ -327,7 +307,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
@@ -336,7 +316,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
@@ -345,7 +325,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
@@ -354,16 +334,7 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "atmmake",
-      label: "Atm Make",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
+        display:false
       },
     },
     {
@@ -372,7 +343,15 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
+      },
+    },
+    {
+      name: "atmstatus",
+      label: "Atm Status",
+      options: {
+        filter: true,
+        sort: false,
       },
     },
     {
@@ -381,79 +360,15 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
     {
       name: "atmtype",
-      label: "ATM Type",
+      label: "Atm Type",
       options: {
         filter: true,
         sort: false,
-        display: false,
-      },
-    },
-    // {
-    //   name: "bankcd",
-    //   label: "Bank Code",
-    //   options: {
-    //     filter: true,
-    //     sort: false,
-    //     display:false
-    //   },
-    // },
-    {
-      name: "terminaltype",
-      label: "Terminal Type",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "nextdwnloaddt",
-      label: "Download Date",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "tmk",
-      label: "TMK",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "tpktmk",
-      label: "TPK TMK",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "tpklmk",
-      label: "TPK LMK",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
-      },
-    },
-    {
-      name: "tmkCheckSum",
-      label: "TMK CHECK SUM",
-      options: {
-        filter: true,
-        sort: false,
-        display: false,
       },
     },
     {
@@ -462,108 +377,287 @@ const ATMMasterBrowse = () => {
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+    {
+      name: "address",
+      label: "Address",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+
     {
       name: "pincode",
       label: "Pincode",
       options: {
         filter: true,
         sort: false,
-        display: false,
       },
     },
+
     {
       name: "serverip",
       label: "Server Ip",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
+    {
+      name: "tmk",
+      label: "TMK",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "tpklmk",
+      label: "TPK LMK",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "tpktmk",
+      label: "TPK TMK",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
     {
       name: "flag",
       label: "Flag",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
+    {
+      name: "nextdwnloaddt",
+      label: "Next Download Date",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "terminaltype",
+      label: "Terminal Type",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
     {
       name: "downloadfilename",
-      label: "File name",
+      label: "Download File Name",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "acqid",
-      label: "Acquired ID",
+      label: "Acquier Id",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "resourcefn",
-      label: "Resource",
+      label: "Resource Function",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "unsolstatus",
-      label: "Unsol status",
+      label: "Unsol Status",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
+    {
+      name: "atmmake",
+      label: "Atm Make",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
     {
       name: "downIsReq",
-      label: "Down Is Req",
+      label: "Down Is Request",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "inserviceIsReq",
       label: "Inservice Req",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "supplyCounterIsReq",
       label: "Supply Counter Req",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
     {
       name: "depbin",
       label: "Depbin",
       options: {
         filter: true,
         sort: false,
-        display: false,
+        display:false
       },
     },
+
+    {
+      name: "latestAtmActivityDate",
+      label: "Latest Atm Activity Date",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "tmkCheckSum",
+      label: "TMK Check Sum",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "disptype1COUNT",
+      label: "DispType1 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "disptype2COUNT",
+      label: "DispType2 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "disptype3COUNT",
+      label: "DispType3 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "disptype4COUNT",
+      label: "DispType4 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "rejtype1COUNT",
+      label: "Reject Type1 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+    {
+      name: "rejtype2COUNT",
+      label: "Reject Type2 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "rejtype3COUNT",
+      label: "Reject Type3 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+    {
+      name: "rejtype3COUNT",
+      label: "Reject Type4 COUNT",
+      options: {
+        filter: true,
+        sort: false,
+        display:false
+      },
+    },
+
+
+    
   ];
 
   const options = {
@@ -733,22 +827,20 @@ const ATMMasterBrowse = () => {
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
-        atmId: data.atmid,
-        bankcd: data.bankcd,
-        ip: data.ip,
-        address: data.address,
+        atmId: data.atmId,
+       
         location: data.location,
-        luno: data.luno,
+
       };
 
       const response = await postApiData(
-        apiList.ATM_MASTER_BROWSE +
+        apiList.ATM_MASTER_BROWSE_NEW +
           `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
 
       if (response?.data?.status == true) {
-        setAtmMasterList(response?.data?.atmMasterNewsLst);
+        setAtmMasterList(response?.data?.list);
         settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)
@@ -773,13 +865,13 @@ const ATMMasterBrowse = () => {
     let payload = {
       username: user?.username,
       sessionId: user?.sessionId,
-      atmid: data?.atmid,
-      bankcd: data?.bankcode?.code,
-      // transtype: data.transtype ? data.transtype.code :"all",
-      luno: data?.luno,
+      atmId: data?.atmid,
+      // bankcd: data?.bankcode?.code,
+      // // transtype: data.transtype ? data.transtype.code :"all",
+      // luno: data?.luno,
       location: data?.location,
-      address: data?.address,
-      ip: data?.machineip,
+      // address: data?.address,
+      // ip: data?.machineip,
     };
     // console.log("payload", payload);
     getTransactionList(1, payload);

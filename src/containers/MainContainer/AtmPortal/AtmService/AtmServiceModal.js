@@ -136,9 +136,7 @@ getData()
                           OK
                         </ColorButton1>
                         </div>
-
-                    </div>
-                    
+                    </div>                   
                 </Box>
             </Modal>
         </div>

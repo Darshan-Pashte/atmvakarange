@@ -79,7 +79,8 @@ RESET_PASSWORD:baseUrlServer + '/vakrangee/login/updatepass',
 
 
 ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/services/atmmaster/create',
-ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
+// ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
+ATM_MASTER_BROWSE_NEW:baseUrlServer + '/vakrangee/services/atmmaster/browselst',
 ATM_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/atmmaster/modify',
 
 
