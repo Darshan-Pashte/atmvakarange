@@ -977,29 +977,22 @@ const closeModal = () => {
                       name="atmid" // The name should match the key in 'data' object in onSubmit
                       control={control}
                       defaultValue="" // Set an initial value if needed
-                      // rules={{
-                      //   required:
-                      //     "ATM ID " +
-                      //     errorMessages.error_autocomplete_message,
-                      //     // pattern: {
-            
-                      //     //   value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-                      //     //   message: "2 special character,1 Uppercase,1 digit",
-                      //     // },
-                      // }}
                       render={({ field, fieldState }) => {
                         const handleInputChange = (event) => {
+                          // const regex = /^[A-Z0-9]+$/;
                           const regex = /^[A-Z0-9]+$/;
                           const { name, value } = event.target;
+                          const uppercaseValue = value.toUpperCase();
+
                           const isValidInput =
-                            regex.test(value) || value === "";
+                          regex.test(uppercaseValue) || uppercaseValue === "";
 
                           if (!isValidInput) {
                             event.preventDefault();
                             return;
                           }
 
-                          field.onChange(value);
+                          field.onChange(uppercaseValue);
                         };
 
                         return (
@@ -1038,10 +1031,11 @@ const closeModal = () => {
                                   </IconButton>
                                 </InputAdornment> 
                               ),
-                              inputProps : {maxLength: 10}
+                              inputProps : {maxLength: 8}
                             }}
-                            // error={!!fieldState.error}
-                            // helperText={fieldState.error?.message}
+                            error={!!fieldState.error}
+                            helperText={fieldState.error?.message}
+                            onChange={handleInputChange}
                
                           />
                         );
