@@ -120,11 +120,12 @@ export default function DashboardHistoryModal({ open, handleOpen, handleClose, c
       options: {
         filter: true,
         sort: false,
+        display: false,
       },
     },
     {
       name: "closeDate",
-      label: "Close Date",
+      label: "ATM Status Date",
       options: {
         filter: true,
         sort: false,
