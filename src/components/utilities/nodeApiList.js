@@ -157,7 +157,7 @@ ATM_HEALTH_BROWSE:baseUrlServer + '/vakrangee/services/atmhealth',
 ATM_ERROR_BROWSE:baseUrlServer + '/vakrangee/services/atmerror',
 
 
-WEBSOCKETURL : "http://43.242.37.224:443/websocket"
+WEBSOCKETURL : "https://atmportal.siplchd.co.in/websocket"
 
   // CORPORATELOGIN : baseUrlServer + "/corporate/banking/dologin",
   // CORPORATEOTP: baseUrlServer + "/corporate/banking/validateloginotp",
