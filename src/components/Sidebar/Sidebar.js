@@ -238,7 +238,7 @@ const a="11111000000"
     {/* Laptop */}
      <div id='mySidebar' className={classes.Sidebar} >
       <div className={classes.MenuItems}>
-        <ul>
+        <ul className={classes.Active}>
           {processedRoutes.map(({ Icon, ...route }) =>
             route.childRoutes?.length ? (
               <div key={route.id}>

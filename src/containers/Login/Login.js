@@ -140,14 +140,14 @@ const Login = () => {
         setUserId(response?.data?.smsId);
         setUserName(data.email);
         // dispatch(otpSuccess(data.email));
-        dispatch(otpSuccess(response?.data))
-        handleOpen();
+        // dispatch(otpSuccess(response?.data))
+        // handleOpen();
+        dispatch(loginSuccess(response?.data));
         reset();
         setIsLoading(false);
       } else {
         // dispatch(loginFailure(response.message));
         SweetAlertPopup(response?.data.message, "Error", "error");
-        reset()
         setIsLoading(false);
       }
       setIsLoading(false);

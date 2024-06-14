@@ -146,31 +146,31 @@ import axios from "axios";
       }
       return validateResponse(response);
     } catch (error) {
-      // if (error.response && error.response.status === 403) {
-      //   Swal.fire({
-      //     title: "Session has been expired!!!",
-      //     icon: "question",
-      //     showDenyButton: false,
-      //     showCancelButton: false,
-      //     confirmButtonText: "Login Again" ,
-      //     denyButtonText: `Deny`
-      //   }).then((result) => {
-      //     /* Read more about isConfirmed, isDenied below */
-      //     if (result.isConfirmed) {
-      //       sessionStorage.clear();
-      //       localStorage.clear();
-      //       window.location.reload();
-      //       window.location.href = "/vakrangeeatmadminportal/auth/login"
-      //     } else if (result.isDenied) {
+      if (error.response && error.response.status === 403) {
+        Swal.fire({
+          title: "Session has been expired!!!",
+          icon: "question",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Login Again" ,
+          denyButtonText: `Deny`
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            sessionStorage.clear();
+            localStorage.clear();
+            window.location.reload();
+            window.location.href = "/vakrangeeatmadminportal/auth/login"
+          } else if (result.isDenied) {
        
-      //     }
-      //   }).catch((err)=>{SweetAlertPopup('kk','kkj')});
-      //   // window.location.href = "/vakrangeeatmadminportal"
-      // } else {
-      //   // Handle other errors
-      //   console.error("Error in postApiData:", error);
-      //   throw error; // Rethrow the error for higher level handling if necessary
-      // }
+          }
+        }).catch((err)=>{SweetAlertPopup('kk','kkj')});
+        // window.location.href = "/vakrangeeatmadminportal"
+      } else {
+        // Handle other errors
+        console.error("Error in postApiData:", error);
+        throw error; // Rethrow the error for higher level handling if necessary
+      }
     }
   }
 
@@ -188,40 +188,40 @@ export async function axiosGetApiData(url,headers) {
     }
     return validateResponse(response);
   } catch (error) {
-    // if (error.response && error.response.status === 403) {
-    //   // Redirect to login page
+    if (error.response && error.response.status === 403) {
+      // Redirect to login page
 
-    //   // const navigate = useNavigate();
-    //   //       navigate("/auth/login")
+      // const navigate = useNavigate();
+      //       navigate("/auth/login")
       
     
-    //   // window.location.href = "/vakrangeeatmadminportal"
-    //   Swal.fire({
-    //     title: "Session has been expired!!!",
-    //     icon: "question",
-    //     showDenyButton: false,
-    //     showCancelButton: false,
-    //     confirmButtonText: "Login Again" ,
-    //     denyButtonText: `Deny`
-    //   }).then((result) => {
-    //     /* Read more about isConfirmed, isDenied below */
-    //     if (result.isConfirmed) {
-    //       sessionStorage.clear();
-    //       localStorage.clear();
-    //       window.location.reload();
-    //       window.location.href = "/vakrangeeatmadminportal/auth/login"
-    //     } 
-    //     else if (result.isDenied) {
+      // window.location.href = "/vakrangeeatmadminportal"
+      Swal.fire({
+        title: "Session has been expired!!!",
+        icon: "question",
+        showDenyButton: false,
+        showCancelButton: false,
+        confirmButtonText: "Login Again" ,
+        denyButtonText: `Deny`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          sessionStorage.clear();
+          localStorage.clear();
+          window.location.reload();
+          window.location.href = "/vakrangeeatmadminportal/auth/login"
+        } 
+        else if (result.isDenied) {
      
-    //     }
-    //   });
-    //   // window.location.href = "/vakrangeeatmadminportal"
+        }
+      });
+      // window.location.href = "/vakrangeeatmadminportal"
     
-    // } else {
-    //   // Handle other errors
-    //   console.error("Error in axiosGetApiData:", error);
-    //   throw error; // Rethrow the error for higher level handling if necessary
-    // }
+    } else {
+      // Handle other errors
+      console.error("Error in axiosGetApiData:", error);
+      throw error; // Rethrow the error for higher level handling if necessary
+    }
   }
 }
 

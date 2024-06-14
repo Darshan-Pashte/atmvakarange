@@ -425,7 +425,7 @@ const Routes = () => {
             ]
           },
           {
-            name: "ATM Alloaction",
+            name: "ATM Allocation",
             id: "allocation",
             url: array[0] == "1" ? "/allocation" : null,
             component: <UserATMAssignMasterBrowse />,
