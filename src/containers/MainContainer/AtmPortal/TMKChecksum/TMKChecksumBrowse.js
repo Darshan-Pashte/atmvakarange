@@ -421,12 +421,7 @@ const TMKChecksumBrowse = () => {
   //     );
   //   }
   // }, [AtmIDList]);
-
-  useEffect(() => {
-    // getBankCode()
-    // getATMid();
-  }, []);
-
+  
   // useEffect(()=>{
   //   if (watch('bankcode')) {
   //     getATMid()
@@ -498,10 +493,11 @@ const TMKChecksumBrowse = () => {
       if (response?.data?.status == true) {
         setAtmMasterList(response?.data?.atmMasterNewsLst);
         settotalRecord(response?.data?.totalRecords);
-        //             setIsloading(false);
+                    setIsloading(false);
         // settotalRecord(response.data.totalRecords)
       } else {
         setAtmMasterList([])
+        setIsloading(false);
         // SweetAlertPopup(response.message, "Error", "error");
       }
       setIsloading(false);
