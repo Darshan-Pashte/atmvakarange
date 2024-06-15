@@ -2,7 +2,8 @@ import classes from './Header.module.scss';
 import React, { useContext, useEffect, useState } from 'react';
 import ProfileIcon from './assets/profile.jpg';
 import SettingIcon from './assets/SettingsFilled.svg';
-import LogoutIcon from './assets/LogoutFilled.svg';
+import LogoutIcon from './assets/SignOut.svg';
+import ChangePass from './assets/ChangePass.svg';
 import ViewProfileIcon from './assets/PersonFilled.svg';
 import { REMOVE_USER } from '../../constants';
 import { AuthContext } from '../../context/AuthContext';
@@ -17,7 +18,7 @@ import headerLogo from "../../assets/images/commonforweb/SwiftCorePe.svg";
 // import headerLogo from "../../assets/images/commonforweb/MaheshBankLogo.png";
 // import headerLogo from "../../assets/images/commonforweb/maheshBnk.PNG";
 
-
+import ChangePassModal from '../../containers/Login/ChangePassModal'
 const Header = ({ analytics }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -25,7 +26,9 @@ const Header = ({ analytics }) => {
   const [showProfile, setShowProfile] = useState(false);
   const { loading, error, isAuthenticated, user, userType } = useSelector((state) => state.auth);
   // console.log("user", user)
-
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   // const { dispatch: authDispatch } = useContext(AuthContext);
   // const [userName, setUserName] = useState("");
   const [lastLogin, setLastLogin] = useState("");
@@ -57,6 +60,11 @@ const Header = ({ analytics }) => {
     localStorage.clear()
     navigate("/auth/login")
   };
+
+  // const handleChangePass = () => {
+  //   // authDispatch({ type: REMOVE_USER });
+  //   navigate("/auth/changepass")
+  // };
 
   const handleShowProfile = () => {
     navigate("/settings")
@@ -124,11 +132,20 @@ const Header = ({ analytics }) => {
                 {/* <li onClick={handleSettings}><img src={SettingIcon} alt='settings'/>Settings</li> */}
                 {/* <li onClick={handleShowProfile}><img src={ViewProfileIcon} alt='profile'/>Profile</li> */}
                 <li onClick={handleLogout}><img src={LogoutIcon} alt='logout'/>Sign Out</li>
+                <li onClick={handleOpen}><img src={ChangePass} alt='logout'/>Change Password</li>
               </ul>
             ) : null}
           </div>
         </div>
       </div>
+
+      {open ? (
+                <ChangePassModal
+                  open={open}
+                  handleClose={handleClose}
+                
+                />
+              ) : null}
     </div>
   );
 };

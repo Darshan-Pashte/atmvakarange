@@ -66,7 +66,7 @@ const defaultFormData = {
   cpassword: "",
 };
 
-export default function LoginOTPModal({
+export default function ChangePassModal({
   open,
   handleClose,
   responseData,

@@ -8,6 +8,7 @@ import Register from '../containers/Register/Register';
 import ForgetPassword from '../containers/ForgetPassword/ForgetPassword';
 import ForgotPassword from '../containers/Login/ForgotPassword';
 import ResetPassword from '../containers/Login/ResetPassword';
+import ChangePassword from '../containers/Login/ChangePassword';
 // import ForgetPasswordCorporate from '../containers/ForgetPasswordCorporate/ForgetPasswordCorporate';
 
 const AuthLayout = () => {
@@ -32,6 +33,7 @@ const AuthLayout = () => {
       <Route path='/register' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <Register />} />
       <Route path='/forgetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ForgotPassword />} />
       <Route path='/resetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ResetPassword />} />
+      {/* <Route path='/changepass' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ChangePassword />} /> */}
       {/* <Route path='/atmverify' element={ <ATMVerify />} /> */}
      
     </Routes>

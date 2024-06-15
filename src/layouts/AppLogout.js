@@ -13,7 +13,7 @@ const events = [
   ];
   
   const AppLogout = ({ children }) => {
-
+    
     let timer;
   
   // this function sets the timer that logs out the user after 10 secs

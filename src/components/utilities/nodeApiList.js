@@ -76,6 +76,7 @@ RESEND_FORGET_OTP:baseUrlServer + '/vakrangee/login/resendforgototp',
 FORGOT_PASSWORD:baseUrlServer + '/vakrangee/login/sendotp',
 FORGOT_PASSWORD_OTP_VALIDATE:baseUrlServer + '/vakrangee/login/validforgototp',
 RESET_PASSWORD:baseUrlServer + '/vakrangee/login/updatepass',
+CHANGE_PASSWORD:baseUrlServer + '/vakrangee/services/changepass',
 
 
 ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/services/atmmaster/create',

@@ -82,6 +82,9 @@ import BankAtmSMSMasterCreate from "../containers/MainContainer/AtmPortal/BankAt
 import BankAtmSMSMasterModify from "../containers/MainContainer/AtmPortal/BankAtmSMSMaster/BankAtmSMSMasterModify";
 import BankMasterModify from "../containers/MainContainer/AtmPortal/BankMaster/BankMasterModify";
 import Dashboard from "../containers/MainContainer/Dashboard/Dashboard";
+
+// import ChangePassword from "../containers/Login/ChangePassword";
+
 import MobileAppUserBrowse from "../containers/MainContainer/AtmPortal/MobileAppUser/MobileAppUserBrowse";
 import MobileAppUserCreate from "../containers/MainContainer/AtmPortal/MobileAppUser/MobileAppUserCreate";
 import MobileAppUserModify from "../containers/MainContainer/AtmPortal/MobileAppUser/MobileAppUserModify";
@@ -201,6 +204,15 @@ const Routes = () => {
       roles: [],
       Icon: HomeIcon,
     },
+    // {
+    //   name: "ChangePass",
+    //   id: "changepass",
+    //   url: array[0] == "1" ? "/changepass" : null,
+    //   component: <ChangePassword />,
+    //   // arr: array[0],
+    //   roles: [],
+    //   Icon: HomeIcon,
+    // },
 
     {
       name: "ATM Health",
@@ -339,6 +351,7 @@ const Routes = () => {
           component: <BankMasterModify />,
           Icon: BankIcon,
         },
+      
       ]
     },
 
