@@ -151,13 +151,16 @@ import axios from "axios";
           title:response?.data.message ,
           icon: "question",
           showDenyButton: false,
-          showCancelButton: false,
+          showCancelButton: true,
           confirmButtonText: "Change Password" ,
+          cancelButtonText: "Cancel", // Define cancel button text
           denyButtonText: `Deny`
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.location.href = "/vakrangeeatmadminportal/auth/login"
+            sessionStorage.clear()
+            localStorage.clear()
+            window.location.href = "/vakrangeeatmadminportal/auth/changepass"
           } 
           else if (result.isDenied) {
        

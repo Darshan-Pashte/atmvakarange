@@ -33,7 +33,7 @@ const AuthLayout = () => {
       <Route path='/register' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <Register />} />
       <Route path='/forgetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ForgotPassword />} />
       <Route path='/resetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ResetPassword />} />
-      {/* <Route path='/changepass' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ChangePassword />} /> */}
+      <Route path='/changepass' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ChangePassword />} />
       {/* <Route path='/atmverify' element={ <ATMVerify />} /> */}
      
     </Routes>

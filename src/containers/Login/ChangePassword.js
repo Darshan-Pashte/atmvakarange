@@ -39,8 +39,9 @@ import headerLogo from "../../assets/images/commonforweb/SwiftCorePe.svg";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const defaultFormData = {
-  email: "",
-  password: ""
+  oldPassword: "",
+  newPassword: "",
+  confirmnewpassword: "",
 }
 
 
@@ -134,9 +135,9 @@ const ChangePassword = () => {
     const payload = {
      
         username:state.userName,
-        oldpass:data.oldPass,
-        newpass:data.password,
-        confirmpass:data.confirmpassword,
+        oldpass:data.oldPassword,
+        newpass:data.newPassword,
+        confirmpass:data.confirmnewpassword,
     };
     const response = await postApiData(apiList.CHANGE_PASSWORD, payload);
     // console.log("response", response);
@@ -151,7 +152,7 @@ const ChangePassword = () => {
     };
   
     const passwordMatchValidation = (value) => {
-      const newPassword = getValues("password");
+      const newPassword = getValues("newPassword");
       return newPassword === value || "New password and confirm password does not match !";
     };
 
@@ -205,16 +206,16 @@ const ChangePassword = () => {
             {/* <div className={classes.lowertext}>Please Enter your details to access your account</div> */}
           </div>
 
-          <Grid item xs={12} sm={8} md={8} style={{ width: "80%" }}>
+     <Grid item xs={12} sm={8} md={8} style={{ width: "80%" }}>
             <div className={classes.frowdataaff}>
-              <div className={classes.frowtextaff}>Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.frowtextaff}>Old Password<sup className={classes.required}>*</sup></div>
               <div className={classes.widthtfield}>
               <Controller
-            name="password"
+            name="oldPassword"
             control={control}
             defaultValue=""
             rules={{
-              required: "Password " + errorMessages.error_autocomplete_message,
+              required: "Old Password" + errorMessages.error_autocomplete_message,
               pattern: {
             
                 value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
@@ -237,7 +238,82 @@ const ChangePassword = () => {
                 <TextField
                   id="standard-adornment-password"
                   fullWidth="true"
-                  placeholder="Please Enter Password"
+                  placeholder="Please Enter Old Password"
+                  type={showPassword ? "text" : "password"}
+                  {...field}
+                  sx={{
+                    "& fieldset": { border: "none" },
+                    ".MuiInputBase-root": {
+                      marginTop:'3px',
+                      borderRadius: '6px',
+                      position: 'relative',
+                      backgroundColor: '#FFF',
+                      // backgroundColor: backgroundColor?'#FFF' : "#EEEFF7",
+                  border: '1px solid',
+                    fontSize: '13px',
+                      height : "2px",
+                      color: '#888',
+                      fontWeight:'500',
+                      padding: '16px 0px',
+                    },
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {!showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message}
+                  onChange={handleInputChange}
+                />
+              );
+            }}
+          />
+              </div>
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sm={8} md={8} style={{ width: "80%" }}>
+            <div className={classes.frowdataaff}>
+              <div className={classes.frowtextaff}>New Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.widthtfield}>
+              <Controller
+            name="newPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: "New Password" + errorMessages.error_autocomplete_message,
+              pattern: {
+            
+                value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                message: "2 special character,1 Uppercase,1 digit",
+              },
+            }}
+            render={({ field, fieldState }) => {
+              const handleInputChange = (event) => {
+                // const regex = /^[a-zA-Z@#.*&0-9]+$/;
+                const regex = /^[a-zA-Z@#.&0-9*/-]+$/;
+                const { name, value } = event.target;
+                const isValidInput = regex.test(value) || value === "";
+                if (!isValidInput) {
+                  event.preventDefault();
+                  return;
+                }
+                field.onChange(value);
+              };
+              return (
+                <TextField
+                  id="standard-adornment-password"
+                  fullWidth="true"
+                  placeholder="Please Enter New Password"
                   type={showPassword ? "text" : "password"}
                   {...field}
                   sx={{
@@ -282,16 +358,16 @@ const ChangePassword = () => {
 
           <Grid item xs={12} sm={6} md={6} style={{ width: "80%" }}>
             <div className={classes.widthtfield}>
-              <div className={classes.frowtextaff}>Confirm Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.frowtextaff}>Confirm New Password<sup className={classes.required}>*</sup></div>
               <div className={classes.frow1aff}>
                
                       
           <Controller
-            name="confirmpassword"
+            name="confirmnewpassword"
             control={control}
             defaultValue=""
             rules={{
-              required: "Password " + errorMessages.error_autocomplete_message,
+              required: "Confirm New Password " + errorMessages.error_autocomplete_message,
               pattern: {
                 // value: /^\d{4}$/,
                 value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit
@@ -314,7 +390,7 @@ const ChangePassword = () => {
                 <TextField
                   id="standard-adornment-password"
                   fullWidth="true"
-                  placeholder="Confirm Password"
+                  placeholder="Confirm New Password"
                   type={showPassword1 ? "text" : "password"}
                   {...field}
                   sx={{
@@ -357,6 +433,7 @@ const ChangePassword = () => {
               
             </div>
           </Grid>
+
           <div className={classes.button} style={{ width: "80%" }}>
           <ColorButton1 variant="contained" type="submit">
             Submit

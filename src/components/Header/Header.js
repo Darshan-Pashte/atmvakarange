@@ -61,6 +61,14 @@ const Header = ({ analytics }) => {
     navigate("/auth/login")
   };
 
+  const handleChangePass = () => {
+    // authDispatch({ type: REMOVE_USER });
+    dispatch(logout());
+    sessionStorage.clear()
+    localStorage.clear()
+    navigate("/auth/changepass")
+  };
+
   // const handleChangePass = () => {
   //   // authDispatch({ type: REMOVE_USER });
   //   navigate("/auth/changepass")
@@ -132,20 +140,20 @@ const Header = ({ analytics }) => {
                 {/* <li onClick={handleSettings}><img src={SettingIcon} alt='settings'/>Settings</li> */}
                 {/* <li onClick={handleShowProfile}><img src={ViewProfileIcon} alt='profile'/>Profile</li> */}
                 <li onClick={handleLogout}><img src={LogoutIcon} alt='logout'/>Sign Out</li>
-                <li onClick={handleOpen}><img src={ChangePass} alt='logout'/>Change Password</li>
+                <li onClick={handleChangePass}><img src={ChangePass} alt='logout'/>Change Password</li>
               </ul>
             ) : null}
           </div>
         </div>
       </div>
 
-      {open ? (
+      {/* {open ? (
                 <ChangePassModal
                   open={open}
                   handleClose={handleClose}
                 
                 />
-              ) : null}
+              ) : null} */}
     </div>
   );
 };
