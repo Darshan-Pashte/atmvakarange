@@ -130,11 +130,23 @@ const ChangePassword = () => {
     navigate("/auth/login");
   }
 
+  // const username=sessionStorage.getItem('username')
+  // console.log('username',username)
+
+  const username = sessionStorage.getItem('username');
+
+  // Parse the username string to remove surrounding quotes
+  let parsedUsername = username; // Initialize parsedUsername with original value
+  
+  if (username) {
+    // Remove surrounding quotes if they exist
+    parsedUsername = username.replace(/^"(.*)"$/, '$1');
+  }
   const onSubmit = async (data) => {
     setisLoading(true)
     const payload = {
      
-        username:state.userName,
+        username:parsedUsername,
         oldpass:data.oldPassword,
         newpass:data.newPassword,
         confirmpass:data.confirmnewpassword,
@@ -143,8 +155,12 @@ const ChangePassword = () => {
     // console.log("response", response);
     if (response?.data?.status == true) {
       setisLoading(false)
-        handleLogin();
-        SweetAlertPopup(response?.data?.message, "Success", "success");
+      SweetAlertPopup(response?.data?.message, "Success", "success");
+      sessionStorage.clear();
+            localStorage.clear();
+            // window.location.reload();
+            // window.location.href = "/vakrangeeatmadminportal/auth/login"
+      navigate('/vakrangeeatmadminportal/auth/login')
       } else {
         setisLoading(false)
         SweetAlertPopup(response?.data?.message, "Error", "error");

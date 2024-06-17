@@ -39,6 +39,7 @@ const authSlice = createSlice({
       state.error = null;
       sessionStorage.setItem("TOKEN", JSON.stringify(action.payload.sessionId));
       sessionStorage.setItem("jwtToken", JSON.stringify(action.payload.sessionId));
+      sessionStorage.setItem("username", JSON.stringify(action.payload.username));
       // sessionStorage.setItem("menu", action.payload.menu);
       // sessionStorage.setItem("menu", "11111111111111111111111111111111111111111111111111111111111111111111");
       // sessionStorage.setItem("lastLogin", action.payload.lastLoginDate);

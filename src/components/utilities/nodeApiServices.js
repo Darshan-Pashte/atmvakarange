@@ -158,8 +158,8 @@ import axios from "axios";
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            sessionStorage.clear()
-            localStorage.clear()
+            // sessionStorage.clear()
+            // localStorage.clear()
             window.location.href = "/vakrangeeatmadminportal/auth/changepass"
           } 
           else if (result.isDenied) {
