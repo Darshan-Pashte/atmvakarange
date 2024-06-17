@@ -8,7 +8,7 @@ import Modal from "@mui/material/Modal";
 import { Controller, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { ClassNames } from "@emotion/react";
-import { TextField, styled } from "@mui/material";
+import { Grid, TextField, styled } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
@@ -25,6 +25,7 @@ import { loginSuccess } from "../../store/authSlice";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import TimerComponent from "../../components/common/TimerComponent";
 import SweetAlertPopup from "../../components/common/sweetAlertPopup";
+import Cancel from "./cancel.svg"
 
 const style = {
   position: "absolute",
@@ -43,6 +44,8 @@ const style = {
 };
 
 const ColorButton = styled(LoadingButton)(({ theme }) => ({
+    display:"flex",
+    justifyContent:"center",
   color: "#FFFFFF",
   // backgroundColor: "#F84B67",
       // backgroundColor: "#AA1313",
@@ -50,8 +53,8 @@ const ColorButton = styled(LoadingButton)(({ theme }) => ({
   // border: "1px solid #CCC",
   border: "1px solid #CCC",
   borderRadius: "8px",
-  paddingLeft: "15px",
-  paddingRight: "15px",
+//   paddingLeft: "15px",
+//   paddingRight: "15px",
   width: "123px",
   height: "35px",
   "&:hover": {
@@ -61,18 +64,17 @@ const ColorButton = styled(LoadingButton)(({ theme }) => ({
 }));
 
 const defaultFormData = {
-  username: "",
-  password: "",
-  cpassword: "",
+  oldPassword: "",
+  newPassword: "",
+  confirmnewpassword: "",
 };
 
 export default function ChangePassModal({
   open,
   handleClose,
   responseData,
-  payloads,
-  userId,
-  userName,
+
+
 })
 
 {
@@ -95,11 +97,9 @@ export default function ChangePassModal({
     // setLastLogin(sessionStorage.getItem("lastLogin"))
   }, []);
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  
   const [otp, setOtp] = useState("");
-  // const [isLoading, setisLoading] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const dispatch = useDispatch();
+  // const [isLoading, setisLoading] = useState(false);  const dispatch = useDispatch();
 
   
   const { loading, error, isAuthenticated, user } = useSelector(
@@ -113,6 +113,16 @@ export default function ChangePassModal({
   const [isOtpEntered, setIsOtpEntered] = useState(false);
   const [tries, setTries] = useState("");
   const [msg, setMsg] = useState("");
+//   const [isLoading, setisLoading] = useState(false);
+
+  const [passwordError, setPasswordError] = useState(false);
+  const [userId, setUserId] = useState("");
+  const [userName, setUserName] = useState("");
+//   const dispatch = useDispatch();
+//   const [isLoading, setIsLoading] = useState(false);
+  
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
   // const [times,setTimes]=useState('')
   const handleFocus = () => {
     // Clear the input value on focus
@@ -162,7 +172,7 @@ export default function ChangePassModal({
       setIsloading(false);
       //   navigate('/atmadminportal/bankmaster')
       // popupAlert(response.message, "Success", "success");
-      dispatch(loginSuccess(response?.data));
+    //   dispatch(loginSuccess(response?.data));
 
       handleClose();
       reset();
@@ -213,6 +223,14 @@ export default function ChangePassModal({
     }
   };
 
+  const passwordMatchValidation = (value) => {
+    const newPassword = getValues("password");
+    return newPassword === value || "New password and confirm password does not match !";
+  };
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+
   return (
     <div>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -223,94 +241,263 @@ export default function ChangePassModal({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+       
         <Box
           sx={style}
-          component={"form"}
+          className={classes.changebox}
+          component="form"
           onSubmit={handleSubmit(onSubmits)}
-          className={classes.mainbox}
+
         >
-          <div
-              className={classes.cancelButton}
-              style={{ transform: "scale(2)"}}
-            >
-              <IconButton aria-label="delete" onClick={handleClose}>
-                <HighlightOffIcon />
-              </IconButton>
-            </div>
-          <div
-            className={classes.otpContent}
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <div className={classes.otpheading}>OTP Verification</div>
-            
-          </div>
-          <div className={classes.otpheading1}>
-            
-            {otpdata?.message}
-            {/* Please Enter OTP */}
-            
-            </div>
-          {!otp && (
-            <div style={{ color: "#AA1313", marginBottom: "-10px",fontSize:'15px' }}>{msg}</div>
-          )}
-          <OTPInput
-            value={otp}
-            // onChange={setOtp}
-
-            onChange={(otpValue) => {
-              setOtp(otpValue);
-              setIsOtpEntered(otpValue.length > 3);
-            }}
-            numInputs={4}
-            renderSeparator={<span>-</span>}
-            renderInput={(props) => <input {...props} />}
-            inputType="password"
-            inputStyle={{
-              width: "60px",
-              marginBottom: "10px",
-              marginTop: "10px",
-              height: "60px",
-              fontSize: "20px",
-              borderRadius: "5px",
-              borderColor:
-                "internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133))",
-            }}
-            containerStyle={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          />
-          {tries ? (
-            <div style={{ color: "#183883", marginTop: "-10px" ,fontSize:'15px'}}>
-              You have {tries} attempt left
-            </div>
-          ) : null}
+            <div className={classes.close}>
+       <img src={Cancel} alt="Close"/>
+       </div>
+          <div className={classes.textcontainer}>
           
-         <TimerComponent
-            Case="Minutes"
-            setotp={''}
-            Time={otpdata?.remainTime}
-            id={otpdata?.smsId}
-            resendClick={handleResend}
-            msg={msg}
-            setMsg={setMsg}
-            tries={tries}
-            setTries={setTries}
-            setOtp={setOtp}
-            // ColorButton={ColorButton}
-          />
-
-          <div style={{ display: "flex" }}>
-            <ColorButton
-              loading={isLoading}
-              variant="contained"
-              type="submit"
-              disabled={!isOtpEntered}
-            >
-              Submit
-            </ColorButton>
-         
+            <div className={classes.uppertext}>Reset Password</div>
+           
+            {/* <div className={classes.lowertext}>Please Enter your details to access your account</div> */}
           </div>
+
+<div style={{display:"flex", flexDirection:"column", alignItems:"center", gap:"2vw"}}>
+<Grid item xs={12} sm={8} md={8} style={{ width: "80%" }}>
+            <div className={classes.frowdataaff}>
+              <div className={classes.frowtextaff}>Old Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.widthtfield}>
+              <Controller
+            name="oldPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: "Old Password" + errorMessages.error_autocomplete_message,
+              pattern: {
+            
+                value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                message: "2 special character,1 Uppercase,1 digit",
+              },
+            }}
+            render={({ field, fieldState }) => {
+              const handleInputChange = (event) => {
+                // const regex = /^[a-zA-Z@#.*&0-9]+$/;
+                const regex = /^[a-zA-Z@#.&0-9*/-]+$/;
+                const { name, value } = event.target;
+                const isValidInput = regex.test(value) || value === "";
+                if (!isValidInput) {
+                  event.preventDefault();
+                  return;
+                }
+                field.onChange(value);
+              };
+              return (
+                <TextField
+                  id="standard-adornment-password"
+                  fullWidth="true"
+                  placeholder="Please Enter Old Password"
+                  type={showPassword ? "text" : "password"}
+                  {...field}
+                  sx={{
+                    "& fieldset": { border: "none" },
+                    ".MuiInputBase-root": {
+                      marginTop:'3px',
+                      borderRadius: '6px',
+                      position: 'relative',
+                      backgroundColor: '#FFF',
+                      // backgroundColor: backgroundColor?'#FFF' : "#EEEFF7",
+                  border: '1px solid',
+                    fontSize: '13px',
+                      height : "2px",
+                      color: '#888',
+                      fontWeight:'500',
+                      padding: '16px 0px',
+                    },
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {!showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message}
+                  onChange={handleInputChange}
+                />
+              );
+            }}
+          />
+              </div>
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sm={8} md={8} style={{ width: "80%" }}>
+            <div className={classes.frowdataaff}>
+              <div className={classes.frowtextaff}>New Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.widthtfield}>
+              <Controller
+            name="newPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: "New Password" + errorMessages.error_autocomplete_message,
+              pattern: {
+            
+                value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                message: "2 special character,1 Uppercase,1 digit",
+              },
+            }}
+            render={({ field, fieldState }) => {
+              const handleInputChange = (event) => {
+                // const regex = /^[a-zA-Z@#.*&0-9]+$/;
+                const regex = /^[a-zA-Z@#.&0-9*/-]+$/;
+                const { name, value } = event.target;
+                const isValidInput = regex.test(value) || value === "";
+                if (!isValidInput) {
+                  event.preventDefault();
+                  return;
+                }
+                field.onChange(value);
+              };
+              return (
+                <TextField
+                  id="standard-adornment-password"
+                  fullWidth="true"
+                  placeholder="Please Enter New Password"
+                  type={showPassword ? "text" : "password"}
+                  {...field}
+                  sx={{
+                    "& fieldset": { border: "none" },
+                    ".MuiInputBase-root": {
+                      marginTop:'3px',
+                      borderRadius: '6px',
+                      position: 'relative',
+                      backgroundColor: '#FFF',
+                      // backgroundColor: backgroundColor?'#FFF' : "#EEEFF7",
+                  border: '1px solid',
+                    fontSize: '13px',
+                      height : "2px",
+                      color: '#888',
+                      fontWeight:'500',
+                      padding: '16px 0px',
+                    },
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {!showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message}
+                  onChange={handleInputChange}
+                />
+              );
+            }}
+          />
+              </div>
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={6} style={{ width: "80%" }}>
+            <div className={classes.widthtfield}>
+              <div className={classes.frowtextaff}>Confirm New Password<sup className={classes.required}>*</sup></div>
+              <div className={classes.frow1aff}>
+               
+                      
+          <Controller
+            name="confirmnewpassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: "Confirm New Password " + errorMessages.error_autocomplete_message,
+              pattern: {
+                // value: /^\d{4}$/,
+                value: /^(?=.*[^a-zA-Z0-9].*[^a-zA-Z0-9])(?=.*[A-Z])(?=.*\d).{8,}$/, // Password should have alteast 2 special character and 1 Uppercase amd 1 digit
+                message: "2 special character,1 Uppercase,1 digit",
+              },
+              validate: passwordMatchValidation,
+            }}
+            render={({ field, fieldState }) => {
+              const handleInputChange = (event) => {
+                const regex = /^[a-zA-Z@#.&0-9*/-]+$/;
+                const { name, value } = event.target;
+                const isValidInput = regex.test(value) || value === "";
+                if (!isValidInput) {
+                  event.preventDefault();
+                  return;
+                }
+                field.onChange(value);
+              };
+              return (
+                <TextField
+                  id="standard-adornment-password"
+                  fullWidth="true"
+                  placeholder="Confirm New Password"
+                  type={showPassword1 ? "text" : "password"}
+                  {...field}
+                  sx={{
+                    "& fieldset": { border: "none" },
+                    ".MuiInputBase-root": {
+                      marginTop:'3px',
+                      borderRadius: '6px',
+                      position: 'relative',
+                      backgroundColor: '#FFF',
+                      // backgroundColor: backgroundColor?'#FFF' : "#EEEFF7",
+                  border: '1px solid',
+                    fontSize: '13px',
+                      height : "2px",
+                      color: '#888',
+                      fontWeight:'500',
+                      padding: '16px 0px',
+                    },
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword1}
+                          onMouseDown={handleMouseDownPassword}
+                        >
+                          {!showPassword1 ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  error={!!fieldState.error}
+                  helperText={fieldState.error?.message}
+                  onChange={handleInputChange}
+                />
+              );
+            }}
+          />
+              </div>
+              
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={6} >
+          <div className={classes.button} style={{ width: "80%" }}>
+          <ColorButton variant="contained" type="submit">
+            Submit
+          </ColorButton>
+          </div>
+          </Grid>
+      
+          </div>
+       
         </Box>
       </Modal>
     </div>
