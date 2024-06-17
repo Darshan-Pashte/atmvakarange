@@ -145,6 +145,7 @@ const Login = () => {
         dispatch(loginSuccess(response?.data));
         reset();
         setIsLoading(false);
+       
       } else {
         // dispatch(loginFailure(response.message));
         SweetAlertPopup(response?.data.message, "Error", "error");

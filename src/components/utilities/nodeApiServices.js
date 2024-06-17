@@ -144,6 +144,27 @@ import axios from "axios";
         localStorage.clear();
         window.location.reload();
       }
+      if(response?.data?.respCode === 'EXL3'){
+       
+        // SweetAlertPopup(response?.data.message, "Error", "error");
+        Swal.fire({
+          title:response?.data.message ,
+          icon: "question",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Change Password" ,
+          denyButtonText: `Deny`
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            window.location.href = "/vakrangeeatmadminportal/auth/login"
+          } 
+          else if (result.isDenied) {
+       
+          }
+        });
+
+      }
       return validateResponse(response);
     } catch (error) {
       if (error.response && error.response.status === 403) {

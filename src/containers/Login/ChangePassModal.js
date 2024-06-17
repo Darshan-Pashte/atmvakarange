@@ -26,6 +26,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import TimerComponent from "../../components/common/TimerComponent";
 import SweetAlertPopup from "../../components/common/sweetAlertPopup";
 import Cancel from "./cancel.svg"
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 const style = {
   position: "absolute",
@@ -249,8 +250,13 @@ export default function ChangePassModal({
           onSubmit={handleSubmit(onSubmits)}
 
         >
-            <div className={classes.close}>
-       <img src={Cancel} alt="Close"/>
+
+{/* <div className={classes.header}>
+                    <div className={classes.headerTitle}></div>
+                    <Button className={classes.headerLogo} onClick={handleClose}><CancelRoundedIcon/></Button>
+                    </div> */}
+            <div className={classes.close}  onClick={handleClose}>
+            <Button className={classes.headerLogo} onClick={handleClose}><CancelRoundedIcon/></Button>
        </div>
           <div className={classes.textcontainer}>
           
