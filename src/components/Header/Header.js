@@ -62,11 +62,8 @@ const Header = ({ analytics }) => {
   };
 
   const handleChangePass = () => {
-    // authDispatch({ type: REMOVE_USER });
-    dispatch(logout());
-    sessionStorage.clear()
-    localStorage.clear()
-    navigate("/auth/changepass")
+
+    navigate("/changepass")
   };
 
   // const handleChangePass = () => {

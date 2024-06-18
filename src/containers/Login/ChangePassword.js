@@ -66,7 +66,13 @@ const ChangePassword = () => {
   
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
+  const { loading, error, isAuthenticated, user } = useSelector(
+    (state) => state.auth
+  );
+
+  console.log("user", user);
 
   const {
     control,
@@ -102,6 +108,7 @@ const ChangePassword = () => {
  
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -133,20 +140,20 @@ const ChangePassword = () => {
   // const username=sessionStorage.getItem('username')
   // console.log('username',username)
 
-  const username = sessionStorage.getItem('username');
+  // const username = sessionStorage.getItem('username');
 
   // Parse the username string to remove surrounding quotes
-  let parsedUsername = username; // Initialize parsedUsername with original value
+  // let parsedUsername = username; // Initialize parsedUsername with original value
   
-  if (username) {
-    // Remove surrounding quotes if they exist
-    parsedUsername = username.replace(/^"(.*)"$/, '$1');
-  }
+  // if (username) {
+  //   // Remove surrounding quotes if they exist
+  //   parsedUsername = username.replace(/^"(.*)"$/, '$1');
+  // }
   const onSubmit = async (data) => {
     setisLoading(true)
     const payload = {
      
-        username:parsedUsername,
+        username:user?.username,
         oldpass:data.oldPassword,
         newpass:data.newPassword,
         confirmpass:data.confirmnewpassword,
@@ -160,7 +167,7 @@ const ChangePassword = () => {
             localStorage.clear();
             // window.location.reload();
             // window.location.href = "/vakrangeeatmadminportal/auth/login"
-      navigate('/vakrangeeatmadminportal/auth/login')
+      navigate('/auth/login')
       } else {
         setisLoading(false)
         SweetAlertPopup(response?.data?.message, "Error", "error");
@@ -218,7 +225,7 @@ const ChangePassword = () => {
                 </span> */}
 <img className={classes.lefttitlelogo} src={headerLogo} alt="" />
           <div className={classes.textcontainer}>
-            <div className={classes.uppertext}>Reset Password</div>
+            <div className={classes.uppertext}>Change Password</div>
             {/* <div className={classes.lowertext}>Please Enter your details to access your account</div> */}
           </div>
 
@@ -330,7 +337,7 @@ const ChangePassword = () => {
                   id="standard-adornment-password"
                   fullWidth="true"
                   placeholder="Please Enter New Password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword1 ? "text" : "password"}
                   {...field}
                   sx={{
                     "& fieldset": { border: "none" },
@@ -353,10 +360,10 @@ const ChangePassword = () => {
                       <InputAdornment position="end">
                         <IconButton
                           aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
+                          onClick={handleClickShowPassword1}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {!showPassword ? <VisibilityOff /> : <Visibility />}
+                          {!showPassword1 ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -407,7 +414,7 @@ const ChangePassword = () => {
                   id="standard-adornment-password"
                   fullWidth="true"
                   placeholder="Confirm New Password"
-                  type={showPassword1 ? "text" : "password"}
+                  type={showPassword2 ? "text" : "password"}
                   {...field}
                   sx={{
                     "& fieldset": { border: "none" },
@@ -430,10 +437,10 @@ const ChangePassword = () => {
                       <InputAdornment position="end">
                         <IconButton
                           aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword1}
+                          onClick={handleClickShowPassword2}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {!showPassword1 ? <VisibilityOff /> : <Visibility />}
+                          {!showPassword2 ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
                       </InputAdornment>
                     ),

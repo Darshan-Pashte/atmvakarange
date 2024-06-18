@@ -160,7 +160,7 @@ import axios from "axios";
           if (result.isConfirmed) {
             // sessionStorage.clear()
             // localStorage.clear()
-            window.location.href = "/vakrangeeatmadminportal/auth/changepass"
+            window.location.href = "/vakrangeeatmadminportal/changepass"
           } 
           else if (result.isDenied) {
        
