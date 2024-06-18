@@ -811,27 +811,27 @@ const Dashboard = () => {
 
   const ATMOfflineList=[
     {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
-    {atm:'VHM00001'},
+    {atm:'VHM00002'},
+    {atm:'VHM00003'},
+    {atm:'VHM00004'},
+    {atm:'VHM00005'},
+    {atm:'VHM00006'},
+    {atm:'VHM00007'},
+    {atm:'VHM00008'},
+    {atm:'VHM00009'},
+    {atm:'VHM00010'},
+    {atm:'VHM00011'},
+    {atm:'VHM00012'},
+    {atm:'VHM00013'},
+    {atm:'VHM00014'},
+    {atm:'VHM00015'},
+    {atm:'VHM00016'},
+    {atm:'VHM00017'},
+    {atm:'VHM00018'},
+    {atm:'VHM00019'},
+    {atm:'VHM00020'},
+    {atm:'VHM00021'},
+    {atm:'VHM00022'},
   ]
   return (
     <>
@@ -880,6 +880,11 @@ const Dashboard = () => {
                 >
                   <Grid item xs={12} sm={6} md={4}>
                     <div className={classes.graphs}>
+                    <div className={classes.lowergraph}>
+                        <div className={classes.graphtitle}>
+                        ACQUIRER TRANSACTION COUNT
+                        </div>
+                      </div>
                       <div className={classes.graphinfo}>
                         <div className={classes.graphleft}>
                         <div className={classes.leftupper}>
@@ -902,11 +907,7 @@ const Dashboard = () => {
                           {/* <RadialChart/> */}
                         </div>
                       </div>
-                      <div className={classes.lowergraph}>
-                        <div className={classes.graphtitle}>
-                        ACQUIRER TRANSACTION COUNT
-                        </div>
-                      </div>
+                  
                     </div>
                   </Grid>
 {/* 
@@ -914,6 +915,11 @@ const Dashboard = () => {
                     </Grid> */}
                   <Grid item xs={12} sm={6} md={4}>
                     <div className={classes.graphs}>
+                    <div className={classes.lowergraph}>
+                        <div className={classes.graphtitle}>
+                      ACQUIRER TRANSACTION AMOUNT
+                        </div>
+                      </div>
                       <div className={classes.graphdata}>
                         {/* <YourChartComponent dayList={dayList}/> */}
                         <AcquireTransactionChart dayList={dayList}/>
@@ -923,11 +929,7 @@ const Dashboard = () => {
                         {/* <ChartComponentBar type='bar' series={dashboard} showGridLines /> */}
                         {/* <LocalTransactionChart graph={graphLocal}/> */}
                       </div>
-                      <div className={classes.lowergraph}>
-                        <div className={classes.graphtitle}>
-                      ACQUIRER TRANSACTION AMOUNT
-                        </div>
-                      </div>
+             
                     </div>
                   </Grid>
 

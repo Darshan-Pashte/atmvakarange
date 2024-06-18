@@ -187,7 +187,7 @@ const ChartComponent = ({
     };
   }
 
-  return <Chart options={options} series={series} type={type} height={type === 'radialBar' ? '300' : '300'} width='100%' />;
+  return <Chart options={options} series={series} type={type} height={type === 'radialBar' ? '300' : '300'} width='90%' />;
 };
 
 export default ChartComponent;
