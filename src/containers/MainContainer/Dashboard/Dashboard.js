@@ -808,6 +808,31 @@ const Dashboard = () => {
   const handleRefresh=()=>{
     window.location.reload()
   }
+
+  const ATMOfflineList=[
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+    {atm:'VHM00001'},
+  ]
   return (
     <>
       {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -853,7 +878,7 @@ const Dashboard = () => {
                   rowSpacing={2}
                   style={{ paddingRight: "0.2vw" }}
                 >
-                  <Grid item xs={12} sm={6} md={6}>
+                  <Grid item xs={12} sm={6} md={4}>
                     <div className={classes.graphs}>
                       <div className={classes.graphinfo}>
                         <div className={classes.graphleft}>
@@ -887,7 +912,7 @@ const Dashboard = () => {
 {/* 
                   <Grid item xs={12} sm={6} md={6}>
                     </Grid> */}
-                  <Grid item xs={12} sm={6} md={6}>
+                  <Grid item xs={12} sm={6} md={4}>
                     <div className={classes.graphs}>
                       <div className={classes.graphdata}>
                         {/* <YourChartComponent dayList={dayList}/> */}
@@ -906,6 +931,28 @@ const Dashboard = () => {
                     </div>
                   </Grid>
 
+
+                  <Grid item xs={12} sm={6} md={4}>
+                  <div className={classes.graphs}>
+                  <div className={classes.atmlowergraph}>
+                        <div className={classes.atmgraphtitle}>
+           ATM Offline
+                        </div>
+                      </div>
+                      <div className={classes.graphdata}>
+                   
+                      <div className={classes.atmofficedesign}>
+                      {ATMOfflineList && ATMOfflineList?.map((item)=>
+                     
+                      <div className={classes.atmoffliine}>
+                        {item.atm}
+                        </div>
+                        )}
+                      </div>
+                      </div>
+                    
+                    </div>
+                  </Grid>
                   <Grid item xs={12} sm={12} md={9}></Grid>
 
                   <Grid item xs={12} sm={12} md={3}>

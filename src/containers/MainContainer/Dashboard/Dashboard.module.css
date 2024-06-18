@@ -66,7 +66,17 @@
   gap: 10px;
 }
 
+.atmlowergraph{
+  /* display: flex;
+  flex-direction: column;
+  gap: 10px; */
+  height: 50px;
+  padding: 10px 0;
+  position: sticky;
+}
+
 .graphs{
+  height: 410px;
   display: flex;
   flex-direction: column;
   background: white;
@@ -99,9 +109,11 @@ margin: 20px 0px 0px 20px;
 /* line-height: 140%;  */
 }
 .graphdata{
- min-height: 66%;
+ /* min-height: 66%; */
   box-shadow: 0px 7.065px 14.13px -6.182px rgba(3, 29, 53, 0.11);
   border-radius: 16px;
+  height: 350px;
+  overflow-y: scroll;
 }
 
 .graphinfo{
@@ -188,12 +200,23 @@ margin-top: 10px;
   font-weight: 500;
   margin-top: 15px;
   }
+.atmgraphtitle{
+  display:flex;
+  justify-content: center;
+  color: var(--Gradients-Red, #E31E24);
+  font-family: Poppins;
+  font-size: 15.189px;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 15px;
+  }
 
 
   .BottomContainerDownload{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    /* justify-content: space-between; */
   }
 @media (max-width: 500px) {
   .container {
@@ -476,4 +499,24 @@ height: 100%;
   padding:3px;
   padding-right: 0px;
   border: 2px solid grey;
+}
+
+.atmofficedesign{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 3%;
+}
+
+.atmoffliine{
+  width: 30%;
+  background-color:#f3898c;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
