@@ -106,6 +106,7 @@ getData()
     //  const  dummyData = 'State Data : {"StateTabledata27":"22|007||9","StateTabledata28":"22|007||9","StateTabledata17":"22|007||9","StateTabledata29":"22|007||9","StateTabledata18":"22|007||9","StateTabledata19":"22|007||9","StateTabledata23":"22|007||9","StateTabledata34":"22|007||9","StateTabledata24":"22|007||9","StateTabledata35":"22|007||9","StateTabledata25":"22|007||9","StateTabledata36":"22|007||9","StateTabledata26":"22|007||9","StateTabledata4":"22|007||9","StateTabledata30":"22|007||9","StateTabledata20":"22|007||9","StateTabledata31":"22|007||9","StateTabledata32":"22|007||9","StateTabledata22":"22|007||9","StateTabledata5":"22|007||9","StateTabledata33":"22|007||9","StateTabledata2":"22|007||9","StateTabledata1":"22|007||9","StateTabledata7":"22|007||9"}'
       const convertedData = responseArray && responseArray[2]?.replace(/,/g,",\n")
       console.log('bankdata',bankdata)
+      console.log('convertedData',convertedData)
     return (
         <div>
               {isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
@@ -124,7 +125,10 @@ getData()
                     <div className={classes.modalContent} style={{width:'100%'}}>
                         <div style={{fontSize:'14px',padding:'8px',fontWeight:'600'}} >
 
-                        {bankcode}
+{
+  !convertedData == undefined ? bankcode : ''
+}
+                        
                      
                         </div>
                         <div style={{fontSize:'18px',padding:'8px',lineBreak:'anywhere'}}  >

@@ -515,7 +515,7 @@ const closeSignModal = () => {
     },
     {
       name: "transactiontype",
-      label: "Trans Type",
+      label: "Transaction Type",
       options: {
         filter: true,
         sort: false,
@@ -560,8 +560,8 @@ const closeSignModal = () => {
       },
     },
     {
-      name: "pinblock",
-      label: "Bin Mode",
+      name: "txntype",
+      label: "Txn type",
       options: {
         filter: true,
         sort: false,
@@ -570,7 +570,8 @@ const closeSignModal = () => {
     },
     {
       name: "csppinblock1",
-      label: "Field Status",
+      // label: "Field Status",
+      label: "Trans Operation Code",
       options: {
         filter: true,
         sort: false,

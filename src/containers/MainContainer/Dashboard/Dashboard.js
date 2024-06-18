@@ -590,6 +590,14 @@ const Dashboard = () => {
         sort: false,
       },
     },
+    {
+      name: "txntype",
+      label: "Txn Type",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
   ];
 
   const getMuiTheme = () =>
