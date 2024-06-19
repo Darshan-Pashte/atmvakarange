@@ -165,7 +165,7 @@ const ChangePassword = () => {
       SweetAlertPopup(response?.data?.message, "Success", "success");
       sessionStorage.clear();
             localStorage.clear();
-            // window.location.reload();
+            window.location.reload();
             // window.location.href = "/vakrangeeatmadminportal/auth/login"
       navigate('/auth/login')
       } else {
