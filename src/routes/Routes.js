@@ -214,20 +214,20 @@ const Routes = () => {
     //   Icon: HomeIcon,
     // },
 
-    {
-      name: "ATM Health",
-      id: "atmhealth",
-      url: array[0] == "1" ? "/atmhealth" : null,
-      component: <ATMHealthBrowse />,
-      arr: array[0],
-      roles: [],
-      Icon: HealthIcon,
-      grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-         ]
-    },
+    // {
+    //   name: "ATM Health",
+    //   id: "atmhealth",
+    //   url: array[0] == "1" ? "/atmhealth" : null,
+    //   component: <ATMHealthBrowse />,
+    //   arr: array[0],
+    //   roles: [],
+    //   Icon: HealthIcon,
+    //   grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //      ]
+    // },
     
 
 
@@ -415,71 +415,71 @@ const Routes = () => {
     },
 
     
-    {
-      name: "User Master",
-      id: "usermaster",
-      url: array[0] == "1" ? "/usermaster" : null,
-      roles: [],
-      Icon: MobIcon,
-      childRoutes: [
+    // {
+    //   name: "User Master",
+    //   id: "usermaster",
+    //   url: array[0] == "1" ? "/usermaster" : null,
+    //   roles: [],
+    //   Icon: MobIcon,
+    //   childRoutes: [
           
-          {
-            name: "Browse",
-            id: "user",
-            url: array[0] == "1" ?  "/user" :null,
-            component: <MobileAppUserBrowse />,
-            arr: array[0],
-             roles: [],
-            Icon: MobIcon,
-            grandChild:[
-            {arr:array[0]},
-            {arr:array[0]},
-            {arr:array[0]}
-            ]
-          },
-          {
-            name: "ATM Allocation",
-            id: "allocation",
-            url: array[0] == "1" ? "/allocation" : null,
-            component: <UserATMAssignMasterBrowse />,
-            arr: array[0],
-            roles: [],
-            Icon: UserIcon,
-            grandChild:[
-              {arr:array[0]},
-              {arr:array[0]},
-              {arr:array[0]}
-           ]
-          },
-          {
-            name: "Authorize",
-            id: "authorize",
-            url: array[0] == "1" ?  "/authorize" :null,
-            roles: [],
-            arr : array[0],
-            component: <MobileAppUserAuthorize />,
-            Icon: MobIcon,
-          },
+    //       {
+    //         name: "Browse",
+    //         id: "user",
+    //         url: array[0] == "1" ?  "/user" :null,
+    //         component: <MobileAppUserBrowse />,
+    //         arr: array[0],
+    //          roles: [],
+    //         Icon: MobIcon,
+    //         grandChild:[
+    //         {arr:array[0]},
+    //         {arr:array[0]},
+    //         {arr:array[0]}
+    //         ]
+    //       },
+    //       {
+    //         name: "ATM Allocation",
+    //         id: "allocation",
+    //         url: array[0] == "1" ? "/allocation" : null,
+    //         component: <UserATMAssignMasterBrowse />,
+    //         arr: array[0],
+    //         roles: [],
+    //         Icon: UserIcon,
+    //         grandChild:[
+    //           {arr:array[0]},
+    //           {arr:array[0]},
+    //           {arr:array[0]}
+    //        ]
+    //       },
+    //       {
+    //         name: "Authorize",
+    //         id: "authorize",
+    //         url: array[0] == "1" ?  "/authorize" :null,
+    //         roles: [],
+    //         arr : array[0],
+    //         component: <MobileAppUserAuthorize />,
+    //         Icon: MobIcon,
+    //       },
       
-        {
-          name: "Create",
-          id: "create",
-          url: array[0] == "1" ?  "/create" :null,
-          roles: [],
-          component: <MobileAppUserCreate />,
-          Icon: MobIcon,
+    //     {
+    //       name: "Create",
+    //       id: "create",
+    //       url: array[0] == "1" ?  "/create" :null,
+    //       roles: [],
+    //       component: <MobileAppUserCreate />,
+    //       Icon: MobIcon,
          
-        },
-        {
-          name: "Modify",
-          id: "modify",
-          url: array[1] || array[2]!=0 ?  "/modify" :null,
-          roles: [],
-          component: <MobileAppUserModify />,
-          Icon: MobIcon,
-        },
-      ]
-    },
+    //     },
+    //     {
+    //       name: "Modify",
+    //       id: "modify",
+    //       url: array[1] || array[2]!=0 ?  "/modify" :null,
+    //       roles: [],
+    //       component: <MobileAppUserModify />,
+    //       Icon: MobIcon,
+    //     },
+    //   ]
+    // },
     // {
     //   name: "User ATM Assign Master",
     //   id: "useratmmaster",
