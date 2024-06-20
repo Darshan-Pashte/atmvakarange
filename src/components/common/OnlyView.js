@@ -62,7 +62,7 @@ export default function OnlyView({ open, handleOpen, handleClose, closeSignModal
                         <table style={{width:'100%'}}>
                             <tbody style={{border:'1px solid lightgrey'}}>
                                 {headers.map((header, i) => (
-                                    <tr key={i} style={{border:'1px solid lightgrey'}}>
+                                    <tr key={i} style={{border:'1px solid lightgrey', lineBreak : "anywhere"}}>
                                         <td className={classes.tableHead} style={{border:'1px solid lightgrey',textAlign:'center'}}>{header}</td> 
                                         {
                                             show==="1" ? <td style={{textAlign:'center'}}>{mappedRowData[i]}</td> : <td style={{textAlign:'center'}}>{mappedRowData[i+2]}</td>
