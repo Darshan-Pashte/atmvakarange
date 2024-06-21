@@ -511,15 +511,46 @@ height: 100%;
 
 .atmoffliine{
   width: 31%;
-  background-color:#fababb;
+  background-color:#F6BDB5;
   padding: 10px;
   /* border: 1px solid black; */
   border-radius: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   font-size: 14px;
+  color: #000000;
+}
+
+.dateoffliine{
+  color: #000000;
+  font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.outofserviceimage{
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.outofservicetext{
+  display: flex;
+  justify-content: center;
+  color: var(--Gradients-Red, #E31E24);
+  font-family: Poppins;
+  font-size: 15.189px;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 5px;
 }
