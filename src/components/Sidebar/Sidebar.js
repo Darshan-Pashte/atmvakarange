@@ -20,6 +20,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/authSlice';
 import headerLogo from "../../assets/images/commonforweb/silkpay.png";
 import LogOut from "../../assets/Sidebar/Logout.svg"
+import Loader from '../common/loader';
+import { postApiData } from '../utilities/nodeApiServices';
+import { apiList } from '../utilities/nodeApiList';
+import SweetAlertPopup from '../common/sweetAlertPopup';
 const package_json = require("../../../package.json");
 
 
@@ -46,6 +50,8 @@ const { loading, error, isAuthenticated, user, menu,userType } = useSelector(
   const [sideBarHovered, setSideBarHovered] = useState(true);
   const [expandedRoute, setExpandedRoute] = useState(null);
   const [opens, setOpens] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const dispatch=useDispatch();
 
   const handleDrawerOpen = () => {
@@ -139,16 +145,44 @@ const a="11111000000"
   
 
 
-  const handleLogout = () => {
-    // authDispatch({ type: REMOVE_USER });
-    dispatch(logout());
-    sessionStorage.clear()
-    localStorage.clear()
-    navigate("/auth/login")
+  // const handleLogout = () => {
+  //   // authDispatch({ type: REMOVE_USER });
+  //   dispatch(logout());
+  //   sessionStorage.clear()
+  //   localStorage.clear()
+  //   navigate("/auth/login")
+  // };
+
+
+  const handleLogout = async (data) => {
+    try {
+      // setIsloading(true);
+      const payload = {
+        username: user?.username,
+        sessionId: user?.sessionId,
+        
+      };
+      const response = await postApiData(apiList.LOGOUT, payload);
+      console.log('response',response)
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data.message, "Success", "success");
+// dispatch(logout());
+sessionStorage.clear()
+localStorage.clear()
+navigate('/auth/login');
+window.location.reload()
+        // setIsloading(false);
+      } else {
+        SweetAlertPopup(response?.data.message, "Error", "error");
+        // setIsloading(false);
+      }
+    } catch (err) {
+      console.log(err);
+      // setIsloading(false);
+    }
   };
-
-
   return (<>
+  {/* {isLoading ? <Loader loading={true} /> : <Loader loading={false} />} */}
       {/* Mobile */}
     <div className={classes.mainheaderresp}>
       <header className={classes.mainHeader}>

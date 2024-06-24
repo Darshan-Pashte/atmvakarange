@@ -19,6 +19,10 @@ import headerLogo from "../../assets/images/commonforweb/SwiftCorePe.svg";
 // import headerLogo from "../../assets/images/commonforweb/maheshBnk.PNG";
 
 import ChangePassModal from '../../containers/Login/ChangePassModal'
+import Loader from '../common/loader';
+import { postApiData } from '../utilities/nodeApiServices';
+import SweetAlertPopup from '../common/sweetAlertPopup';
+import { apiList } from '../utilities/nodeApiList';
 const Header = ({ analytics }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -32,6 +36,7 @@ const Header = ({ analytics }) => {
   // const { dispatch: authDispatch } = useContext(AuthContext);
   // const [userName, setUserName] = useState("");
   const [lastLogin, setLastLogin] = useState("");
+  const [isLoading, setIsloading] = useState(false);
 
   // console.log("lastLogin",lastLogin)
 
@@ -53,13 +58,13 @@ const Header = ({ analytics }) => {
     };
   });
 
-  const handleLogout = () => {
-    // authDispatch({ type: REMOVE_USER });
-    dispatch(logout());
-    sessionStorage.clear()
-    localStorage.clear()
-    navigate("/auth/login")
-  };
+  // const handleLogout = () => {
+  //   // authDispatch({ type: REMOVE_USER });
+  //   dispatch(logout());
+  //   sessionStorage.clear()
+  //   localStorage.clear()
+  //   navigate("/auth/login")
+  // };
 
   const handleChangePass = () => {
 
@@ -82,7 +87,38 @@ const Header = ({ analytics }) => {
   const handleRefresh=()=>{
     window.location.reload()
   }
+
+
+  const handleLogout = async (data) => {
+    try {
+      setIsloading(true);
+      const payload = {
+        username: user?.username,
+        sessionId: user?.sessionId,
+        
+      };
+      const response = await postApiData(apiList.LOGOUT, payload);
+      console.log('response',response)
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data.message, "Success", "success");
+// dispatch(logout());
+sessionStorage.clear()
+localStorage.clear()
+navigate('/auth/login');
+window.location.reload()
+        setIsloading(false);
+      } else {
+        SweetAlertPopup(response?.data.message, "Error", "error");
+        setIsloading(false);
+      }
+    } catch (err) {
+      console.log(err);
+      setIsloading(false);
+    }
+  };
+
   return (
+    <>{isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
     <div className={classes.HeaderContainer}>
       <div className={classes.LeftContainer}>
         <div className={classes.lefttitle} style={{cursor:'pointer'}}>
@@ -152,6 +188,7 @@ const Header = ({ analytics }) => {
                 />
               ) : null} */}
     </div>
+    </>
   );
 };
 

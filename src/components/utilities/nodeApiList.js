@@ -68,6 +68,7 @@ export const apiList = {
   // // Base URL for UAT
   // LOGIN: baseUrlServerLogin+"/airtelupiportallogin/login",
   LOGIN: baseUrlServer + "/vakrangee/login/dologin",
+  LOGOUT: baseUrlServer + "/vakrangee/services/logout",
 
 LOGIN_VALIDATE_OTP:baseUrlServer + '/vakrangee/services/validateotp',
 RESEND_OTP:baseUrlServer + '/vakrangee/services/resendotp',
