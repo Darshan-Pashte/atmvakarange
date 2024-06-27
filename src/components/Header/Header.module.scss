@@ -91,10 +91,11 @@ box-shadow: -1px 9px -5px -5px rgba(54, 54, 54, 0.05), 0 1px 9px 0 rgba(0, 0, 0,
 .lefttitle{
   color: var(--primary-color);
 height: 100%;
-width: 100%;
+width: 15.9vw;
 display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #d9d7ff;
 }
 
 .ProfileContainer {
@@ -292,6 +293,7 @@ line-height: normal;
   padding: 0 2%;
   width: 82%;
   margin-right: 27px;
+  margin-left: 7px;
   margin-top: 10px;
   // margin-bottom: 20px;
   height: 100%;

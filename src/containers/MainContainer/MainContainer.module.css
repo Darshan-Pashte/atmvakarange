@@ -17,7 +17,7 @@
   width: 84vw;
   overflow: scroll;
   height: 100%;
-  padding: 15px 8px 50px 8px !important;
+  padding: 15px 8px 50px 15px !important;
   /* background-color: #f5f6fA !important; */
   background-color: var( --body-background-color) !important;
 
