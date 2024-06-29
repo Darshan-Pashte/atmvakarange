@@ -3,10 +3,17 @@ import classes from './opps.module.css';
 import styled from 'styled-components';
 
 import { Button } from '@mui/base';
+import opps from "./Opps.svg"
+import { useNavigate } from 'react-router-dom';
 
 
 const Opps = () => {
  
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/vakrangeeatmadminportal/auth/login');
+  };
 
   const ColorButton1 = styled(Button)(({ theme }) => ({
     color: "#FFF",
@@ -38,12 +45,15 @@ const Opps = () => {
     <>
      
       <div className={classes.Opps}>
-       Opps............
-      
+     
+          <div className={classes.text}>session has expired due to inactivity. Please log in again to continue....</div>
+            <img src={opps} alt="Opps"/>
+           
+         
       </div>
 
       <div className={classes.OppsButton}>
-      <ColorButton1>Login Again</ColorButton1>
+      <ColorButton1 onClick={handleButtonClick}>Login Again</ColorButton1>
       </div>
     </>
 
