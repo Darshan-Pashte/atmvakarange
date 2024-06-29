@@ -89,8 +89,8 @@ const AppLogout = ({ children }) => {
       //     }
       //   })
 
-    }, 3600000
-    // }, 30000
+    // }, 3600000
+    }, 30000
     ); // 10000ms = 10secs. You can change the time.
   };
 
