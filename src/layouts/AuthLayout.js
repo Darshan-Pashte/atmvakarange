@@ -9,6 +9,7 @@ import ForgetPassword from '../containers/ForgetPassword/ForgetPassword';
 import ForgotPassword from '../containers/Login/ForgotPassword';
 import ResetPassword from '../containers/Login/ResetPassword';
 import ChangePassword from '../containers/Login/ChangePassword';
+import Opps from '../layouts/Opps'
 // import ForgetPasswordCorporate from '../containers/ForgetPasswordCorporate/ForgetPasswordCorporate';
 
 const AuthLayout = () => {
@@ -34,6 +35,7 @@ const AuthLayout = () => {
       <Route path='/forgetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ForgotPassword />} />
       <Route path='/resetpassword' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ResetPassword />} />
       <Route path='/changepass' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <ChangePassword />} />
+      <Route path='/opps' element={isAuthenticated ? <Navigate  to='/dashboard'/> : <Opps/>} />
       {/* <Route path='/atmverify' element={ <ATMVerify />} /> */}
      
     </Routes>

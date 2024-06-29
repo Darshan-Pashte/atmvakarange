@@ -1,0 +1,11 @@
+.Opps{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30vw;
+}
+.OppsButton{
+margin-top: 3vw;
+margin-left: 44vw;
+}

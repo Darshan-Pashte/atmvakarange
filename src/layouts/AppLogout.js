@@ -6,6 +6,7 @@ import { apiList } from "../components/utilities/nodeApiList";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/authSlice";
 import { useNavigate } from "react-router-dom";
+import opps from "./Opps.svg";
 
 
 const events = [
@@ -28,7 +29,6 @@ const AppLogout = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      // setIsLoading(true);
       const payload = {
         username: user?.username,
         sessionId: user?.sessionId,
@@ -38,10 +38,8 @@ const AppLogout = ({ children }) => {
         if (response?.data?.status === true) {
           dispatch(logout());
           navigate("/auth/login");
-          // setIsLoading(false);
         } else {
-          // SweetAlertPopup("User Logout Failed", "Error", "error");
-          // setIsLoading(false);
+          
         }
       }).catch(err => {
         console.log(err)
@@ -50,49 +48,99 @@ const AppLogout = ({ children }) => {
     } catch (error) {
       console.log("An error occurred during logout", error);
       SweetAlertPopup("An error occurred during logout", "Error", "error");
-      // setIsLoading(false);
     }
   };
 
-  // this function sets the timer that logs out the user after 10 secs
   const handleLogoutTimer = () => {
-    timer = setTimeout(() => {
-      // clears any pending timer.
+    timer = setTimeout(async() => {
       resetTimer();
-      // Listener clean up. Removes the existing event listener from the window
       Object.values(events).forEach((item) => {
         window.removeEventListener(item, resetTimer);
       });
-      // logs out user
+      // handleLogout();
+     await Swal.fire({
+          title: "Session has been expired!!!",
+          icon: "question",
+          showDenyButton: false,
+          showCancelButton: false,
+          // customClass: {
+          //   popup: 'swal2-popup'
+          // },
+          confirmButtonText: "Login Again !" ,
+          denyButtonText: `Deny`,
+          allowOutsideClick: false,  // Disable outside click to close the modal
+          allowEscapeKey: false,    // Disable escape key to close the modal
+          allowEnterKey: false,     // Disable enter key to close the modal
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+          //     localStorage.clear();
+          // // window.location.pathname = "/vakrangeeatmadminportal/auth/login";
+          // sessionStorage.clear();
+          // // localStorage.clear();
+          // window.location.reload();
+          // window.location.href = "/vakrangeeatmadminportal/auth/login"
       handleLogout();
-      // Swal.fire({
-      //     title: "Session has been expired!!!",
-      //     icon: "question",
-      //     showDenyButton: false,
-      //     showCancelButton: false,
-      //     confirmButtonText: "Opp's Logged Out !" ,
-      //     denyButtonText: `Deny`,
-      //     allowOutsideClick: false,  // Disable outside click to close the modal
-      //     allowEscapeKey: false,    // Disable escape key to close the modal
-      //     allowEnterKey: false,     // Disable enter key to close the modal
-      //   }).then((result) => {
-      //     /* Read more about isConfirmed, isDenied below */
-      //     if (result.isConfirmed) {
-      //         localStorage.clear();
-      //     // window.location.pathname = "/vakrangeeatmadminportal/auth/login";
-      //     sessionStorage.clear();
-      //     // localStorage.clear();
-      //     window.location.reload();
-      //     window.location.href = "/vakrangeeatmadminportal/auth/login"
-      //     } else if (result.isDenied) {
 
-      //     }
-      //   })
+          } else if (result.isDenied) {
+
+          }
+        })
 
     // }, 3600000
-    }, 30000
+    }, 10000
     ); // 10000ms = 10secs. You can change the time.
   };
+
+  // const handleLogoutTimer = () => {
+  //   timer = setTimeout(async() => {
+  //     resetTimer();
+  //     Object.values(events).forEach((item) => {
+  //       window.removeEventListener(item, resetTimer);
+  //     });
+  //     // handleLogout();
+  //    await Swal.fire({
+  //         // title: "Session has been expired!!!",
+  //         // icon: "question",
+  //         // showDenyButton: false,
+  //         html: `
+  //         <div>
+  //           <p style="font-size:20px">Your session has expired due to inactivity. Please log in again to continue.</p>
+  //           <img src='${opps}' alt="Opps" style="width: 400px; height: 400px;" />
+           
+  //         </div>
+  //       `,
+  //         // showCancelButton: false,
+  //         customClass: {
+  //           popup: 'swal2-popup'
+  //         },
+  //         confirmButtonText: "Login Again !" ,
+  //         // denyButtonText: `Deny`,
+  //         allowOutsideClick: false,  // Disable outside click to close the modal
+  //         allowEscapeKey: false,    // Disable escape key to close the modal
+  //         allowEnterKey: false,     // Disable enter key to close the modal
+  //       }).then((result) => {
+  //         /* Read more about isConfirmed, isDenied below */
+  //         if (result.isConfirmed) {
+  //         //     localStorage.clear();
+  //         // // window.location.pathname = "/vakrangeeatmadminportal/auth/login";
+  //         // sessionStorage.clear();
+  //         // // localStorage.clear();
+  //         // window.location.reload();
+  //         // window.location.href = "/vakrangeeatmadminportal/auth/login"
+  //     handleLogout();
+
+  //         } else if (result.isDenied) {
+
+  //         }
+  //       })
+
+  //   // }, 3600000
+  //   }, 10000
+  //   ); // 10000ms = 10secs. You can change the time.
+  // };
+
+  
 
   // this resets the timer if it exists.
   const resetTimer = () => {

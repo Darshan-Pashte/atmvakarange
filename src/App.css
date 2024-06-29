@@ -570,3 +570,20 @@ overflow: auto !important;
   width: 150px; 
   height: 150px;
 }
+
+.swal2-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap:20px !important
+}
+.swal2-popup {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

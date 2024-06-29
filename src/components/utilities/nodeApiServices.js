@@ -154,7 +154,10 @@ import axios from "axios";
           showCancelButton: true,
           confirmButtonText: "Change Password" ,
           cancelButtonText: "Cancel", // Define cancel button text
-          denyButtonText: `Deny`
+          denyButtonText: `Deny`, 
+          customClass: {
+            popup: 'swal2-popup'
+          }
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
