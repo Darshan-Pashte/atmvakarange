@@ -101,11 +101,11 @@ const Header = ({ analytics }) => {
       console.log('response',response)
       if (response?.data?.status == true) {
         SweetAlertPopup(response?.data.message, "Success", "success");
-// dispatch(logout());
+dispatch(logout());
 sessionStorage.clear()
 localStorage.clear()
 navigate('/auth/login');
-window.location.reload()
+// window.location.reload()
         setIsloading(false);
       } else {
         SweetAlertPopup(response?.data.message, "Error", "error");

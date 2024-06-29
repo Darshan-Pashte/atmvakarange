@@ -45,8 +45,8 @@ function App() {
   // }, []);
   return (
     <div className='App'>
-       <AppLogout>
       <Router basename='/vakrangeeatmadminportal'>
+       <AppLogout />
         <Routes>
         {/* <Route exact path='/register' element={<Register />} /> */}
 
@@ -63,7 +63,6 @@ function App() {
           />
         </Routes>
       </Router>
-      </AppLogout>
     </div>
   );
 }
