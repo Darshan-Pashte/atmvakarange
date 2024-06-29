@@ -7,9 +7,18 @@ import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import Register from './containers/Register/Register';
 import AppLogout from './layouts/AppLogout';
+import { useDispatch, useSelector } from 'react-redux';
+import { postApiData } from './components/utilities/nodeApiServices';
+import { apiList } from './components/utilities/nodeApiList';
+import { logout } from './store/authSlice';
+import SweetAlertPopup from './components/common/sweetAlertPopup';
 
 
 function App() {
+
+  const { loading, error, isAuthenticated, user, userType } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  // const navigate = useNavigate()
   // useEffect(() => {
   //   const handleOffline = () => {
   //     // alert("The network connection has been lost.");
@@ -43,6 +52,56 @@ function App() {
   //     window.removeEventListener("online", handleOnline);
   //   };
   // }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState === 'hidden') {
+        // Perform logout logic here, e.g., call a logout function or clear user session
+        try {
+          // setIsLoading(true);
+          const payload = {
+            username: user?.username,
+            sessionId: user?.sessionId,
+          };
+          await postApiData(apiList.LOGOUT, payload).then((response) => {
+            console.log(response);
+            if (response?.data?.status === true) {
+              dispatch(logout());
+              window.location.href = "/vakrangeeatmadminportal/auth/login"
+              // setIsLoading(false);
+            } else {
+              // SweetAlertPopup("User Logout Failed", "Error", "error");
+              // setIsLoading(false);
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+    
+        } catch (error) {
+          console.log("An error occurred during logout", error);
+          SweetAlertPopup("An error occurred during logout", "Error", "error");
+          // setIsLoading(false);
+        }
+        console.log("Logging out user...");
+      }
+    };
+
+    const handleBeforeUnload = () => {
+      handleVisibilityChange();
+    };
+
+    window.addEventListener('unload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('unload', handleBeforeUnload);
+    };
+    // document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // return () => {
+    //   document.removeEventListener('visibilitychange', handleVisibilityChange);
+    // };
+  }, []);
+
   return (
     <div className='App'>
       <Router basename='/vakrangeeatmadminportal'>
