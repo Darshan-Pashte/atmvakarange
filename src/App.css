@@ -571,7 +571,7 @@ overflow: auto !important;
   height: 150px;
 }
 
-.swal2-container {
+/* .swal2-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -586,4 +586,4 @@ overflow: auto !important;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */

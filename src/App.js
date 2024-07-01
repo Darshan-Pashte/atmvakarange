@@ -76,7 +76,7 @@ function App() {
           }).catch(err => {
             console.log(err)
           })
-    
+
         } catch (error) {
           console.log("An error occurred during logout", error);
           SweetAlertPopup("An error occurred during logout", "Error", "error");
@@ -99,15 +99,15 @@ function App() {
 
     // return () => {
     //   document.removeEventListener('visibilitychange', handleVisibilityChange);
-    // };
-  }, []);
+    // };
+  }, []);
 
   return (
     <div className='App'>
       <Router basename='/vakrangeeatmadminportal'>
-       <AppLogout />
+
         <Routes>
-        {/* <Route exact path='/register' element={<Register />} /> */}
+          {/* <Route exact path='/register' element={<Register />} /> */}
 
           <Route exact path='/auth/*' element={<AuthLayout />} />
           {/* <Route exact path='/atmmaster/brwatmmasterlist' element={<DepartmentBrowseList />} /> */}
@@ -116,7 +116,9 @@ function App() {
             path='/*'
             element={
               <PrivateRoute>
-                <ProtectedLayout />
+                <AppLogout>
+                  <ProtectedLayout />
+                </AppLogout>
               </PrivateRoute>
             }
           />

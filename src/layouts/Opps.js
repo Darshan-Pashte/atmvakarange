@@ -47,7 +47,7 @@ const Opps = () => {
       <div className={classes.Opps}>
      
           <div className={classes.text}>session has expired due to inactivity. Please log in again to continue....</div>
-            <img src={opps} alt="Opps"/>
+            <img width="350px" height="350px" src={opps} alt="Opps"/>
            
          
       </div>
