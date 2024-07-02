@@ -148,7 +148,7 @@ const Login = () => {
        
       } else {
         // dispatch(loginFailure(response.message));
-        SweetAlertPopup(response?.data.message, "Error", "error");
+        SweetAlertPopup(response?.data.message || "Something Went wrong please try again....", "Error", "error");
         setIsLoading(false);
       }
       setIsLoading(false);
