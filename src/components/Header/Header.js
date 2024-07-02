@@ -117,6 +117,19 @@ navigate('/auth/login');
     }
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      handleLogout();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <>{isLoading ? <Loader loading={true} /> : <Loader loading={false} />}
     <div className={classes.HeaderContainer}>
