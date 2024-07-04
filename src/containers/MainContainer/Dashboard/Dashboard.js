@@ -12,7 +12,7 @@ import { apiList } from "../../../components/utilities/nodeApiList";
 import SweetAlertPopup from "../../../components/common/sweetAlertPopup";
 import { REMOVE_USER } from "../../../constants";
 // import { AuthContext } from '../../../context/AuthContext';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashboarCard from "./DashboardCard";
 import { CardMiddleList } from "./CardList";
 import { errorMessages } from "../../../components/utilities/formValidation";
@@ -132,53 +132,15 @@ const Dashboard = () => {
   const [messages, setMessages] = useState([]);
   const [graphWeb, setGraphWeb] = useState([]);
 
+  const location=useLocation()
 
-  // const { dispatch: authDispatch } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   setToken(sessionStorage.getItem("TOKEN"));
-  //   setUserName(sessionStorage.getItem("username"))
-  // }, []);
-
-  // console.log("user", user);
-  // console.log("dashboardlst", dashboardlst);
-
-  // useEffect(() => {
-  //   fetchBanksData();
-  // }, [username,token]);
-
-  // const fetchBanksData = async () => {
-  //   try {
-  //     const payload = {
-  //       requestCode: "dashboard",
-  //       userId: username,
-  //       sessionId: token,
-  //     };
-  //     const response = await postApiData(apiList.ShankarSirsUrl, payload);
-  //     if(response.respCode=="00"){
-  //       setTotalBanks(response?.data);
-  //     }
-  //     else if(response.respCode=="IS"){
-  //       // authDispatch({ type: REMOVE_USER });
-  //       navigate("/auth/login")
-  //       SweetAlertPopup(response?.respMsg, "Error", "error");
-  //     }
-
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-
+  
   const BankCodeList =
     bankcodes &&
     bankcodes?.map((item) => ({ code: item.bankCd, value: item.bankCd }));
 
-  // useEffect(()=>{
-  // if(BankCodeList){
-  //   setValue('bankcode',BankCodeList ? compareTextAndReturnObject(BankCodeList,BankCodeList[0]?.value):'')
-  // }
-  // },[BankCodeList])
-
+ 
   useEffect(() => {
     getBankCode();
   }, []);
@@ -191,7 +153,7 @@ const Dashboard = () => {
     setAtmID(atmid)
     setIsModalOpen(true)
     
-  }
+  };
 
   const getBankCode = async () => {
     try {
@@ -852,7 +814,12 @@ const Dashboard = () => {
   console.log(TodaysDate); // Output: 16-Apr-2024
 
   const handleRefresh = () => {
-    window.location.reload()
+    getBankCode()
+    getDashboardCount()
+    getDashboard()
+    getDashboardAtmOutOfService()
+    getDashboardDay()
+    getSuccessGraph()
   }
 
   const ATMOfflineList = [
