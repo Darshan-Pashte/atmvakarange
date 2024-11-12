@@ -43,6 +43,7 @@ import loginleftimage from "../../assets/images/commonforweb/loginleftimage.png"
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { SITE_KEY } from "../../constantStore/contstants";
+import axios from "axios";
 
 
 const defaultFormData = {
@@ -99,6 +100,41 @@ const Login = () => {
     }
   };
 
+  const [ipAddress, setIpAddress] = useState('');
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+
+  const getIpAddress = async () => {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      setIpAddress(response.data.ip);
+    } catch (error) {
+      console.error('Error fetching IP address:', error);
+    }
+  };
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          console.error('Error fetching location:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  };
+
+  useEffect(() => {
+    getIpAddress();
+    getLocation();
+  }, []);
+
   // useEffect(() => {
   //   if (error) {
   //     popupAlert("Please Enter Valid Credentials", "Error", "error");
@@ -119,6 +155,9 @@ const Login = () => {
     navigate("/auth/forgetpassword");
   }
 
+  console.log("location",location)
+  console.log("ipAddress",ipAddress)
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     recaptchaRef && recaptchaRef?.current?.reset();
@@ -130,6 +169,8 @@ const Login = () => {
       const payload = {
         username: data.email,
         password: data.password,
+        // ipAddress: ipAddress,
+        // location: location,
       };
 
       const response = await postApiData(apiList.LOGIN, payload);
