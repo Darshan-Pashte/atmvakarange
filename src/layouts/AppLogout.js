@@ -68,7 +68,7 @@ const AppLogout = ({ children }) => {
         // window.location.pathname = "/vakrangeeatmadminportal/auth/opps";
         handleLogout();
 
-      },180000
+      },900000
       );
     }
   };
