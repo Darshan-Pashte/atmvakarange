@@ -42,6 +42,7 @@ import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
 
 import SearchIcon from '@mui/icons-material/Search';
 import Textfield from "../../../../components/common/textField";
+import TransDetailsModal from "./TransDetailsModal";
 
 
 const defaultFormData = {
@@ -78,9 +79,16 @@ const ATMServiceBrowse = () => {
   const topLevelPath = "/" + currentPath.split("/")[1];
 
   const [atmMasterList, setAtmMasterList] = useState([]);
+  const [details, setDetails] = useState(null);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+
+  const [openTransDetails, setOpenTransDetails] = useState(false);
+  const handleOpenTransDetails = () => setOpenTransDetails(true);
+  const handleCloseTransDetails = () => setOpenTransDetails(false);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rowDataToDisplay, setRowDataToDisplay] = useState({});
   const [tableHeaders, setTableHeaders] = useState([]);
@@ -262,6 +270,30 @@ const closeModal = () => {
       filter: true,
       sort: false,
       display:true
+    },
+  },
+
+  {
+    name: "Trans Details",
+    label: "Trans Details",
+    options: {
+      filter: false,
+      sort: false,
+      customBodyRender: (value, { rowData }, tableMeta) => {
+        return (
+          <Button
+            sx={{
+              color: "black",
+              minWidth: "100%",
+              padding: "5px 5px !important",
+            }}
+            onClick={() => getTransDetails(rowData)}
+          >
+            {" "}
+            <VisibilityIcon />
+          </Button>
+        );
+      },
     },
   },
     {
@@ -779,6 +811,45 @@ const closeModal = () => {
   //   onSubmit()
   // },[])
 
+  const getTransDetails = async (rowData) => {
+
+    console.log('data',rowData)
+    setIsloading(true);
+    try {
+      const payload = {
+        username:user?.username,
+        sessionId: user?.sessionId,
+        atmId: rowData[1],
+        // bankcd: data.bankcd,
+       
+      };
+
+      const response = await postApiData(
+        apiList.TRANS_DETAILS_BROWSE,
+        payload
+      );
+
+console.log('response',response)
+      if (response?.data?.status == true) {
+        setDetails(response?.data?.lst)
+        handleOpenTransDetails()  
+        // setAtmMasterList(response?.data?.atmMasterNewsLst);
+        // settotalRecord(response?.data?.totalRecords);
+                    setIsloading(false);
+        // settotalRecord(response.data.totalRecords)
+      } else {
+        setAtmMasterList([])
+        SweetAlertPopup(response?.data.message, "Error", "error");
+        setIsloading(false);
+      }
+      setIsloading(false);
+    } catch (err) {
+      console.log(err);
+      setIsloading(false);
+    }
+  };
+
+
   const getTransactionListView = async (currentPage,data = payloadData) => {
     // console.log('currentPage',currentPage);
     setCurrentPage(currentPage)
@@ -1142,6 +1213,17 @@ const closeModal = () => {
                 handleClose={handleCloseSearch}
                 setResData={setResData}
                 rowDataToDisplay={rowDataToDisplay}
+                show={"2"}
+                title={"Bank ATM SMS Master Browse List"}
+              />
+            ) : null}
+
+            {openTransDetails ? (
+              <TransDetailsModal
+                open={openTransDetails}
+                handleClose={handleCloseTransDetails}
+                details={details}
+               
                 show={"2"}
                 title={"Bank ATM SMS Master Browse List"}
               />

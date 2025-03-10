@@ -346,13 +346,13 @@ export default function SearchAtmIDModal({
       };
 
       const response = await postApiData(
-        apiList.ATM_MASTER_BROWSE + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
+        apiList.ATM_MASTER_BROWSE_NEW + `?pageNo=${currentPage}&pageSize=${goPageNumber}`,
         payload
       );
 
 
       if (response?.data?.status == true) {
-        setAtmMasterList(response?.data?.atmMasterNewsLst);
+        setAtmMasterList(response?.data?.list);
         settotalRecord(response?.data?.totalRecords);
         //             setIsloading(false);
         // settotalRecord(response.data.totalRecords)

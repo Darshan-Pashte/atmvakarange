@@ -81,7 +81,7 @@ CHANGE_PASSWORD:baseUrlServer + '/vakrangee/login/changepass',
 
 
 ATM_MASTER_CREATE:baseUrlServer + '/vakrangee/services/atmmaster/create',
-// ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
+ATM_MASTER_BROWSE:baseUrlServer + '/vakrangee/services/atmmaster/browse',
 ATM_MASTER_BROWSE_NEW:baseUrlServer + '/vakrangee/services/atmmaster/browselst',
 ATM_MASTER_MODIFY:baseUrlServer + '/vakrangee/services/atmmaster/modify',
 
@@ -130,9 +130,14 @@ BANK_USER_MASTER_AUTHORIZE:baseUrlServer + '/vakrangee/services/bnkusermst/auth'
 ATM_SERVICE_BROWSE:baseUrlServer + '/vakrangee/services/atmservice/brwlst',
 ATM_SERVICE_DATA:baseUrlServer + '/vakrangee/services/atmservice/',
 
+TRANS_DETAILS_BROWSE:baseUrlServer + '/vakrangee/services/atmservice/transhistory',
 
 LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/acqtransreports',
 LOCAL_ACQUIRE_DOWNLOAD:baseUrlServer + '/vakrangee/services/transmaster/acqexceltranslst',
+
+LOCAL_ACQUIRE_FILE_GENERATE:baseUrlServer + '/vakrangee/services/transmaster/transExcelGene',
+LOCAL_ACQUIRE_FILE_GENERATE_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/transExcelGeneBrw',
+LOCAL_ACQUIRE_FILE_GENERATE_DOWNLOAD:baseUrlServer + '/vakrangee/services/transmaster/transExcelDownload',
 
 ISSUER_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/issuertranslst',
 SWITCH_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/switchreports',
