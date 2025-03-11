@@ -43,7 +43,10 @@ import SearchAtmIDModal from "../../../../components/common/SearchAtmIDModal";
 import SearchIcon from '@mui/icons-material/Search';
 import Textfield from "../../../../components/common/textField";
 import TransDetailsModal from "./TransDetailsModal";
-
+import TransLogsModal from "./TransLogsModal";
+import DescriptionIcon from '@mui/icons-material/Description';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import axios from "axios";
 
 const defaultFormData = {
   bankcode: "",
@@ -89,6 +92,10 @@ const ATMServiceBrowse = () => {
   const handleOpenTransDetails = () => setOpenTransDetails(true);
   const handleCloseTransDetails = () => setOpenTransDetails(false);
 
+  const [openTransLogs, setOpenTransLogs] = useState(false);
+  const handleOpenTransLogs = () => setOpenTransLogs(true);
+  const handleCloseTransLogs = () => setOpenTransLogs(false);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [rowDataToDisplay, setRowDataToDisplay] = useState({});
   const [tableHeaders, setTableHeaders] = useState([]);
@@ -110,8 +117,22 @@ const ATMServiceBrowse = () => {
     (state) => state.auth
   );
 
+  const[text,setText]=useState()
   // console.log("user", user);
 
+ 
+
+
+  // const getTransLogs=(rowData)=>{
+  //   fetch(`${apiList.TRANS_LOGS_DETAILS}?atmId=${rowData[1]}`).then((response) => response.text())
+  //   .then((data) => setText(data))
+  //   .catch((error) => console.error("Error loading file:", error));
+  // }
+
+  
+
+  
+    console.log('text',text)
 
   const [resData, setResData] = useState({});
   // console.log("resData", resData);
@@ -274,8 +295,8 @@ const closeModal = () => {
   },
 
   {
-    name: "Trans Details",
-    label: "Trans Details",
+    name: "Txn Detail",
+    label: "Txn Detail",
     options: {
       filter: false,
       sort: false,
@@ -296,6 +317,63 @@ const closeModal = () => {
       },
     },
   },
+
+  
+    {
+    name: "TXN Log",
+    label: "Txn Log",
+    options: {
+      filter: false,
+      sort: false,
+      customBodyRender: (value, { rowData }, tableMeta) => {
+        return (
+          <>
+          {
+user?.username == "SONAL" ||user?.username ==  "VINAYAK" ||user?.username ==  "SAYLI" ||user?.username ==  "NILESH" ?
+          <Button
+          disabled={user?.username == "Sonal"}
+            sx={{
+              color: "black",
+              minWidth: "100%",
+              padding: "5px 5px !important",
+            }}
+            onClick={() => getTransLogs(rowData)}
+          >
+            {" "}
+            <DescriptionIcon style={{color:'blue'}}/>
+          </Button>
+           : <Button disabled><DescriptionIcon/></Button>
+          }
+          </>
+        );
+      },
+    },
+  },
+
+
+  // {
+  //   name: "Kill",
+  //   label: "Kill",
+  //   options: {
+  //     filter: false,
+  //     sort: false,
+  //     customBodyRender: (value, { rowData }, tableMeta) => {
+  //       return (
+  //         <Button
+  //           sx={{
+  //             color: "black",
+  //             minWidth: "100%",
+  //             padding: "5px 5px !important",
+  //           }}
+  //           onClick={() => getTransLogs(rowData)}
+  //         >
+  //           {" "}
+  //           <DangerousIcon style={{color:'red'}} />
+  //         </Button>
+  //       );
+  //     },
+  //   },
+  // },
     {
       name: "atmstatus",
       label: "ATM Status",
@@ -850,6 +928,63 @@ console.log('response',response)
   };
 
 
+
+  const getTransLogs = async (rowData) => {
+    if (!rowData[1]) {
+      console.error("ATM ID is missing");
+      return;
+    }
+  
+    // Define headers object (you can customize as needed)
+    const headers = {
+      'Content-Type': 'application/json', // Example content type header
+      'Authorization': `${sessionStorage.getItem("JWTToken")}`, // Authorization header
+      // Add any other headers here
+    };
+  
+    try {
+      setIsloading(true);
+      // Use axios to make the GET request
+      await axios.get(`${apiList.TRANS_LOGS_DETAILS}?atmId=${rowData[1]}`, {
+        headers: headers,  // Pass the headers here
+      }).then((res)=>{
+        console.log('res',res)
+        if (res.status === 200) {
+          const data = res.data; // Use the data returned from the API
+          setText(data);  // Update state with fetched data
+          handleOpenTransLogs();
+          setIsloading(false);  // Additional logic after data is loaded
+        }
+        setIsloading(false);
+      }).catch((err)=>{
+        console.log('err',err)
+        SweetAlertPopup(err?.response?.data,"Error",'error')
+        setIsloading(false);
+      })
+  
+      
+  
+      // Handle successful response
+     
+    } catch (error) {
+      // Handle errors (including non-2xx status codes)
+      if (error.response) {
+        // Server responded with a status code outside the 2xx range
+        console.error(`Error: ${error.response.status} - ${error.response.statusText}`);
+      } else if (error.request) {
+        // Request was made but no response was received
+        console.error("Error: No response received");
+      } else {
+        // Other errors (e.g., setup or configuration errors)
+        console.error("Error loading file:", error.message);
+      }
+    } finally {
+      setIsloading(false);  // Ensure loading state is always set to false
+    }
+  };
+  
+
+
   const getTransactionListView = async (currentPage,data = payloadData) => {
     // console.log('currentPage',currentPage);
     setCurrentPage(currentPage)
@@ -1223,6 +1358,16 @@ console.log('response',response)
                 open={openTransDetails}
                 handleClose={handleCloseTransDetails}
                 details={details}
+               
+                show={"2"}
+                title={"Bank ATM SMS Master Browse List"}
+              />
+            ) : null}
+            {openTransLogs ? (
+              <TransLogsModal
+                open={openTransLogs}
+                handleClose={handleCloseTransLogs}
+                text={text}
                
                 show={"2"}
                 title={"Bank ATM SMS Master Browse List"}
