@@ -132,6 +132,7 @@ ATM_SERVICE_DATA:baseUrlServer + '/vakrangee/services/atmservice/',
 
 TRANS_DETAILS_BROWSE:baseUrlServer + '/vakrangee/services/atmservice/transhistory',
 TRANS_LOGS_DETAILS:baseUrlServer + '/vakrangee/services/atmservice/logview',
+TRANS_KILL:baseUrlServer + '/vakrangee/services/atmservice/restart',
 
 LOCAL_ACQUIRE_BROWSE:baseUrlServer + '/vakrangee/services/transmaster/acqtransreports',
 LOCAL_ACQUIRE_DOWNLOAD:baseUrlServer + '/vakrangee/services/transmaster/acqexceltranslst',

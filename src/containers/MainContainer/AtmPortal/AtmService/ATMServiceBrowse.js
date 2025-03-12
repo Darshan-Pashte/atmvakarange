@@ -132,7 +132,7 @@ const ATMServiceBrowse = () => {
   
 
   
-    console.log('text',text)
+    // console.log('text',text)
 
   const [resData, setResData] = useState({});
   // console.log("resData", resData);
@@ -351,29 +351,35 @@ user?.username == "SONAL" ||user?.username ==  "VINAYAK" ||user?.username ==  "S
   },
 
 
-  // {
-  //   name: "Kill",
-  //   label: "Kill",
-  //   options: {
-  //     filter: false,
-  //     sort: false,
-  //     customBodyRender: (value, { rowData }, tableMeta) => {
-  //       return (
-  //         <Button
-  //           sx={{
-  //             color: "black",
-  //             minWidth: "100%",
-  //             padding: "5px 5px !important",
-  //           }}
-  //           onClick={() => getTransLogs(rowData)}
-  //         >
-  //           {" "}
-  //           <DangerousIcon style={{color:'red'}} />
-  //         </Button>
-  //       );
-  //     },
-  //   },
-  // },
+  {
+    name: "Kill",
+    label: "Kill",
+    options: {
+      filter: false,
+      sort: false,
+      customBodyRender: (value, { rowData }, tableMeta) => {
+        return (
+
+          <>
+          {
+user?.username ==  "SAYLI" ?
+          <Button
+            sx={{
+              color: "black",
+              minWidth: "100%",
+              padding: "5px 5px !important",
+            }}
+            onClick={() => getTransKill(rowData)}
+          >
+            {" "}
+            <DangerousIcon style={{color:'red'}} />
+          </Button> :     <Button disabled><DangerousIcon/></Button>
+      }
+          </>
+        );
+      },
+    },
+  },
     {
       name: "atmstatus",
       label: "ATM Status",
@@ -889,9 +895,46 @@ user?.username == "SONAL" ||user?.username ==  "VINAYAK" ||user?.username ==  "S
   //   onSubmit()
   // },[])
 
+  const getTransKill = async (rowData) => {
+
+    // console.log('data',rowData)
+    setIsloading(true);
+    try {
+      const payload = {
+        username:user?.username,
+        sessionId: user?.sessionId,
+        atmId: rowData[1],
+        // bankcd: data.bankcd,
+       
+      };
+
+      const response = await postApiData(
+        apiList.TRANS_KILL,
+        payload
+      );
+
+console.log('response',response)
+      if (response?.data?.status == true) {
+        SweetAlertPopup(response?.data?.message, "Success", "success");
+
+                    setIsloading(false);
+
+      } else {
+   
+        SweetAlertPopup(response?.data?.message, "Error", "error");
+        setIsloading(false);
+      }
+      setIsloading(false);
+    } catch (err) {
+      console.log(err);
+      setIsloading(false);
+    }
+  };
+
+
   const getTransDetails = async (rowData) => {
 
-    console.log('data',rowData)
+    // console.log('data',rowData)
     setIsloading(true);
     try {
       const payload = {
